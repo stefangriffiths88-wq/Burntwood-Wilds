@@ -4,7 +4,7 @@ Run: blender -b --python jackson.py -- --out ./renders
 import bpy, math, os, sys, argparse
 from mathutils import Vector
 args=sys.argv[sys.argv.index('--')+1:] if '--' in sys.argv else []
-p=argparse.ArgumentParser();p.add_argument('--out',default='renders');p.add_argument('--preview',action='store_true');a=p.parse_args(args);os.makedirs(a.out,exist_ok=True)
+p=argparse.ArgumentParser();p.add_argument('--out',default='renders');p.add_argument('--preview',action='store_true');p.add_argument('--states',default='');a=p.parse_args(args);os.makedirs(a.out,exist_ok=True)
 bpy.ops.object.select_all(action='SELECT');bpy.ops.object.delete(use_global=False)
 def mat(n,c):
  m=bpy.data.materials.new(n);m.diffuse_color=(*c,1);m.use_nodes=True;m.node_tree.nodes['Principled BSDF'].inputs['Base Color'].default_value=(*c,1);m.node_tree.nodes['Principled BSDF'].inputs['Roughness'].default_value=.65;return m
@@ -54,14 +54,14 @@ for loc,energy,size in [((-3,-4,6),350,4),((3,1,4),200,3)]:
 bpy.ops.object.camera_add(location=(0,-5,3.55));cam=bpy.context.object;cam.rotation_euler=(Vector((0,0,.92))-cam.location).to_track_quat('-Z','Y').to_euler();cam.data.type='ORTHO';cam.data.ortho_scale=3.2;scene.camera=cam
 bpy.ops.wm.save_as_mainfile(filepath=os.path.abspath(os.path.join(a.out,'jackson.blend')))
 states=['idle','walk','throw','charge','hit','death','tell','stomp']
-for state in (['idle'] if a.preview else states):
+for state in (['idle'] if a.preview else (a.states.split(',') if a.states else states)):
  for direction in ( [2] if a.preview else range(8)):
   for frame in ( [0] if a.preview else range(6)):
-   t=frame/6*math.tau;root.rotation_euler=(0,0,math.pi/2-direction*math.tau/8);root.location.z=0
+   t=frame/6*math.tau;root.rotation_euler=(0,0,math.pi/2-direction*math.tau/8);root.location=(0,0,0)
    for i in range(2):leg[i].rotation_euler=(math.sin(t+i*math.pi)*(.55 if state in ['walk','charge'] else .04),0,0);arm[i].rotation_euler=(-math.sin(t+i*math.pi)*(.5 if state=='walk' else .04),0,0)
    if state=='throw':arm[1].rotation_euler.x=-1.3*math.sin(frame/5*math.pi);root.rotation_euler.z+=.12*math.sin(frame/5*math.pi)
    if state=='charge':root.location.z=.02*abs(math.sin(t));root.rotation_euler.x=.22;arm[1].rotation_euler.x=-.8;arm[0].rotation_euler.x=-.35
    if state=='hit':root.rotation_euler.x=-.22*math.sin(frame/5*math.pi)
-   if state=='death':root.rotation_euler.y=frame/5*1.4;root.location.z=-frame/5*.25
+   if state=='death':root.rotation_euler.y=frame/5*1.4;root.location.x=-frame/5*.40;root.location.z=frame/5*.12
    if state in ['tell','stomp']:root.location.z=-.07*math.sin(frame/5*math.pi)
    scene.render.filepath=os.path.join(a.out,f'{state}-{direction}-{frame}.png');bpy.ops.render.render(write_still=True)
