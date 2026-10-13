@@ -83,7 +83,20 @@ const upgradeDefs=[
  ['⌛ SPELL DURATION','Long-lasting spells and buffs last 15% longer.',()=>{statsBuild.spellDuration++}]
 ];
 function showUpgrade(){if(mode==='end')return;mode='upgrade';$('ultimate').style.display='none';$('overlay').style.display='flex';$('panel').innerHTML='<h1>⭐ LEVEL '+level+'</h1><p>Choose a CHARACTER STAT for '+hero().name+'</p><div id="options"></div><p id="rerolltext">Rerolls left: '+rerolls+'</p><button id="reroll" style="font-size:14px;padding:10px">↻ REROLL</button>';renderOptions();$('reroll').onclick=()=>{if(rerolls<=0)return;rerolls--;$('rerolltext').textContent='Rerolls left: '+rerolls;renderOptions();$('reroll').disabled=true}}
-function renderOptions(){const arr=[...upgradeDefs].sort(()=>Math.random()-.5).slice(0,3);const holder=$('options');holder.innerHTML='';arr.forEach(([name,desc,apply])=>{const b=document.createElement('button');b.style.cssText='display:block;width:100%;margin:8px 0;text-align:left;font-size:15px;padding:12px;background:#d3e6b4';b.innerHTML=name+'<div style="font-size:12px;font-weight:500">'+desc+'</div>';b.onclick=()=>{apply();upgrades--;if(upgrades>0)showUpgrade();else{mode='play';$('overlay').style.display='none'}hud()};holder.appendChild(b)})}
+function renderOptions(){
+ const holder=$('options');holder.innerHTML='';
+ const picked=[...upgradeDefs].sort(()=>Math.random()-.5).slice(0,3);
+ const rarityNames=['COMMON','UNCOMMON','RARE','LEGENDARY'];
+ const rarityColors=['#dce7d4','#b7e7fb','#d9b8ff','#ffe0a1'];
+ picked.forEach(([name,desc,apply])=>{
+  const roll=Math.random(),tier=wave>=6&&roll<.065?3:wave>=3&&roll<.22?2:roll<.52?1:0;
+  const mult=[1,1.5,2,3][tier];const b=document.createElement('button');
+  b.style.cssText='display:block;width:100%;margin:8px 0;text-align:left;font-size:15px;padding:12px;background:'+rarityColors[tier]+';border:2px solid '+(tier===3?'#e5a43d':'#8f9c90');
+  b.innerHTML='<div style="font-size:11px;font-weight:900;letter-spacing:1px">'+rarityNames[tier]+' • '+mult+'× EFFECT</div>'+name+'<div style="font-size:12px;font-weight:500">'+desc+'</div>';
+  b.onclick=()=>{for(let i=0;i<Math.ceil(mult);i++)apply();upgrades--;if(upgrades>0)showUpgrade();else{mode='play';$('overlay').style.display='none'}hud()};
+  holder.appendChild(b)
+ })
+}
 
 const wares=[
 ['🛡️ Rugby Pads','Armour +3',12,()=>armor+=3],
