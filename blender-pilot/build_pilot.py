@@ -9,7 +9,7 @@ for i,state in enumerate(states):
   for frame in range(6):
    im=Image.open(f'blender-pilot/renders/{state}-{d}-{frame}.png').convert('RGBA').resize((128,128),Image.Resampling.LANCZOS)
    atlas.paste(im,(d*128,(i*6+frame)*128))
-f=io.BytesIO();atlas.save(f,format='WEBP',quality=88,method=6);Path('blender-pilot/jackson-atlas.webp').write_bytes(f.getvalue())
+f=io.BytesIO();atlas.save(f,format='WEBP',quality=75,method=6);Path('blender-pilot/jackson-atlas.webp').write_bytes(f.getvalue())
 s=Path('wilds-v9-0-burntwood.html').read_text()
 code="""
 // Blender-rendered Jackson: one shared atlas, no per-frame Canvas allocations.
