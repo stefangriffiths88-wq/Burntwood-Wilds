@@ -1,0 +1,32 @@
+name: Jackson TRELLIS model test
+on:
+  push:
+    branches: [jackson-trellis-test]
+    paths:
+      - '.github/workflows/jackson-trellis-test.yml'
+      - 'character-generation/**'
+permissions:
+  contents: read
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install generation client
+        run: pip install gradio_client==1.10.3
+      - name: Generate Jackson model
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: python -u character-generation/generate_jackson.py
+      - name: Store actual model and turntable
+        uses: actions/upload-artifact@v4
+        with:
+          name: jackson-trellis-model
+          path: |
+            character-generation/output/jackson.glb
+            character-generation/output/jackson-turntable.mp4
+          if-no-files-found: error
