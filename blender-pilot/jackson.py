@@ -62,6 +62,6 @@ for state in (['idle'] if a.preview else (a.states.split(',') if a.states else s
    if state=='throw':arm[1].rotation_euler.x=-1.3*math.sin(frame/5*math.pi);root.rotation_euler.z+=.12*math.sin(frame/5*math.pi)
    if state=='charge':root.location.z=.02*abs(math.sin(t));root.rotation_euler.x=.22;arm[1].rotation_euler.x=-.8;arm[0].rotation_euler.x=-.35
    if state=='hit':root.rotation_euler.x=-.22*math.sin(frame/5*math.pi)
-   if state=='death':root.rotation_euler.y=frame/5*1.4;root.location.x=-frame/5*.40;root.location.z=frame/5*.12
+   if state=='death':root.rotation_euler.y=frame/5*1.4;root.location.x=-frame/5*.65*math.cos(root.rotation_euler.z);root.location.y=-frame/5*.65*math.sin(root.rotation_euler.z);root.location.z=frame/5*.30
    if state in ['tell','stomp']:root.location.z=-.07*math.sin(frame/5*math.pi)
    scene.render.filepath=os.path.join(a.out,f'{state}-{direction}-{frame}.png');bpy.ops.render.render(write_still=True)
