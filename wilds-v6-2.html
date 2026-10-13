@@ -90,10 +90,10 @@ function renderOptions(){
  const rarityColors=['#dce7d4','#b7e7fb','#d9b8ff','#ffe0a1'];
  picked.forEach(([name,desc,apply])=>{
   const roll=Math.random(),tier=wave>=6&&roll<.065?3:wave>=3&&roll<.22?2:roll<.52?1:0;
-  const mult=[1,1.5,2,3][tier];const b=document.createElement('button');
+  const mult=[1,2,3,4][tier];const b=document.createElement('button');
   b.style.cssText='display:block;width:100%;margin:8px 0;text-align:left;font-size:15px;padding:12px;background:'+rarityColors[tier]+';border:2px solid '+(tier===3?'#e5a43d':'#8f9c90');
   b.innerHTML='<div style="font-size:11px;font-weight:900;letter-spacing:1px">'+rarityNames[tier]+' • '+mult+'× EFFECT</div>'+name+'<div style="font-size:12px;font-weight:500">'+desc+'</div>';
-  b.onclick=()=>{for(let i=0;i<Math.ceil(mult);i++)apply();upgrades--;if(upgrades>0)showUpgrade();else{mode='play';$('overlay').style.display='none'}hud()};
+  b.onclick=()=>{for(let i=0;i<mult;i++)apply();upgrades--;if(upgrades>0)showUpgrade();else{mode='play';$('overlay').style.display='none'}hud()};
   holder.appendChild(b)
  })
 }
