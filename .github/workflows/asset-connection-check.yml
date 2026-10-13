@@ -1,0 +1,27 @@
+name: 3D asset connection check
+on:
+  push:
+    branches: [asset-connection-check]
+    paths: ['.github/workflows/asset-connection-check.yml', 'asset-pipeline/connection-check.txt']
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Check Meshy network access and credential configuration
+        env:
+          MESHY_API_KEY: ${{ secrets.MESHY_API_KEY }}
+        run: |
+          python3 - <<'PY'
+          import os, urllib.request
+          request = urllib.request.Request('https://docs.meshy.ai/en/api/quick-start', headers={'User-Agent':'Burntwoods-asset-connection-check'})
+          with urllib.request.urlopen(request, timeout=30) as response:
+              print('Meshy documentation reachable:', response.status)
+          if os.environ.get('MESHY_API_KEY'):
+              print('Meshy credential configured. This check has not generated assets or spent credits.')
+          else:
+              print('Meshy credential not configured. Add repository secret MESHY_API_KEY to enable a future asset-generation workflow.')
+          print('Connection infrastructure check complete. No model generation was requested.')
+          PY
