@@ -1,0 +1,26 @@
+name: Preserve generated Jackson model
+on:
+  push:
+    branches: [jackson-trellis-test]
+    paths: ['.github/workflows/preserve-jackson.yml']
+permissions:
+  contents: write
+  actions: read
+jobs:
+  preserve:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: jackson-trellis-model
+          run-id: 38470848842
+          github-token: ${{ github.token }}
+          path: assets/jackson-trellis
+      - name: Commit generated model
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/jackson-trellis
+          git commit -m "Preserve actual generated Jackson GLB"
+          git push origin HEAD:jackson-trellis-test
