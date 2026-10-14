@@ -1,11 +1,11 @@
 name: Modular journey test 10
 on:
   push:
-    branches: [journey-v10]
+    branches: [journey-v10, zak-toxic-trickster-v1003]
     paths: ['burntwood-journey-v10.html', 'journey-v10/**', '.github/workflows/journey-v10.yml']
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
   browser:
     runs-on: ubuntu-latest
@@ -14,7 +14,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: python3 journey-v10/build.py && git diff --exit-code burntwood-journey-v10.html journey-v10/game.js
+      - run: |
+          python3 journey-v10/build.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add burntwood-journey-v10.html journey-v10/game.js
+          git diff --cached --quiet || (git commit -m "Generate Zak 10.0.3 playable build" && git push)
       - run: node journey-v10/test.cjs
       - run: npm install --no-save playwright@1.48.2
       - run: |
