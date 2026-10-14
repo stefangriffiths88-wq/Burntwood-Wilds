@@ -11,7 +11,7 @@ function shape(parent,geometry,mat,x=0,y=0,z=0,sx=1,sy=1,sz=1){let m=new THREE.M
 const sphere=new THREE.SphereGeometry(1,24,16);const hair=new THREE.MeshStandardMaterial({color:'#6d432d',roughness:1});
 function oval(p,mat,x,y,z,a,b,c){return shape(p,sphere,mat,x,y,z,a,b,c);}
 function capsule(p,mat,r,length,x,y,z){return shape(p,new THREE.CapsuleGeometry(r,Math.max(.001,length-2*r),6,14),mat,x,y,z);}
-const torso=joint('spine',rig,0,.13,0),neck=joint('neck',torso,0,.34,0),head=joint('head',neck,0,.15,.005);head.scale.set(.90,.90,.92);
+const torso=joint('spine',rig,0,.13,0),neck=joint('neck',torso,0,.34,0),head=joint('head',neck,0,.19,.005);head.scale.set(.90,.84,.92);
 // Smooth connected body, with all limbs independent of equipment and clothing.
 const profile=[[.14,-.1],[.175,-.04],[.174,.04],[.145,.13],[.17,.25],[.205,.32],[.19,.37],[.12,.405],[.095,.43]].map(([x,y])=>new THREE.Vector2(x,y));shape(torso,new THREE.LatheGeometry(profile,32),fur);
 oval(torso,cream,0,.18,.13,.115,.20,.07);oval(rig,fur,0,.015,0,.175,.15,.13);oval(neck,fur,0,.005,0,.10,.12,.105);
@@ -25,7 +25,7 @@ for(let side of [-1,1]){
  oval(head,cream,side*.048,-.075,.173,.065,.043,.042);
  for(let i=0;i<3;i++){let stripe=oval(head,dark,side*(.135+i*.008),.025-i*.037,.10,.026,.009,.013);stripe.rotation.z=side*.4;}
  for(let i=0;i<3;i++){let w=shape(head,new THREE.CylinderGeometry(.0018,.0018,.105,5),cream,side*.145,-.075-i*.012,.181);w.rotation.z=side*(1.4+i*.18);w.rotation.x=.1;}
- let shoulder=joint((side<0?'left':'right')+'Shoulder',torso,side*.195,.29,0);
+ let shoulder=joint((side<0?'left':'right')+'Shoulder',torso,side*.24,.29,0);
  oval(shoulder,fur,0,0,0,.074,.075,.073);capsule(shoulder,fur,.061,.23,side*.016,-.10,0);
  let elbow=joint((side<0?'left':'right')+'Elbow',shoulder,side*.025,-.22,0);oval(elbow,fur,0,0,0,.056,.056,.056);capsule(elbow,fur,.048,.21,0,-.09,0);
  let wrist=joint((side<0?'left':'right')+'Wrist',elbow,0,-.19,0);oval(wrist,cream,0,-.025,.01,.056,.066,.05);
