@@ -25,6 +25,6 @@ XP thresholds: 3, 8, 15, 24, 35. Timed upgrade offers guarantee all five by 44 s
 
 `burntwood-rugby-duo-v2.html` is self-contained: no external scripts, image hosts or APIs. Character art is embedded, cropped from approved generated illustrations. Simple sprites use native Canvas paths, detached hands and no feet.
 
-`game.js` contains gameplay; `helpers.js` contains the new star system and sprite drawing source; `build.py` packages local artwork and script. `modify.py` documents the initial migration from test 1 and is not needed for normal edits. Edit game.js directly after this build. `test.cjs` runs deterministic gameplay checks with a DOM/Canvas stub. A real Chromium phone-viewport smoke test is supplied in `browser.cjs`. Actual iPhone Safari testing remains a user check.
+`game.js` contains gameplay; `rebuild.py` updates the self-contained page from game.js while preserving its embedded portraits. Edit game.js directly. `test.cjs` runs deterministic gameplay checks with a DOM/Canvas stub. A real Chromium phone-viewport smoke test is supplied in `browser.cjs`. Actual iPhone Safari testing remains a user check.
 
-Build: `python3 rugby-duo-v2/build.py` (requires original illustration files locally). Test: `node rugby-duo-v2/test.cjs`.
+Build: `python3 rugby-duo-v2/rebuild.py`. Test: `node rugby-duo-v2/test.cjs`.
