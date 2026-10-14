@@ -5,6 +5,7 @@ Versioned rugby-only playtest; earlier builds are unchanged. No changes from the
 ## Stefan combat refinement
 
 - Right hook travels only through a 126-degree forward arc aimed at the nearest target at the start of each strike. Aim is fixed for that strike; it is not a full-circle hit.
+- Out-of-range attempts retry after .08s instead of spending a full attack cooldown. Hooks start only within reach plus target radius/paw size and a small approach allowance.
 - Base reach 48 units (previously 30); Long Reach 65 (previously 45). Faint forward arc shows reach and aim.
 - Visible wind-up .16s, hook .50s, recovery .16s; Fast Hands uses .10/.40/.12s. Starting interval 1.10s, Fast Hands .82s, two-hand combo .96s. Motion is slower and easier to read than the old .34-second full orbit.
 - Striking paws enlarge from 3.8 to 8.5 units. Normal hit knockback increases from 75 to 160 impulse before enemy resistance.
