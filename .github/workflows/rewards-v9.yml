@@ -1,0 +1,26 @@
+name: Boss rewards and playtest polish 9
+on:
+  push:
+    branches: [rewards-v9]
+    paths: ['burntwood-rewards-v9.html', 'rewards-v9/**', '.github/workflows/rewards-v9.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node rewards-v9/test.cjs
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/rugby-server.log 2>&1 &
+          node rewards-v9/browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rewards-browser
+          path: rewards-v9/browser
