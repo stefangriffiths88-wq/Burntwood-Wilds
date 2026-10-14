@@ -5,6 +5,15 @@ function reset(name='jackson',area='rugby'){t.menu();t.arena(area);t.select(name
 function steps(sec,choose=true){for(let i=0;i<Math.round(sec*120);i++){t.player.inv=999;t.step(1/120);if(choose&&t.state.state==='upgrade')t.upgrade();}}
 function target(dx=50,dy=0,kind='heavy'){let p=t.player;t.spawn(kind,{x:p.x+dx,y:p.y+dy});let e=t.enemies.at(-1);e.hp=e.maxHp=10000;e.speed=0;e.timer=999;return e;}
 function grant(path,n){for(let i=0;i<n;i++)t.grant(path);}
+// Zak's distinct giant silhouette, damage cloud, laughter crowd-control and launch.
+reset('zak');assert.equal(t.effectiveStats().hp,130);assert.equal(t.effectiveStats().speed,145);assert.equal(t.effectiveStats().rate,1.20);
+let zakTarget=target(20,0,'swarm');zakTarget.hp=zakTarget.maxHp=1000;
+assert(t.shoot());assert.equal(t.zakClouds.length,1);steps(.6,false);assert(zakTarget.hp<1000,'toxic fart damages nearby enemies');
+t.player.chargeCD=0;t.charge();assert.equal(t.zakLaughClouds.length,1);assert(zakTarget.zakLaughUntil>t.state.time,'laughing gas stuns nearby enemies');
+let laughBefore=zakTarget.hp;steps(.4,false);assert(zakTarget.hp<laughBefore,'laughing gas has an impact');
+t.player.dodgeCD=0;t.dodge();assert(t.player.action==='dodge','gas launch triggers dodge');
+t.draw();reset('jackson');assert.equal(t.zakClouds.length,0,'Zak clouds reset between characters');
+console.log('PASS Zak gentle giant health/speed, toxic farts, laughing gas control, launch and isolated reset');
 // Three different paths, one purchase; ordered chains and individual nonrepeatable stats.
 for(let name of heroes){reset(name);assert.equal(t.run.level,1);for(let n=0;n<8;n++){t.setXP(999);assert.equal(t.state.state,'upgrade');let offer=t.offers();assert.equal(offer.length,3);assert.equal(new Set(offer.map(o=>o.path)).size,3);let prior=t.run.history.length;t.upgrade(n%3);assert.equal(t.run.history.length,prior+1);assert.equal(t.run.level,n+2);assert.equal(t.state.state,'playing');}assert.equal(t.run.stagePicks,8);t.setXP(999);assert.equal(t.state.state,'playing');}
 reset();t.setXP(999);let statIndex=t.offers().findIndex(o=>o.path==='stat');let stat=t.offers()[statIndex].index;t.upgrade(statIndex);assert(t.run.stat.has(stat));for(let i=0;i<12;i++)assert(!t.buildOffers().some(o=>o.path==='stat'&&o.index===stat));
