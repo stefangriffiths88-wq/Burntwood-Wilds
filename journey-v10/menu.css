@@ -21,8 +21,8 @@
 #profile small{font-size:9px;color:#bbcdba;margin:1px 0 0;line-height:1.3}
 #arenaChoices{display:flex;gap:8px}#arenaChoices button{flex:1;background:#244838a8;border:1px solid #8a9c7480;border-radius:9px;font-size:12px;padding:8px 4px;color:#cddabd}#arenaChoices button.active{background:#c6d5ac;border-color:#dce5bc;color:#173f30}
 #menu #start{width:100%;margin:0;padding:11px 8px;font-size:16px;border-radius:11px;background:linear-gradient(#f4d58e,#ddb668);box-shadow:0 3px 14px #0003}
-.picks{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin:0;border-top:1px solid #c7af6b55;padding-top:9px}
-.picks button{font-size:12px;min-width:0;padding:11px 2px;border-radius:9px;border:1px solid #b09b6366;background:#12352c;color:#e1d1a4}
+.picks{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:0;border-top:1px solid #c7af6b55;padding-top:9px}
+.picks button{font-size:11px;min-width:0;padding:11px 2px;border-radius:9px;border:1px solid #b09b6366;background:#12352c;color:#e1d1a4}
 .picks button.selected{background:#edce8a;color:#163c2e;border-color:#ffe7b2;box-shadow:0 0 0 1px #f9d89633}
 button:focus-visible{outline:3px solid #e6edbc;outline-offset:2px}
 @media(max-height:720px){.selectionShell{gap:6px;padding-top:calc(8px + env(safe-area-inset-top));padding-bottom:calc(7px + env(safe-area-inset-bottom))}#menu .tag{font-size:21px}.choose{font-size:8px;margin-top:3px}#charName{font-size:25px}#tagline{font-size:10px;margin-bottom:5px}#role{font-size:8px}#stats{padding:4px 0}#stats b{font-size:12px}#profile{gap:3px;margin-top:5px}#profile small{font-size:8px}#profile b{font-size:10px}#arenaChoices button{padding:6px 3px}#menu #start{padding:9px}.picks{padding-top:6px}.picks button{padding:9px 2px}}

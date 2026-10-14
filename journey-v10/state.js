@@ -21,7 +21,7 @@ const STAT_NAMES={};
 
 
 // Journey orchestration. Arena content and character implementations are split at build time.
-const BUILD_ID='10.0.2';
+const BUILD_ID='10.0.3';
 
 
 
