@@ -1,7 +1,7 @@
 name: Modular journey test 10
 on:
   push:
-    branches: [journey-v10, zak-toxic-trickster-v1003]
+    branches: [journey-v10, zak-gentle-giant-1004]
     paths: ['burntwood-journey-v10.html', 'journey-v10/**', '.github/workflows/journey-v10.yml']
   workflow_dispatch:
 permissions:
