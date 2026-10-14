@@ -1,6 +1,6 @@
 # Burntwood Wilds — Chasewater Test 5
 
-Adds a second selectable arena while preserving the Rugby Club and Bruce. New self-contained page: `burntwood-chasewater-v5.html`. Chasewater is selected by default. All three characters and their previous upgrade paths/controls are retained. Fast test upgrades and the 60-second boss arrival remain.
+Adds a second selectable arena while preserving the Rugby Club and Bruce. New self-contained page: `burntwood-chasewater-v5.html`. Chasewater is selected by default. All three characters and their previous upgrade paths are retained. Fast test upgrades and the 60-second boss arrival remain.
 
 ## Chasewater
 
@@ -25,3 +25,7 @@ Enemy introduction: geese initially, foxes after 7s, diving owls after 14s, mud 
 `browser.cjs` runs real Chromium at a mobile viewport: selector, character controls/upgrades, wildlife attacks, Night Owl fight/victory, preserved Bruce, and a short-screen menu. Actual iPhone Safari play feel remains a user playtest.
 
 Edit `game.js`, run `python3 chasewater-v5/rebuild.py` to update the self-contained HTML using its existing portraits. No external scripts/assets and no changes imported from RUN.world.
+
+## Stefan refinement
+
+Fitted waist-length jacket replaces the flared coat in both portrait and Canvas body. By Order! is a separate ten-second cooldown special: a brief cap-touch gesture followed by two seconds of fast forward hooks with enlarged paws, gold arcs and short stagger/stun. Movement is 70% during the flurry, with no extra invulnerability. Push remains the three-second dodge and can interrupt the special; bosses resist knockback. The flurry does not hit behind Stefan.
