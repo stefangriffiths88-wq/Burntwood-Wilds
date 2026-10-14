@@ -1,0 +1,8 @@
+const {chromium}=require('playwright'),assert=require('node:assert/strict');
+(async()=>{const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--no-sandbox']});const page=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1});let errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://127.0.0.1:8765/jackson-rugby-topdown-v1.html');await page.screenshot({path:'rugby-menu.png'});await page.locator('#start').click();await page.waitForTimeout(400);assert.equal((await page.evaluate(()=>window.__test.state)).state,'playing');
+for(let threshold of [8,20,38,62,95]){await page.evaluate(n=>window.__test.setXP(n),threshold);assert(await page.locator('#panelButton').isVisible());await page.locator('#panelButton').click();}assert.equal((await page.evaluate(()=>window.__test.state)).tier,5);
+await page.evaluate(()=>{let t=window.__test,p=t.player;t.spawn('heavy',{x:p.x+90,y:p.y-60});t.spawn('charger',{x:p.x-110,y:p.y-40});for(let i=0;i<12;i++)t.spawn('swarm',{x:p.x+(i%4-1.5)*70,y:p.y-150-Math.floor(i/4)*50});});
+await page.waitForTimeout(600);await page.screenshot({path:'rugby-tier-five.png'});
+await page.locator('#dodge').dispatchEvent('pointerdown');assert((await page.evaluate(()=>window.__test.state)).dodgeCD>0);await page.waitForTimeout(400);await page.locator('#charge').dispatchEvent('pointerdown');assert((await page.evaluate(()=>window.__test.state)).chargeCD>0);
+assert.deepEqual(errors,[]);console.log('PASS real browser start, five upgrade offers, tier-five render, dodge and charge');await browser.close();})().catch(e=>{console.error(e);process.exit(1)});
