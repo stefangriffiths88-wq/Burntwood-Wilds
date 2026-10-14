@@ -8,6 +8,7 @@
   "arenas/chasewater.js",
   "characters/jodie.js",
   "characters/evie.js",
+  "characters/zak.js",
   "upgrades/progression.js",
   "upgrades/rewards.js",
   "world/hub.js",
