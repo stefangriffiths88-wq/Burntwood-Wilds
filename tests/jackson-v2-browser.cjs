@@ -1,0 +1,24 @@
+const {chromium}=require('playwright');
+const assert=require('node:assert/strict');
+(async()=>{
+const browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',headless:true,args:['--no-sandbox','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader']});
+const page=await browser.newPage({viewport:{width:390,height:844},deviceScaleFactor:1});
+let errors=[];page.on('pageerror',e=>errors.push(e.message));
+await page.goto('http://127.0.0.1:8765/jackson-3d-practice-v2.html');
+await page.waitForFunction(()=>window.__ready,{timeout:60000});
+await page.waitForTimeout(700);
+await page.screenshot({path:'jackson-ready.png'});
+await page.locator('#throw').dispatchEvent('pointerdown');
+await page.waitForTimeout(1600);
+let state=await page.evaluate(()=>window.__test.state);assert.equal(state.throws,1);assert(state.hits>=1);assert(state.held);
+await page.locator('#reset').click();
+await page.locator('#charge').dispatchEvent('pointerdown');
+await page.waitForTimeout(420);
+await page.screenshot({path:'jackson-charge.png'});
+await page.waitForTimeout(1100);
+state=await page.evaluate(()=>window.__test.state);assert(state.chargeHits>=1);assert.equal(state.action,null);
+await page.screenshot({path:'jackson-impact.png'});
+assert.deepEqual(errors,[]);
+console.log('PASS real Chromium render and interaction',state);
+await browser.close();
+})().catch(e=>{console.error(e);process.exit(1)});
