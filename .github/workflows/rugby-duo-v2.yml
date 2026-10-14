@@ -1,0 +1,26 @@
+name: Rugby duo test 2
+on:
+  push:
+    branches: [rugby-duo-v2]
+    paths: ['burntwood-rugby-duo-v2.html', 'rugby-duo-v2/**', '.github/workflows/rugby-duo-v2.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node rugby-duo-v2/test.cjs
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/rugby-server.log 2>&1 &
+          node rugby-duo-v2/browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rugby-duo-browser
+          path: rugby-duo-v2/browser
