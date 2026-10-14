@@ -1,0 +1,40 @@
+/* Shared portrait stage and profile rhythm across the entire roster. */
+#menu{padding:0;display:block;overflow:hidden;background:#102c22;isolation:isolate}
+#ambient{position:absolute;inset:-30px;background-position:center;background-size:cover;filter:blur(22px) brightness(.28);z-index:-2}
+#menu:after{content:'';position:absolute;inset:0;background:linear-gradient(#102c2244,transparent 30%,#102c22d9 70%,#102c22);z-index:-1;pointer-events:none}
+.selectionShell{margin:auto;max-width:580px;width:100%;height:100vh;height:100dvh;padding:calc(12px + env(safe-area-inset-top)) 16px calc(10px + env(safe-area-inset-bottom));display:grid;grid-template-rows:auto minmax(80px,1fr) auto auto auto auto;gap:9px}
+#menu header{text-align:center;text-shadow:0 2px 5px #000}
+#menu .tag{font:bold clamp(21px,6vw,29px) Georgia,serif;letter-spacing:2px;color:#f6dda0}
+.choose{font-size:9px;letter-spacing:2.5px;margin-top:5px;color:#c9d6c5}
+#artStage{min-height:0;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+#portrait{display:block;width:100%;height:100%;object-fit:contain;object-position:center;margin:0;border:0;border-radius:14px;mask-image:linear-gradient(transparent,#000 6%,#000 92%,transparent)}
+#characterInfo{text-align:center;text-shadow:0 2px 4px #102014}
+#role{font-size:9px;letter-spacing:2px;font-weight:700;color:#cfb87c}
+#charName{font:bold 29px Georgia,serif;letter-spacing:2px;margin:3px 0;color:#ffe4a8}
+#tagline{font-size:11px;color:#dae1ce;margin:0 0 8px}
+#stats{display:grid;grid-template-columns:repeat(4,1fr);padding:6px 0;border-top:1px solid #e6c47733;border-bottom:1px solid #e6c47733}
+#stats span{display:block;font-size:8px;color:#aebfae;letter-spacing:1px}#stats b{display:block;font-size:14px;font-weight:800;color:#f6dea4;margin-top:2px}
+#profile{display:grid;grid-template-columns:1fr;gap:5px;text-align:left;margin-top:8px}
+#profile div{display:grid;grid-template-columns:51px 1fr;column-gap:8px;align-items:baseline}
+#profile span{grid-row:1 / 3;font-size:8px;letter-spacing:.8px;color:#c9b67f;padding-top:2px}
+#profile b{font-size:11px;font-weight:700;color:#efead8}
+#profile small{font-size:9px;color:#bbcdba;margin:1px 0 0;line-height:1.3}
+#arenaChoices{display:flex;gap:8px}#arenaChoices button{flex:1;background:#244838a8;border:1px solid #8a9c7480;border-radius:9px;font-size:12px;padding:8px 4px;color:#cddabd}#arenaChoices button.active{background:#c6d5ac;border-color:#dce5bc;color:#173f30}
+#menu #start{width:100%;margin:0;padding:11px 8px;font-size:16px;border-radius:11px;background:linear-gradient(#f4d58e,#ddb668);box-shadow:0 3px 14px #0003}
+.picks{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin:0;border-top:1px solid #c7af6b55;padding-top:9px}
+.picks button{font-size:12px;min-width:0;padding:11px 2px;border-radius:9px;border:1px solid #b09b6366;background:#12352c;color:#e1d1a4}
+.picks button.selected{background:#edce8a;color:#163c2e;border-color:#ffe7b2;box-shadow:0 0 0 1px #f9d89633}
+button:focus-visible{outline:3px solid #e6edbc;outline-offset:2px}
+@media(max-height:720px){.selectionShell{gap:6px;padding-top:calc(8px + env(safe-area-inset-top));padding-bottom:calc(7px + env(safe-area-inset-bottom))}#menu .tag{font-size:21px}.choose{font-size:8px;margin-top:3px}#charName{font-size:25px}#tagline{font-size:10px;margin-bottom:5px}#role{font-size:8px}#stats{padding:4px 0}#stats b{font-size:12px}#profile{gap:3px;margin-top:5px}#profile small{font-size:8px}#profile b{font-size:10px}#arenaChoices button{padding:6px 3px}#menu #start{padding:9px}.picks{padding-top:6px}.picks button{padding:9px 2px}}
+@media(max-height:570px){#profile small{display:none}#profile div{display:flex}#profile span{width:51px}#profile{gap:3px}#tagline{display:none}}
+
+#top{font-size:11px;gap:10px}#timer{white-space:nowrap;flex-shrink:0}#arenaHud{min-width:0}
+#actions button.cooling,#actions button:disabled{background:#65706c!important;border-color:#a0aaa2!important;color:#ccd2cc!important;opacity:1;box-shadow:none;filter:grayscale(1)}
+#actions button:not(.cooling):not(:disabled){opacity:1}
+@keyframes readyPulse{0%{box-shadow:0 0 0 0 #ffe8a5aa}100%{box-shadow:0 0 0 14px #ffe8a500}}
+#actions button.readyFlash{animation:readyPulse .6s ease-out}
+#panel{padding:16px;overflow-y:auto;align-items:center}#panel .card{max-width:430px;padding:18px}#panelName{font-size:24px;margin:10px 0}#panelText{font-size:12px;line-height:1.5;margin:8px 0 12px}#upgradeChoices{display:none;gap:9px;text-align:left}button.upgradeCard{display:block;text-align:left;padding:12px 14px;width:100%;background:#244a37;color:#f1ebd7;border:1px solid #d8bd7d;border-radius:12px;font-weight:500}button.upgradeCard span{display:block;font-size:9px;color:#d7bc7d;letter-spacing:1px}button.upgradeCard b{display:block;font-size:17px;margin:5px 0}button.upgradeCard small{display:block;font-size:12px;line-height:1.4;margin:0;color:#d3dec9}button.upgradeCard:active{background:#3b6448}#continue{width:100%;margin:9px 0 0;background:#b6d1a4;border-color:#d4e8ba;font-size:15px;padding:12px}#back{margin-top:9px}@media(max-height:650px){#panel .card{padding:12px}button.upgradeCard{padding:9px 11px}button.upgradeCard b{font-size:15px}button.upgradeCard small{font-size:11px}#panelName{font-size:21px}}
+html,body,#game,#controls,#joystick,#actions,#actions button{touch-action:none!important;-webkit-text-size-adjust:100%}#menu button,#panel button{touch-action:manipulation;-webkit-touch-callout:none}.perkCard{border-color:var(--perk)!important}.perkCard span,.perkCard b{color:var(--perk)}#perkHud{position:fixed;top:88px;left:12px;font-size:9px;font-weight:800;letter-spacing:.6px;pointer-events:none;text-shadow:0 1px 3px #152b21}#perkHud:empty{display:none}
+#hubMap{display:none;position:fixed;right:10px;top:108px;width:94px;height:120px;border:1px solid #d6c58b77;border-radius:8px;pointer-events:none}#hubMenu{display:none;position:fixed;top:88px;right:10px;padding:4px 7px;font-size:8px;border:1px solid #aeb98b88;background:#254532;color:#ecdbac;border-radius:6px;z-index:4}#shrineUse{display:none;position:fixed;bottom:29%;left:50%;transform:translateX(-50%);background:#e6cf85;color:#25432e;padding:12px;border-radius:12px;z-index:6}#blessingHud{position:fixed;top:101px;left:12px;color:#dfd5ef;font-size:10px;pointer-events:none}#menu~#hubMenu{z-index:3}
+/* Arena choice now happens at the hub gates, after character selection. */
+#arenaChoices{display:none}
