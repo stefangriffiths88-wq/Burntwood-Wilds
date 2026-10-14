@@ -4,7 +4,8 @@ const CHARACTER_MODULES={
  ava:{attack:shoot,draw:drawRugbyHero,special:avaSpecial,dodge:quickDodge,update(){}},
  stef:{interval:()=>tier>=4?.76:tier>=2?.45:.60,attack:startSweep,draw:drawStef,special:byOrder,dodge:push,update:updateStef},
  jodie:{attack:startClaws,draw:drawJodie,special:kittenChaos,dodge:quickDodge,update:updateCats},
- evie:{attack:queueDucks,draw:drawEvie,special:ducksAssemble,dodge:quickDodge,update:updateDucks}
+ evie:{attack:queueDucks,draw:drawEvie,special:ducksAssemble,dodge:quickDodge,update:updateDucks},
+ zak:{attack:zakFart,draw:drawZak,special:zakExplosion,dodge:zakDodge,update:updateZak}
 };
 const ARENA_MODULES={
  rugby:{wave:rugbyWave,spawn:spawnRugby,ground:drawRugbyGround},
