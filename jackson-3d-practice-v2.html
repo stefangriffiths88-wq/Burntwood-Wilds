@@ -18,7 +18,7 @@ let spine=bone('spine',root,0,.17,0),head=bone('head',spine,0,.23,0);
 for(let [side,sign] of [['left',-1],['right',1]]){let arm=bone(side+'Arm',spine,sign*.13,.10,0);bone(side+'Forearm',arm,sign*.055,-.14,.015);let leg=bone(side+'Leg',root,sign*.075,0,0);bone(side+'Shin',leg,0,-.18,0);}
 let list=[];root.traverse(b=>list.push(b));let weights=[],indices=[];const idx=b=>list.indexOf(bones[b]);
 for(let i=0;i<data.positions.length;i+=3){let [x,y,z]=data.positions.slice(i,i+3),ax=Math.abs(x),side=x<0?'left':'right',influence=[];
- if(y<.39&&ax<.135&&z<.105){let blend=smooth(.15,.25,y);influence=[[side+'Leg',blend],[side+'Shin',1-blend]];}
+ if(y<.26||(y<.39&&ax<.135&&z<.105)){let blend=smooth(.15,.25,y);influence=[[side+'Leg',blend],[side+'Shin',1-blend]];}
  else if(y>.32&&y<.76&&ax>.10&&z>-.09){let armWeight=smooth(.10,.165,ax)*smooth(.32,.43,y)*(1-smooth(.67,.76,y))*smooth(-.09,-.015,z);if(side==='left')armWeight=0;let elbow=1-smooth(.47,.55,y);influence=[[side+'Arm',armWeight*(1-elbow)],[side+'Forearm',armWeight*elbow],['spine',1-armWeight]];}
  else if(y>.76){let h=smooth(.75,.82,y);influence=[['head',h],['spine',1-h]];}
  else if(y>.43)influence=[['spine',1]];else influence=[['hips',1]];
