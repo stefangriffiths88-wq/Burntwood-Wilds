@@ -2,7 +2,7 @@ name: Jackson proportion check
 on:
   push:
     branches: [jackson-measured-proportions-v3]
-    paths: ['.github/workflows/jackson-proportions-check.yml']
+    paths: ['.github/workflows/jackson-proportions-check.yml', 'cat-movement-lab-v3.html']
 permissions:
   contents: read
 jobs:
