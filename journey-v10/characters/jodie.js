@@ -1,0 +1,53 @@
+// characters/jodie.js — source of truth.
+function makeCat(kitten=false,index=0){let a=index*TAU/(kitten&&S(5)?8:6);return {name:kitten?'Kitten':index===3?'Tiny':'Mimi',x:p.x+Math.cos(a)*25,y:p.y+Math.sin(a)*25,r:kitten?6:index===3?9:8,kitten,slot:index,mode:'follow',cool:kitten?index*.09:.3,life:kitten?(S(1)?6:5):Infinity,attempts:0,t:0};}
+
+function resetCats(){cats=isJodie()?[makeCat()]:[];}
+
+function syncCats(){if(isJodie()&&p&&tier>=5&&!cats.some(c=>c.name==='Tiny')){cats.push(makeCat(false,3));float(p.x,p.y-36,'TINY JOINS IN!','#9cccef');}}
+
+function kittenChaos(){if(state!=='playing'||p.action||p.chargeCD>0)return;p.chargeCD=specialCooldown();p.kittenCall=.8;radialEffect(p.x,p.y,75,'#eeb6b0');cats=cats.filter(c=>!c.kitten);for(let i=0;i<(S(5)?8:6);i++)cats.push(makeCat(true,i));float(p.x,p.y-38,'KITTEN CHAOS!','#eeb6b0');pop(p.x,p.y,'#d7c086',18);}
+
+function startClaws(){if(p.claws)return false;let e=nearest(p,new Set(),clawReach()+50);if(!e||dist(p,e)>clawReach()+e.r+8)return false;p.claws={t:0,aim:Math.atan2(e.y-p.y,e.x-p.x),wind:.14,hit:.28,gap:.34,count:2,seen:new Set(),target:e,duration:.86};p.catTarget=e;return true;}
+
+function clawHands(){let s=p.claws;return [0,1].map(i=>{let h={x:i?-19:19,y:2,size:3.8,moving:false,open:false};if(!s)return h;let local=s.t-s.wind-i*s.gap;if(local<-.14||local>s.hit+.1)return h;let u=clamp(local/s.hit,0,1),a=s.aim+(i?-1:1)*(1.0-2.0*u),w=local<0?1+local/.14:local>s.hit?1-(local-s.hit)/.1:1;return {x:lerp(h.x,Math.cos(a)*clawReach(),w),y:lerp(2,Math.sin(a)*clawReach(),w),size:lerp(3.8,6,w),moving:local>=0&&local<=s.hit,open:w>.15,a};});}
+
+function updateClaws(dt){let s=p.claws;if(!s)return;let before=s.t;s.t+=dt;for(let n=0;n<2;n++){let start=s.wind+n*s.gap,from=before-start,to=s.t-start;if(to<0||from>s.hit)continue;let sign=n%2?-1:1,a=s.aim+sign*(1-2*clamp(from/s.hit,0,1)),b=s.aim+sign*(1-2*clamp(to/s.hit,0,1));for(let e of enemies){let key=n+':'+e.id;if(e.hp<=0||s.seen.has(key)||!angularContact(e,Math.min(a,b),Math.max(a,b),0,clawReach()))continue;s.seen.add(key);let d=dist(p,e)||1;damageEnemy(e,10,(e.x-p.x)/d,(e.y-p.y)/d);}}if(s.t>=s.duration)p.claws=null;}
+
+function drawOpenClaw(h){if(h.moving){ctx.strokeStyle='#ffedcf66';ctx.lineWidth=1.1;for(let n=-1;n<=1;n++){ctx.beginPath();ctx.arc(0,0,Math.hypot(h.x,h.y)+n*3,h.a-.24,h.a+.08);ctx.stroke();}}ctx.save();ctx.translate(h.x,h.y);ctx.rotate(h.a||0);ellipse(0,0,h.size,h.size*.85,'#ffead0');if(h.open){for(let n=-1;n<=1;n++){ellipse(h.size*.7,n*3.4,3.2,1.8,'#ffead0');ctx.fillStyle='#fffdf2';ctx.beginPath();ctx.moveTo(h.size+1,n*3.4-1.3);ctx.lineTo(h.size+5,n*3.4-.5);ctx.lineTo(h.size+1,n*3.4+1);ctx.fill();}ellipse(-.4,0,2.2,2.4,'#daaaa1');}ctx.restore();}
+
+function catDamage(){return tier>=1?11:8;}
+
+function chooseCatTarget(c){let claims=new Set(cats.filter(o=>o!==c&&o.target?.hp>0&&o.mode!=='follow').map(o=>o.target.id));let alternative=nearest(c,claims,c.kitten?220:260);let marked=p.catTarget;if(marked?.hp>0&&!claims.has(marked.id)&&dist(c,marked)<260&&dist(p,marked)<320)return marked;let ranged=null;for(let e of enemies)if(e.hp>0&&e.kind==='mud'&&!claims.has(e.id)&&dist(p,e)<300&&(!ranged||dist(c,e)<dist(c,ranged)))ranged=e;return ranged||alternative||nearest(c,new Set(),260);}
+
+function beginPounce(c,e){c.mode='wind';c.t=0;c.target=e;c.sx=c.x;c.sy=c.y;c.tx=e.x;c.ty=e.y;c.hit=false;let max=c.kitten?(S(2)?135:95):tier>=3?150:48,d=dist(c,e)||1;if(d>max){c.tx=c.x+(e.x-c.x)/d*max;c.ty=c.y+(e.y-c.y)/d*max;}c.attempts++;}
+
+function updateCats(dt){if(!isJodie())return;p.kittenCall=Math.max(0,(p.kittenCall||0)-dt);syncCats();updateClaws(dt);for(let c of cats){c.life-=dt;c.cool-=dt;if(c.mode==='follow'){let e=chooseCatTarget(c),leash=dist(c,p)>300;if(!leash&&e&&c.cool<=0&&dist(c,e)<(c.kitten?(S(2)?135:95):tier>=3?150:48)+e.r)beginPounce(c,e);else{let a=c.slot*TAU/(c.kitten&&S(5)?8:6)+time*.2,goal=(!leash&&e&&c.cool<=0)?e:{x:p.x+Math.cos(a)*(c.kitten?36:30),y:p.y+14+Math.sin(a)*18},d=dist(c,goal)||1,speed=(c.kitten?190:175)*(c.speedUntil>time?1.4:1),move=Math.min(Math.max(0,d-13),speed*dt);c.x+=(goal.x-c.x)/d*move;c.y+=(goal.y-c.y)/d*move;}}
+else{c.t+=dt;if(c.mode==='wind'&&c.t>=.12){c.mode='pounce';c.t=0;}else if(c.mode==='pounce'){let u=clamp(c.t/.20,0,1);c.x=lerp(c.sx,c.tx,u);c.y=lerp(c.sy,c.ty,u);if(u>=1){let e=c.target;if(e?.hp>0&&dist(c,e)<e.r+c.r+12){let damage=c.kitten?6:catDamage();if(c.kitten&&e.kind==='boss')damage*=.65;damageEnemy(e,damage,0,0,false,c.kitten?'special':'cat');pop(c.x,c.y,'#e9ceb2',4);c.hit=true;}c.mode=!c.kitten&&tier>=4&&c.hit?'scratch':'recover';c.t=0;c.scratchDone=false;c.cool=c.kitten?.5:tier>=2?.55:.9;}}else if(c.mode==='scratch'){if(c.t>=.14&&!c.scratchDone){c.scratchDone=true;let e=c.target;if(e?.hp>0&&dist(c,e)<e.r+c.r+14)damageEnemy(e,6,0,0,false,'cat');}if(c.t>=.28){c.mode='recover';c.t=0;}}else if(c.mode==='recover'&&c.t>=.22)c.mode='follow';}
+let q=walkable(c.x,c.y,c.r);c.x=q.x;c.y=q.y;}
+for(let i=0;i<cats.length;i++)for(let j=i+1;j<cats.length;j++){let a=cats[i],b=cats[j];if(a.mode==='pounce'||b.mode==='pounce')continue;let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy);if(d<.01){dx=Math.cos(a.slot+1);dy=Math.sin(a.slot+1);d=1;}let min=a.r+b.r+4;if(d<min){let n=(min-d)*Math.min(1,dt*12)*.5;a.x-=dx/d*n;a.y-=dy/d*n;b.x+=dx/d*n;b.y+=dy/d*n;}}
+cats=cats.filter(c=>!c.kitten||(c.life>0&&(c.attempts<(S(3)?4:3)||c.mode!=='follow')));}
+
+function drawCat(c){if(c.speedUntil>time)radialDraw(c.x,c.y,12,'#a9dcbe');ctx.save();ctx.translate(c.x,c.y);let jumping=c.mode==='pounce'?Math.sin(clamp(c.t/.2,0,1)*Math.PI)*9:0,s=c.kitten?.65:c.name==='Tiny'?.96:.86;ellipse(0,5,9*s,3*s,'#16352855');ctx.translate(0,-jumping);ctx.scale(s,s);if(c.kitten)ctx.globalAlpha=Math.min(1,c.life*2);let fur=c.kitten?['#c99162','#d9cbb5','#85888c'][c.slot%3]:'#20292c',bounce=c.mode==='follow'?Math.sin(time*18+c.slot)*.6:0;ctx.translate(0,bounce);ctx.strokeStyle=fur;ctx.lineWidth=3;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(-5,3);ctx.bezierCurveTo(-15,0,-13,-9,-9,-7);ctx.stroke();ellipse(0,2,c.mode==='pounce'?11:c.name==='Tiny'?9:8,6,fur);ellipse(2,-4,6,6,fur);ctx.fillStyle=fur;ctx.beginPath();ctx.moveTo(-3,-6);ctx.lineTo(-3,-13);ctx.lineTo(1,-9);ctx.lineTo(6,-13);ctx.lineTo(8,-5);ctx.fill();ellipse(0,-5,1.3,1.8,'#e7d16e');ellipse(5,-5,1.3,1.8,'#e7d16e');ellipse(2.5,-2,.8,.6,'#d89789');line([[-3,1],[6,1]],c.name==='Tiny'?'#78b6dc':'#bd8c4b',1.7);ellipse(2,2,1.3,1.3,c.name==='Tiny'?'#b8dcf4':'#f8d47b');if(c.mode==='pounce')line([[-8,3],[-15,3]],'#e6c59a77',1);if(c.mode==='scratch'||(c.mode==='pounce'&&tier>=1&&!c.kitten&&c.t>.15)){for(let n=-1;n<=1;n++)line([[7+n*3,-4],[10+n*3,5]],'#fff0cecc',1.1);}ctx.restore();}
+
+function drawJodie(){if(p.kittenCall>0)radialDraw(p.x,p.y,30+(1-p.kittenCall/.8)*50,'#eeb6b0');ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*2)*.5);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;ellipse(0,19,12,3,'#16352855');ctx.strokeStyle='#c38a51';ctx.lineWidth=4;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(7,11);ctx.bezierCurveTo(25,25,27,4,18,5);ctx.stroke();line([[18,5],[16,7]],'#f3d7aa',3.3);
+// Compact fitted teal torso, scarf and single cat charm.
+ctx.fillStyle='#257b79';ctx.strokeStyle='#274d49';ctx.lineWidth=.7;let body=new Path2D('M -9 -6 Q 0 -10 9 -6 L 8 13 Q 0 17 -8 13 Z');ctx.fill(body);ctx.stroke(body);line([[0,-5],[0,13]],'#d9c28a',.8);line([[-7,6],[7,6]],'#956a45',2);ellipse(0,7,2.7,2.5,'#f6d3a1');ellipse(-1,6,.6,1,'#3c4138');ellipse(1,6,.6,1,'#3c4138');line([[-7,-6],[0,-2],[7,-6]],'#cf8c91',4);line([[3,-3],[4,2]],'#cf8c91',2.5);
+// Ginger locks behind a cream face; pointed ears stay clear of hair.
+ellipse(-7,-9,3,8,'#9f512d');ellipse(7,-9,3,8,'#9f512d');ellipse(0,-13,7.3,7,'#e5bb87');for(let side of [-1,1]){ctx.fillStyle='#d49a62';ctx.beginPath();ctx.moveTo(side*3,-18);ctx.lineTo(side*8,-23);ctx.lineTo(side*8,-14);ctx.fill();line([[side*5,-18],[side*7,-21]],'#d59088',1.6);}ellipse(0,-10,4.8,3,'#ffedd2');ellipse(-2.7,-13,1.1,1.6,'#eaf0db');ellipse(2.7,-13,1.1,1.6,'#eaf0db');ellipse(-2.7,-13,.65,1.2,'#486b42');ellipse(2.7,-13,.65,1.2,'#486b42');ellipse(0,-9.8,.9,.65,'#c68c8b');ellipse(1,-23,4,3.4,'#a6552e');ctx.fillStyle='#b86433';let hair=new Path2D('M -7 -16 Q -9 -22 0 -21 Q 6 -22 7 -17 Q 3 -19 -3 -13 L -2 -17 Q -5 -14 -7 -16 Z');ctx.fill(hair);line([[-5,-19],[0,-20],[4,-18]],'#df9855',.7);
+for(let h of clawHands())drawOpenClaw(h);ctx.restore();}
+
+CHARACTERS.jodie={"name":"Jodie","hp":95,"speed":158,"damage":20,"rate":1.05,"dodgeSpeed":490,"dodgeTime":0.25,"specialCD":12};
+
+PROFILES.jodie={"role":"CAT KEEPER","tag":"Sharp claws. Loyal company.","attack":"Open Claws + Mimi","attackDesc":"Forward swipes · upgrades grow your cat team","special":"Kitten Chaos","specialDesc":"6 kittens · up to 5s / 3 pounces · 12s","dodge":"Catstep","dodgeDesc":"Quick dash · no damage · 1.65s"};
+
+SPECIALS.jodie=[["Stay and Play","Kittens last up to 6 seconds."],["Leaping Kittens","Kittens pounce farther."],["One More Pounce","Each kitten gets a fourth pounce."],["Cat Call","Kitten cooldown 12 → 9 seconds."],["Full House","Summon eight kittens instead of six."]];
+
+DODGES.jodie=[["Long Catstep","Dash travels 15% farther."],["Safe Paws","Gain 0.12 seconds more dodge protection."],["Follow Mum","Mimi and Tiny gain 40% movement speed for 2 seconds after a dash."],["Quick Catstep","Dodge cooldown 1.65 → 1.25 seconds."],["Safe Landing","Landing briefly staggers nearby small enemies."]];
+
+STAT_NAMES.jodie=["Nine Lives","Light Steps","Sharp Claws","Cat Collector","Cat Keeper"];
+const isJodie=()=>selected==='jodie';
+let cats=[];
+const jodieNames=['Sharp Claws','Quick Paws','Hunting Leap','Double Scratch','Tiny Joins In'];
+const jodieText=['Mimi deals more damage. Her pounces leave visible claw marks.','Mimi recovers faster between attacks.','Mimi gains a longer hunting pounce.','After a successful pounce, Mimi follows with a second visible scratch.','Tiny joins Mimi as a second permanent black cat. Different targets where possible, with all companion upgrades retained.'];
+const jodieBuild=['Open claws · Mimi','Mimi · sharper claws','Mimi · quick paws','Mimi · hunting leap','Mimi · double scratch','Mimi + Tiny · double scratches'];
+const clawReach=()=>55;

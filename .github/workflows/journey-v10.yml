@@ -1,0 +1,27 @@
+name: Modular journey test 10
+on:
+  push:
+    branches: [journey-v10]
+    paths: ['burntwood-journey-v10.html', 'journey-v10/**', '.github/workflows/journey-v10.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 journey-v10/build.py && git diff --exit-code burntwood-journey-v10.html journey-v10/game.js
+      - run: node journey-v10/test.cjs
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/journey-server.log 2>&1 &
+          node journey-v10/browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: journey-browser
+          path: journey-v10/browser

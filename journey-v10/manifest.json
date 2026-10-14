@@ -1,0 +1,19 @@
+[
+  "state.js",
+  "engine/core.js",
+  "characters/jackson.js",
+  "ui/menu.js",
+  "characters/ava.js",
+  "characters/stef.js",
+  "arenas/chasewater.js",
+  "characters/jodie.js",
+  "characters/evie.js",
+  "upgrades/progression.js",
+  "upgrades/rewards.js",
+  "world/hub.js",
+  "world/shrines.js",
+  "arenas/sankeys.js",
+  "arenas/rugby.js",
+  "registry.js",
+  "controls.js"
+]
