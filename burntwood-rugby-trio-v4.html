@@ -22,7 +22,7 @@ function advance(dt){if(state!=='playing')return;time+=dt;glitterTime=Math.max(0
 let dx=stick.x+(keys.d||keys.ArrowRight?1:0)-(keys.a||keys.ArrowLeft?1:0),dy=stick.y+(keys.s||keys.ArrowDown?1:0)-(keys.w||keys.ArrowUp?1:0),len=Math.hypot(dx,dy);if(len<.1)dx=dy=0;else if(len>1){dx/=len;dy/=len;}let tx=dx*stats().speed,ty=dy*stats().speed;
 if(p.action){p.actionT+=dt;let speed=0;if(p.action==='dodge'){speed=stats().dodgeSpeed*(1-p.actionT/stats().dodgeTime);if(p.actionT>=stats().dodgeTime)p.action=null;}else if(p.action==='push'){speed=0;if(p.actionT>=.44)p.action=null;}else{speed=p.actionT<.12?0:590*(1-Math.max(0,p.actionT-.55)/.2);if(p.actionT>.75)p.action=null;}if(p.action){tx=p.actionDir.x*Math.max(0,speed);ty=p.actionDir.y*Math.max(0,speed);if(rand()<.5)fx.push({x:p.x,y:p.y,vx:0,vy:0,life:.16,max:.16,color:'#dce9bf',r:p.action==='charge'?12:8,ghost:true});}}
 let smooth=1-Math.exp(-dt*(p.action?32:15));p.vx=lerp(p.vx,tx,smooth);p.vy=lerp(p.vy,ty,smooth);p.x=clamp(p.x+p.vx*dt,36,WORLD.w-36);p.y=clamp(p.y+p.vy*dt,65,WORLD.h-65);p.walk+=Math.hypot(p.vx,p.vy)*dt*.065;if(!p.action&&len>.1)p.dir={x:dx/(Math.hypot(dx,dy)||1),y:dy/(Math.hypot(dx,dy)||1)};
-p.attack-=dt;if(p.attack<=0&&p.action!=='charge'&&p.action!=='push'){shoot();p.attack=isStef()?(tier>=4?.96:tier>=2?.82:1.10):stats().rate;}
+p.attack-=dt;if(p.attack<=0&&p.action!=='charge'&&p.action!=='push'){if(isStef()){p.attack=startSweep()?(tier>=4?.96:tier>=2?.82:1.10):.08;}else{shoot();p.attack=stats().rate;}}
 for(let i=pendingShots.length-1;i>=0;i--){pendingShots[i].delay-=dt;if(pendingShots[i].delay<=0){fireStar();pendingShots.splice(i,1);}}
 nextSpawn-=dt;if(nextSpawn<=0&&enemies.length<100&&!bossSpawned){let roll=rand(),kind=time>10&&roll<.19?'charger':time>20&&roll>.83?'heavy':'swarm';spawn(kind);if(time>20&&rand()<.45){spawn('swarm');spawn('swarm');}nextSpawn=Math.max(.30,.80-time*.0024);}
 if(!bossSpawned&&time>=60){spawn('boss',{x:clamp(p.x,100,WORLD.w-100),y:clamp(p.y-330,100,WORLD.h-100)});}
@@ -121,7 +121,7 @@ const stefText=['Your forward hook reaches farther, giving you more room to figh
 const stefBuild=['Right hook','Long-reach hook','Fast hook combinations','Hook · knockback · stun','Both paws · hook combo · stun'];
 const hookReach=()=>tier>=1?65:48;
 function hookTiming(){return tier>=2?{wind:.10,hit:.40,recover:.12}:{wind:.16,hit:.50,recover:.16};}
-function startSweep(){let t=nearest(p,new Set(),hookReach()+55);if(!t)return;p.aim=Math.atan2(t.y-p.y,t.x-p.x);let h=hookTiming();p.swing={t:0,aim:p.aim,timing:h,hit:new Set(),prev:0,delay:tier>=4?.28:0,duration:h.wind+h.hit+h.recover+(tier>=4?.28:0)};}
+function startSweep(){if(p.swing)return false;let t=nearest(p,new Set(),hookReach()+55);if(!t||dist(p,t)>hookReach()+t.r+9+t.speed*.2)return false;p.aim=Math.atan2(t.y-p.y,t.x-p.x);let h=hookTiming();p.swing={t:0,aim:p.aim,timing:h,hit:new Set(),prev:0,delay:tier>=4?.28:0,duration:h.wind+h.hit+h.recover+(tier>=4?.28:0)};return true;}
 function push(){if(state!=='playing'||p.action||p.dodgeCD>0)return;p.action='push';p.actionT=0;p.actionDir={x:0,y:0};p.swing=null;p.attack=Math.max(p.attack,.25);p.dodgeCD=3;p.inv=.48;p.pushFired=false;}
 function angularContact(e,start,end,offset,radius){let dx=e.x-p.x,dy=e.y-p.y,d=Math.hypot(dx,dy);if(d>radius+e.r+9)return false;let angle=Math.atan2(dy,dx),a=start+offset,b=end+offset,pad=Math.asin(Math.min(1,(e.r+9)/Math.max(1,d)));for(let i=-2;i<=2;i++){let q=angle+i*TAU;if(q>=a-pad&&q<=b+pad)return true;}return false;}
 function hookAngle(s,hand,u){return s.aim+(hand?-1:1)*(1.10-2.20*u);}
