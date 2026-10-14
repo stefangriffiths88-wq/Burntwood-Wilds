@@ -1,0 +1,26 @@
+name: Chasewater two-arena test 5
+on:
+  push:
+    branches: [chasewater-v5]
+    paths: ['burntwood-chasewater-v5.html', 'chasewater-v5/**', '.github/workflows/chasewater-v5.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node chasewater-v5/test.cjs
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/rugby-server.log 2>&1 &
+          node chasewater-v5/browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: chasewater-browser
+          path: chasewater-v5/browser
