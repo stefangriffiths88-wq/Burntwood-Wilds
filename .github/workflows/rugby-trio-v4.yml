@@ -1,0 +1,26 @@
+name: Rugby trio test 4
+on:
+  push:
+    branches: [rugby-trio-v4]
+    paths: ['burntwood-rugby-trio-v4.html', 'rugby-trio-v4/**', '.github/workflows/rugby-trio-v4.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node rugby-trio-v4/test.cjs
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/rugby-server.log 2>&1 &
+          node rugby-trio-v4/browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rugby-trio-browser
+          path: rugby-trio-v4/browser
