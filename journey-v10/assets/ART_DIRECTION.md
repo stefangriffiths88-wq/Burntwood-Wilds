@@ -21,3 +21,12 @@ Local Burntwood locations, real wildlife with comic exaggeration; no generic fan
 
 ## Visual acceptance
 Capture: all six menu portraits, Zak portrait full-size, Zak in-game sprite idle/moving/attacking, and quarry arena at mobile viewport. Compare against approved assets and report mismatches before release. Automated loading tests are necessary but insufficient.
+
+
+## Mandatory artwork preflight — before generating any concepts
+1. Inspect `assets/catalog.json`, the existing six `assets/portraits/*.webp`, and relevant gameplay character module. Use the approved user-supplied screenshots where available; if missing, disclose that rather than improvising.
+2. Compare silhouette, detached floating paws, absent arms/feet, proportions, costume, lighting, palette and local background with the existing selection art.
+3. Create three variations **within the existing visual system**, not three unrelated game styles. Keep gameplay sprites unchanged unless explicitly requested.
+4. Show concepts for user selection before replacing any asset; never integrate unapproved concept art.
+5. Validate crop, phone-scale readability and character-selection presentation before release.
+6. Keep artwork references and candidates catalogued separately from production portraits, and mark approved versus draft status explicitly.
