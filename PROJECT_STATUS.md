@@ -2,45 +2,36 @@
 
 Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md and this file before edits.
 
-## Released: 10.4.0 — Living town and boss entrances
-- Release PR #46, merge c164068ce8ea1a688de2150faeed670d8783dc29.
-- Play in Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.4.0.html?v=1040
-- Unselected heroes populate fixed town positions. Selected hero and shopkeeper are excluded from duplicate resident placements.
-- Mimi runs the existing shop. When playing Mimi, Jodie runs it.
-- Mimi: “Okay human, you’re in my world now. Allow me to help you.”
-- Jodie: “Heyy Mimiiii… How can I help you save us all?”
-- Actual boss sprites replace arena gates. Tap a boss to enter its arena; nearby Challenge action remains available.
-- Shop opens with greeting and heading visible; its scroll position resets on opening.
-- Architecture, positions and deferred ideas: journey-v10/TOWN.md.
+## Released: 10.4.1 — heroic rewards and Jackson boss charge
+- Release PR #48; merge 72d1c82be5fe3e19a344ab051e470f606f3dab93.
+- Play in Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.4.1.html?v=1041
+- Stable entry: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/latest.html
+- Fixed a reproducible missing-reward transition: final boss defeated before heroic during one update left victory active with a pending charm but no offers. Shared heroicDefeated now opens the choice over victory and returns to victory after selection; coins are paid once.
+- Heroic spawning/reward scheduling belongs to arenas/heroic.js, independent of character dispatch and charm effect state. items/charms.js owns equipment, choices, fusion and procs.
+- Heroic health bar explicitly says “HEROIC · DEFEAT FOR A CHARM”. Reaching 1:00 spawns the enemy; defeating it earns the choice.
+- Jackson charge deals 65 damage, or 85 with Heavy Shoulder; Break the Line adds 30. These hits add no knockback to final or heroic bosses. Ordinary enemy crowd control remains. Other character damage, boss health and approved artwork unchanged.
 
 ## Verification
-- Branch CI 38745357119 passed build, gameplay regression, charm matrix and mobile checks.
-- Main CI 38746141729 and Pages deployment 38746141568 succeeded.
-- Public versioned HTML byte-for-byte matches the tested local build and reports BUILD_ID 10.4.0.
-- All seven hero selections tested for six unique unselected townspeople, correct shopkeeper and exact greeting.
-- All four boss map entrances tested through mobile taps, including repeated/cleared/outside-hub guards.
-- Resident drawing preserves player object, selection and combat state.
-- Inspected 390×844 screenshots: residents, all four boss entrances and both shopkeepers. Corrected retained shop scroll before release.
-- Wider checks include 84 hero/charm combinations and 21 simulated journeys / 63 arenas.
-- Simulations use scripted positioning and invulnerability; they do not establish human survival balance. Mobile Chromium is not native iPhone Safari.
+- Final branch CI 38750192684 at b408531fc7be13cce4565bbc3361429fa314c405 passed build, standard gameplay, new encounter checks, charm matrix/journeys and mobile tests.
+- Main CI 38750513827 and Pages deployment 38750513039 succeeded.
+- Public 10.4.1 versioned HTML byte-for-byte matches the tested local build; BUILD_ID and latest.html destination verified.
+- encounters-test.cjs: 28 fresh runs, seven heroes × four arenas, zero initial charms, timed heroic, real attacks, first reward, pause and duplicate guard. Both final/heroic defeat orders tested for every hero with one victory payment.
+- Jackson base/upgraded charge and finisher tested against all four final bosses; heroic damage/no knockback and ordinary crowd control checked.
+- Browser: timed heroic and real touch reward/fusion choices for seven heroes; final-first reward choice and victory restoration for Evie/Jackson.
+- Inspected 390×844 heroic tracker and both final-first reward screens. Existing town/shop/boss entrance checks passed.
+- Wider checks: 84 hero/charm combinations and 21 scripted journeys / 63 arenas. Positioning/invulnerability aid simulation; these are not human survival/balance results. Mobile Chromium is not native iPhone Safari.
 
-## Preserved decisions
-- Seven heroes: Ava, Jackson, Stefan, Jodie, Evie, Zak and Mimi. Approved portraits and gameplay sprites remain separate and unchanged by this release.
-- Zak Street sprite remains approved. Mimi uses approved Little Headband sprite and woodland portrait; user confirmed her prior release works.
-- Character attacks, abilities, upgrades and arena combat remain unchanged by town work.
-- Twelve run-only charms, three slots and same-copy fusion remain. Heroic bosses arrive at 1:00; final arena bosses at 2:00. Charms carry between arenas, reset on new run. Full specification: journey-v10/CHARMS.md.
-- Fusion consumes two identical same-rank copies into one higher rank, with no duplicate equipped effects. Current three-reward route normally permits rank II; rank III needs four base copies.
-- No opening scene, permanent progression, essence/token economy or building overhaul implemented. These remain future design work in TOWN.md.
+## User feedback and investigation limits
+- User reported no charms with Evie and Jackson on a preceding build, and requested charge damage without boss knockback. Exact viewed build and defeat sequence unknown.
+- Current 10.4.0 source already earned first charms in all 28 ordinary acquisition checks. The final-first reward bug was separately reproduced and fixed; it is not proven to explain those specific runs.
+- 10.4.0 town update had not yet been user tested when this feedback arrived.
+- User acceptance of 10.4.1 pending. Next: play Evie/Jackson in Safari, defeat the gold-ringed heroic after 1:00, check charm choices and Jackson boss charge feel. If rewards still fail, record displayed build, arena, heroic defeat and sequence; investigate that evidence without global balancing.
 
-## Known limitations and next priorities
-- User playtest pending for 10.4.0: town residents, Mimi/Jodie greeting, inventory/fusion access and boss tap usability in Safari.
-- Follow specific feedback with isolated fixes; do not globally rebalance combat.
-- Previous charm release 10.3.0 remains available. Human feedback on heroic threat, charm combinations and fusion pacing remains useful.
-- Future conversations/shops, town decoration, opening spell story and future-run rewards require further design before implementation.
-
-## In development: 10.4.1 — shared heroic acquisition and Jackson boss charge
-User reports no charms when playing Evie/Jackson on the previous release; exact viewed build is unconfirmed. Current 10.4.0 source earned first charms in all 28 fresh hero/arena automated checks. Original missing-reward symptom not reproduced; do not claim its cause is confirmed.
-
-Changes: heroic spawn/reward lifecycle independent of charm effect state; visible heroic health/reward label; Jackson charge and final upgrade damage final/heroic bosses without adding knockback, ordinary crowd control preserved. New targeted encounters-test.cjs covers all 28 first acquisitions and boss collision/finisher checks. No changes to enemy health, character damage values or approved artwork. Production verification pending.
-
-Investigation found a reproducible edge case: final boss defeated before heroic within one attack/update left state=won, charmPending=true, zero offers; advance ignores won, so reward never opened. Fixed in shared heroicDefeated by opening the reward when already won. Both defeat orders are covered for every hero and coins are checked for one payment. This is a confirmed defect, not confirmation that it caused the reported runs.
+## Retained release features and decisions
+- 10.4.0: unselected heroes populate fixed town positions; selected hero/shopkeeper excluded from duplicate placement. Mimi runs the shop, Jodie when playing Mimi. Actual boss sprites replace gates, supporting map taps and nearby Challenge. Shop scroll resets on opening. Architecture: journey-v10/TOWN.md.
+- Mimi greeting: “Okay human, you’re in my world now. Allow me to help you.”
+- Jodie greeting: “Heyy Mimiiii… How can I help you save us all?”
+- Seven heroes: Ava, Jackson, Stefan, Jodie, Evie, Zak and Mimi. Approved portraits and gameplay sprites remain separate. Zak Street and Mimi Little Headband/woodland portrait unchanged.
+- Twelve run-only charms, three slots, matching same-rank fusion. Heroics at 1:00, final bosses at 2:00, eight timed upgrades. Charms persist between arenas, reset on a new run. CHARMS.md has numeric details and architecture.
+- Rank III requires four base copies; current three-reward route normally allows rank II.
+- Opening spell scene, conversations, town decoration, permanent upgrades, essence and gold escape tokens remain future design work. Do not implement without further design authorization.
