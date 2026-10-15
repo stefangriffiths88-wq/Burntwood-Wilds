@@ -25,7 +25,7 @@ for(let hero of ['ava','jackson','stef','jodie','evie','zak','mimi']){
  assert.equal(await page.evaluate(()=>__test.townResidents().length+1),6);
  await worldTap(719,379);assert.equal(await page.evaluate(()=>__test.state.state),'shop');
  assert.equal(await page.locator('#shopSpeaker').innerText(),hero==='mimi'?'JODIE':'MIMI');assert.equal(await page.locator('#shopGreeting').innerText(),hero==='mimi'?'Heyy Mimiiii… How can I help you save us all?':'Okay human, you’re in my world now. Allow me to help you.');
- if(hero==='mimi'||hero==='ava')await page.screenshot({path:'journey-v10/browser/shop-host-'+hero+'.png'});
+ assert.equal(await page.locator('#shopPanel').evaluate(el=>el.scrollTop),0);if(hero==='mimi'||hero==='ava')await page.screenshot({path:'journey-v10/browser/shop-host-'+hero+'.png'});
  await page.locator('#shopClose').tap();assert.equal(await page.evaluate(()=>__test.state.state),'hub');
 }
 for(let area of ['rugby','chasewater','sankeys','quarry']){
