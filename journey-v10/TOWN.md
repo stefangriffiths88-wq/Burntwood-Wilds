@@ -17,7 +17,7 @@ upgrades/permanent.js owns the schema, validation, storage, award deduplication 
 
 Bonuses are snapshotted for each journey and refreshed when entering its first arena, so starting-hub purchases work immediately in the first battle. Purchases made between arenas apply to a new run. They do not change an active journey halfway through. UI states this explicitly.
 
-Victory shows +2 essence and saved status. Loss or final completion offers RETURN TO BURNTWOOD, starting a fresh journey in town with run-only equipment reset and saved essence retained. Earlier arena victories retain the existing boss-perk/continue flow. Cleared bosses and resident victory lines reflect the current journey, not all previous runs.
+Victory shows +2 essence and saved status. Loss or final completion offers RETURN TO BURNTWOOD, returning to a safe post-run town with victories/wounded bosses retained. Run-only purchases/fusion and arena entry are disabled there. START NEW RUN clears run-only equipment and victories, retaining saved essence and ranks. Earlier arena victories retain the existing boss-perk/continue flow. Cleared bosses and resident victory lines reflect the current journey, not all previous runs.
 
 ## Save contract
 localStorage key burntwood-wilds-progress-v1. Schema 1 stores essence, validated per-hero ranks, bounded award tokens and workshop-introduction status. Writes are synchronous. Purchase currency/ranks change only after a successful write. If boss-reward saving fails, the reward remains in memory with an explicit backup-needed message; export before leaving. Corrupt stored data is not silently overwritten. A valid explicitly confirmed restore can repair it.

@@ -52,3 +52,5 @@ html,body,#game,#controls,#joystick,#actions,#actions button{touch-action:none!i
 #workshopConfirm,#importConfirm{border:2px solid #eed18e;background:#173e2d;padding:12px;border-radius:12px;margin:12px 0}#workshopConfirm button,#importConfirm button{width:100%}#saveMessage{font-size:12px;color:#e6d8b6}#saveTools label{display:block;font-size:12px}#saveBackup{width:100%;font:12px monospace;background:#17382b;color:#f7edca;padding:10px;user-select:text!important;-webkit-user-select:text!important;touch-action:auto!important}#workshopIntro{font-size:12px;color:#d3dec9}#workshopGreeting{font-style:italic}#saveOptions{background:#365d49;color:#f3dfae}#workshopPanel,#saveTools{scroll-margin-bottom:25px}
 
 #saveBackup{-webkit-touch-callout:default!important}
+
+#newJourney{position:fixed;right:16px;bottom:calc(212px + env(safe-area-inset-bottom));z-index:5;font-size:11px;padding:12px;touch-action:manipulation!important}
