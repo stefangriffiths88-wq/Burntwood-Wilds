@@ -18,7 +18,8 @@ Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md befo
 
 ## Verified release evidence
 - Final branch CI 38788156173 at eee9f9a0d57d0d5c75102448926b9117907ed8f5: passed build, gameplay, focused build mechanics, town/save, encounter, charm matrix/journeys and mobile checks.
-- Production Pages 38789351184 succeeded. Main CI 38789350842 is still running; final handover merge waits for its result.
+- Main CI 38789350842 and production Pages 38789351184 succeeded.
+- All seven publicly served portraits returned HTTP 200 and exactly matched their approved committed bytes.
 - Public versioned HTML matches the tested local build byte-for-byte (SHA256 b348ef3df33e39abe06d06187ecd68d1ebeb0f1b831aea2e7d3ba3d306b793a6). BUILD_ID 10.6.0 and latest.html destination verified.
 - Tests cover rarity boundaries/caps, seven growth profiles, crit conflicts, actual shrine/build damage calculation, proc bounds, finite healing, starter transactions, zero-gold/Purse rules, rising confirmed rerolls, inventory pause and v1 migration. Gameplay/save regression and Jackson charge/finisher isolation remain green.
 - 35 fresh hero/arena first-charm acquisitions; 210 hero/charm combat combinations; 21 full actual-attack five-area journeys (105 arenas) using control/stationary, critical and cooldown/shadow/lifesteal builds. An earlier branch also passed 21 baseline-build journeys (105 arenas).
