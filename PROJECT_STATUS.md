@@ -2,6 +2,17 @@
 
 Updated 16 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
 
+## OPEN ISSUE — character sizes and consistency remain unresolved
+Updated from user feedback, 16 October 2026 at 00:52–00:53 Europe/London, after the 10.10.0 testing sign-off.
+
+The user reports: “The sizes and character consistency still being an issue.” This supersedes the earlier positive visual/playtest interpretation. The automated checks and deployment passed, but they did not prove that the size relationships and visual consistency meet the user's expectations. Do not describe the character presentation as accepted, fixed or fully consistent.
+
+**Next chat's immediate priority:** investigate the current 10.10.0 character presentation before new feature work. Compare all ten playable characters side by side at the same camera scale in combat and town, including idle/moving/attacking states and phone-size views. Check actual rendered silhouette/body/head/paw proportions, not just collision radius or canvas scale constants. Identify the specific mismatches and propose a coherent correction using the approved identities and latest user direction. This message authorizes recording/investigation, not a speculative redesign or global gameplay rebalance.
+
+Preserve the established targets: Jodie adult baseline; Jackson (11) small/slim; Ava (7) smaller; Stefan tallest/slim; Zak Jodie's height and athletic; Joseph larger than Ava; Evie slightly larger/rounder than Jackson; Tom stocky, Havannah young-child size and Mimi medium. Preserve detached floating paws/no conventional limbs and separate approved selection portraits. Do not revert or regenerate approved identities merely to equalise bounding boxes.
+
+No new screenshot, named offending character or exact measurement was supplied with this report; do not invent a root cause. Current source is main, and visuals/README.md, character renderers, world/residents.js and visuals/cat-art.js describe the implemented 10.10.0 system. Keep all combat stats, hitboxes, attack reach/timing, upgrades and arena balance unchanged unless an actual related defect is established. Maintain the hold on unrelated development until this visual issue is resolved and user-tested. The 10.10.0 release remains live; this issue was documented without changing game code.
+
 ## Current verified release: 10.10.0 — coherent playable character proportions
 - Release PR #60; merge ab86242be799422fa2f4a4a50ef5004780d0bc92 (reviewed 16 October 2026, Europe/London). Havannah, Joseph and Tom are already complete and playable; do not resume their old candidate branches or rebuild them.
 - Open in Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.10.0.html?v=10100
@@ -21,7 +32,7 @@ Updated 16 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md befo
 ### Testing gate — 16 October 2026
 - User feedback: “all seems good on testing.” Record as a positive playtest report, not proof that every device/character/build combination has been manually tested. Browser/device was not specified.
 - Final check: main remains 435818fa85ef089de6a3414ba8e66d05322108d2 before this documentation update; no gameplay changes since the fully passing source ab86242be799422fa2f4a4a50ef5004780d0bc92. Main regression 38822801386 passed; latest documentation-head Pages 38825661684 succeeded. Repeat public checks verified canonical/versioned HTML, latest entry and all ten portraits match the tested files.
-- Testing result: no failing automated checks or user-reported playtest issues remain for 10.10.0. The release is cleared by the current testing gate. Keep any future issue as a focused reproduction; do not silently retune unrelated systems.
+- Earlier testing result (superseded for visual acceptance): automated checks were green and initial playtest feedback was positive. The later size/consistency report above reopens the visual testing gate. Do not silently retune unrelated systems.
 - No new gameplay build has been started. Further development must wait for a clear testing result and an agreed next update; each future build must pass its own gate.
 
 ### Current workflow checkpoint
