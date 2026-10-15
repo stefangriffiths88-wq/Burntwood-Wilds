@@ -28,7 +28,7 @@ Updated: 15 October 2026. Read with DEVELOPMENT_GUIDE.md before editing.
 - No unresolved defect identified in the portrait correction; this does not claim the entire game has no bugs.
 - Existing technical debt: legacy v9 HTML shell inheritance and duplicated version strings.
 - Broader composite design reference remains uncommitted; do not claim all artwork matches that reference.
-- Mimi implementation authorized; automated mechanics and regression tests pass locally. Release branch CI/mobile and production verification required. User playtest pending.
+- Mimi implementation authorized; automated mechanics and regression tests pass locally. Branch CI/mobile run 38725376549 passed; screenshots inspected. Production verification follows merge. User playtest pending.
 
 ## Exact next priorities
 1. Obtain the user's next requested improvement or play-test report.
@@ -41,3 +41,5 @@ The permanent working agreement and proven binary image transfer method are in D
 
 ## Mimi 10.2.0
 Approved Little Headband simple Canvas sprite and exact 1024×1536 woodland selection portrait. Independent characters/mimi.js; sword, gated 300% Vanish, Nine Lives progressive pounces and finite clone, five dodge and stat upgrades. Other character modules and arena balance unchanged. Next priority: user playtest Mimi sword reach, Vanish rhythm, pounce targeting and clone readability; fix specific feedback. Current release PR and CI evidence to be added after verification.
+
+Release tracking: PR #42; gameplay commit 844897ce7c969c7e74bd40c83432028c2af57e37. Branch workflow 38725376549 passed including expanded seven-hero regression and mobile browser suite. Inspected mimi-selection.png and sankeys-mimi.png at 390×844. Exact portrait blob 02d10a67f9c7af078eab31324fa1ffa693f6ad3b. User playtest remains pending.
