@@ -3,7 +3,7 @@
 Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
 
 ## In development: 10.8.0 — Tom
-Branch tom-wrecking-ball implements the approved tactical Option 3 portrait and compact detached-paw gameplay sprite. Heavy Hands/Earthquake/Shoulder Barge and fifteen upgrades are isolated in characters/tom.js; specification characters/TOM.md. Focused mechanics, all fifteen real upgrade choices, thirty charm combinations and actual heroic/first-charm/final-boss smoke in all five arenas pass locally. CI/mobile visual inspection, merge and deployment remain pending. No thumbnail redesign or unrelated gameplay changes.
+Branch tom-wrecking-ball implements the approved tactical Option 3 portrait and compact detached-paw gameplay sprite. Heavy Hands/Earthquake/Shoulder Barge and fifteen upgrades are isolated in characters/tom.js; specification characters/TOM.md. Focused mechanics, all fifteen real upgrade choices, thirty charm combinations and actual heroic/first-charm/final-boss smoke in all five arenas pass locally. Initial CI 38795063657 and mobile ability tests passed. Phone screenshots inspected; compact QUAKE button label avoids wrapping (full Earthquake name retained in profile/upgrades). Final UI rerun, merge and deployment remain pending. No thumbnail redesign or unrelated gameplay changes.
 
 ## Released: 10.7.0 — Joseph
 - PR #55; merge 4ce8336c88dea155a8eb72c69c16ab056e5a34fe.
