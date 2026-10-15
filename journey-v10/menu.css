@@ -68,4 +68,4 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 
 .townPanel button:disabled{opacity:.45;cursor:default}
 
-.picks{grid-template-columns:repeat(8,minmax(0,1fr))}.picks button{font-size:10px;padding:10px 1px}
+.picks{grid-template-columns:repeat(5,minmax(0,1fr))}.picks button{font-size:10px;padding:10px 1px}

@@ -16,7 +16,7 @@ const STAT_TRACKS={
  scavenging:{name:'Scavenging',icon:'◇',unit:'%',gains:[5,8,12,18,25],cap:100},
  restoration:{name:'Restoration',icon:'✿',unit:'%',gains:[3,5,7,10,15],cap:100}
 };
-const HERO_GROWTH={joseph:{health:.65,power:.55,tempo:.3},jackson:{health:1.2,power:.6,armour:.08},ava:{health:.7,power:.6,tempo:.25},stef:{health:1.5,power:.5,armour:.12},jodie:{health:1,power:.6,restoration:.3},evie:{health:.8,power:.6,tempo:.25},zak:{health:1.3,power:.6,regen:.005},mimi:{health:.8,power:.6,precision:.08}};
+const HERO_GROWTH={tom:{health:1.5,power:.6,armour:.1},joseph:{health:.65,power:.55,tempo:.3},jackson:{health:1.2,power:.6,armour:.08},ava:{health:.7,power:.6,tempo:.25},stef:{health:1.5,power:.5,armour:.12},jodie:{health:1,power:.6,restoration:.3},evie:{health:.8,power:.6,tempo:.25},zak:{health:1.3,power:.6,regen:.005},mimi:{health:.8,power:.6,precision:.08}};
 function statValue(key){return run.stats?.[key]||0;}
 function growthValue(key){return Math.max(0,(run.level||1)-1)*(HERO_GROWTH[selected]?.[key]||0);}
 function rollRarity(min=0){let n=rewardRandom()*100,sum=0;for(let i=0;i<5;i++){sum+=RARITY_ODDS[Math.min(4,['hub','shop'].includes(state)?run.visited?.length||0:run.stage||0)][i];if(n<sum)return Math.max(min,i);}return 4;}

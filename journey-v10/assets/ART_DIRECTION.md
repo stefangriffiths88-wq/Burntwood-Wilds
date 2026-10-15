@@ -43,3 +43,6 @@ Native Canvas scenery: grass, crossing paths, benches, bins, hedges and swings. 
 
 ## Joseph — approved Hooded Training, 15 October 2026
 Golden-orange tabby, green eyes, cream muzzle/paws, hood up with visible ears, black hoodie with red/green trim, tail and two detached paws. No arms/legs/feet. Native Canvas sprite follows Option 2 in references/joseph-approved-sprite-options.jpeg. Selection portrait is an unpainted 895×842 crop from the approved Rugby Club poster (source rectangle 66,178–961,1020), excluding poster text/buttons. All head/paws/tail remain visible. Original approved sources are preserved in assets/references. No thumbnail redesign in this build.
+
+## Tom — approved tactical design, 15 October 2026
+Selection: exact Option 3 (right pane) from references/tom-approved-portrait-options.jpeg, cropped 1024,0–1536,526 to remove number badge. 512×526 WebP, no repainting. Detailed muscular orange-brown tabby, green eyes, brown hair, olive tactical vest/paw badge and tattoos. Gameplay: compact broad torso and oversized head, tail and two detached floating paws from references/tom-approved-gameplay-reference.jpeg. No conventional limbs even where tiny concept frames have feet; explicit character specification takes priority. Selection portrait and native Canvas sprite remain separate. Title is The Wrecking Ball.

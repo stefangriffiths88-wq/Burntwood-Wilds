@@ -23,6 +23,7 @@
   "arenas/rugby.js",
   "characters/mimi.js",
   "characters/joseph.js",
+  "characters/tom.js",
   "items/charms.js",
   "arenas/park.js",
   "arenas/heroic.js",

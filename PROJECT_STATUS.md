@@ -2,8 +2,17 @@
 
 Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
 
-## In development: 10.7.0 — Joseph
-Branch joseph-rocket restores Joseph as The Overhyped Rocket using the approved Rugby Club portrait and Option 2 Hooded Training sprite. All fifteen upgrades, exact dialogue, targeted mechanics, thirty charm combinations and five-arena actual-attack smoke tests pass locally. CI/mobile visual review, merge and deployment are pending. Tom is approved and queued after Joseph. Thumbnail selection remains a separate task requiring approval. Specification: journey-v10/characters/JOSEPH.md.
+## In development: 10.8.0 — Tom
+Branch tom-wrecking-ball implements the approved tactical Option 3 portrait and compact detached-paw gameplay sprite. Heavy Hands/Earthquake/Shoulder Barge and fifteen upgrades are isolated in characters/tom.js; specification characters/TOM.md. Focused mechanics, all fifteen real upgrade choices, thirty charm combinations and actual heroic/first-charm/final-boss smoke in all five arenas pass locally. Initial CI 38795063657 and mobile ability tests passed. Phone screenshots inspected; compact QUAKE button label avoids wrapping (full Earthquake name retained in profile/upgrades). Final UI rerun, merge and deployment remain pending. No thumbnail redesign or unrelated gameplay changes.
+
+## Released: 10.7.0 — Joseph
+- PR #55; merge 4ce8336c88dea155a8eb72c69c16ab056e5a34fe.
+- Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.7.0.html?v=1070
+- Approved Rugby Club portrait and Option 2 Hooded Training native Canvas sprite. Rocket Fists, path-based OVERHYPE!, Turbo Dash and fifteen upgrades; exact general/Jodie dialogue, save/workshop/growth/charms/five-arena integration.
+- Branch CI 38792926077 passed gameplay, focused Joseph, build/stat, town/save, encounter, charm/journeys and mobile-browser checks. Phone screenshots inspected (895×842 portrait and 390×844/650 layouts). Main CI 38793723366 passed; production Pages 38793721686 build/deploy succeeded.
+- Public 264200-byte HTML exactly matches local; SHA256 342d0e77756a61bab4718e5acb7831bde880c28e07faea8339c8bf54c29de5f5. Public portrait exactly matches committed 203722 bytes; SHA256 fea4c2ffda6b350212125e7f8ac6e015217e46505cf1e6c40257c9c5779ec9d4.
+- User playtest/native Safari and human balance acceptance pending. Scripted invulnerable combat verifies integration only. Character specification: journey-v10/characters/JOSEPH.md.
+- Tom is authorized next/current work. Portrait thumbnails remain a separate task requiring approval.
 
 ## Released: 10.6.0 — five-area builds and Chase Terrace Park
 - Release PR #53; merge 00e05ccfa26919118a1ffff74cf22d15f23adf19.
