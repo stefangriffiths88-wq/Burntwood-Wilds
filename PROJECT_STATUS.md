@@ -2,8 +2,51 @@
 
 Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
 
-## In development: 10.8.0 — Tom
-Branch tom-wrecking-ball implements the approved tactical Option 3 portrait and compact detached-paw gameplay sprite. Heavy Hands/Earthquake/Shoulder Barge and fifteen upgrades are isolated in characters/tom.js; specification characters/TOM.md. Focused mechanics, all fifteen real upgrade choices, thirty charm combinations and actual heroic/first-charm/final-boss smoke in all five arenas pass locally. Initial CI 38795063657 and mobile ability tests passed. Phone screenshots inspected; compact QUAKE button label avoids wrapping (full Earthquake name retained in profile/upgrades). Final UI rerun, merge and deployment remain pending. No thumbnail redesign or unrelated gameplay changes.
+## Released: 10.8.0 — Tom and Joseph playable
+- Tom PR #56; merge 745d0030727494618542f878cced4e0d73f235ec. Joseph PR #55 was released/tested first (10.7.0); see below. Nine playable heroes, five arenas; no existing character module was changed by Tom's build.
+- Safari URL: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.8.0.html?v=1080
+- Stable entry: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/latest.html
+- Tom: approved Option 3 tactical selection portrait, compact native Canvas tabby with two detached floating paws and no arms/legs/feet. Heavy Hands, Earthquake, Shoulder Barge, fifteen cumulative upgrades and exact general town dialogue. Shared stats/growth, charm equipment, workshop and save validation integrated. Full numeric/animation spec: journey-v10/characters/TOM.md.
+- Third/fifth overlap produces one primary uppercut; collision hits do not recurse. Each expanding wave hits an enemy once. Legendary Earthquake has three total waves. Swept barge contact, bounded protection/recharge, one consumed Rebound and boss launch/knockback resistance are tested. Waves/launches have hard bounds and reset between arenas/characters.
+- Existing name buttons wrap to two rows for usable phone targets; QUAKE is the compact action label, with full Earthquake name retained in profile/upgrades. No portrait-thumbnail redesign.
+- Targeted Joseph and Tom tests cover all fifteen real upgrade choices each, thirty charm combinations each, exact proc/damage/CC/dodge rules, save ranks, dialogue, and actual heroic/first-charm plus final-boss combat in each of five arenas. Existing seven-hero charm matrix and five-area journeys retained. All existing character modules are byte-unchanged relative to 10.7.0.
+- Final branch CI 38797152578 passed at 71dc9bded713b3367d3e4b6f27ce67064979d735 (initial 38795063657 also passed). Build, gameplay, both new characters, builds/stats, town/save, encounters, charm journeys and three browser suites passed. Final branch artifact 12002587680; inspected 390×844/650 selection, idle/punch/uppercut, airborne enemy, three-wave Earthquake, barge, town/dialogue and visible defeat sprite. Production Pages 38798210303 build/deploy succeeded; public game/portraits verified byte-for-byte. Main CI 38798211807 passed all checks.
+- Public versioned/canonical HTML: 276071 bytes, SHA256 a69cf0b68207613e40f352845f0e92717084bd109793f859837fd244b2978284, exact match to the tested local build. latest.html points to 10.8.0; all nine public portraits exactly match local approved bytes. Approved Tom WebP: 512×526, 90572 bytes, SHA256 97318f8b22c8ea2c84495f66a2083f15144e191c698e7abc777a0d3346460ee5; Git blob 7c0b33087a383b05b4b3ac2b8fdd97d49ed838ba. Both original reference sheets are preserved as hash-verified binary assets; exact source crop/checksum in catalog. No upscale or regenerated portrait.
+- User playtest/native Safari and human balance acceptance pending. Scripted protected positioning verifies integration, not survival balance. No known failing automated checks. Existing road geography, cinematic and escape-token plans remain deferred.
+
+### Tom changed files (exact implementation/release set)
+- .github/workflows/journey-v10.yml
+- PROJECT_STATUS.md
+- burntwood-journey-v10.8.0.html
+- burntwood-journey-v10.html
+- journey-v10/README.md
+- journey-v10/assets/ART_DIRECTION.md
+- journey-v10/assets/catalog.json
+- journey-v10/assets/portraits/tom.webp
+- journey-v10/assets/references/tom-approved-gameplay-reference.jpeg
+- journey-v10/assets/references/tom-approved-portrait-options.jpeg
+- journey-v10/browser.cjs
+- journey-v10/build.py
+- journey-v10/characters/TOM.md
+- journey-v10/characters/tom.js
+- journey-v10/controls.js
+- journey-v10/engine/core.js
+- journey-v10/game.js
+- journey-v10/manifest.json
+- journey-v10/menu.css
+- journey-v10/registry.js
+- journey-v10/state.js
+- journey-v10/test.cjs
+- journey-v10/tom-browser.cjs
+- journey-v10/tom-test.cjs
+- journey-v10/ui/menu.js
+- journey-v10/upgrades/build-stats.js
+- journey-v10/upgrades/permanent.js
+- journey-v10/upgrades/progression.js
+- journey-v10/world/conversations.js
+- journey-v10/world/hub.js
+- journey-v10/world/residents.js
+- latest.html
 
 ## Released: 10.7.0 — Joseph
 - PR #55; merge 4ce8336c88dea155a8eb72c69c16ab056e5a34fe.
@@ -12,7 +55,7 @@ Branch tom-wrecking-ball implements the approved tactical Option 3 portrait and 
 - Branch CI 38792926077 passed gameplay, focused Joseph, build/stat, town/save, encounter, charm/journeys and mobile-browser checks. Phone screenshots inspected (895×842 portrait and 390×844/650 layouts). Main CI 38793723366 passed; production Pages 38793721686 build/deploy succeeded.
 - Public 264200-byte HTML exactly matches local; SHA256 342d0e77756a61bab4718e5acb7831bde880c28e07faea8339c8bf54c29de5f5. Public portrait exactly matches committed 203722 bytes; SHA256 fea4c2ffda6b350212125e7f8ac6e015217e46505cf1e6c40257c9c5779ec9d4.
 - User playtest/native Safari and human balance acceptance pending. Scripted invulnerable combat verifies integration only. Character specification: journey-v10/characters/JOSEPH.md.
-- Tom is authorized next/current work. Portrait thumbnails remain a separate task requiring approval.
+- Tom completed in 10.8.0 above. Portrait thumbnails remain a separate task requiring approval.
 
 ## Released: 10.6.0 — five-area builds and Chase Terrace Park
 - Release PR #53; merge 00e05ccfa26919118a1ffff74cf22d15f23adf19.
@@ -28,7 +71,7 @@ Branch tom-wrecking-ball implements the approved tactical Option 3 portrait and 
 - Existing seven heroes, approved portraits, combat sprites, town conversations, shopkeeper swap, hub scales, wounded bosses and Jackson’s boss-damage/no-knockback behaviour are retained. Park has its own town/minimap boss marker and wounded preview.
 - Ownership and exact numbers: journey-v10/BUILDS.md, CHARMS.md and TOWN.md. New modules: upgrades/build-stats.js, items/charm-catalog.js, items/economy.js and arenas/park.js.
 
-## Verified release evidence
+## Verified release evidence — 10.6.0
 - Final branch CI 38788156173 at eee9f9a0d57d0d5c75102448926b9117907ed8f5: passed build, gameplay, focused build mechanics, town/save, encounter, charm matrix/journeys and mobile checks.
 - Main CI 38789350842 and production Pages 38789351184 succeeded.
 - All seven publicly served portraits returned HTTP 200 and exactly matched their approved committed bytes.
@@ -46,7 +89,7 @@ Branch tom-wrecking-ball implements the approved tactical Option 3 portrait and 
 - Town road geography remains illustrative, pending an agreed map reference. Opening spell cinematic, escape tokens and broader town overhaul are deferred. No additional hero or portrait is silently integrated.
 
 ## Exact next priorities
-1. User Safari playtest: five-area pacing, charm/upgrade satisfaction, gold scarcity, shop reroll price, starter choice, inventory readability and Umbrella Man’s warnings/heal interruption. Diagnose specific feedback before changing shared balance.
+1. User Safari playtest: Tom punch weight/launches/barge, Joseph speed/ricochets/two dash charges and both approved sprites; then five-area pacing, charm/upgrade satisfaction, gold scarcity, shop reroll price, starter choice, inventory readability and Umbrella Man’s warnings/heal interruption. Diagnose specific feedback before changing shared balance.
 2. Agree a map reference before changing Burntwood’s road layout.
 3. Dedicated maintenance update from the completed audit: CI write-safety first, then an owned build template/central version metadata, registration checks and measured modular extraction. Current CI still runs the legacy importer and auto-commits generated files; do not mix the refactor with another feature release.
 4. Future heroes require the complete approved portrait/sprite/moves/upgrades/stats gate in AGENTS.md. Preserve approved Zak Street and Mimi Little Headband/woodland assets.
