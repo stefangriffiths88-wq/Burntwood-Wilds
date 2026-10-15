@@ -51,7 +51,10 @@
       "floating paws, no arms or feet",
       "Sankey's Corner background"
     ],
-    "selection_asset": "assets/portraits/zak-cap.svg"
+    "selection_asset": "assets/portraits/zak-cap.svg",
+    "gameplay_sprite_status": "approved Street Zak option A, implemented in characters/zak.js for 10.1.1",
+    "approved_portrait_reference": "User-supplied full-resolution Zak outside Sankey's Corner, 1024x1536 JPEG, October 15 2026",
+    "portrait_pending": "Replace previous low-resolution concept crop with the exact user-provided Sankey's Corner portrait; do not claim it is installed until the binary asset is uploaded"
   },
   "arenas": [
     "rugby",
