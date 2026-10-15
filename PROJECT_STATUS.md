@@ -37,3 +37,10 @@ Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md and this file before edits.
 - Follow specific feedback with isolated fixes; do not globally rebalance combat.
 - Previous charm release 10.3.0 remains available. Human feedback on heroic threat, charm combinations and fusion pacing remains useful.
 - Future conversations/shops, town decoration, opening spell story and future-run rewards require further design before implementation.
+
+## In development: 10.4.1 — shared heroic acquisition and Jackson boss charge
+User reports no charms when playing Evie/Jackson on the previous release; exact viewed build is unconfirmed. Current 10.4.0 source earned first charms in all 28 fresh hero/arena automated checks. Original missing-reward symptom not reproduced; do not claim its cause is confirmed.
+
+Changes: heroic spawn/reward lifecycle independent of charm effect state; visible heroic health/reward label; Jackson charge and final upgrade damage final/heroic bosses without adding knockback, ordinary crowd control preserved. New targeted encounters-test.cjs covers all 28 first acquisitions and boss collision/finisher checks. No changes to enemy health, character damage values or approved artwork. Production verification pending.
+
+Investigation found a reproducible edge case: final boss defeated before heroic within one attack/update left state=won, charmPending=true, zero offers; advance ignores won, so reward never opened. Fixed in shared heroicDefeated by opening the reward when already won. Both defeat orders are covered for every hero and coins are checked for one payment. This is a confirmed defect, not confirmation that it caused the reported runs.

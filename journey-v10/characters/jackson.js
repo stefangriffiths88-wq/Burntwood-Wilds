@@ -19,7 +19,7 @@ ctx.save();if(p?.throwT>0)ctx.globalAlpha=0;ctx.translate(17,rightY-3);ctx.rotat
 
 function dodgeImpact(e){let damage=D(5)?26:D(2)?18:10;damageEnemy(e,damage,p.actionDir.x,p.actionDir.y,false,'dodge');radialEffect(e.x,e.y,17,'#e3d5a1');if(D(3)){e.stunUntil=time+(e.kind==='boss'?.05:e.kind==='heavy'?.12:.3);}if(D(3)){let m=e.kind==='boss'?.1:e.kind==='heavy'?(D(5)?.65:.25):1;e.kx+=p.actionDir.x*180*m;e.ky+=p.actionDir.y*180*m;}}
 
-function chargeImpact(e){damageEnemy(e,S(2)?85:65,p.actionDir.x,p.actionDir.y,true,'special');if(S(4))e.stunUntil=time+(e.kind==='boss'?.12:.4);}
+function chargeImpact(e){let anchored=e.kind==='boss'||e.heroic;damageEnemy(e,S(2)?85:65,anchored?0:p.actionDir.x,anchored?0:p.actionDir.y,true,'special');if(S(4))e.stunUntil=time+(e.kind==='boss'?.12:.4);}
 
 CHARACTERS.jackson={"name":"Jackson","hp":100,"speed":155,"damage":26,"rate":0.82,"dodgeSpeed":380,"dodgeTime":0.24,"specialCD":7};
 
