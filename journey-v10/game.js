@@ -615,6 +615,39 @@ function drawShopkeeper(){
 }
 function interactShopkeeper(){if(state!=='hub'||!shopkeeperNear())return false;SHOPKEEPER.chat=2;return openHubShop();}
 
+// world/burntwood-details.js — independent overworld dressing.
+// Decorative scenery is intentionally deterministic and does not alter hitboxes.
+const BURNTWOOD_BUILDINGS=[
+ {x:68,y:265,w:72,h:65,type:0},{x:156,y:248,w:78,h:70,type:1},
+ {x:252,y:300,w:70,h:58,type:2},{x:83,y:428,w:83,h:75,type:0},
+ {x:194,y:455,w:65,h:62,type:1},{x:668,y:478,w:78,h:74,type:2},
+ {x:762,y:521,w:70,h:63,type:0},{x:84,y:621,w:75,h:67,type:1},
+ {x:211,y:604,w:72,h:61,type:2},{x:689,y:655,w:76,h:68,type:0},
+ {x:760,y:729,w:73,h:66,type:1},{x:552,y:1112,w:82,h:69,type:2},
+ {x:130,y:1157,w:74,h:65,type:0},{x:424,y:1146,w:75,h:66,type:1},
+ {x:590,y:96,w:50,h:60,type:0},{x:656,y:100,w:49,h:59,type:1},
+ {x:719,y:100,w:54,h:58,type:2}
+];
+function drawBurntwoodDetails(){
+ // Distinct clusters of houses and shops around the hub paths.
+ for(let i=0;i<BURNTWOOD_BUILDINGS.length;i++){let b=BURNTWOOD_BUILDINGS[i];drawBuilding(b,b.type);ctx.fillStyle=['#b35b4d','#638b6a','#d7b06a'][i%3];ctx.fillRect(b.x+5,b.y+b.h-18,b.w-10,6);}
+ // Individual hedges, small flowering gardens and fences make the streets feel inhabited.
+ for(let i=0;i<76;i++){let x=35+(i*163+Math.floor(i/9)*29)%825,y=50+(i*241+Math.floor(i/13)*47)%1180;
+ if((x>565&&x<850&&y<355)||(x<330&&y>785&&y<1120)||(x>350&&x<540&&y>830&&y<1050))continue;
+ ellipse(x,y,9+i%7,5+i%4,i%2?'#3f7447':'#527f50');
+ if(i%3===0){ellipse(x-3,y-4,2,2,'#edb9b2');ellipse(x+4,y+1,2,2,'#e7d28b');}
+ }
+ // Benches, bins, lampposts and road signs, all decorative.
+ for(let i=0;i<12;i++){let x=75+(i*199)%750,y=170+(i*283)%980;ctx.fillStyle='#69513d';ctx.fillRect(x,y,26,5);ctx.fillRect(x+3,y+5,3,11);ctx.fillRect(x+20,y+5,3,11);}
+ for(let i=0;i<9;i++){let x=95+(i*173)%720,y=160+(i*257)%960;line([[x,y+18],[x,y-24]],'#343f3d',3);ellipse(x,y-25,7,7,'#f3e2ad');}
+ // Wildlife and reeds by Chasewater.
+ for(let i=0;i<21;i++){let x=20+(i*29)%250,y=835+(i*37)%290;line([[x,y+8],[x-3,y-8]],'#6b9969',2);}
+ for(let i=0;i<7;i++){let x=36+i*29,y=925+(i%3)*35;ellipse(x,y,7,4,'#e9e6d7');ellipse(x+5,y-4,3,3,'#e9e6d7');}
+ // Quarry warning signs and scattered rocks.
+ for(let i=0;i<20;i++){let x=654+(i*41)%205,y=970+(i*59)%200;ellipse(x,y,4+i%6,3+i%3,'#9e8c73');}
+ ctx.fillStyle='#f4d16e';ctx.fillRect(646,975,48,24);ctx.fillStyle='#4d4433';ctx.textAlign='center';ctx.font='bold 9px system-ui';ctx.fillText('QUARRY',670,990);
+}
+
 // world/hub.js — source of truth.
 function finish(won){if(state!=='playing')return;state=won?'won':'lost';if(won){hub.coins+=60;run.visited=run.visited||[];if(!run.visited.includes(arenaKey))run.visited.push(arenaKey);}let more=won&&run.visited.length<3;$('panel').style.display='grid';$('upgradeChoices').style.display='none';$('back').style.display='block';$('panelButton').style.display='block';$('panelTitle').textContent=won?arena().short.toUpperCase()+' CLEARED':'GOOD RUN, '+stats().name.toUpperCase();$('panelName').textContent=won?arena().bossShort+' DEFEATED':'Have another go';$('panelText').textContent='Level '+run.level+' · '+run.history.length+' upgrades · '+kills+' enemies beaten';$('continue').style.display=more?'block':'none';$('continue').textContent=run.perk?'RETURN TO BURNTWOOD':'CHOOSE PERK · RETURN TO BURNTWOOD';$('continue').onclick=()=>run.perk?continueRun():openBossReward();$('panelButton').textContent=won?'FINISH RUN':'NEW RUN';$('panelButton').onclick=won?returnToMenu:startJourney;}
 
@@ -661,6 +694,7 @@ function drawHubScenery(){
  ctx.fillStyle='#c5ad88';ctx.fillRect(530,352,60,61);ctx.fillStyle='#765f46';ctx.fillRect(521,343,77,15);mapLabel(550,339,'LEISURE CENTRE');
  ctx.fillStyle='#b9a280';ctx.fillRect(370,482,95,62);ctx.fillStyle='#6d5945';ctx.fillRect(361,468,113,19);mapLabel(415,459,'CHASE TERRACE');
  for(let k=0;k<130;k++){let x=26+(k*137+Math.floor(k/11)*19)%842,y=30+(k*233+Math.floor(k/7)*27)%1220;if((x>550&&x<850&&y<350)||(x<320&&y>790&&y<1150)||(x>355&&x<540&&y>860&&y<1030)||(x>625&&y>960))continue;mapTree(x,y,9+k%12);}
+ drawBurntwoodDetails();
  // Sankey's Corner shop stall: the separate Mabel NPC stands in front.
  let q=hub.shop;ctx.fillStyle='#614533';ctx.fillRect(q.x-42,q.y-18,84,46);ctx.fillStyle='#e7c78a';ctx.fillRect(q.x-50,q.y-32,100,18);for(let k=0;k<5;k++){ctx.fillStyle=k%2?'#e4bf85':'#a75850';ctx.fillRect(q.x-50+k*20,q.y-32,20,18);}for(let k=0;k<3;k++){ctx.fillStyle=['#b95251','#609cc1','#87b866'][k];ctx.fillRect(q.x-33+k*18,q.y+6,9,13);}mapLabel(q.x,q.y-43,'WILDS SHOP');
  mapLabel(205,770,'CHASEWATER');mapLabel(445,1083,'RUGBY CLUB');mapLabel(745,1193,'BURNTWOOD QUARRY');mapLabel(682,100,'SANKEY’S CORNER');
