@@ -16,6 +16,12 @@ for(let hero of ['ava','jackson','stef','jodie','evie','zak','mimi']){
 // Full inventory replacement: old equipment is retained in the bag.
 await page.evaluate(()=>{let t=__test;for(let k of Object.keys(t.CHARMS).filter(k=>!t.charmRank(k)).slice(0,3))t.gainCharm(k);t.player.x=719;t.player.y=379;t.step(.01);t.openHubShop();});
 await page.locator('[data-equip]').first().tap();assert.equal(await page.evaluate(()=>__test.run.charms.length),3);assert.equal(await page.evaluate(()=>new Set(__test.run.charms.map(c=>c.key)).size),3);await page.locator('#shopClose').tap();
+// A final-first double defeat must still expose a usable charm card on mobile.
+for(let hero of ['evie','jackson']){
+ await page.evaluate(hero=>{let t=__test;t.menu();t.select(hero);t.startJourney();t.enterArena('rugby');t.clear();t.player.attack=999;t.spawn('boss',{x:500,y:500});let final=t.boss,mini=t.spawnHeroic();t.damageEnemy(final,999999,0,0);t.damageEnemy(mini,999999,0,0);},hero);
+ assert.equal(await page.evaluate(()=>__test.state.state),'charm');assert.equal(await page.locator('.charmCard').count(),3);
+ await page.screenshot({path:'journey-v10/browser/final-first-charm-'+hero+'.png'});await page.locator('.charmCard').first().tap();assert.equal(await page.evaluate(()=>__test.state.state),'won');assert.equal(await page.evaluate(()=>__test.run.charms.length),1);
+}
 // A live heroic encounter remains below the final boss and has a visible warning.
 await page.evaluate(()=>{let t=__test;t.menu();t.select('mimi');t.startJourney();t.enterArena('quarry');t.player.inv=999;t.player.attack=999;t.spawnHeroic();for(let i=0;i<140;i++)t.step(1/60);t.draw();});await page.screenshot({path:'journey-v10/browser/heroic-quarry.png'});
 

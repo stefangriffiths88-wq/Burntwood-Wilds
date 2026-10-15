@@ -33,3 +33,5 @@ charms-test.cjs verifies effects, timing, all four arenas, fusion/carry-over/res
 Heroic spawning and defeat-to-reward scheduling belong to arenas/heroic.js, invoked by the shared engine and onDefeated hook. items/charms.js owns equipment, reward choices, fusion and effects; acquiring a first charm does not depend on a hero module or equipped charm proc state. A living heroic displays a health bar labelled “DEFEAT FOR A CHARM”. Reward still requires defeating that heroic, not merely reaching 1:00.
 
 encounters-test.cjs starts all seven heroes with zero charms in all four arenas: timed spawn, real attacks, reward choice, pause and duplicate guard. Positioning/invulnerability are test aids, not human balance evidence. Jackson charge tests cover base/upgraded contact and finisher against all four final bosses plus heroics; ordinary enemy knockback remains.
+
+Same-update victories: a final boss can die before the heroic in a multi-hit/companion update. heroicDefeated opens a pending reward when victory is already active, then returns to the existing victory panel after selection. Both orders are tested for all seven heroes; victory coins must be paid exactly once.

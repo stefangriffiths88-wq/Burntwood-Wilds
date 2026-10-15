@@ -31,3 +31,11 @@ console.log('PASS Jackson base/upgraded charge and finisher: boss damage, zero b
 // Encounter rewards must not depend on equipped charm effect state.
 reset();let mini=t.spawnHeroic();t.run.charmFX=null;t.damageEnemy(mini,999999,0,0);assert(t.run.charmPending);t.step(.01);assert.equal(t.state.state,'charm');
 console.log('PASS shared heroic reward lifecycle is independent of charm proc state');
+
+// AoE/companion attacks can finish enemies in either order during one update.
+for(let hero of heroes)for(let finalFirst of [true,false]){
+ reset(hero);t.spawn('boss',{x:500,y:500});let final=t.boss,mini=t.spawnHeroic(),coins=t.hub.coins;
+ for(let e of finalFirst?[final,mini]:[mini,final])t.damageEnemy(e,999999,0,0);
+ assert.equal(t.state.state,'charm',hero+' simultaneous defeat order '+finalFirst);assert.equal(t.run.charmOffers.length,3);assert(t.chooseCharm(0));assert.equal(t.state.state,'won');assert.equal(t.run.charms.length,1);assert.equal(t.hub.coins,coins+60);
+}
+console.log('PASS all seven heroes: both simultaneous heroic/final defeat orders preserve reward and one victory payment');
