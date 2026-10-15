@@ -67,3 +67,30 @@ For future sessions: GitHub tools may be named `mcp__codex_apps__github_*`; disc
 - At each completed update maintain PROJECT_STATUS.md with released version, completed features, design decisions, test evidence and limits, known problems, outstanding work and exact next priorities. GitHub is authoritative technical continuity.
 - Once the workflow is verified, ask whether the user wants stable preferences reflected in ChatGPT Memory. Asking is not a memory write; never claim a memory update without confirmation from an available memory capability.
 - Documentation-only housekeeping does not require a game-version bump or repeating gameplay tests. Check the diff and links; keep any triggered required checks green.
+
+
+## Two-chat coordination and safe ownership
+The user may develop gameplay in a separate ChatGPT Work chat while another chat audits progress and improves documentation. **Only one session owns gameplay implementation and releases at a time.** The audit chat must not modify gameplay, assets, version numbers, build scripts, CI workflow or PROJECT_STATUS.md during active development unless the user explicitly transfers ownership. Documentation edits should be limited to DEVELOPMENT_GUIDE.md or dedicated workflow notes and committed in a separate docs-only branch. Before opening a PR, inspect current main and active PRs; recheck the diff and branch head before merging. If there is a merge conflict or active release, pause the docs merge rather than overwrite Work's changes.
+
+## One-request development contract
+User input may be informal (e.g. "Evie's hits aren't registering"). Translate it into a small internal work ticket with: reported behaviour, expected behaviour, affected character/arena/system, likely owned module, reproduction steps, acceptance criteria, and whether any design approval is needed. Do not make the user fill out a form or repeat known context. First reproduce or identify evidence; fix the root cause rather than globally changing balance. Only request clarification if different plausible interpretations materially change the work.
+
+Use three change classes:
+- **Quick fix:** targeted implementation and focused test, followed by release smoke checks.
+- **Feature update:** owned-module and dependency tests, then gameplay/mobile regression.
+- **Major change:** staged implementation and explicit user playtest for substantial design decisions, then full release checks.
+
+Don't rerun an unchanged full suite after every small edit. However, never skip required pre-merge checks or tests of shared dependencies.
+
+## Release handover and user feedback
+At the end of a verified release, update PROJECT_STATUS.md with: release version, exact commit SHA and PR, production URL, changed modules, passed test runs and screenshot evidence, known limitations, pending feedback, and the next action. Do not mark a reported issue resolved merely because CI passes; distinguish **implemented**, **automated checks passed**, **deployed**, and **user playtested/accepted**.
+
+Record playtest feedback in a compact section of PROJECT_STATUS.md (or a dedicated feedback log once it becomes lengthy), with: release tested, character/arena, user-observed behaviour, expected behaviour, reproduction notes if known, investigation status, fix commit and user acceptance. Avoid inventing causes or test results.
+
+When the user reports a bug, the next response should briefly restate the interpretation and proceed with diagnosis, not repeatedly solicit approval. When a release is ready, provide the full Safari URL and a short summary of what specifically needs the user's playtest.
+
+## CI and build improvements to evaluate separately
+The existing `.github/workflows/journey-v10.yml` generates files and may commit/push them during a test run. **Do not alter this while another chat is developing.** In a dedicated future change, evaluate separating deterministic build/verification from publication: build generated outputs in CI, fail if tracked generated files differ, upload screenshots as artifacts, and let the release owner commit generated outputs explicitly. Add a check that artwork files exist and meet expected dimensions (with documented exceptions). Evaluate automated release gates/branch protection appropriate to the repository. These are proposals, not completed changes.
+
+## Proven art-upload continuity
+Zak 10.1.2 established a working binary upload method; preserve the exact verified procedure above. For each new portrait, require an approved source, source-byte checksum, committed blob verification, dimension check, selection-screen screenshot, and an explicit distinction between automated visual inspection and the user's final playtest. Never require the user to manually use GitHub when a verified connected upload route is available.
