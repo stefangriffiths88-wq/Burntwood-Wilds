@@ -53,11 +53,12 @@
     ],
     "selection_asset": "assets/portraits/zak.webp",
     "gameplay_sprite_status": "approved Street Zak option A, implemented in characters/zak.js for 10.1.1",
-    "approved_portrait_reference": "User-supplied full-resolution Zak outside Sankey's Corner, 1024x1536 JPEG, October 15 2026",
+    "approved_portrait_reference": "Exact approved Sankey's Corner portrait, committed as 1024x1536 WebP; user confirmed release 10.1.2 worked perfectly on 15 October 2026",
     "dimensions": [
       1024,
       1536
-    ]
+    ],
+    "size_bytes": 249644
   },
   "arenas": [
     "rugby",

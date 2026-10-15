@@ -1,6 +1,6 @@
 # Burntwood Wilds — development and release guide
 
-This file is the permanent handover for future ChatGPT development sessions. Read it **before editing**. Treat the repository as authoritative; verify file contents, tests and current deployment instead of trusting old chat summaries.
+This file is the permanent handover for future ChatGPT development sessions. Read this file and `PROJECT_STATUS.md` **at the start of every chat and before editing**. Treat the repository as authoritative; verify file contents, tests and current deployment instead of trusting old chat summaries.
 
 ## Project
 - Repository: `stefangriffiths88-wq/Burntwood-Wilds`, branch `main`.
@@ -31,13 +31,11 @@ For future art: obtain the approved full-size image, verify dimensions and exact
 ## Portrait rules
 Portraits are **not** playable sprites. Keep both independent. Never change an approved playable sprite while fixing its portrait. All six characters must use the same asset discovery in `build.py`; remove character-specific overrides when the replacement is available. Avoid multiple matching `<name>.webp/png/jpg/svg` files when the build expects exactly one. Preserve floating paws, no arms/legs/feet, and character-specific details from `ART_DIRECTION.md`. Check the actual image at display size, not only its dimensions.
 
-## Zak — current state and unfinished portrait correction
-- User approved the **Option A Street Zak** playable sprite in `journey-v10/characters/zak.js` (version 10.1.1) and says it is great. **Do not change it.**
-- Keep Gas Blast ranged attack, Toxic Fart Cloud special, Gas-Powered Launch dodge and Zak-specific upgrades untouched.
-- User approved a detailed **1024×1536** full portrait of Zak outside Sankey's Corner: teenage purple-grey cat, brown fringe, green eyes, sideways dark cap, dark hoodie, fluffy tail, detached paws, no limbs. The original was supplied as a chat image. A generated file was `/mnt/data/zak_sankeys_full_portrait.webp` in one session; verify it exists in the *current* session, never assume paths persist.
-- **Known defect:** `build.py` hardcodes `zak-cap.svg` instead of normal `zak.webp`. GitHub tree on 2026-10-15: `zak-cap.svg` 2,057 bytes, `zak.webp` 3,276 bytes. Both are unsuitable low-resolution images. The correct full-resolution portrait has not been committed.
-- **Fix:** Upload the *exact approved* full-resolution WebP binary, verify its GitHub size/content, remove the `zak-cap.svg` override and make the portrait registry resolve to `zak.webp`. Update catalog, retire obsolete placeholder appropriately, rebuild, test all character selection screens on mobile, run regression tests, deploy and verify. Do not claim complete until the actual live portrait is sharp and correctly framed.
-- Never regenerate the portrait when the approved image is available. Do not change Zak gameplay, sprite, other characters or arenas for this fix.
+## Zak — released and user-confirmed in 10.1.2
+- Approved full-resolution portrait: `journey-v10/assets/portraits/zak.webp`, 1024×1536, 249,644 bytes; exact Git blob `9ddf170497d78b5160a375f8b5d6041cff2d91fb`.
+- All portraits use the same build discovery. The low-resolution override and zak-cap.svg are removed.
+- Option A Street Zak gameplay sprite and Gas Blast / Toxic Fart Cloud / Gas-Powered Launch remain unchanged. User confirmed the portrait update worked perfectly.
+- Do not redesign or replace this approved portrait or sprite without a new user request.
 
 ## Character additions
 Use each character's isolated module, unique portrait file, normal weapon, special, dodge and upgrade definitions. Add targeted tests. Preserve existing characters and arenas. A new character must not require ad hoc hardcoded portrait exceptions.
@@ -58,3 +56,14 @@ Use each character's isolated module, unique portrait file, normal weapon, speci
 The approved full-resolution Zak image is now `journey-v10/assets/portraits/zak.webp` (1024×1536). All characters use identical build discovery; the obsolete zak-cap.svg is retired. Preserve the approved Street Zak gameplay module.
 
 For future sessions: GitHub tools may be named `mcp__codex_apps__github_*`; discover current schemas. Recover attachment bytes through Library search and its current download helper. Read the local binary as Base64, call create_blob with encoding base64, include its SHA in create_tree based on the current main tree, create_commit with the branch head as parent, and update_ref with expected_sha. Verify the committed blob SHA against the local Git blob hash. Use feature branches and inspect CI and Pages deployment after merge. No personal access token or manual user image upload is needed with these connected operations available.
+
+## Permanent working agreement
+- Carry the authorized development cycle through investigation, smallest effective modular fix, affected-system tests, independent corrections, final necessary regression/mobile checks, merge, deployment and live verification. Do not stop after each step.
+- Ask only for essential missing assets, creative choices, permission genuinely required, or significant scope changes. Preserve established systems and approved designs.
+- Keep characters, arenas, weapons, upgrades, enemies, progression and interface settings independently configurable. Diagnose collision/registration before changing damage or difficulty.
+- During iteration test affected modules and dependencies; run the necessary broader checks once stable. Repeat passed tests only when new changes or failures justify it. Inspect actual CI logs and rendered phone-size output.
+- At meaningful checkpoints give a five-block progress bar, approximate percentage, completed work, current work, blockers and remaining release steps. Never equate estimates with proof.
+- Evaluate improvements to implementation, testing, upload, communication and publishing; record proven improvements here and update relevant architecture/art documentation.
+- At each completed update maintain PROJECT_STATUS.md with released version, completed features, design decisions, test evidence and limits, known problems, outstanding work and exact next priorities. GitHub is authoritative technical continuity.
+- Once the workflow is verified, ask whether the user wants stable preferences reflected in ChatGPT Memory. Asking is not a memory write; never claim a memory update without confirmation from an available memory capability.
+- Documentation-only housekeeping does not require a game-version bump or repeating gameplay tests. Check the diff and links; keep any triggered required checks green.
