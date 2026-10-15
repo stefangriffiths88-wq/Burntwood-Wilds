@@ -90,6 +90,6 @@
       "mimi": 0.78
     },
     "boss_states": "Original sprite; wounded/resting after current-run victory. Bruce mouth ellipse removed by user request.",
-    "acceptance": "Requested by user; implementation awaiting mobile visual review and user playtest."
+    "acceptance": "Requested by user; mobile screenshots inspected for 10.5.0. Native Safari/user playtest pending; see PROJECT_STATUS.md."
   }
 }
