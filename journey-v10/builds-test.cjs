@@ -15,7 +15,7 @@ reset();c('clockwork');assert.equal(t.attackSpeedFactor(),.85);assert(Math.abs(t
 reset();c('still');t.run.charmFX.still=1;assert.equal(t.buildStats().power,25);t.player.vx=100;t.stepCharms(.01);assert.equal(t.buildStats().power,0);
 reset();c('glass');assert.equal(t.effectiveStats().hp,100*.8);assert.equal(t.buildStats().power,30);c('iron');t.player.hp=50;t.player.inv=0;t.hurt(10);assert(Math.abs(t.player.hp-(50-10/1.09))<1e-8);
 reset();c('blood');t.player.hp=20;e=target();t.damageEnemy(e,1000,0,0);assert.equal(t.player.hp,22);t.damageEnemy(e,1000,0,0);assert.equal(t.player.hp,22);assert.equal(t.recoverHealth(10),7);
-reset();c('lantern');t.player.hp=1;t.player.inv=0;t.hurt(500);assert.equal(t.state.state,'playing');assert.equal(t.player.hp,1);assert.equal(t.player.inv,2);assert.equal(t.recoverHealth(100),0);assert.equal(t.buildStats().power,25);t.player.inv=0;t.hurt(500);assert.equal(t.state.state,'lost');
+reset();c('lantern');t.player.hp=1;t.player.inv=0;t.hurt(500);assert.equal(t.state.state,'playing');assert.equal(t.player.hp,1);assert.equal(t.player.inv,2);assert.equal(t.recoverHealth(100),0);assert.equal(t.buildStats().power,25);t.gainCharm('sturdy');assert.equal(t.player.hp,1);t.player.inv=0;t.hurt(500);assert.equal(t.state.state,'lost');
 reset();c('phantom');e=target(60);let other=target(90);t.charge();assert(t.run.charmFX.phantom);assert.equal(t.run.charmFX.phantom.left,4);t.damageEnemy(e,10,0,0);assert(t.run.charmFX.queue.some(q=>q.kind==='clone'&&q.amount===4));t.stepCharms(.2);assert(!t.run.charmFX.queue.length);t.stepCharms(4);assert.equal(t.run.charmFX.phantom,null);
 console.log('PASS crit guarantee/conflict, Clockwork, Still Water, Glass, armour, lifesteal cap, Last Light and nonrecursive Phantom');
 // Gold starts at zero; saved starter unlocks are one-time purchases, not free mid-run gold.
@@ -28,3 +28,6 @@ reset('jackson','park');t.spawn('boss',{x:450,y:450});let b=t.boss;b.mode='shiel
 for(let i=0;i<8;i++){b.mode='collect';b.pile=0;b.timer=0;t.parkPiles[0].charge=1;t.stepParkEnemy(b,0);}assert(Math.abs(b.healUsed-b.maxHp*.15)<1e-7);assert(b.hp<=b.maxHp*.45+1e-7);
 for(let kind of ['scrapper','pouncer','bandit','bruiser','spitter']){t.spawn(kind,{x:490,y:700});let enemy=t.enemies.at(-1);assert(enemy.park);t.stepParkEnemy(enemy,.01);assert(Number.isFinite(enemy.x));}let patch=t.spawnHeroic();assert.equal(patch.kind,'patch');assert.equal(patch.heroic,true);assert.equal(t.boss,b);t.draw();
 console.log('PASS Park roster, Patch isolation, directional umbrella shield, interrupt threshold and hard healing cap');
+
+// A stronger bag fusion replaces an equipped weaker copy while conserving it.
+reset();t.gainCharm('quick');t.run.charmBag.push({key:'quick',rank:2},{key:'quick',rank:2});t.enterHub();t.openHubShop(true);assert(t.fuseCharm());assert.equal(t.charmRank('quick'),3);assert(t.run.charmBag.some(c=>c.key==='quick'&&c.rank===1));assert.equal(t.run.charms.length+t.run.charmBag.length,2);console.log('PASS stronger bag fusion conserves weaker equipment');

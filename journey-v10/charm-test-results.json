@@ -3,150 +3,150 @@
   "journeys": [
     {
       "hero": "jackson",
-      "build": "storm+frost+ember",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 553
+      "build": "frost+opportunist+still",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 622
     },
     {
       "hero": "jackson",
-      "build": "hunter+watch+moon",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 490
+      "build": "keen+heavy+patient",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 635
     },
     {
       "hero": "jackson",
-      "build": "bell+locket+thorn",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 550
+      "build": "clockwork+phantom+blood",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 634
     },
     {
       "hero": "ava",
-      "build": "storm+frost+ember",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 460
+      "build": "frost+opportunist+still",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 526
     },
     {
       "hero": "ava",
-      "build": "hunter+watch+moon",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 440
+      "build": "keen+heavy+patient",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 567
     },
     {
       "hero": "ava",
-      "build": "bell+locket+thorn",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 463
+      "build": "clockwork+phantom+blood",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 595
     },
     {
       "hero": "stef",
-      "build": "storm+frost+ember",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 561
+      "build": "frost+opportunist+still",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 613
     },
     {
       "hero": "stef",
-      "build": "hunter+watch+moon",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 520
+      "build": "keen+heavy+patient",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 635
     },
     {
       "hero": "stef",
-      "build": "bell+locket+thorn",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 553
+      "build": "clockwork+phantom+blood",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 630
     },
     {
       "hero": "jodie",
-      "build": "storm+frost+ember",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 645
+      "build": "frost+opportunist+still",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 678
     },
     {
       "hero": "jodie",
-      "build": "hunter+watch+moon",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 614
+      "build": "keen+heavy+patient",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 751
     },
     {
       "hero": "jodie",
-      "build": "bell+locket+thorn",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 598
+      "build": "clockwork+phantom+blood",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 787
     },
     {
       "hero": "evie",
-      "build": "storm+frost+ember",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 584
+      "build": "frost+opportunist+still",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 667
     },
     {
       "hero": "evie",
-      "build": "hunter+watch+moon",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 572
+      "build": "keen+heavy+patient",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 666
     },
     {
       "hero": "evie",
-      "build": "bell+locket+thorn",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 538
+      "build": "clockwork+phantom+blood",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 639
     },
     {
       "hero": "zak",
-      "build": "storm+frost+ember",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 533
+      "build": "frost+opportunist+still",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 637
     },
     {
       "hero": "zak",
-      "build": "hunter+watch+moon",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 503
+      "build": "keen+heavy+patient",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 620
     },
     {
       "hero": "zak",
-      "build": "bell+locket+thorn",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 532
+      "build": "clockwork+phantom+blood",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 659
     },
     {
       "hero": "mimi",
-      "build": "storm+frost+ember",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 560
+      "build": "frost+opportunist+still",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 608
     },
     {
       "hero": "mimi",
-      "build": "hunter+watch+moon",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 510
+      "build": "keen+heavy+patient",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 650
     },
     {
       "hero": "mimi",
-      "build": "bell+locket+thorn",
-      "arenas": 3,
-      "heroics": 3,
-      "combatSeconds": 547
+      "build": "clockwork+phantom+blood",
+      "arenas": 5,
+      "heroics": 5,
+      "combatSeconds": 662
     }
   ]
 }
