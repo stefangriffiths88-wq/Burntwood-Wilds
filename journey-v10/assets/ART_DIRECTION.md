@@ -40,3 +40,6 @@ Capture: all seven menu portraits, Zak portrait full-size, Zak in-game sprite id
 
 ## Chase Terrace Park — approved gameplay direction
 Native Canvas scenery: grass, crossing paths, benches, bins, hedges and swings. Rival cats have simple readable silhouettes and detached paws. Umbrella Man is a fictional slim, hunched, untidy cartoon figure with a closed/open umbrella, readable sweep/rush warnings, frontal guard and interruptible rubbish healing. Patch has a scar and torn-ear silhouette. Existing hero portraits and sprites are unchanged. New arena screenshots require release-owner inspection; human visual acceptance remains pending. Town placement is illustrative; accurate road geography requires an agreed map reference.
+
+## Joseph — approved Hooded Training, 15 October 2026
+Golden-orange tabby, green eyes, cream muzzle/paws, hood up with visible ears, black hoodie with red/green trim, tail and two detached paws. No arms/legs/feet. Native Canvas sprite follows Option 2 in references/joseph-approved-sprite-options.jpeg. Selection portrait is an unpainted 895×842 crop from the approved Rugby Club poster (source rectangle 66,178–961,1020), excluding poster text/buttons. All head/paws/tail remain visible. Original approved sources are preserved in assets/references. No thumbnail redesign in this build.

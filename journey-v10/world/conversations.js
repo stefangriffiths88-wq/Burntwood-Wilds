@@ -1,5 +1,6 @@
 // Short resident conversations, changed only by victories in this journey.
 const TOWN_CHAT={
+ joseph:["If those monsters think they’re getting past me, they’ve never seen my tackle!","If those monsters think they’re getting past me, they’ve never seen my tackle!"],
  ava:['I wished I could be a cat once… I didn’t mean everyone! You can fix this, can’t you?','You did it! I knew those paws were good for something.'],
  jackson:['Bruce has taken over the rugby club. Fancy helping me get our pitch back?','That’s one down. Reckon we’ve earned a victory lap?'],
  stef:['Right, we’re cats. Brilliant. Give me some essence and I’ll see what I can knock together.','Good work. Bring that essence over—let’s get you ready for the next one.'],
@@ -8,7 +9,7 @@ const TOWN_CHAT={
  zak:['Being a cat’s alright. Being trapped in Burntwood forever? Less alright.','That was actually pretty good. Don’t tell anyone I said that.'],
  mimi:['There you are, human. Whiskers suit you. Now let’s work on getting you out of here.','Feel that? The spell’s weakening. Keep going, human.']
 };
-function residentLine(key){return TOWN_CHAT[key][run.visited?.length?1:0];}
+function residentLine(key){if(key==='joseph'&&selected==='jodie')return 'Mum! Mum! Watch me take this monster down!';return TOWN_CHAT[key][run.visited?.length?1:0];}
 function openConversation(key){if(state!=='hub'||!townResidents().some(n=>n.key===key))return false;if(key==='stef')return openWorkshop();state='dialogue';stick.x=stick.y=0;p.vx=p.vy=0;$('townPortrait').src=PORTRAITS[key];$('townPortrait').alt=CHARACTERS[key].name;$('townName').textContent=CHARACTERS[key].name.toUpperCase();$('townLine').textContent=residentLine(key);$('townDialogue').style.display='flex';return true;}
 function closeConversation(){if(state!=='dialogue')return;state='hub';$('townDialogue').style.display='none';updateHubHud();}
 function drawTalkBubble(x,y){ctx.save();ctx.translate(x+18,y-38);ellipse(0,0,9,7,'#f5e4b9');line([[-5,5],[-7,10],[0,6]],'#f5e4b9',2);for(let dx of [-4,0,4])ellipse(dx,0,1,1,'#34523e');ctx.restore();}
