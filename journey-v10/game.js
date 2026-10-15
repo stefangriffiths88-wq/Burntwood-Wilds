@@ -21,7 +21,7 @@ const STAT_NAMES={};
 
 
 // Journey orchestration. Arena content and character implementations are split at build time.
-const BUILD_ID='10.0.8';
+const BUILD_ID='10.0.9';
 
 
 
@@ -592,6 +592,62 @@ function drawPlaytestExtras(){for(let h of hearts)drawHeart(h);for(let e of enem
 const PERKS={fire:{name:'Fire',color:'#f5a15a',text:'Hits burn enemies. Burning defeats spread a shorter burn to one nearby foe.'},ice:{name:'Ice',color:'#95dcf1',text:'Hits slow enemies by 30% for 1.2s. Refreshes rather than multiplying other slows.'},lightning:{name:'Lightning',color:'#e5d975',text:'A hit arcs for 8 damage to another enemy within 120 reach, at most once every 0.65s.'},vampiric:{name:'Vampiric',color:'#ba9ce5',text:'Steal 4% of actual hit damage as health, limited to 2 health/sec across all attacks and companions.'},wounding:{name:'Wounding',color:'#ee8c91',text:'Hits build up to three bleeds. Each stack deals 3 damage/sec for 3s; stacking is rate-limited.'}};
 let hearts=[],nextHeartAt=0,rewardRolls=[];
 
+// world/shopkeeper.js — NPC identity, movement, dialogue and shop interaction.
+// Kept independent of arenas and character upgrades.
+const SHOPKEEPER={name:'Mabel',x:719,y:379,reach:67,phase:0,chat:0};
+function shopkeeperNear(){return dist(p,SHOPKEEPER)<SHOPKEEPER.reach;}
+function updateShopkeeper(dt){SHOPKEEPER.phase+=dt;SHOPKEEPER.chat=Math.max(0,SHOPKEEPER.chat-dt);}
+function drawShopkeeper(){
+ const n=SHOPKEEPER,t=n.phase,bob=Math.sin(t*3)*1.7;
+ ellipse(n.x,n.y+17,22,7,'#213b2b88');
+ // Independent floating hands, apron, pointed bonnet, warm eyes and a waving greeting.
+ ctx.fillStyle='#6b405e';ctx.beginPath();ctx.moveTo(n.x-16,n.y-8+bob);ctx.lineTo(n.x+16,n.y-8+bob);ctx.lineTo(n.x+20,n.y+17);ctx.lineTo(n.x-20,n.y+17);ctx.closePath();ctx.fill();
+ ctx.fillStyle='#ead8a2';ctx.fillRect(n.x-9,n.y+2+bob,18,16);
+ ellipse(n.x-22,n.y+Math.sin(t*4)*3,8,8,'#d7ad8d');
+ ellipse(n.x+23,n.y-5+Math.sin(t*5)*6,8,8,'#d7ad8d');
+ ellipse(n.x,n.y-24+bob,17,17,'#cda786');
+ ellipse(n.x-7,n.y-25+bob,3.4,4.5,'#253f38');ellipse(n.x+7,n.y-25+bob,3.4,4.5,'#253f38');
+ ctx.strokeStyle='#694b41';ctx.lineWidth=2;ctx.beginPath();ctx.arc(n.x,n.y-20+bob,5,.15,Math.PI-.15);ctx.stroke();
+ ctx.fillStyle='#5e4a3e';ctx.beginPath();ctx.moveTo(n.x-22,n.y-34+bob);ctx.lineTo(n.x,n.y-65+bob);ctx.lineTo(n.x+20,n.y-34+bob);ctx.closePath();ctx.fill();
+ ellipse(n.x,n.y-35+bob,24,5,'#9b7653');
+ ctx.textAlign='center';ctx.font='bold 12px Georgia';ctx.fillStyle='#fff0bb';ctx.fillText('MABEL · TRADER',n.x,n.y-75+bob);
+ if(shopkeeperNear()||n.chat>0){ctx.fillStyle='#fff5d8';ctx.fillRect(n.x-68,n.y-117,136,25);ctx.fillStyle='#2e4c39';ctx.font='bold 11px system-ui';ctx.fillText(n.chat>0?'Lovely to see you!':'TALK · SHOP',n.x,n.y-100);}
+}
+function interactShopkeeper(){if(state!=='hub'||!shopkeeperNear())return false;SHOPKEEPER.chat=2;return openHubShop();}
+
+// world/burntwood-details.js — independent overworld dressing.
+// Decorative scenery is intentionally deterministic and does not alter hitboxes.
+const BURNTWOOD_BUILDINGS=[
+ {x:68,y:265,w:72,h:65,type:0},{x:156,y:248,w:78,h:70,type:1},
+ {x:252,y:300,w:70,h:58,type:2},{x:83,y:428,w:83,h:75,type:0},
+ {x:194,y:455,w:65,h:62,type:1},{x:668,y:478,w:78,h:74,type:2},
+ {x:762,y:521,w:70,h:63,type:0},{x:84,y:621,w:75,h:67,type:1},
+ {x:211,y:604,w:72,h:61,type:2},{x:689,y:655,w:76,h:68,type:0},
+ {x:760,y:729,w:73,h:66,type:1},{x:552,y:1112,w:82,h:69,type:2},
+ {x:130,y:1157,w:74,h:65,type:0},{x:424,y:1146,w:75,h:66,type:1},
+ {x:590,y:96,w:50,h:60,type:0},{x:656,y:100,w:49,h:59,type:1},
+ {x:719,y:100,w:54,h:58,type:2}
+];
+function drawBurntwoodDetails(){
+ // Distinct clusters of houses and shops around the hub paths.
+ for(let i=0;i<BURNTWOOD_BUILDINGS.length;i++){let b=BURNTWOOD_BUILDINGS[i];drawBuilding(b,b.type);ctx.fillStyle=['#b35b4d','#638b6a','#d7b06a'][i%3];ctx.fillRect(b.x+5,b.y+b.h-18,b.w-10,6);}
+ // Individual hedges, small flowering gardens and fences make the streets feel inhabited.
+ for(let i=0;i<76;i++){let x=35+(i*163+Math.floor(i/9)*29)%825,y=50+(i*241+Math.floor(i/13)*47)%1180;
+ if((x>565&&x<850&&y<355)||(x<330&&y>785&&y<1120)||(x>350&&x<540&&y>830&&y<1050))continue;
+ ellipse(x,y,9+i%7,5+i%4,i%2?'#3f7447':'#527f50');
+ if(i%3===0){ellipse(x-3,y-4,2,2,'#edb9b2');ellipse(x+4,y+1,2,2,'#e7d28b');}
+ }
+ // Benches, bins, lampposts and road signs, all decorative.
+ for(let i=0;i<12;i++){let x=75+(i*199)%750,y=170+(i*283)%980;ctx.fillStyle='#69513d';ctx.fillRect(x,y,26,5);ctx.fillRect(x+3,y+5,3,11);ctx.fillRect(x+20,y+5,3,11);}
+ for(let i=0;i<9;i++){let x=95+(i*173)%720,y=160+(i*257)%960;line([[x,y+18],[x,y-24]],'#343f3d',3);ellipse(x,y-25,7,7,'#f3e2ad');}
+ // Wildlife and reeds by Chasewater.
+ for(let i=0;i<21;i++){let x=20+(i*29)%250,y=835+(i*37)%290;line([[x,y+8],[x-3,y-8]],'#6b9969',2);}
+ for(let i=0;i<7;i++){let x=36+i*29,y=925+(i%3)*35;ellipse(x,y,7,4,'#e9e6d7');ellipse(x+5,y-4,3,3,'#e9e6d7');}
+ // Quarry warning signs and scattered rocks.
+ for(let i=0;i<20;i++){let x=654+(i*41)%205,y=970+(i*59)%200;ellipse(x,y,4+i%6,3+i%3,'#9e8c73');}
+ ctx.fillStyle='#f4d16e';ctx.fillRect(646,975,48,24);ctx.fillStyle='#4d4433';ctx.textAlign='center';ctx.font='bold 9px system-ui';ctx.fillText('QUARRY',670,990);
+}
+
 // world/hub.js — source of truth.
 function finish(won){if(state!=='playing')return;state=won?'won':'lost';if(won){hub.coins+=60;run.visited=run.visited||[];if(!run.visited.includes(arenaKey))run.visited.push(arenaKey);}let more=won&&run.visited.length<3;$('panel').style.display='grid';$('upgradeChoices').style.display='none';$('back').style.display='block';$('panelButton').style.display='block';$('panelTitle').textContent=won?arena().short.toUpperCase()+' CLEARED':'GOOD RUN, '+stats().name.toUpperCase();$('panelName').textContent=won?arena().bossShort+' DEFEATED':'Have another go';$('panelText').textContent='Level '+run.level+' · '+run.history.length+' upgrades · '+kills+' enemies beaten';$('continue').style.display=more?'block':'none';$('continue').textContent=run.perk?'RETURN TO BURNTWOOD':'CHOOSE PERK · RETURN TO BURNTWOOD';$('continue').onclick=()=>run.perk?continueRun():openBossReward();$('panelButton').textContent=won?'FINISH RUN':'NEW RUN';$('panelButton').onclick=won?returnToMenu:startJourney;}
 
@@ -603,11 +659,11 @@ function enterHub(first=false){state='hub';enemies=[];balls=[];enemyShots=[];pen
 
 function hubPosition(x,y,r=14){x=clamp(x,35,865);y=clamp(y,65,1235);for(let b of hub.solids){let qx=clamp(x,b.x,b.x+b.w),qy=clamp(y,b.y,b.y+b.h),dx=x-qx,dy=y-qy,d=Math.hypot(dx,dy);if(d<r){if(d>.001){x=qx+dx/d*r;y=qy+dy/d*r;}else{let options=[{n:Math.abs(x-b.x),x:b.x-r,y},{n:Math.abs(x-b.x-b.w),x:b.x+b.w+r,y},{n:Math.abs(y-b.y),x,y:b.y-r},{n:Math.abs(y-b.y-b.h),x,y:b.y+b.h+r}].sort((a,b)=>a.n-b.n);x=options[0].x;y=options[0].y;}}}return{x,y};}
 
-function stepHub(dt){hub.time+=dt;let dx=stick.x+(keys.d||keys.ArrowRight?1:0)-(keys.a||keys.ArrowLeft?1:0),dy=stick.y+(keys.s||keys.ArrowDown?1:0)-(keys.w||keys.ArrowUp?1:0),n=Math.hypot(dx,dy);if(n>1){dx/=n;dy/=n;}let sm=1-Math.exp(-dt*15);p.vx=lerp(p.vx,dx*stats().speed,sm);p.vy=lerp(p.vy,dy*stats().speed,sm);let q=hubPosition(p.x+p.vx*dt,p.y+p.vy*dt);p.x=q.x;p.y=q.y;p.walk+=Math.hypot(p.vx,p.vy)*dt*.065;if(n>.1)p.dir={x:dx/(n>1?1:n),y:dy/(n>1?1:n)};for(let c of cats){let a=c.slot*1.7,goal={x:p.x+Math.cos(a)*28,y:p.y+18+Math.sin(a)*12},d=dist(c,goal)||1,m=Math.min(d,175*dt);c.x+=(goal.x-c.x)/d*m;c.y+=(goal.y-c.y)/d*m;}for(let a of hub.animals){a.t-=dt;if(a.t<=0){a.a=rand()*TAU;a.t=1+rand()*4;}let q=hubPosition(a.x+Math.cos(a.a)*18*dt,a.y+Math.sin(a.a)*18*dt,5);a.x=q.x;a.y=q.y;}cam.x=lerp(cam.x,p.x,1-Math.exp(-dt*8));cam.y=lerp(cam.y,p.y,1-Math.exp(-dt*8));updateHubHud();}
+function stepHub(dt){hub.time+=dt;let dx=stick.x+(keys.d||keys.ArrowRight?1:0)-(keys.a||keys.ArrowLeft?1:0),dy=stick.y+(keys.s||keys.ArrowDown?1:0)-(keys.w||keys.ArrowUp?1:0),n=Math.hypot(dx,dy);if(n>1){dx/=n;dy/=n;}let sm=1-Math.exp(-dt*15);p.vx=lerp(p.vx,dx*stats().speed,sm);p.vy=lerp(p.vy,dy*stats().speed,sm);let q=hubPosition(p.x+p.vx*dt,p.y+p.vy*dt);p.x=q.x;p.y=q.y;p.walk+=Math.hypot(p.vx,p.vy)*dt*.065;if(n>.1)p.dir={x:dx/(n>1?1:n),y:dy/(n>1?1:n)};for(let c of cats){let a=c.slot*1.7,goal={x:p.x+Math.cos(a)*28,y:p.y+18+Math.sin(a)*12},d=dist(c,goal)||1,m=Math.min(d,175*dt);c.x+=(goal.x-c.x)/d*m;c.y+=(goal.y-c.y)/d*m;}for(let a of hub.animals){a.t-=dt;if(a.t<=0){a.a=rand()*TAU;a.t=1+rand()*4;}let q=hubPosition(a.x+Math.cos(a.a)*18*dt,a.y+Math.sin(a.a)*18*dt,5);a.x=q.x;a.y=q.y;}cam.x=lerp(cam.x,p.x,1-Math.exp(-dt*8));cam.y=lerp(cam.y,p.y,1-Math.exp(-dt*8));updateShopkeeper(dt);updateHubHud();}
 
-function updateHubHud(){hub.near=hub.portals.find(a=>dist(p,a)<75&&!run.visited?.includes(a.key))||null;hub.nearShop=dist(p,hub.shop)<85;$('arenaHud').textContent='BURNTWOOD · WALK TO AN ARENA';$('timer').textContent=(run.visited?.length||0)+'/3 CLEARED';$('hpText').textContent=Math.ceil(p.hp)+' / '+stats().hp;$('hpFill').style.width=p.hp/stats().hp*100+'%';$('level').textContent='LV '+run.level;$('build').textContent=hub.near?'ENTER '+ARENAS[hub.near.key].short.toUpperCase():hub.nearShop?'VISIT WILDS SHOP':'Explore the real Burntwood landmarks';actionButton('charge',!!(hub.near||hub.nearShop),hub.near?'ENTER':hub.nearShop?'SHOP':'FIND GATE');actionButton('dodge',false,'SAFE HUB');$('perkHud').textContent='BUILD '+BUILD_ID+' · Progression pauses here';}
+function updateHubHud(){hub.near=hub.portals.find(a=>dist(p,a)<75&&!run.visited?.includes(a.key))||null;hub.nearShop=shopkeeperNear();$('arenaHud').textContent='BURNTWOOD · WALK TO AN ARENA';$('timer').textContent=(run.visited?.length||0)+'/3 CLEARED';$('hpText').textContent=Math.ceil(p.hp)+' / '+stats().hp;$('hpFill').style.width=p.hp/stats().hp*100+'%';$('level').textContent='LV '+run.level;$('build').textContent=hub.near?'ENTER '+ARENAS[hub.near.key].short.toUpperCase():hub.nearShop?'TALK TO MABEL':'Explore the real Burntwood landmarks';actionButton('charge',!!(hub.near||hub.nearShop),hub.near?'ENTER':hub.nearShop?'TALK':'FIND GATE');actionButton('dodge',false,'SAFE HUB');$('perkHud').textContent='BUILD '+BUILD_ID+' · Progression pauses here';}
 
-function enterNearby(){if(state==='hub'&&hub.nearShop)return openHubShop();if(state==='hub'&&hub.near)enterArena(hub.near.key);}
+function enterNearby(){if(state==='hub'&&hub.nearShop)return interactShopkeeper();if(state==='hub'&&hub.near)enterArena(hub.near.key);}
 
 function enterArena(key){if(state!=='hub'||!ARENAS[key]||run.visited?.includes(key))return false;arenaKey=key;run.stage=run.visited?.length||0;run.stagePicks=0;run.earned=0;run.offers=[];time=0;enemies=[];balls=[];enemyShots=[];pendingShots=[];gems=[];fx=[];warnings=[];hazards=[];scheduled=[];decoy=null;hearts=[];nextHeartAt=0;boss=null;bossSpawned=false;nextSpawn=.8;p.x=450;p.y=780;p.vx=p.vy=0;p.extX=p.extY=0;p.action=null;p.swing=p.claws=null;p.frenzy=0;p.catTarget=null;p.hitIds.clear();p.inv=1.5;p.attack=.4;p.chargeCD=p.dodgeCD=0;resetCats();syncCats();resetDucks();cam={x:p.x,y:p.y};state='playing';$('hubMap').style.display='none';$('hubMenu').style.display='block';$('charge').firstChild.textContent=isEvie()?'ASSEMBLE':isJodie()?'KITTENS':isStef()?'BY ORDER!':isAva()?'GLITTER':'CHARGE';$('dodge').firstChild.textContent=isStef()?'PUSH':'DODGE';$('arenaHud').textContent=arena().name.toUpperCase();$('bossHud').style.display='none';$('panel').style.display='none';shrineBuff=null;shrine=rewardRandom()<.2?{x:arenaKey==='chasewater'?380:180,y:600,used:false}:null;updateHud();return true;}
 
@@ -638,19 +694,20 @@ function drawHubScenery(){
  ctx.fillStyle='#c5ad88';ctx.fillRect(530,352,60,61);ctx.fillStyle='#765f46';ctx.fillRect(521,343,77,15);mapLabel(550,339,'LEISURE CENTRE');
  ctx.fillStyle='#b9a280';ctx.fillRect(370,482,95,62);ctx.fillStyle='#6d5945';ctx.fillRect(361,468,113,19);mapLabel(415,459,'CHASE TERRACE');
  for(let k=0;k<130;k++){let x=26+(k*137+Math.floor(k/11)*19)%842,y=30+(k*233+Math.floor(k/7)*27)%1220;if((x>550&&x<850&&y<350)||(x<320&&y>790&&y<1150)||(x>355&&x<540&&y>860&&y<1030)||(x>625&&y>960))continue;mapTree(x,y,9+k%12);}
- // Shop beside Sankey's Corner: visible keeper, striped awning and bottles.
- let q=hub.shop;ctx.fillStyle='#614533';ctx.fillRect(q.x-42,q.y-18,84,46);ctx.fillStyle='#e7c78a';ctx.fillRect(q.x-50,q.y-32,100,18);for(let k=0;k<5;k++){ctx.fillStyle=k%2?'#e4bf85':'#a75850';ctx.fillRect(q.x-50+k*20,q.y-32,20,18);}ellipse(q.x+12,q.y-6,10,10,'#c4b29a');ellipse(q.x+10,q.y-15,11,7,'#594939');for(let k=0;k<3;k++){ctx.fillStyle=['#b95251','#609cc1','#87b866'][k];ctx.fillRect(q.x-33+k*18,q.y+6,9,13);}mapLabel(q.x,q.y-43,'WILDS SHOP');
+ drawBurntwoodDetails();
+ // Sankey's Corner shop stall: the separate Mabel NPC stands in front.
+ let q=hub.shop;ctx.fillStyle='#614533';ctx.fillRect(q.x-42,q.y-18,84,46);ctx.fillStyle='#e7c78a';ctx.fillRect(q.x-50,q.y-32,100,18);for(let k=0;k<5;k++){ctx.fillStyle=k%2?'#e4bf85':'#a75850';ctx.fillRect(q.x-50+k*20,q.y-32,20,18);}for(let k=0;k<3;k++){ctx.fillStyle=['#b95251','#609cc1','#87b866'][k];ctx.fillRect(q.x-33+k*18,q.y+6,9,13);}mapLabel(q.x,q.y-43,'WILDS SHOP');
  mapLabel(205,770,'CHASEWATER');mapLabel(445,1083,'RUGBY CLUB');mapLabel(745,1193,'BURNTWOOD QUARRY');mapLabel(682,100,'SANKEY’S CORNER');
  for(let a of hub.animals){ellipse(a.x,a.y,5,4,['#c9ae89','#dfdbbd','#b88353'][a.kind]);}
 }
-function drawHub(){ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle='#34533b';ctx.fillRect(0,0,W,H);ctx.save();ctx.translate(W/2-cam.x*scale,H*.47-cam.y*scale);ctx.scale(scale,scale);drawHubScenery();for(let g of hub.portals){let done=run.visited?.includes(g.key);radialDraw(g.x,g.y,37,done?'#92b38b':'#e8c27d');ctx.fillStyle=done?'#91b38a':'#c9a365';ctx.fillRect(g.x-25,g.y-12,6,36);ctx.fillRect(g.x+19,g.y-12,6,36);line([[g.x-25,g.y-12],[g.x+25,g.y-12]],'#f7db9d',5);ctx.font='bold 12px system-ui';ctx.fillStyle='#fff3cc';ctx.textAlign='center';ctx.fillText(ARENAS[g.key].short.toUpperCase(),g.x,g.y-39);ctx.font='10px system-ui';ctx.fillText(done?'CLEARED':'ENTER',g.x,g.y+44);}for(let c of cats)drawCat(c);CHARACTER_MODULES[selected].draw();ctx.restore();drawHubMap();}
+function drawHub(){ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle='#34533b';ctx.fillRect(0,0,W,H);ctx.save();ctx.translate(W/2-cam.x*scale,H*.47-cam.y*scale);ctx.scale(scale,scale);drawHubScenery();for(let g of hub.portals){let done=run.visited?.includes(g.key);radialDraw(g.x,g.y,37,done?'#92b38b':'#e8c27d');ctx.fillStyle=done?'#91b38a':'#c9a365';ctx.fillRect(g.x-25,g.y-12,6,36);ctx.fillRect(g.x+19,g.y-12,6,36);line([[g.x-25,g.y-12],[g.x+25,g.y-12]],'#f7db9d',5);ctx.font='bold 12px system-ui';ctx.fillStyle='#fff3cc';ctx.textAlign='center';ctx.fillText(ARENAS[g.key].short.toUpperCase(),g.x,g.y-39);ctx.font='10px system-ui';ctx.fillText(done?'CLEARED':'ENTER',g.x,g.y+44);}drawShopkeeper();for(let c of cats)drawCat(c);CHARACTER_MODULES[selected].draw();ctx.restore();drawHubMap();}
 function drawHubMap(){let c=$('hubMap').getContext('2d');c.clearRect(0,0,118,150);c.fillStyle='#254f3e';c.fillRect(0,0,118,150);c.fillStyle='#5b8f9a';c.beginPath();c.ellipse(24,110,21,24,0,0,TAU);c.fill();c.strokeStyle='#c4ad85';c.lineWidth=5;c.beginPath();c.moveTo(60,75);c.lineTo(86,30);c.moveTo(60,75);c.lineTo(28,103);c.moveTo(60,75);c.lineTo(90,120);c.stroke();for(let g of hub.portals){let x=g.x/900*110+4,y=g.y/1300*140+5;c.fillStyle=run.visited?.includes(g.key)?'#83b18b':'#f2cb7d';c.fillRect(x-4,y-4,8,8);c.fillStyle='#fff7d6';c.font='bold 9px system-ui';c.textAlign='center';c.fillText({rugby:'R',chasewater:'C',sankeys:'S',quarry:'Q'}[g.key],x,y-7);}c.fillStyle='#f6e8c4';c.beginPath();c.arc(p.x/900*110+4,p.y/1300*140+5,4,0,TAU);c.fill();}
 
 function interactWorld(){if(state==='hub')enterNearby();else if(state==='playing'&&shrine&&!shrine.used&&dist(p,shrine)<70)openShrine();}
 const hub={time:0,near:null,nearShop:false,coins:0,animals:[],shop:{x:750,y:378},solids:[],portals:[{key:'sankeys',x:680,y:225},{key:'chasewater',x:205,y:1000},{key:'rugby',x:445,y:920},{key:'quarry',x:745,y:1050}]};
 
 const HUB_SHOP_ITEMS=[{id:'heal',name:'Healing Potion',detail:'Restore 50 health',cost:30},{id:'full',name:'Full Recovery',detail:'Restore all health',cost:75},{id:'speed',name:'Swift Boots',detail:'+5% movement speed this run',cost:50},{id:'power',name:'Stronger Paws',detail:'+10% weapon damage this run',cost:50},{id:'shield',name:'Protective Charm',detail:'+20 maximum health this run',cost:75}];
-function openHubShop(){if(state!=='hub'||!hub.nearShop)return false;state='shop';$('hubShop').style.display='flex';renderHubShop();return true;}
+function openHubShop(){if(state!=='hub'||!shopkeeperNear())return false;state='shop';$('hubShop').style.display='flex';renderHubShop();return true;}
 function closeHubShop(){if(state!=='shop')return;state='hub';$('hubShop').style.display='none';updateHubHud();}
 function renderHubShop(){$('shopCoins').textContent=hub.coins+' coins';$('shopItems').innerHTML=HUB_SHOP_ITEMS.map(a=>{let owned=run.shopBought?.includes(a.id),disabled=owned||hub.coins<a.cost||((a.id==='heal'||a.id==='full')&&p.hp>=stats().hp);return '<button class="shopItem" data-item="'+a.id+'" '+(disabled?'disabled':'')+'><b>'+a.name+'</b><small>'+a.detail+'</small><span>'+a.cost+' coins'+(owned?' · OWNED':'')+'</span></button>';}).join('');for(let b of $('shopItems').children)b.onclick=()=>buyHubItem(b.dataset.item);}
 function buyHubItem(id){if(state!=='shop')return false;let a=HUB_SHOP_ITEMS.find(x=>x.id===id);if(!a||hub.coins<a.cost||run.shopBought?.includes(id))return false;if((id==='heal'||id==='full')&&p.hp>=stats().hp)return false;hub.coins-=a.cost;if(id==='heal')recoverHealth(50);else if(id==='full')recoverHealth(stats().hp);else{run.shopBought=run.shopBought||[];run.shopBought.push(id);if(id==='shield')p.hp+=20;}renderHubShop();return true;}

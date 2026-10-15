@@ -11,6 +11,8 @@
   "characters/zak.js",
   "upgrades/progression.js",
   "upgrades/rewards.js",
+  "world/shopkeeper.js",
+  "world/burntwood-details.js",
   "world/hub.js",
   "world/shrines.js",
   "arenas/sankeys.js",
