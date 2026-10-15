@@ -88,6 +88,21 @@
         "assets/references/tom-approved-portrait-options.jpeg",
         "assets/references/tom-approved-gameplay-reference.jpeg"
       ]
+    },
+    "havannah": {
+      "asset": "assets/portraits/havannah.webp",
+      "status": "user-approved-portrait-and-option-3-with-blue-eye-correction",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "f6fe6ebbfb97f8644492ae17606ba978e582fa27e1632e9673764ff1481a2667",
+      "approved_reference": "Tiny Rebel option 3: six-year-old cream/ginger cat, blonde side ponytail/yellow clip, plum hoodie/turquoise star, direct menacing-cheeky gaze. User corrected eyes to BLUE after green-eyed concept sheet; blue approved portrait is authoritative.",
+      "gameplay_sprite": "characters/havannah.js",
+      "reference_assets": [
+        "assets/references/havannah-approved-portrait.png",
+        "assets/references/havannah-sprite-options.png"
+      ]
     }
   },
   "zak": {

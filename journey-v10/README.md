@@ -3,7 +3,7 @@
 Read `../DEVELOPMENT_GUIDE.md`, `../PROJECT_STATUS.md` and `../AGENTS.md` first. The status file is the source of truth for the current verified release (see PROJECT_STATUS.md for verified deployment). The maintained source is `journey-v10/`; `manifest.json` controls concatenation order. `game.js`, root `burntwood-journey-v10.html` and versioned HTML releases are generated outputs; do not edit them directly. `latest.html` is the stable public entry point.
 
 ## Source ownership
-- `characters/{ava,jackson,stef,jodie,evie,zak,mimi,joseph,tom}.js`: nine individual heroes, moves, stats, gameplay Canvas drawings and upgrades.
+- `characters/{ava,jackson,stef,jodie,evie,zak,mimi,joseph,tom,havannah}.js`: ten individual heroes, moves, stats, gameplay Canvas drawings and upgrades.
 - `arenas/{rugby,chasewater,sankeys,quarry,park}.js`: five arenas and their visuals/encounters; `arenas/heroic.js`: heroic encounters and reward scheduling.
 - `items/{charm-catalog,charms,economy}.js`: 30 run-only charms, rarity, fusion, inventory, gold shops and starter unlocks. See `CHARMS.md`.
 - `world/{hub,residents,conversations,workshop,shopkeeper,shrines,burntwood-details}.js`: town, resident display, shopkeeper and interactions. See `TOWN.md`.
@@ -15,7 +15,7 @@ Read `../DEVELOPMENT_GUIDE.md`, `../PROJECT_STATUS.md` and `../AGENTS.md` first.
 - `build.py`: current generator. Generated `game.js` and HTML are not primary sources.
 
 ## Artwork and new characters
-Preserve user-approved source/reference assets and record their status in the catalog. Nine production portraits exist, including approved full-resolution Zak WebP and Mimi PNG; the old Zak placeholder description is obsolete. Selection portraits and in-game Canvas sprites are different assets and both require visual checks. For a new character, complete and obtain approval of **all** artwork, normal/special/dodge moves, effects, upgrades and stats **before** integrating on an isolated branch. No incomplete character on main.
+Preserve user-approved source/reference assets and record their status in the catalog. Ten production portraits exist, including approved full-resolution Zak WebP and Mimi PNG; the old Zak placeholder description is obsolete. Selection portraits and in-game Canvas sprites are different assets and both require visual checks. For a new character, complete and obtain approval of **all** artwork, normal/special/dodge moves, effects, upgrades and stats **before** integrating on an isolated branch. No incomplete character on main.
 
 ## Current technical debt and safe migration order
 1. Correct documentation and keep future chat instructions consistent (this file, `AGENTS.md`, guide, status).
@@ -30,3 +30,5 @@ Use focused tests for iteration, required release checks before merge, and real 
 Joseph’s isolated implementation and locked specification are in characters/joseph.js and characters/JOSEPH.md. The selector remains name-based; portrait thumbnails are a separate unstarted task.
 
 Tom’s isolated implementation/specification: characters/tom.js and characters/TOM.md; targeted tom-test.cjs and tom-browser.cjs.
+
+Havannah: characters/havannah.js and characters/HAVANNAH.md; targeted havannah-test.cjs and havannah-browser.cjs. User delegated the initial full gameplay tuning for playtest.

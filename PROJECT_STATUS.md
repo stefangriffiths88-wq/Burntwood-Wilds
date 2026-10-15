@@ -2,6 +2,9 @@
 
 Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
 
+## In development: 10.9.0 — Havannah
+Branch havannah-tiny-terror implements approved Tiny Rebel option 3 with blonde ponytail, blue eyes and the approved detailed selection portrait. The user explicitly delegated stats, effects and all fifteen upgrades for playtesting. Sass Sparks / FULL TANTRUM / Can’t Catch Me; full chosen mechanics in journey-v10/characters/HAVANNAH.md. Focused tests include nonrecursive splitting/ricochets, moving storm, bounded dodge, actual five-arena decoy AI, thirty charms, saved ranks and real upgrade choices. CI, mobile visual review, merge and production deployment remain pending. All prior character modules remain unchanged; no selector redesign or unrelated feature work.
+
 ## Released: 10.8.0 — Tom and Joseph playable
 - Tom PR #56; merge 745d0030727494618542f878cced4e0d73f235ec. Joseph PR #55 was released/tested first (10.7.0); see below. Nine playable heroes, five arenas; no existing character module was changed by Tom's build.
 - Safari URL: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.8.0.html?v=1080
