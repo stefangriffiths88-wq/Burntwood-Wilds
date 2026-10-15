@@ -4,6 +4,9 @@ on:
     branches: ['**']
     paths: ['burntwood-journey-v10.html', 'journey-v10/**', '.github/workflows/journey-v10.yml']
   workflow_dispatch:
+concurrency:
+  group: journey-build-${{ github.ref }}
+  cancel-in-progress: false
 permissions:
   contents: write
 jobs:
@@ -20,7 +23,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add burntwood-journey-v10.html journey-v10/game.js journey-v10/assets/portraits
-          git diff --cached --quiet || (git commit -m "Generate versioned artwork assets and playable build" && git push)
+          git diff --cached --quiet || (git commit -m "Generate versioned artwork assets and playable build" && (git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"))
       - run: node journey-v10/test.cjs
       - run: npm install --no-save playwright@1.48.2
       - run: |
