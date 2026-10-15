@@ -44,6 +44,7 @@ function drawHubScenery(){
  ctx.fillStyle='#c5ad88';ctx.fillRect(530,352,60,61);ctx.fillStyle='#765f46';ctx.fillRect(521,343,77,15);mapLabel(550,339,'LEISURE CENTRE');
  ctx.fillStyle='#b9a280';ctx.fillRect(370,482,95,62);ctx.fillStyle='#6d5945';ctx.fillRect(361,468,113,19);mapLabel(415,459,'CHASE TERRACE');
  for(let k=0;k<130;k++){let x=26+(k*137+Math.floor(k/11)*19)%842,y=30+(k*233+Math.floor(k/7)*27)%1220;if((x>550&&x<850&&y<350)||(x<320&&y>790&&y<1150)||(x>355&&x<540&&y>860&&y<1030)||(x>625&&y>960))continue;mapTree(x,y,9+k%12);}
+ drawBurntwoodDetails();
  // Sankey's Corner shop stall: the separate Mabel NPC stands in front.
  let q=hub.shop;ctx.fillStyle='#614533';ctx.fillRect(q.x-42,q.y-18,84,46);ctx.fillStyle='#e7c78a';ctx.fillRect(q.x-50,q.y-32,100,18);for(let k=0;k<5;k++){ctx.fillStyle=k%2?'#e4bf85':'#a75850';ctx.fillRect(q.x-50+k*20,q.y-32,20,18);}for(let k=0;k<3;k++){ctx.fillStyle=['#b95251','#609cc1','#87b866'][k];ctx.fillRect(q.x-33+k*18,q.y+6,9,13);}mapLabel(q.x,q.y-43,'WILDS SHOP');
  mapLabel(205,770,'CHASEWATER');mapLabel(445,1083,'RUGBY CLUB');mapLabel(745,1193,'BURNTWOOD QUARRY');mapLabel(682,100,'SANKEY’S CORNER');
