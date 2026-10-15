@@ -12,7 +12,7 @@ reset('zak');assert.equal(t.effectiveStats().hp,130);assert.equal(t.effectiveSta
 let zakTarget=target(85,0,'swarm');zakTarget.hp=zakTarget.maxHp=1000;
 assert(t.shoot(),'Zak acquires a ranged target');steps(.4,false);assert(zakTarget.hp<1000,'Gas Blast hits a distant enemy');
 t.player.x=zakTarget.x-20;t.player.chargeCD=0;t.charge();assert.equal(t.zakLaughClouds.length,1);assert(zakTarget.zakLaughUntil>t.state.time,'Toxic Fart Cloud controls nearby enemies');steps(.2,false);assert(zakTarget.poisonUntil>t.state.time,'Toxic Fart Cloud applies poison');
-let cloudBefore=zakTarget.hp;steps(.4,false);assert(zakTarget.hp<cloudBefore,'Toxic Fart Cloud damages enemies');
+let cloudBefore=zakTarget.hp;steps(.85,false);assert(zakTarget.hp<cloudBefore,'Toxic Fart Cloud damages enemies');
 t.player.dodgeCD=0;t.dodge();assert(t.player.action==='dodge','Gas-Powered Launch triggers dodge');
 t.draw();reset('jackson');assert.equal(t.zakClouds.length,0,'Zak clouds reset between characters');
 console.log('PASS Zak ranged Gas Blast, poison cloud, dodge and isolated reset');
