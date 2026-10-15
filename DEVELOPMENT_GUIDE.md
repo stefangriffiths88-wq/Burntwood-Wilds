@@ -5,7 +5,7 @@ This file is the permanent handover for future ChatGPT development sessions. Rea
 ## Project
 - Repository: `stefangriffiths88-wq/Burntwood-Wilds`, branch `main`.
 - Published game: `https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.html`.
-- Mobile HTML Canvas roguelike with characters Ava, Jackson, Stefan, Jodie, Evie, Zak.
+- Mobile HTML Canvas roguelike with characters Ava, Jackson, Stefan, Jodie, Evie, Zak and Mimi.
 - Core files: `journey-v10/build.py`, `state.js`, `manifest.json`, `menu.css`, `ui/menu.js`, `characters/*.js`, `assets/portraits/*`, `assets/catalog.json`, `assets/ART_DIRECTION.md`, `test.cjs`, `browser.cjs`.
 - The generated published HTML is `burntwood-journey-v10.html`.
 
@@ -137,3 +137,6 @@ Use explicit lifecycle states:
 
 ## Binary transfer verification refinement
 Large exec output can truncate Base64 even when an upload succeeds. Read binary in chunks (for example 99,999 bytes, a multiple of three), concatenate complete Base64 chunks, and compare local Git blob hash with create_blob SHA before committing. Correct a mismatched blob before merge.
+
+## Town interaction verification
+Town residents and boss previews are presentation only: preserve the selected hero, player object and combat state while reusing character renderers. Test every hero selection for unique resident identities and the correct shopkeeper. Verify boss taps with viewport-to-world coordinates and drag/repeat/cleared guards. Reset scroll when opening reused shop panels; inspect both keeper greetings at phone size. See journey-v10/TOWN.md.
