@@ -11,7 +11,7 @@ function recoverHealth(amount){let old=p.hp;p.hp=Math.min(stats().hp,p.hp+Math.m
 
 function dropHeart(e){if(e.kind==='boss'||hearts.length>=6)return;let milestone=kills%12===0,low=p.hp/stats().hp<.45,chance=low?.28:.06;if(milestone||(time>=nextHeartAt&&rewardRandom()<chance)){let q=walkable(e.x,e.y,7);hearts.push({x:q.x,y:q.y,life:30,heal:Math.max(10,Math.round(stats().hp*.10))});nextHeartAt=time+2.5;}}
 
-function hitPerk(e,actual,source){if(!run.perk||actual<=0||source==='perk'||source==='status')return;
+function hitPerk(e,actual,source){if(!run.perk||actual<=0||source==='perk'||source==='status'||source==='charm')return;
 if(run.perk==='vampiric'){let amount=Math.min(actual*.04,run.vampBudget||0);if(p.hp<stats().hp){let healed=recoverHealth(amount);run.vampBudget=Math.max(0,(run.vampBudget||0)-healed);}return;}
 if(run.perk==='lightning'){if(time>=(run.lightningAt||-1)){let other=nearest(e,new Set([e.id]),120);if(other){run.lightningAt=time+.65;fx.push({x:e.x,y:e.y,vx:0,vy:0,life:.18,max:.18,arcX:other.x,arcY:other.y,color:'#f3e49b',r:0});damageEnemy(other,8,0,0,false,'perk');}}return;}
 if(e.hp<=0)return;
@@ -19,7 +19,7 @@ if(run.perk==='fire'){e.burnUntil=time+2.4;if(!(e.burnNext>time))e.burnNext=time
 else if(run.perk==='ice'){e.frostUntil=time+1.2;e.slowUntil=Math.max(e.slowUntil||0,e.frostUntil);}
 else if(run.perk==='wounding'){if(time>=(e.nextWound||0)){if(!(e.bleedUntil>time))e.bleedStacks=0;e.bleedStacks=Math.min(3,(e.bleedStacks||0)+1);e.nextWound=time+.2;}e.bleedUntil=time+3;if(!(e.bleedNext>time))e.bleedNext=time+.5;}}
 
-function onDefeated(e){dropHeart(e);if(run.perk==='fire'&&e.burnUntil>time){let other=nearest(e,new Set([e.id]),65);if(other){other.burnUntil=Math.max(other.burnUntil||0,time+1.2);if(!(other.burnNext>time))other.burnNext=time+.4;radialEffect(other.x,other.y,13,'#efab64');}}}
+function onDefeated(e){charmOnKill(e);dropHeart(e);if(run.perk==='fire'&&e.burnUntil>time){let other=nearest(e,new Set([e.id]),65);if(other){other.burnUntil=Math.max(other.burnUntil||0,time+1.2);if(!(other.burnNext>time))other.burnNext=time+.4;radialEffect(other.x,other.y,13,'#efab64');}}}
 
 function rewardStep(dt){if(run.perk==='vampiric')run.vampBudget=Math.min(2,(run.vampBudget||0)+2*dt);
 for(let e of enemies){if(e.hp<=0)continue;if(e.burnUntil>time&&time>=e.burnNext){e.burnNext=time+.4;damageEnemy(e,2,0,0,false,'perk');}if(e.hp>0&&e.bleedUntil>time&&time>=e.bleedNext){e.bleedNext=time+.5;damageEnemy(e,1.5*(e.bleedStacks||1),0,0,false,'perk');}}
@@ -27,7 +27,7 @@ for(let i=hearts.length-1;i>=0;i--){let h=hearts[i];h.life-=dt;let d=dist(h,p);i
 
 function drawHeart(h){ctx.save();ctx.translate(h.x,h.y+Math.sin(time*4)*1.5);ellipse(0,6,7,2.2,'#173b2955');ctx.fillStyle='#e59b98';ctx.strokeStyle='#ffe1be';ctx.lineWidth=.8;ctx.beginPath();ctx.moveTo(0,5);ctx.bezierCurveTo(-12,-2,-5,-10,0,-5);ctx.bezierCurveTo(5,-10,12,-2,0,5);ctx.fill();ctx.stroke();ctx.restore();}
 
-function drawEnemyHealth(e){if(e.hp<=0||e.kind==='boss'||(e.hp>=e.maxHp&&e.kind!=='heavy'))return;let width=e.kind==='heavy'?29:21,y=e.y-e.r-18,ratio=clamp(e.hp/e.maxHp,0,1);ctx.fillStyle='#152b25dd';ctx.fillRect(e.x-width/2-1,y-1,width+2,5);ctx.fillStyle=ratio>.6?'#b6d997':ratio>.3?'#f1d17c':'#ee9380';ctx.fillRect(e.x-width/2,y,width*ratio,3);}
+function drawEnemyHealth(e){if(e.hp<=0||e.kind==='boss'||(e.hp>=e.maxHp&&e.kind!=='heavy'&&!e.heroic))return;let width=e.kind==='heavy'?29:21,y=e.y-e.r-18,ratio=clamp(e.hp/e.maxHp,0,1);ctx.fillStyle='#152b25dd';ctx.fillRect(e.x-width/2-1,y-1,width+2,5);ctx.fillStyle=ratio>.6?'#b6d997':ratio>.3?'#f1d17c':'#ee9380';ctx.fillRect(e.x-width/2,y,width*ratio,3);}
 
 function drawStatus(e){if(e.hp<=0)return;if(e.burnUntil>time){ctx.strokeStyle='#efad68';ctx.lineWidth=1.3;ctx.beginPath();ctx.moveTo(e.x-5,e.y+3);ctx.lineTo(e.x-2,e.y-3);ctx.lineTo(e.x,e.y+2);ctx.lineTo(e.x+3,e.y-5);ctx.lineTo(e.x+5,e.y+3);ctx.stroke();}if(e.frostUntil>time){ctx.strokeStyle='#9bdcf2';ctx.lineWidth=1.4;ctx.beginPath();ctx.ellipse(e.x,e.y+e.r*.5,e.r+2,4,0,0,TAU);ctx.stroke();}if(e.bleedUntil>time){for(let i=0;i<(e.bleedStacks||1);i++)line([[e.x-5+i*4,e.y+1],[e.x-3+i*4,e.y+7]],'#df8293',1.5);}}
 

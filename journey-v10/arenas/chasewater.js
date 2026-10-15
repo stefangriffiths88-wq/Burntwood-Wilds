@@ -40,7 +40,7 @@ else if(e.mode==='gooseWind'){speed=0;if(e.timer<=0){e.mode='rush';e.timer=.42;}
 else if(e.mode==='rush'){mx=e.dx;my=e.dy;speed=155;if(e.timer<=0){e.mode='recover';e.timer=.55;}}
 else if(e.mode==='recover'){speed=0;if(e.timer<=0){e.mode='walk';e.timer=1.3;}}
 }
-if(stunned)speed=0;if(e.slowUntil>time)speed*=.7;if(e.stagger>0)speed*=.2;let pos=walkable(e.x+mx*speed*dt+e.kx*dt,e.y+my*speed*dt+e.ky*dt,e.r);e.x=pos.x;e.y=pos.y;e.kx*=Math.exp(-dt*8);e.ky*=Math.exp(-dt*8);applyChaseContact(e);
+if(stunned)speed=0;if(e.slowUntil>time)speed*=.7;if(e.charmFrostUntil>time)speed*=charmSlowFactor(e);if(e.stagger>0)speed*=.2;let pos=walkable(e.x+mx*speed*dt+e.kx*dt,e.y+my*speed*dt+e.ky*dt,e.r);e.x=pos.x;e.y=pos.y;e.kx*=Math.exp(-dt*8);e.ky*=Math.exp(-dt*8);applyChaseContact(e);
 }
 
 function stepEnemyShots(dt){for(let i=enemyShots.length-1;i>=0;i--){let b=enemyShots[i];b.life-=dt;b.px=b.x;b.py=b.y;b.x+=b.vx*dt;b.y+=b.vy*dt;let sx=b.x-b.px,sy=b.y-b.py,l=sx*sx+sy*sy,u=l?clamp(((p.x-b.px)*sx+(p.y-b.py)*sy)/l,0,1):0;if(Math.hypot(p.x-b.px-sx*u,p.y-b.py-sy*u)<p.r+b.r){hurt(b.damage,b);b.life=0;pop(b.x,b.y,'#aa9070',4);}if(b.life<=0)enemyShots.splice(i,1);}}

@@ -7,11 +7,11 @@ function normalRate(){return !isJodie()&&hasStat(2)?.9:1;}
 
 function damageScale(source){if(source==='cat')return hasStat(4)?1.1:1;if(source!=='weapon')return 1;return (run.shopBought?.includes('power')?1.1:1)*(isJodie()?(hasStat(2)?1.15:1):(hasStat(4)?1.1:1));}
 
-function specialCooldown(){let base=CHARACTERS[selected].specialCD;return S(4)&&!isMimi()?({jackson:7,ava:7,stef:8,jodie:9,evie:8,zak:9}[selected]):base;}
+function specialCooldown(){let base=CHARACTERS[selected].specialCD;return (S(4)&&!isMimi()?({jackson:7,ava:7,stef:8,jodie:9,evie:8,zak:9}[selected]):base)*charmSpecialFactor();}
 
 function dodgeCooldown(){return isStef()?(D(4)?2.3:3):(D(4)?selected==='jackson'?1.05:1.25:1.65);}
 
-function resetProgression(){shrine=null;shrineBuff=null;hearts=[];nextHeartAt=0;run={level:1,stage:0,stagePicks:0,special:0,dodge:0,stat:new Set(),earned:0,offers:[],history:[],firstArena:arenaKey,perk:null,rewardOffers:null,shopBought:[]};hazards=[];scheduled=[];decoy=null;}
+function resetProgression(){shrine=null;shrineBuff=null;hearts=[];nextHeartAt=0;run={level:1,stage:0,stagePicks:0,special:0,dodge:0,stat:new Set(),earned:0,offers:[],history:[],firstArena:arenaKey,perk:null,rewardOffers:null,shopBought:[]};hazards=[];scheduled=[];decoy=null;resetCharms();}
 
 function nextXP(){return 12+run.stagePicks*4;}
 
@@ -38,6 +38,6 @@ function scaleLivingEnemies(){for(let e of enemies)if(e.hp>0)applyEnemyScale(e);
 function pressureTime(){return Math.max(time*.45,run.stagePicks*6+(run.stage?12:0));}
 
 function stageSpawnDelay(base){return base/(1+.045*run.stagePicks+(run.stage?.12:0));}
-const BOSS_TIME=105,LEVEL_TIMES=[8,19,31,43,56,69,83,98];
+const BOSS_TIME=120,LEVEL_TIMES=[8,21,34,47,61,76,92,108];
 let run={level:1,stage:0,stagePicks:0,special:0,dodge:0,stat:new Set(),earned:0,offers:[],history:[],firstArena:'rugby',perk:null,rewardOffers:null,shopBought:[]},hazards=[],scheduled=[],decoy=null;
 const S=n=>run.special>=n,D=n=>run.dodge>=n,hasStat=n=>run.stat.has(n);

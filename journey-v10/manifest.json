@@ -19,6 +19,8 @@
   "arenas/quarry.js",
   "arenas/rugby.js",
   "characters/mimi.js",
+  "items/charms.js",
+  "arenas/heroic.js",
   "registry.js",
   "controls.js"
 ]
