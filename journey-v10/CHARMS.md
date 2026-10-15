@@ -28,3 +28,8 @@ items/charms.js owns inventory, UI, fusion and proc queues. arenas/heroic.js own
 
 ## Validation
 charms-test.cjs verifies effects, timing, all four arenas, fusion/carry-over/reset, 84 single hero/charm combinations, and 21 full three-arena journeys using all seven heroes with three builds. Full journeys use actual attacks, real upgrades/rewards, scripted positioning and invulnerability. They establish functional viability, not human balance. Results are written to charm-test-results.json and uploaded by CI. Browser suite covers reward buttons, paused clocks, inventory replacement, fusion and heroic rendering.
+
+## Shared encounter lifecycle (10.4.1)
+Heroic spawning and defeat-to-reward scheduling belong to arenas/heroic.js, invoked by the shared engine and onDefeated hook. items/charms.js owns equipment, reward choices, fusion and effects; acquiring a first charm does not depend on a hero module or equipped charm proc state. A living heroic displays a health bar labelled “DEFEAT FOR A CHARM”. Reward still requires defeating that heroic, not merely reaching 1:00.
+
+encounters-test.cjs starts all seven heroes with zero charms in all four arenas: timed spawn, real attacks, reward choice, pause and duplicate guard. Positioning/invulnerability are test aids, not human balance evidence. Jackson charge tests cover base/upgraded contact and finisher against all four final bosses plus heroics; ordinary enemy knockback remains.

@@ -16,7 +16,7 @@ const CHARMS={
 function charmRank(key){let c=run.charms?.find(c=>c.key===key);return c?.rank||0;}
 function charmPower(key){let rank=charmRank(key);return rank?1+(rank-1)*.5:0;}
 function resetCharms(){run.charms=[];run.charmBag=[];run.charmOffers=[];run.charmPending=false;resetCharmArena();}
-function resetCharmArena(){run.heroicSpawned=false;run.heroicRewarded=false;run.charmPending=false;run.charmOffers=[];run.charmFX={stormAt:0,bell:0,bellAt:0,attacks:0,echo:false,queue:[],patches:[],patchTick:0,thornAt:0,defeats:0,safe:0,shield:false,guardRank:charmRank('guardian'),lastDodge:false};}
+function resetCharmArena(){resetHeroicEncounter();run.charmPending=false;run.charmOffers=[];run.charmFX={stormAt:0,bell:0,bellAt:0,attacks:0,echo:false,queue:[],patches:[],patchTick:0,thornAt:0,defeats:0,safe:0,shield:false,guardRank:charmRank('guardian'),lastDodge:false};}
 function gainCharm(key){if(!CHARMS[key])return false;let c={key,rank:1};if(run.charms.length<3&&!charmRank(key))run.charms.push(c);else run.charmBag.push(c);return true;}
 function fusionPair(){let all=[...run.charms,...run.charmBag];for(let a of all)if(a.rank<3){let b=all.find(c=>c!==a&&c.key===a.key&&c.rank===a.rank);if(b)return[a,b];}return null;}
 function fuseCharm(){if(state!=='shop')return false;let pair=fusionPair();if(!pair)return false;let[a,b]=pair,rank=a.rank+1,key=a.key,equipped=run.charms.includes(a)||run.charms.includes(b);run.charms=run.charms.filter(c=>c!==a&&c!==b);run.charmBag=run.charmBag.filter(c=>c!==a&&c!==b);let c={key,rank};if(equipped)run.charms.push(c);else run.charmBag.push(c);renderCharmWorkshop();updateCharmHud();return true;}
@@ -36,7 +36,7 @@ if(charmRank('storm')&&time>=f.stormAt){f.stormAt=time+1.5;let seen=new Set([e.i
 if(charmRank('frost')&&e.hp>0)e.charmFrostUntil=time+1.5;
 if(charmRank('bell')&&time>=(e.charmBellAt||0)){e.charmBellAt=time+.15;f.bell++;if(f.bell>=8&&time>=f.bellAt){f.bell=0;f.bellAt=time+.5;f.queue.push({kind:'burst',x:p.x,y:p.y,r:95,amount:12*charmPower('bell'),wait:.04});}}
 if(charmRank('echo')&&source==='weapon'&&f.echo){f.echo=false;f.queue.push({kind:'damage',target:e,amount:actual*.4*charmPower('echo'),wait:.16});radialEffect(e.x,e.y,22,'#e6d596');}}
-function charmOnKill(e){let f=run.charmFX;if(!f)return;if(e.heroic&&!run.heroicRewarded){run.heroicRewarded=true;run.charmPending=true;}f.defeats++;if(charmRank('locket')&&f.defeats%12===0&&hearts.length<10)hearts.push({x:e.x,y:e.y,life:30,heal:10*charmPower('locket')});if(charmRank('ember')){f.patches.push({x:e.x,y:e.y,r:30,life:2});if(f.patches.length>8)f.patches.shift();}}
+function charmOnKill(e){let f=run.charmFX;if(!f)return;f.defeats++;if(charmRank('locket')&&f.defeats%12===0&&hearts.length<10)hearts.push({x:e.x,y:e.y,life:30,heal:10*charmPower('locket')});if(charmRank('ember')){f.patches.push({x:e.x,y:e.y,r:30,life:2});if(f.patches.length>8)f.patches.shift();}}
 function charmBlock(){let f=run.charmFX;if(charmRank('guardian')&&f?.shield){f.shield=false;f.safe=0;p.inv=.3;radialEffect(p.x,p.y,32,'#afdbc8');float(p.x,p.y-30,'BLOCK','#afdbc8');return true;}return false;}
 function charmHurt(){let f=run.charmFX;if(!f)return;f.safe=0;if(charmRank('thorn')&&time>=f.thornAt){f.thornAt=time+3;f.queue.push({kind:'burst',x:p.x,y:p.y,r:100,amount:18*charmPower('thorn'),wait:.04});}}
 function charmDodgeMarks(){if(!charmRank('moon'))return;for(let e of enemies)if(e.hp>0&&dist(p,e)<p.r+e.r+10)e.charmMoonUntil=time+4;}
@@ -45,7 +45,6 @@ f.safe+=dt;let guard=charmRank('guardian');if(guard!==f.guardRank){f.safe=0;f.sh
 for(let patch of f.patches)patch.life-=dt;f.patches=f.patches.filter(x=>x.life>0);f.patchTick-=dt;if(f.patchTick<=0){f.patchTick=.5;for(let e of enemies)if(e.hp>0&&f.patches.some(a=>dist(a,e)<a.r+e.r))damageEnemy(e,4*charmPower('ember'),0,0,false,'charm');}
 if(p.action==='dodge'||p.action==='push')charmDodgeMarks();
 if(charmRank('bramble'))for(let e of enemies)if(e.hp>0&&Math.hypot(e.kx,e.ky)>45)e.charmExposeUntil=time+2;
-if(!run.heroicSpawned&&time>=60){run.heroicSpawned=true;spawnHeroic();}
 updateCharmHud();}
 function drawCharmEffects(){let f=run.charmFX;if(!f)return;for(let a of f.patches){ctx.save();ctx.globalAlpha=Math.min(.32,a.life*.3);ellipse(a.x,a.y,30,21,'#ed9b5c');ctx.restore();}if(f.shield)radialDraw(p.x,p.y,29,'#afdbc8');for(let e of enemies)if(e.hp>0){if(e.heroic){radialDraw(e.x,e.y,e.r+8,'#f2ce77');ctx.fillStyle='#f6df9f';ctx.font='bold 10px system-ui';ctx.textAlign='center';ctx.fillText('★ HEROIC',e.x,e.y-e.r-26);}if(e.charmMoonUntil>time)starArt(e.x,e.y-e.r-8,4,time);}}
 function charmSpecialFactor(){return [1,.8,.72,.65][charmRank('watch')];}

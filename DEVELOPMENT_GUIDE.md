@@ -140,3 +140,6 @@ Large exec output can truncate Base64 even when an upload succeeds. Read binary 
 
 ## Town interaction verification
 Town residents and boss previews are presentation only: preserve the selected hero, player object and combat state while reusing character renderers. Test every hero selection for unique resident identities and the correct shopkeeper. Verify boss taps with viewport-to-world coordinates and drag/repeat/cleared guards. Reset scroll when opening reused shop panels; inspect both keeper greetings at phone size. See journey-v10/TOWN.md.
+
+## First-item acquisition checks
+For shared loot systems, test every hero starting with empty equipment through the real spawn/defeat/choice path. Tests that pre-equip builds verify effects but cannot alone prove first acquisition. Keep encounter lifecycle independent of item proc state. Record reported build/version separately; never claim an unreproduced user symptom is fixed solely because tests pass. Share latest.html as the stable entry alongside the exact versioned release link; old versioned pages remain old builds.

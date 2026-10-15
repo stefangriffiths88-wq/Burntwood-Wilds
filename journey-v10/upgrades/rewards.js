@@ -19,7 +19,7 @@ if(run.perk==='fire'){e.burnUntil=time+2.4;if(!(e.burnNext>time))e.burnNext=time
 else if(run.perk==='ice'){e.frostUntil=time+1.2;e.slowUntil=Math.max(e.slowUntil||0,e.frostUntil);}
 else if(run.perk==='wounding'){if(time>=(e.nextWound||0)){if(!(e.bleedUntil>time))e.bleedStacks=0;e.bleedStacks=Math.min(3,(e.bleedStacks||0)+1);e.nextWound=time+.2;}e.bleedUntil=time+3;if(!(e.bleedNext>time))e.bleedNext=time+.5;}}
 
-function onDefeated(e){charmOnKill(e);dropHeart(e);if(run.perk==='fire'&&e.burnUntil>time){let other=nearest(e,new Set([e.id]),65);if(other){other.burnUntil=Math.max(other.burnUntil||0,time+1.2);if(!(other.burnNext>time))other.burnNext=time+.4;radialEffect(other.x,other.y,13,'#efab64');}}}
+function onDefeated(e){heroicDefeated(e);charmOnKill(e);dropHeart(e);if(run.perk==='fire'&&e.burnUntil>time){let other=nearest(e,new Set([e.id]),65);if(other){other.burnUntil=Math.max(other.burnUntil||0,time+1.2);if(!(other.burnNext>time))other.burnNext=time+.4;radialEffect(other.x,other.y,13,'#efab64');}}}
 
 function rewardStep(dt){if(run.perk==='vampiric')run.vampBudget=Math.min(2,(run.vampBudget||0)+2*dt);
 for(let e of enemies){if(e.hp<=0)continue;if(e.burnUntil>time&&time>=e.burnNext){e.burnNext=time+.4;damageEnemy(e,2,0,0,false,'perk');}if(e.hp>0&&e.bleedUntil>time&&time>=e.bleedNext){e.bleedNext=time+.5;damageEnemy(e,1.5*(e.bleedStacks||1),0,0,false,'perk');}}
