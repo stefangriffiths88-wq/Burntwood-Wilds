@@ -40,9 +40,9 @@
   },
   "zak": {
     "asset": "assets/portraits/zak.webp",
-    "source": "User-selected cap variation cropped from concept board; temporary 84x96 embedded image for mobile testing, higher-resolution production asset needed",
-    "status": "selected-option-3-cap-preview-low-resolution",
-    "approved_reference": "User-provided detailed Zak reference; portrait crop has limited resolution",
+    "source": "Exact approved full-resolution Sankeys portrait recovered from user-supplied artwork",
+    "status": "approved-production-portrait",
+    "approved_reference": "User-approved full-resolution Sankeys Corner portrait, 15 October 2026",
     "gameplay_sprite": "characters/zak.js",
     "requirements": [
       "purple teenage cat",
@@ -51,10 +51,13 @@
       "floating paws, no arms or feet",
       "Sankey's Corner background"
     ],
-    "selection_asset": "assets/portraits/zak-cap.svg",
+    "selection_asset": "assets/portraits/zak.webp",
     "gameplay_sprite_status": "approved Street Zak option A, implemented in characters/zak.js for 10.1.1",
     "approved_portrait_reference": "User-supplied full-resolution Zak outside Sankey's Corner, 1024x1536 JPEG, October 15 2026",
-    "portrait_pending": "Replace previous low-resolution concept crop with the exact user-provided Sankey's Corner portrait; do not claim it is installed until the binary asset is uploaded"
+    "dimensions": [
+      1024,
+      1536
+    ]
   },
   "arenas": [
     "rugby",

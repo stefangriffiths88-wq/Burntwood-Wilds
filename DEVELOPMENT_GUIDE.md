@@ -53,3 +53,8 @@ Use each character's isolated module, unique portrait file, normal weapon, speci
 - [ ] Exact Safari game URL supplied
 
 **Development should continue through fixes and retests in one working session when possible. Do not claim background execution after the response ends.**
+
+## Verified image transfer procedure — 10.1.2
+The approved full-resolution Zak image is now `journey-v10/assets/portraits/zak.webp` (1024×1536). All characters use identical build discovery; the obsolete zak-cap.svg is retired. Preserve the approved Street Zak gameplay module.
+
+For future sessions: GitHub tools may be named `mcp__codex_apps__github_*`; discover current schemas. Recover attachment bytes through Library search and its current download helper. Read the local binary as Base64, call create_blob with encoding base64, include its SHA in create_tree based on the current main tree, create_commit with the branch head as parent, and update_ref with expected_sha. Verify the committed blob SHA against the local Git blob hash. Use feature branches and inspect CI and Pages deployment after merge. No personal access token or manual user image upload is needed with these connected operations available.
