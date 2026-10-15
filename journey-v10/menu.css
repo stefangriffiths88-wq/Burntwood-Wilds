@@ -65,3 +65,5 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 #shopCharmStock .shopItem{display:flex;flex-direction:column;width:100%;margin:8px 0;gap:5px}#shopCharmStock .shopItem span{align-self:flex-start;color:var(--rarity)}#shopCharmStock .shopItem b{color:#fff0cf}#charmBagCount{top:124px;left:125px}.charmCard{border-color:var(--rarity)!important;border-left:5px solid var(--rarity)!important}.charmCard span{color:var(--rarity)!important}
 /* Menus must cover persistent HUD controls. */
 #inventoryButton{z-index:9}#goldHud{z-index:3}
+
+.townPanel button:disabled{opacity:.45;cursor:default}
