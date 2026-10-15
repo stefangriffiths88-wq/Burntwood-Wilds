@@ -1,6 +1,6 @@
 # Burntwood Wilds — maintained game architecture
 
-Read `../DEVELOPMENT_GUIDE.md`, `../PROJECT_STATUS.md` and `../AGENTS.md` first. The status file is the source of truth for the current verified release (10.4.1 at this documentation update). The maintained source is `journey-v10/`; `manifest.json` controls concatenation order. `game.js`, root `burntwood-journey-v10.html` and versioned HTML releases are generated outputs; do not edit them directly. `latest.html` is the stable public entry point.
+Read `../DEVELOPMENT_GUIDE.md`, `../PROJECT_STATUS.md` and `../AGENTS.md` first. The status file is the source of truth for the current verified release (10.5.0 at this documentation update). The maintained source is `journey-v10/`; `manifest.json` controls concatenation order. `game.js`, root `burntwood-journey-v10.html` and versioned HTML releases are generated outputs; do not edit them directly. `latest.html` is the stable public entry point.
 
 ## Source ownership
 - `characters/{ava,jackson,stef,jodie,evie,zak,mimi}.js`: seven individual heroes, moves, stats, gameplay Canvas drawings and upgrades.
