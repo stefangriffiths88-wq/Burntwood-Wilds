@@ -11,7 +11,7 @@ for name in portrait_names:
     matches=[p for ext in ('webp','png','jpg','svg') if (p:=portrait_dir/(name+'.'+ext)).is_file()]
     if len(matches)!=1:
         raise SystemExit(f'Expected exactly one artwork file for {name}, found {len(matches)}. Run assets/import_legacy_portraits.py for initial migration.')
-    portraits[name]='journey-v10/assets/portraits/'+matches[0].name
+    portraits[name]='journey-v10/assets/portraits/'+('zak-cap.svg' if name=='zak' else matches[0].name)
 head=s[:i].replace('Rewards Test 9','Journey Test 10')+ '<script>const PORTRAITS='+json.dumps(portraits,separators=(',',':'))+';\n'
 head=head.replace('<button id="pickEvie">Evie</button>','<button id="pickEvie">Evie</button><button id="pickZak">Zak</button>')
 head=head.replace('<button id="pickChasewater">Chasewater</button>','<button id="pickChasewater">Chasewater</button><button id="pickSankeys">Sankey’s</button>')
