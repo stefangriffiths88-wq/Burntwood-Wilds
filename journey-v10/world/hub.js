@@ -31,7 +31,7 @@ function drawHubScenery(){
  for(let k=0;k<5;k++){ellipse(755,1060,130-k*16,120-k*17,['#a38b6c','#b7a17e','#c6b08b','#d4c19d','#e1cba6'][k]);}ellipse(755,1060,55,33,'#588a94');
  ctx.fillStyle='#e9bb61';ctx.fillRect(793,1008,26,15);line([[803,1012],[791,981],[774,1002]],'#e6b961',7);
  // Streets and footpaths linking the four locations.
- const roads=[[[455,620],[520,430],[680,225]],[[455,620],[290,750],[205,850]],[[455,620],[445,940]],[[455,620],[650,825],[745,1050]],[[205,850],[445,940],[745,1050]]];
+ const roads=[[[455,620],[520,430],[680,225]],[[455,620],[290,750],[205,1000]],[[455,620],[445,920]],[[455,620],[650,825],[745,1050]],[[205,850],[445,940],[745,1050]]];
  for(let a of roads)line(a,'#56724f',84);for(let a of roads)line(a,'#c5b18b',52);
  // Rugby pitch and iconic uprights east of Chasewater.
  ctx.fillStyle='#63914f';ctx.fillRect(360,862,170,165);ctx.strokeStyle='#e1e9c8';ctx.lineWidth=3;ctx.strokeRect(372,875,146,140);line([[445,875],[445,1015]],'#e2e7c3',2);line([[419,885],[419,841]],'#f4e4bd',5);line([[467,885],[467,841]],'#f4e4bd',5);line([[419,850],[467,850]],'#f4e4bd',5);
@@ -46,14 +46,14 @@ function drawHubScenery(){
  for(let k=0;k<130;k++){let x=26+(k*137+Math.floor(k/11)*19)%842,y=30+(k*233+Math.floor(k/7)*27)%1220;if((x>550&&x<850&&y<350)||(x<320&&y>790&&y<1150)||(x>355&&x<540&&y>860&&y<1030)||(x>625&&y>960))continue;mapTree(x,y,9+k%12);}
  // Shop beside Sankey's Corner: visible keeper, striped awning and bottles.
  let q=hub.shop;ctx.fillStyle='#614533';ctx.fillRect(q.x-42,q.y-18,84,46);ctx.fillStyle='#e7c78a';ctx.fillRect(q.x-50,q.y-32,100,18);for(let k=0;k<5;k++){ctx.fillStyle=k%2?'#e4bf85':'#a75850';ctx.fillRect(q.x-50+k*20,q.y-32,20,18);}ellipse(q.x+12,q.y-6,10,10,'#c4b29a');ellipse(q.x+10,q.y-15,11,7,'#594939');for(let k=0;k<3;k++){ctx.fillStyle=['#b95251','#609cc1','#87b866'][k];ctx.fillRect(q.x-33+k*18,q.y+6,9,13);}mapLabel(q.x,q.y-43,'WILDS SHOP');
- mapLabel(205,754,'CHASEWATER');mapLabel(445,1083,'RUGBY CLUB');mapLabel(745,1193,'BURNTWOOD QUARRY');mapLabel(682,100,'SANKEY’S CORNER');
+ mapLabel(205,770,'CHASEWATER');mapLabel(445,1083,'RUGBY CLUB');mapLabel(745,1193,'BURNTWOOD QUARRY');mapLabel(682,100,'SANKEY’S CORNER');
  for(let a of hub.animals){ellipse(a.x,a.y,5,4,['#c9ae89','#dfdbbd','#b88353'][a.kind]);}
 }
 function drawHub(){ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle='#34533b';ctx.fillRect(0,0,W,H);ctx.save();ctx.translate(W/2-cam.x*scale,H*.47-cam.y*scale);ctx.scale(scale,scale);drawHubScenery();for(let g of hub.portals){let done=run.visited?.includes(g.key);radialDraw(g.x,g.y,37,done?'#92b38b':'#e8c27d');ctx.fillStyle=done?'#91b38a':'#c9a365';ctx.fillRect(g.x-25,g.y-12,6,36);ctx.fillRect(g.x+19,g.y-12,6,36);line([[g.x-25,g.y-12],[g.x+25,g.y-12]],'#f7db9d',5);ctx.font='bold 12px system-ui';ctx.fillStyle='#fff3cc';ctx.textAlign='center';ctx.fillText(ARENAS[g.key].short.toUpperCase(),g.x,g.y-39);ctx.font='10px system-ui';ctx.fillText(done?'CLEARED':'ENTER',g.x,g.y+44);}for(let c of cats)drawCat(c);CHARACTER_MODULES[selected].draw();ctx.restore();drawHubMap();}
 function drawHubMap(){let c=$('hubMap').getContext('2d');c.clearRect(0,0,118,150);c.fillStyle='#254f3e';c.fillRect(0,0,118,150);c.fillStyle='#5b8f9a';c.beginPath();c.ellipse(24,110,21,24,0,0,TAU);c.fill();c.strokeStyle='#c4ad85';c.lineWidth=5;c.beginPath();c.moveTo(60,75);c.lineTo(86,30);c.moveTo(60,75);c.lineTo(28,103);c.moveTo(60,75);c.lineTo(90,120);c.stroke();for(let g of hub.portals){let x=g.x/900*110+4,y=g.y/1300*140+5;c.fillStyle=run.visited?.includes(g.key)?'#83b18b':'#f2cb7d';c.fillRect(x-4,y-4,8,8);c.fillStyle='#fff7d6';c.font='bold 9px system-ui';c.textAlign='center';c.fillText({rugby:'R',chasewater:'C',sankeys:'S',quarry:'Q'}[g.key],x,y-7);}c.fillStyle='#f6e8c4';c.beginPath();c.arc(p.x/900*110+4,p.y/1300*140+5,4,0,TAU);c.fill();}
 
 function interactWorld(){if(state==='hub')enterNearby();else if(state==='playing'&&shrine&&!shrine.used&&dist(p,shrine)<70)openShrine();}
-const hub={time:0,near:null,nearShop:false,coins:0,animals:[],shop:{x:750,y:378},solids:[],portals:[{key:'sankeys',x:680,y:225},{key:'chasewater',x:205,y:850},{key:'rugby',x:445,y:940},{key:'quarry',x:745,y:1050}]};
+const hub={time:0,near:null,nearShop:false,coins:0,animals:[],shop:{x:750,y:378},solids:[],portals:[{key:'sankeys',x:680,y:225},{key:'chasewater',x:205,y:1000},{key:'rugby',x:445,y:920},{key:'quarry',x:745,y:1050}]};
 
 const HUB_SHOP_ITEMS=[{id:'heal',name:'Healing Potion',detail:'Restore 50 health',cost:30},{id:'full',name:'Full Recovery',detail:'Restore all health',cost:75},{id:'speed',name:'Swift Boots',detail:'+5% movement speed this run',cost:50},{id:'power',name:'Stronger Paws',detail:'+10% weapon damage this run',cost:50},{id:'shield',name:'Protective Charm',detail:'+20 maximum health this run',cost:75}];
 function openHubShop(){if(state!=='hub'||!hub.nearShop)return false;state='shop';$('hubShop').style.display='flex';renderHubShop();return true;}
