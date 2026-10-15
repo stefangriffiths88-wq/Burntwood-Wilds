@@ -5,7 +5,7 @@ This file is the permanent handover for future ChatGPT development sessions. Rea
 ## Project
 - Repository: `stefangriffiths88-wq/Burntwood-Wilds`, branch `main`.
 - Published game: `https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.html`.
-- Mobile HTML Canvas roguelike with characters Ava, Jackson, Stefan, Jodie, Evie, Zak and Mimi.
+- Mobile HTML Canvas roguelike with characters Ava, Jackson, Stefan, Jodie, Evie, Zak, Mimi, Joseph and Tom.
 - Core files: `journey-v10/build.py`, `state.js`, `manifest.json`, `menu.css`, `ui/menu.js`, `characters/*.js`, `assets/portraits/*`, `assets/catalog.json`, `assets/ART_DIRECTION.md`, `test.cjs`, `browser.cjs`.
 - The generated published HTML is `burntwood-journey-v10.html`.
 
@@ -29,7 +29,7 @@ Other character portraits were extracted from `burntwood-rewards-v9.html` by `jo
 For future art: obtain the approved full-size image, verify dimensions and exact character identity, upload it to `journey-v10/assets/portraits/<name>.webp`, confirm the GitHub tree reports realistic image byte size, update `catalog.json`, verify `build.py` references it, rebuild and check screenshot output.
 
 ## Portrait rules
-Portraits are **not** playable sprites. Keep both independent. Never change an approved playable sprite while fixing its portrait. All six characters must use the same asset discovery in `build.py`; remove character-specific overrides when the replacement is available. Avoid multiple matching `<name>.webp/png/jpg/svg` files when the build expects exactly one. Preserve floating paws, no arms/legs/feet, and character-specific details from `ART_DIRECTION.md`. Check the actual image at display size, not only its dimensions.
+Portraits are **not** playable sprites. Keep both independent. Never change an approved playable sprite while fixing its portrait. All characters must use the same asset discovery in `build.py`; remove character-specific overrides when the replacement is available. Avoid multiple matching `<name>.webp/png/jpg/svg` files when the build expects exactly one. Preserve floating paws, no arms/legs/feet, and character-specific details from `ART_DIRECTION.md`. Check the actual image at display size, not only its dimensions.
 
 ## Zak — released and user-confirmed in 10.1.2
 - Approved full-resolution portrait: `journey-v10/assets/portraits/zak.webp`, 1024×1536, 249,644 bytes; exact Git blob `9ddf170497d78b5160a375f8b5d6041cff2d91fb`.
@@ -100,7 +100,7 @@ Zak 10.1.2 established a working binary upload method; preserve the exact verifi
 Treat "build a new character" (or equivalent) as a request to **start the established character-creation pipeline**, not as permission to invent a final design and deploy it immediately. The user should only have to describe the character in natural language, select a concept, approve its gameplay identity and playtest the result. Do not ask them to navigate GitHub, edit code or repeat established art rules.
 
 ### Phase 1 — recover existing design system
-Before generating concepts, inspect all six current approved production portraits, `assets/catalog.json`, `assets/ART_DIRECTION.md`, `characters/*.js`, `registry.js`, `manifest.json`, selection UI, character upgrades and tests. Check which user-approved reference images are accessible; never claim to have seen an unavailable reference. Identify common visual rules (warm detailed cartoon portraits, coherent lighting, floating detached paws, no conventional arms/feet, consistent mobile framing) and gameplay interfaces. Do not copy another character's identity or overwrite an existing asset.
+Before generating concepts, inspect all current approved production portraits, `assets/catalog.json`, `assets/ART_DIRECTION.md`, `characters/*.js`, `registry.js`, `manifest.json`, selection UI, character upgrades and tests. Check which user-approved reference images are accessible; never claim to have seen an unavailable reference. Identify common visual rules (warm detailed cartoon portraits, coherent lighting, floating detached paws, no conventional arms/feet, consistent mobile framing) and gameplay interfaces. Do not copy another character's identity or overwrite an existing asset.
 
 ### Phase 2 — present concepts, then get approval
 Ask only for an essential missing creative anchor if none is provided (for example animal/personality or character name); otherwise propose imaginative defaults. Generate **three genuinely distinct character variations within the same established game style**. Show visual concepts if image-generation capability is available; do not substitute text descriptions while claiming images were generated. Keep draft artwork separate from production assets. Briefly explain the visual distinctions and suggest possible unique combat identities. Invite the user to choose one or request alterations. **Do not integrate unapproved artwork or deploy a character before approval.**
@@ -172,3 +172,10 @@ Verify the exact final branch head after fixes, not an earlier successful run. I
 When multiple systems can create a critical hit, calculate one final multiplier and reset guarantee counters for every actual critical. Test through the real damage pipeline, including shrine effects and critical-suppression items; direct helper tests alone can miss double multiplication.
 
 Record the tested commit, workflow run IDs, public-file comparison and explicit simulation limits in PROJECT_STATUS.md. Generated test-result JSON is an example run, not a substitute for the final workflow artifact. Keep accurate road geography pending a user-agreed reference, and record deferred work rather than silently inventing it. The 10.6 release used hash-verified UTF-8 blobs, a tree, commit and expected-SHA branch update through the connected GitHub tools; images were unchanged.
+
+## Character combat and approved-source extraction — Joseph/Tom workflow
+Keep optional character motion and damage-avoidance hooks in the registry; heroes without hooks retain existing movement/hurt behaviour. Own the new hero's counters, wave hit sets, swept contacts, dash recharge and bounded effects inside its module. Use reset hooks at new run, arena and town transitions. A small optional enemy renderer can show launch height without changing hitboxes or unrelated AI. Test overlapping third/fifth effects with exact damage and prove extra hits do not recurse. Test all fifteen upgrades through actual choices, every charm, anchored boss damage and all arena boundaries before broad regression.
+
+Approved poster/concept sheets must be preserved as binary references. Extract the exact approved image pane without repainting or upscale claims; record source checksum, crop rectangle, output dimensions, committed blob hash and approval status in the catalog. Verify source image bytes locally before Base64 upload. Confirm the image-bearing tree commit, not only the blob. Selection portraits and native Canvas gameplay sprites remain separate.
+
+Check portrait/ability/defeat/town screenshots at 390×844 and 390×650. Long round-button labels may need a compact alias (Tom uses QUAKE; full Earthquake name remains in profile/upgrades). Preserve touch widths as the name-button roster grows; portrait thumbnails remain a separately approved future UI task. Scripted protected combat tests and mobile Chromium are not human balance or native Safari acceptance.
