@@ -7,12 +7,12 @@ function openBossReward(){if(state!=='won'||run.stage!==0||run.perk)return;if(!r
 
 function chooseBossPerk(i){if(state!=='perk'||run.stage!==0||run.perk||!run.rewardOffers?.[i])return;run.perk=run.rewardOffers[i];run.vampBudget=2;run.lightningAt=-1;state='won';continueRun();}
 
-function recoverHealth(amount){let old=p.hp;p.hp=Math.min(stats().hp,p.hp+Math.max(0,amount));let healed=p.hp-old;if(healed>.01){float(p.x,p.y-24,'+'+healed.toFixed(healed<1?1:0),'#bcf0a9');radialEffect(p.x,p.y,17,'#95ddb1');}return healed;}
+function recoverHealth(amount){let old=p.hp;p.hp=Math.min(stats().hp,p.hp+Math.max(0,amount)*(1+activePermanentBonus('healing')/100));let healed=p.hp-old;if(healed>.01){float(p.x,p.y-24,'+'+healed.toFixed(healed<1?1:0),'#bcf0a9');radialEffect(p.x,p.y,17,'#95ddb1');}return healed;}
 
 function dropHeart(e){if(e.kind==='boss'||hearts.length>=6)return;let milestone=kills%12===0,low=p.hp/stats().hp<.45,chance=low?.28:.06;if(milestone||(time>=nextHeartAt&&rewardRandom()<chance)){let q=walkable(e.x,e.y,7);hearts.push({x:q.x,y:q.y,life:30,heal:Math.max(10,Math.round(stats().hp*.10))});nextHeartAt=time+2.5;}}
 
 function hitPerk(e,actual,source){if(!run.perk||actual<=0||source==='perk'||source==='status'||source==='charm')return;
-if(run.perk==='vampiric'){let amount=Math.min(actual*.04,run.vampBudget||0);if(p.hp<stats().hp){let healed=recoverHealth(amount);run.vampBudget=Math.max(0,(run.vampBudget||0)-healed);}return;}
+if(run.perk==='vampiric'){let amount=Math.min(actual*.04,(run.vampBudget||0)/(1+activePermanentBonus('healing')/100));if(p.hp<stats().hp){let healed=recoverHealth(amount);run.vampBudget=Math.max(0,(run.vampBudget||0)-healed);}return;}
 if(run.perk==='lightning'){if(time>=(run.lightningAt||-1)){let other=nearest(e,new Set([e.id]),120);if(other){run.lightningAt=time+.65;fx.push({x:e.x,y:e.y,vx:0,vy:0,life:.18,max:.18,arcX:other.x,arcY:other.y,color:'#f3e49b',r:0});damageEnemy(other,8,0,0,false,'perk');}}return;}
 if(e.hp<=0)return;
 if(run.perk==='fire'){e.burnUntil=time+2.4;if(!(e.burnNext>time))e.burnNext=time+.4;}
