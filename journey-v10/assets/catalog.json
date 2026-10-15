@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "reference_status": "User-supplied approved composite design reference is in conversation but not yet checked into repository.",
+  "portraits": {
+    "ava": {
+      "asset": "assets/portraits/ava.webp",
+      "source": "recovered legacy v9 portrait",
+      "status": "existing-game-artwork",
+      "approved_reference": "historical selection art",
+      "gameplay_sprite": "characters/ava.js"
+    },
+    "jackson": {
+      "asset": "assets/portraits/jackson.webp",
+      "source": "recovered legacy v9 portrait",
+      "status": "existing-game-artwork",
+      "approved_reference": "historical selection art",
+      "gameplay_sprite": "characters/jackson.js"
+    },
+    "stef": {
+      "asset": "assets/portraits/stef.webp",
+      "source": "recovered legacy v9 portrait",
+      "status": "existing-game-artwork",
+      "approved_reference": "historical selection art",
+      "gameplay_sprite": "characters/stef.js"
+    },
+    "jodie": {
+      "asset": "assets/portraits/jodie.webp",
+      "source": "recovered legacy v9 portrait",
+      "status": "existing-game-artwork",
+      "approved_reference": "historical selection art",
+      "gameplay_sprite": "characters/jodie.js"
+    },
+    "evie": {
+      "asset": "assets/portraits/evie.webp",
+      "source": "recovered legacy v9 portrait",
+      "status": "existing-game-artwork",
+      "approved_reference": "historical selection art",
+      "gameplay_sprite": "characters/evie.js"
+    }
+  },
+  "zak": {
+    "asset": "assets/portraits/zak.svg",
+    "source": "10.0.5 procedural placeholder",
+    "status": "unapproved-placeholder",
+    "approved_reference": "October 2026 user-provided detailed Sankey's Corner Zak composite image; needs stored image asset",
+    "gameplay_sprite": "characters/zak.js",
+    "requirements": [
+      "purple teenage cat",
+      "brown near-bowl-cut hair",
+      "stylish dark hoodie without paw badge",
+      "floating paws, no arms or feet",
+      "Sankey's Corner background"
+    ]
+  },
+  "arenas": [
+    "rugby",
+    "chasewater",
+    "sankeys",
+    "quarry"
+  ]
+}
