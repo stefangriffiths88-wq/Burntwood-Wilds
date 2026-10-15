@@ -12,7 +12,7 @@ for name in portrait_names:
     if len(matches)!=1:
         raise SystemExit(f'Expected exactly one artwork file for {name}, found {len(matches)}. Run assets/import_legacy_portraits.py for initial migration.')
     portraits[name]='journey-v10/assets/portraits/'+matches[0].name
-head=s[:i]+ 'const PORTRAITS='+json.dumps(portraits,separators=(',',':'))+';\n'
+head=s[:i]+ '<script>const PORTRAITS='+json.dumps(portraits,separators=(',',':'))+';\n'
 head=head.replace('<button id="pickEvie">Evie</button>','<button id="pickEvie">Evie</button><button id="pickZak">Zak</button>')
 head=head.replace('<button id="pickChasewater">Chasewater</button>','<button id="pickChasewater">Chasewater</button><button id="pickSankeys">Sankey’s</button>')
 head=head.replace('<button id="pickSankeys">Sankey’s</button>','<button id="pickSankeys">Sankey’s</button><button id="pickQuarry">Quarry</button>')
