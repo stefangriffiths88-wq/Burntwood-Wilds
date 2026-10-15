@@ -3,7 +3,7 @@ function openShrine(){if(state!=='playing'||!shrine||shrine.used||dist(p,shrine)
 
 function chooseShrine(i){if(state!=='shrine'||!shrine.offers[i])return;shrineBuff={kind:shrine.offers[i],left:30,shield:stats().hp*.2};state='playing';$('panel').style.display='none';$('shrineUse').style.display='none';}
 
-function stepShrine(dt){if(shrineBuff){shrineBuff.left-=dt;if(shrineBuff.left<=0)shrineBuff=null;else if(shrineBuff.kind==='regeneration')p.hp=Math.min(stats().hp,p.hp+stats().hp*.01*dt);}let ready=shrine&&!shrine.used&&dist(p,shrine)<70;$('shrineUse').style.display=ready?'block':'none';$('blessingHud').textContent=shrineBuff?BLESSINGS[shrineBuff.kind][0]+' · '+Math.ceil(shrineBuff.left)+'s':'';}
+function stepShrine(dt){if(shrineBuff){shrineBuff.left-=dt;if(shrineBuff.left<=0)shrineBuff=null;else if(shrineBuff.kind==='regeneration')p.hp=Math.min(stats().hp,p.hp+stats().hp*.01*dt*(1+activePermanentBonus('healing')/100));}let ready=shrine&&!shrine.used&&dist(p,shrine)<70;$('shrineUse').style.display=ready?'block':'none';$('blessingHud').textContent=shrineBuff?BLESSINGS[shrineBuff.kind][0]+' · '+Math.ceil(shrineBuff.left)+'s':'';}
 
 function drawShrine(){if(shrine){ellipse(shrine.x,shrine.y+9,17,6,'#243f3055');ctx.fillStyle=shrine.used?'#7d8b72':'#b3b99a';ctx.fillRect(shrine.x-11,shrine.y-24,22,33);ellipse(shrine.x,shrine.y-24,16,5,'#d1cbb0');starArt(shrine.x,shrine.y-31,7,0);if(!shrine.used)radialDraw(shrine.x,shrine.y,26+Math.sin(time*3)*2,'#e6d591');}if(shrineBuff?.kind==='barrier'&&shrineBuff.shield>0)radialDraw(p.x,p.y,27,'#9cdcf2');}
 let shrine=null,shrineBuff=null;

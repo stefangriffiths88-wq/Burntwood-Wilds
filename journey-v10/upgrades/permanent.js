@@ -1,0 +1,23 @@
+// Saved roster progression. Run state, charms and coins are deliberately separate.
+const SAVE_KEY='burntwood-wilds-progress-v1',ESSENCE_COSTS=[2,4,6,8,10];
+const PERMANENT_UPGRADES={
+ health:{name:'Tough Kit',unit:'maximum health',step:2,max:5},
+ damage:{name:'Hard Hitter',unit:'normal attack damage',step:1,max:5},
+ speed:{name:'Quick Feet',unit:'movement speed',step:1,max:5},
+ cooldown:{name:'Ready Again',unit:'special cooldown reduction',step:1,max:5},
+ healing:{name:'Helping Paw',unit:'healing received',step:3,max:5}
+};
+function blankProgress(){return {schema:1,essence:0,heroes:{},awards:[],workshopSeen:false};}
+function validProgress(value){if(!value||value.schema!==1||!Number.isSafeInteger(value.essence)||value.essence<0||value.essence>1000000||!value.heroes||typeof value.heroes!=='object'||Array.isArray(value.heroes))throw Error('This is not a valid Burntwood save.');let out=blankProgress();out.essence=value.essence;for(let [hero,ranks] of Object.entries(value.heroes)){if(!['ava','jackson','stef','jodie','evie','zak','mimi'].includes(hero)||!ranks||typeof ranks!=='object'||Array.isArray(ranks))throw Error('Unknown character in save.');out.heroes[hero]={};for(let [key,rank] of Object.entries(ranks)){if(!PERMANENT_UPGRADES[key]||!Number.isInteger(rank)||rank<0||rank>5)throw Error('Invalid upgrade rank.');out.heroes[hero][key]=rank;}}if(!Array.isArray(value.awards)||value.awards.length>4096||value.awards.some(a=>typeof a!=='string'||a.length>120))throw Error('Invalid reward record.');out.awards=[...new Set(value.awards)];out.workshopSeen=value.workshopSeen===true;return out;}
+let progress=blankProgress(),saveNotice='',saveBlocked=false;
+function loadProgress(){try{let raw=localStorage.getItem(SAVE_KEY);if(raw)progress=validProgress(JSON.parse(raw));}catch(e){saveBlocked=true;saveNotice='Progress could not be loaded. Your stored save has not been overwritten. Use a backup or try a normal Safari tab.';}}
+function storeProgress(next){if(saveBlocked){saveNotice='Saving is unavailable. Export a backup before leaving.';return false;}try{localStorage.setItem(SAVE_KEY,JSON.stringify(next));saveNotice='';return true;}catch(e){saveNotice='Saving is unavailable. Export a backup before leaving.';return false;}}
+function permanentRank(key,hero=selected){return progress.heroes[hero]?.[key]||0;}
+function permanentBonus(key,hero=selected){return permanentRank(key,hero)*(PERMANENT_UPGRADES[key]?.step||0);}
+function activePermanentBonus(key){return ((state==='menu'?progress.heroes[selected]:run.permanent)?.[key]||0)*(PERMANENT_UPGRADES[key]?.step||0);}
+function permanentWeaponScale(source){return source==='weapon'||source==='cat'?1+activePermanentBonus('damage')/100:1;}
+function newJourneyId(){return typeof crypto!=='undefined'&&crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2);}
+function awardBossEssence(){run.essenceAwards=run.essenceAwards||[];if(run.essenceAwards.includes(arenaKey))return 0;let token=run.journeyId+':'+arenaKey;if(progress.awards.includes(token))return 0;run.essenceAwards.push(arenaKey);let next=JSON.parse(JSON.stringify(progress));next.essence=Math.min(1000000,next.essence+2);next.awards.push(token);next.awards=next.awards.slice(-4096);let saved=storeProgress(next);progress=next;run.essenceEarned=(run.essenceEarned||0)+2;run.lastEssenceSaved=saved;return 2;}
+function exportProgress(){return JSON.stringify(progress,null,2);}
+function importProgress(raw){if(state!=='workshop')return false;try{if(typeof raw!=='string'||raw.length>750000)throw Error('Backup is too large.');let next=validProgress(JSON.parse(raw)),blocked=saveBlocked;saveBlocked=false;if(!storeProgress(next)){saveBlocked=blocked;renderWorkshop();return false;}progress=next;cancelPermanentPurchase();saveNotice='Backup restored. Start a fresh journey to use these upgrades.';renderWorkshop();return true;}catch(e){saveNotice=e.message||'Could not read that backup.';renderWorkshop();return false;}}
+loadProgress();

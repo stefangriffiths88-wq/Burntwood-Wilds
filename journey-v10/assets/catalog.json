@@ -75,5 +75,21 @@
     "chasewater",
     "sankeys",
     "quarry"
-  ]
+  ],
+  "town_presentation": {
+    "version": "10.5.0",
+    "source": "world/residents.js",
+    "scale_scope": "Hub NPCs and selected hub hero only. Existing gameplay renderers and all portraits unchanged.",
+    "scale": {
+      "jackson": 1,
+      "ava": 1,
+      "stef": 0.88,
+      "jodie": 1,
+      "evie": 0.9,
+      "zak": 0.68,
+      "mimi": 0.78
+    },
+    "boss_states": "Original sprite; wounded/resting after current-run victory. Bruce mouth ellipse removed by user request.",
+    "acceptance": "Requested by user; implementation awaiting mobile visual review and user playtest."
+  }
 }

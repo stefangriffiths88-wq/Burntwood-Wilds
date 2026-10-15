@@ -35,3 +35,6 @@ Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md and this file before edits.
 - Twelve run-only charms, three slots, matching same-rank fusion. Heroics at 1:00, final bosses at 2:00, eight timed upgrades. Charms persist between arenas, reset on a new run. CHARMS.md has numeric details and architecture.
 - Rank III requires four base copies; current three-reward route normally allows rank II.
 - Opening spell scene, conversations, town decoration, permanent upgrades, essence and gold escape tokens remain future design work. Do not implement without further design authorization.
+
+## Authorized release in development: 10.5.0
+User approved resident dialogue, Stefan’s permanent-upgrade shop, shared essence (2 per final boss), modest per-character ranks, save backup/restore, loss return to town, victory reactions, map service markers, wounded cleared bosses, hub size consistency and Bruce mouth-ball removal. New source/ownership and save rules: journey-v10/TOWN.md. No opening cinematic/gold token/starting charm included. Audit handover read before implementation; broad build/CI refactors remain separate. Focused town/save/bonus and existing gameplay/encounter checks pass locally; browser/production verification pending.

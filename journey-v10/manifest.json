@@ -1,4 +1,5 @@
 [
+  "upgrades/permanent.js",
   "state.js",
   "engine/core.js",
   "characters/jackson.js",
@@ -21,6 +22,8 @@
   "characters/mimi.js",
   "items/charms.js",
   "arenas/heroic.js",
+  "world/conversations.js",
+  "world/workshop.js",
   "world/residents.js",
   "registry.js",
   "controls.js"
