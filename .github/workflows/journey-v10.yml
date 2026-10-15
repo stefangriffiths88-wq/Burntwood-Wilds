@@ -25,6 +25,7 @@ jobs:
           git add burntwood-journey-v10.html journey-v10/game.js journey-v10/assets/portraits
           git diff --cached --quiet || (git commit -m "Generate versioned artwork assets and playable build" && (git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"))
       - run: node journey-v10/test.cjs
+      - run: node journey-v10/builds-test.cjs
       - run: node journey-v10/town-test.cjs
       - run: node journey-v10/encounters-test.cjs
       - run: node journey-v10/charms-test.cjs

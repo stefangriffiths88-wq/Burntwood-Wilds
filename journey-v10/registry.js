@@ -12,6 +12,7 @@ const ARENA_MODULES={
  rugby:{wave:rugbyWave,spawn:spawnRugby,ground:drawRugbyGround},
  chasewater:{wave:chaseWave,spawn:spawnRugby,ground:drawChasewater},
  sankeys:{wave:sankeyWave,spawn:spawnMarket,ground:drawSankeys},
+ park:{wave:parkWave,spawn:spawnPark,ground:drawParkGround},
  quarry:{wave:quarryWave,spawn:spawnQuarry,ground:drawQuarry}
 };
 function spawn(kind,at){ARENA_MODULES[arenaKey].spawn(kind,at);}
@@ -22,5 +23,5 @@ function normalAttack(){let f=run.charmFX,old=f?{attacks:f.attacks,echo:f.echo}:
 
 function normalAttackInterval(){return (CHARACTER_MODULES[selected].interval?.()??CHARACTERS[selected].rate)*normalRate();}
 
-function charge(){CHARACTER_MODULES[selected].special();}
+function charge(){let before=p?.chargeCD||0;CHARACTER_MODULES[selected].special();if(p?.chargeCD>before)charmSpecialUsed();}
 function dodge(){if(state==='hub')return;CHARACTER_MODULES[selected].dodge();}

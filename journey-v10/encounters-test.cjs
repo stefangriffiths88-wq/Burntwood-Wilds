@@ -7,7 +7,7 @@ function c(key,rank=1){t.run.charms.push({key,rank});}
 
 // Start with no charms: actual timer, ordinary upgrades, real hero attacks, all arenas.
 // Invulnerability and positioning isolate reward mechanics from human survival skill.
-for(let hero of heroes)for(let area of ['rugby','chasewater','sankeys','quarry']){
+for(let hero of heroes)for(let area of ['rugby','chasewater','sankeys','quarry','park']){
  reset(hero,area);t.player.attack=.02;assert.equal(t.run.charms.length,0);let found=false,got=false;
  for(let i=0;i<240*60&&!got;i++){
   if(t.state.state==='upgrade'){t.choose(0);continue;}
@@ -17,9 +17,9 @@ for(let hero of heroes)for(let area of ['rugby','chasewater','sankeys','quarry']
  }
  assert(found&&got,hero+' '+area+' earns a first charm without seeded equipment');
 }
-console.log('PASS 28 fresh hero/arena runs: timed heroic, real attacks, first charm, paused choice, duplicate guard');
+console.log('PASS 35 fresh hero/arena runs: timed heroic, real attacks, first charm, paused choice, duplicate guard');
 // Real charge contact in every arena, base and full special upgrades.
-for(let area of ['rugby','chasewater','sankeys','quarry'])for(let rank of [0,5]){
+for(let area of ['rugby','chasewater','sankeys','quarry','park'])for(let rank of [0,5]){
  reset('jackson',area);grant('special',rank);t.spawn('boss',{x:t.player.x+40,y:t.player.y});let b=t.boss;b.speed=0;b.mode='recover';b.timer=999;b.hp=b.maxHp=10000;
  t.player.dir={x:1,y:0};let before=b.hp;t.charge();t.step(.01);assert.equal(before-b.hp,rank?85:65,area+' charge damages boss');assert.equal(b.kx,0);assert.equal(b.ky,0);
  let after=b.hp;t.step(.01);assert.equal(b.hp,after,'one contact per charge');
@@ -36,6 +36,6 @@ console.log('PASS shared heroic reward lifecycle is independent of charm proc st
 for(let hero of heroes)for(let finalFirst of [true,false]){
  reset(hero);t.spawn('boss',{x:500,y:500});let final=t.boss,mini=t.spawnHeroic(),coins=t.hub.coins;
  for(let e of finalFirst?[final,mini]:[mini,final])t.damageEnemy(e,999999,0,0);
- assert.equal(t.state.state,'charm',hero+' simultaneous defeat order '+finalFirst);assert.equal(t.run.charmOffers.length,3);assert(t.chooseCharm(0));assert.equal(t.state.state,'won');assert.equal(t.run.charms.length,1);assert.equal(t.hub.coins,coins+60);
+ assert.equal(t.state.state,'charm',hero+' simultaneous defeat order '+finalFirst);assert.equal(t.run.charmOffers.length,3);assert(t.chooseCharm(0));assert.equal(t.state.state,'won');assert.equal(t.run.charms.length,1);assert.equal(t.hub.coins,coins+32);
 }
 console.log('PASS all seven heroes: both simultaneous heroic/final defeat orders preserve reward and one victory payment');

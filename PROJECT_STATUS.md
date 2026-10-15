@@ -2,6 +2,9 @@
 
 Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before edits.
 
+## In development: 10.6.0 — five-area builds
+Feature branch `five-area-builds`. Park, 30 charms, rarity/stat growth, gold shop, saved starter unlocks and inventory are implemented locally. Focused mechanics tests pass; full regression, mobile screenshots, merge and Pages verification are still pending. See journey-v10/BUILDS.md and CHARMS.md. Do not describe this draft as live.
+
 ## Released: 10.5.0 — living town and saved character progression
 - Release PR #51; merge 233715d0070fae0a5679a2e12bcdf8bb81ee4917.
 - Play in Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.5.0.html?v=1050
