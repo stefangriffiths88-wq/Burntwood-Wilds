@@ -3,8 +3,10 @@
 Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md and this file before edits.
 
 ## Released: 10.3.0 — Run charms
-- Release merge: `0d011a1cd1b048f71203935a6a4099d5d9b84af8`, PR #44.\n- Prior live release: **10.2.0**, Mimi, merge 710432d2863fbb47330060fc2203653ba3904ba8, PR #42. User now reports Mimi “Works perfect”.
-- Play in Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.3.0.html?v=1030\n- Maintained burntwood-journey-v10.html remains compatible. latest.html points to 10.3.0, verified publicly.
+- Release merge: `0d011a1cd1b048f71203935a6a4099d5d9b84af8`, PR #44.
+- Prior live release: **10.2.0**, Mimi, merge 710432d2863fbb47330060fc2203653ba3904ba8, PR #42. User now reports Mimi “Works perfect”.
+- Play in Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.3.0.html?v=1030
+- Maintained burntwood-journey-v10.html remains compatible. latest.html points to 10.3.0, verified publicly.
 - Twelve run-only charms, three equipment slots, duplicate/spare bag, reward choices and same-copy fusion at Mabel.
 - Heroic wildlife at 1:00 per arena; final boss at 2:00. Eight timed upgrades finish at 1:48.
 - No permanent progression. Charms carry between arenas, reset on a new run.
@@ -32,4 +34,10 @@ Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md and this file before edits.
 - Next: user playtest heroic threat at 1:00, charm choice usefulness, three-slot HUD, Mabel fusion and final boss timing at 2:00. Fix specific feedback; do not introduce permanent progression.
 - No permanent-progression work is authorized in this update.
 
-## Release files\nNew modules: items/charms.js and arenas/heroic.js. Shared integration: core damage/attack hooks, progression timing/cooldowns, arena slow handling, reward UI/HUD, shop workshop and browser tests. CI adds charms-test.cjs; versioned page and latest link updated. Approved character modules and portrait bytes remain unchanged.\n
+## Release files
+New modules: items/charms.js and arenas/heroic.js. Shared integration: core damage/attack hooks, progression timing/cooldowns, arena slow handling, reward UI/HUD, shop workshop and browser tests. CI adds charms-test.cjs; versioned page and latest link updated. Approved character modules and portrait bytes remain unchanged.
+
+## Next release: 10.4.0 — living town and boss entrances
+Implementation authorized: unselected characters populate the hub; Mimi shopkeeper or Jodie when playing Mimi, exact approved greetings above inventory; actual boss sprites replace gates and support direct map taps. Existing nearby actions retained. Details and deferred story/essence/token design are in journey-v10/TOWN.md.
+
+Local build/syntax, expanded seven-hero roster/shop/entrance tests and existing gameplay regression passed. Mobile CI/screenshots and production verification pending. No opening scene, permanent progression or building overhaul implemented. Next user playtest priorities: residents look familiar, correct shopkeeper/greeting, and boss taps enter the correct arenas.
