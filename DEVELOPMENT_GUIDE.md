@@ -94,3 +94,25 @@ The existing `.github/workflows/journey-v10.yml` generates files and may commit/
 
 ## Proven art-upload continuity
 Zak 10.1.2 established a working binary upload method; preserve the exact verified procedure above. For each new portrait, require an approved source, source-byte checksum, committed blob verification, dimension check, selection-screen screenshot, and an explicit distinction between automated visual inspection and the user's final playtest. Never require the user to manually use GitHub when a verified connected upload route is available.
+
+
+## One-command character creation — user trigger: "Build a new character"
+Treat "build a new character" (or equivalent) as a request to **start the established character-creation pipeline**, not as permission to invent a final design and deploy it immediately. The user should only have to describe the character in natural language, select a concept, approve its gameplay identity and playtest the result. Do not ask them to navigate GitHub, edit code or repeat established art rules.
+
+### Phase 1 — recover existing design system
+Before generating concepts, inspect all six current approved production portraits, `assets/catalog.json`, `assets/ART_DIRECTION.md`, `characters/*.js`, `registry.js`, `manifest.json`, selection UI, character upgrades and tests. Check which user-approved reference images are accessible; never claim to have seen an unavailable reference. Identify common visual rules (warm detailed cartoon portraits, coherent lighting, floating detached paws, no conventional arms/feet, consistent mobile framing) and gameplay interfaces. Do not copy another character's identity or overwrite an existing asset.
+
+### Phase 2 — present concepts, then get approval
+Ask only for an essential missing creative anchor if none is provided (for example animal/personality or character name); otherwise propose imaginative defaults. Generate **three genuinely distinct character variations within the same established game style**. Show visual concepts if image-generation capability is available; do not substitute text descriptions while claiming images were generated. Keep draft artwork separate from production assets. Briefly explain the visual distinctions and suggest possible unique combat identities. Invite the user to choose one or request alterations. **Do not integrate unapproved artwork or deploy a character before approval.**
+
+### Phase 3 — gameplay proposal and modular implementation
+After concept selection, propose an individual gameplay package: normal automatic weapon/attack, special ability, dodge, upgrade paths, stats, movement/attack effects, strengths, weaknesses and readability at phone scale. Avoid duplicating an existing hero's mechanics or introducing an obviously dominant character. Obtain approval for consequential creative choices, then implement a new independent `characters/<id>.js` module. Follow the actual interfaces in existing characters and register the new hero in `manifest.json`, `registry.js`, selection/HUD, upgrade/progression/shop systems as applicable. **Do not edit other characters' behaviour or global enemy difficulty merely to make the new hero work.** Keep arena rules unchanged unless explicitly requested.
+
+### Phase 4 — approved artwork and verification
+Generate or obtain the approved full-resolution selection portrait and appropriate gameplay sprite/animation. Verify exact identity, dimensions, detached paws, tail/costume details where relevant, phone framing and contrast. Use the verified GitHub binary upload method; verify source hash against committed blob, portrait registration and screenshot appearance. Test new hero selection, portrait loading, touch movement, automatic weapon, special, dodge, upgrades, effects, progression and save/load if present. Run affected tests during iteration, then required wider regression/mobile tests before release. Check other heroes are unchanged.
+
+### Phase 5 — ship, playtest, preserve
+Merge only after required checks pass, confirm production Pages deployment, provide full cache-busted Safari link and ask the user to play the new hero. Record approved visual and gameplay specifications in `assets/catalog.json` and relevant character docs; update `PROJECT_STATUS.md` with version, commit, evidence, playtest status and known issues. Treat user feedback as a focused change request. The command should become progressively more automatic as the pipeline is proven, but never skip approval or claim an unverified visual test.
+
+### Future automation opportunity
+Once two or more new characters have been shipped successfully with this process, evaluate a reusable character scaffold/generator that creates a new module, registry entries, portrait path, upgrade templates and test fixtures. Do not introduce a speculative generator or refactor the entire character system while another Work chat is actively developing an arena. Document a working scaffold only after testing it against the real repository.
