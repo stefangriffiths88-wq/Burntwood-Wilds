@@ -7,14 +7,14 @@ The approved target is the user's **Burntwood Wilds character-selection and four
 - Rounded, clean silhouette; **detached floating paws, no arms or feet**. Paws are intentionally spaced apart and independently animated in gameplay.
 - Distinct clothing, hairstyle and personality. In-game sprites need to remain readable at actual phone scale.
 - Selection artwork and gameplay sprites are different deliverables; compare both against their references.
-- The current Zak SVG is a **placeholder** and fails the detailed portrait art target.
+- Zak's approved full-resolution portrait is committed as `portraits/zak.webp` (10.1.2). The obsolete low-resolution SVG is retired.
 
-## Zak — approved direction, implementation pending
+## Zak — approved and released
 - Kind, friendly 15-year-old with a decent, moderately broad build; purple cat, brown near-bowl-cut hair.
 - Stylish dark hoodie **without a paw emblem**, textured folds and details; fluffy tail and floating paws.
 - Warm Sankey's Corner street scene in selection portrait.
 - Toxic Farts, Laughing Gas and Gas-Powered Launch are gameplay identities.
-- Do not call Zak finished until his actual portrait matches the supplied detailed reference and his in-game sprite matches the game's family style.
+- Portrait correction completed in 10.1.2 and user-confirmed on 15 October 2026. Preserve the approved Option A Street Zak playable sprite.
 
 ## Arena direction
 Local Burntwood locations, real wildlife with comic exaggeration; no generic fantasy crystals or monsters. Rugby Club, Chasewater, Sankey's Corner and Burntwood Quarry. Keep three arena visits per run until user changes the rule.
@@ -33,7 +33,7 @@ Capture: all six menu portraits, Zak portrait full-size, Zak in-game sprite idle
 
 
 ## Approved Zak direction and character expansion procedure — October 2026
-- User selected Zak portrait concept **Option 3: cap**. Maintain the established purple-grey cat, brown fringe, hoodie, floating paws without limbs, fluffy tail and Sankey's Corner background. Concept selection is not approval of a production asset crop; do not claim portrait integrated until it is.
+- User selected Zak portrait concept **Option 3: cap**. Maintain the established purple-grey cat, brown fringe, hoodie, floating paws without limbs, fluffy tail and Sankey's Corner background. The exact approved 1024×1536 production portrait is now integrated and user-confirmed; do not regenerate it.
 - Target gameplay identity: automatic ranged **Gas Blast** weapon; **Toxic Fart Cloud** area special; **Gas-Powered Launch** dodge. Preserve the game's separate weapon/special/dodge upgrades and shared stat upgrades; don't let lingering-cloud gameplay be the only viable way to fight.
 - New-character checklist: compare against existing six portraits; create independent `characters/<id>.js` module; register it in `manifest.json` and `registry.js`; provide character stats, PROFILES, five special upgrades, five dodge upgrades, weapon progression, five stat names, reset/update/draw and effects; verify selection UI, HUD, shop, save/progression and touch controls; test full combat and mobile selection; do not modify other characters to accommodate a new one.
 - Keep concept artwork separate from production portraits, and get user approval before replacing portrait assets.
