@@ -3,7 +3,7 @@ Never overwrites an existing asset. New approved art is added as a separate file
 """
 from pathlib import Path
 import base64,json,re
-root=Path(__file__).resolve().parent.parent
+root=Path(__file__).resolve().parent.parent.parent
 assets=root/'journey-v10'/'assets'/'portraits'
 assets.mkdir(parents=True,exist_ok=True)
 legacy=(root/'burntwood-rewards-v9.html').read_text()
