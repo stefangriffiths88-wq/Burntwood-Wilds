@@ -8,7 +8,7 @@ function spawnPark(kind,at){kind=({swarm:'scrapper',charger:'pouncer',heavy:'bru
 function parkHit(e,actual,source){if(!e.park||e.kind!=='boss'||e.mode!=='collect'||actual<=0)return;e.interrupt=(e.interrupt||0)+actual;if(e.interrupt>=e.maxHp*.015){e.mode='recover';e.timer=1.4;e.interrupt=0;float(e.x,e.y-60,'INTERRUPTED!','#f2d384');}}
 function parkDamageFactor(e){if(!e.park||e.kind!=='boss'||e.mode!=='shield')return 1;let a=Math.atan2(p.y-e.y,p.x-e.x),d=Math.atan2(Math.sin(a-e.aim),Math.cos(a-e.aim));return Math.abs(d)<1.25?.25:1;}
 function parkStrike(e,range,wide,damage){let a=Math.atan2(p.y-e.y,p.x-e.x),delta=Math.atan2(Math.sin(a-e.aim),Math.cos(a-e.aim));if(dist(p,e)<range+p.r&&Math.abs(delta)<wide)hurt(damage,e);radialEffect(e.x,e.y,range,'#d6be92');}
-function stepParkEnemy(e,dt){let dx=p.x-e.x,dy=p.y-e.y,n=Math.hypot(dx,dy)||1,mx=dx/n,my=dy/n,speed=e.speed,isBoss=e.kind==='boss';
+function stepParkEnemy(e,dt){let goal=enemyGoal(e),dx=goal.x-e.x,dy=goal.y-e.y,n=Math.hypot(dx,dy)||1,mx=dx/n,my=dy/n,speed=e.speed,isBoss=e.kind==='boss';
  if(e.stunUntil>time){speed=0;e.timer+=dt;}
  else if(e.mode==='collect'){speed=0;if(e.timer<=0){let pile=parkPiles[e.pile];if(pile?.charge&&e.healUsed<.15*e.maxHp){let heal=Math.min(e.maxHp*.05,.15*e.maxHp-e.healUsed,e.maxHp-e.hp);e.hp+=heal;e.healUsed+=heal;pile.charge=0;float(e.x,e.y-60,'+'+Math.round(heal)+' HEAL','#a9e4ac');radialEffect(e.x,e.y,45,'#8fcf96');}e.mode='recover';e.timer=1.2;}}
  else if(e.mode==='seekRubbish'){let pile=parkPiles[e.pile],d=dist(e,pile)||1;mx=(pile.x-e.x)/d;my=(pile.y-e.y)/d;if(d<20){e.mode='collect';e.timer=1.6;e.interrupt=0;}}

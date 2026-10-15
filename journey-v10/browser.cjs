@@ -29,7 +29,7 @@ await page.evaluate(()=>{let t=__test;t.menu();t.select('mimi');t.startJourney()
 async function worldTap(x,y){let screen=await page.evaluate(({x,y})=>{let a=__test.hubScreenPoint(0,0),b=__test.hubScreenPoint(100,0),px=100/(b.x-a.x);return{x:(x-a.x)*px,y:(y-a.y)*px};},{x,y});assert(screen.x>0&&screen.x<390&&screen.y>0&&screen.y<844);await page.touchscreen.tap(screen.x,screen.y);}
 for(let hero of ['ava','jackson','stef','jodie','evie','zak','mimi']){
  await page.evaluate(hero=>{let t=__test;t.menu();t.select(hero);t.startJourney();t.player.x=680;t.player.y=425;for(let i=0;i<90;i++)t.step(1/60);t.draw();},hero);
- assert.equal(await page.evaluate(()=>__test.townResidents().length+1),8);
+ assert.equal(await page.evaluate(()=>__test.townResidents().length+1),9);
  await worldTap(719,379);assert.equal(await page.evaluate(()=>__test.state.state),'shop');
  assert.equal(await page.locator('#shopSpeaker').innerText(),hero==='mimi'?'JODIE':'MIMI');assert.equal(await page.locator('#shopGreeting').innerText(),hero==='mimi'?'Heyy Mimiiii… How can I help you save us all?':'Okay human, you’re in my world now. Allow me to help you.');
  assert.equal(await page.locator('#shopPanel').evaluate(el=>el.scrollTop),0);if(hero==='mimi'||hero==='ava')await page.screenshot({animations:'disabled',path:'journey-v10/browser/shop-host-'+hero+'.png'});
