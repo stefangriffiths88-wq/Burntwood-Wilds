@@ -1,5 +1,6 @@
 // Shared dispatch: the engine never changes arena balance to fix one character.
 const CHARACTER_MODULES={
+ joseph:{interval:()=>.29/(tier>=1?1.15:1),attack:josephAttack,draw:drawJoseph,special:josephSpecial,dodge:josephDodge,update:updateJoseph,motion:josephMotion,avoidHit:josephAvoidHit},
  mimi:{interval:()=>tier>=2?.44:.62,attack:mimiAttack,draw:drawMimi,special:mimiSpecial,dodge:mimiDodge,update:updateMimi},
  jackson:{attack:shoot,draw:drawRugbyHero,special:jacksonCharge,dodge:quickDodge,update(){}},
  ava:{attack:shoot,draw:drawRugbyHero,special:avaSpecial,dodge:quickDodge,update(){}},

@@ -2,6 +2,9 @@
 
 Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
 
+## In development: 10.7.0 — Joseph
+Branch joseph-rocket restores Joseph as The Overhyped Rocket using the approved Rugby Club portrait and Option 2 Hooded Training sprite. All fifteen upgrades, exact dialogue, targeted mechanics, thirty charm combinations and five-arena actual-attack smoke tests pass locally. CI/mobile visual review, merge and deployment are pending. Tom is approved and queued after Joseph. Thumbnail selection remains a separate task requiring approval. Specification: journey-v10/characters/JOSEPH.md.
+
 ## Released: 10.6.0 — five-area builds and Chase Terrace Park
 - Release PR #53; merge 00e05ccfa26919118a1ffff74cf22d15f23adf19.
 - Play in Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.6.0.html?v=1060

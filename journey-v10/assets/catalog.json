@@ -46,6 +46,27 @@
       ],
       "gameplay_sprite": "characters/mimi.js",
       "approved_reference": "Option 3 Little Headband; approved full-resolution woodland portrait, 15 October 2026"
+    },
+    "joseph": {
+      "asset": "assets/portraits/joseph.webp",
+      "status": "user-approved-source-crop",
+      "dimensions": [
+        895,
+        842
+      ],
+      "source_sha256": "945ac45d38fe959597589dfe20f3767e1474ec70a887c1e671e9b547d3c2bc76",
+      "source_crop": [
+        66,
+        178,
+        961,
+        1020
+      ],
+      "approved_reference": "Nighttime Burntwood Rugby Club portrait. UI frame/text excluded without repainting. Gameplay Option 2 Hooded Training.",
+      "gameplay_sprite": "characters/joseph.js",
+      "reference_assets": [
+        "assets/references/joseph-approved-portrait-source.jpeg",
+        "assets/references/joseph-approved-sprite-options.jpeg"
+      ]
     }
   },
   "zak": {
