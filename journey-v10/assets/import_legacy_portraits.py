@@ -19,3 +19,11 @@ for name,uri in portraits.items():
     if not dest.exists():
         dest.write_bytes(base64.b64decode(match.group(2),validate=True))
         print('Recovered approved portrait:',dest.relative_to(root))
+
+# Preserve the current (unapproved) Zak SVG as a replaceable asset, not as build code.
+builder=(root/'journey-v10'/'build.py').read_text()
+zm=re.search(r"zak_svg='''(.*?)'''",builder,re.S)
+zak=assets/'zak.svg'
+if zm and not zak.exists():
+    zak.write_text(zm.group(1))
+    print('Recovered current Zak placeholder:',zak.relative_to(root))
