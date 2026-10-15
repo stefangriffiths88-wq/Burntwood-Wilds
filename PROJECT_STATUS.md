@@ -18,6 +18,12 @@ Updated 16 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md befo
 - Public versioned and canonical game: 281183 bytes, SHA256 571e9242992775344a9649344da6041073572c5428da580ccad848b580a8524f, exactly matching this tested source. latest.html destination is 10.10.0. All ten public portraits match repository bytes. Public 10.9.0 and 10.8.0 files also match their preserved historical bytes.
 - No failing automated checks found. Human survival balance, sustained native iPhone performance and final visual acceptance are not established by protected scripted runs or Chromium automation. Town road geography remains illustrative. CI still runs the legacy importer and can push generated files; isolate that maintenance change from gameplay updates.
 
+### Testing gate — 16 October 2026
+- User feedback: “all seems good on testing.” Record as a positive playtest report, not proof that every device/character/build combination has been manually tested. Browser/device was not specified.
+- Final check: main remains 435818fa85ef089de6a3414ba8e66d05322108d2 before this documentation update; no gameplay changes since the fully passing source ab86242be799422fa2f4a4a50ef5004780d0bc92. Main regression 38822801386 passed; latest documentation-head Pages 38825661684 succeeded. Repeat public checks verified canonical/versioned HTML, latest entry and all ten portraits match the tested files.
+- Testing result: no failing automated checks or user-reported playtest issues remain for 10.10.0. The release is cleared by the current testing gate. Keep any future issue as a focused reproduction; do not silently retune unrelated systems.
+- No new gameplay build has been started. Further development must wait for a clear testing result and an agreed next update; each future build must pass its own gate.
+
 ### Current workflow checkpoint
 - This review changes documentation only; no game version bump or gameplay/art change. It corrects this status file previously stopping at 10.9.0 despite a verified 10.10.0 release.
 - Current authoritative source is main, not the stale original scratch checkout. A separate clean worktree was used so prior uncommitted 10.9.0 files could not overwrite the 10.10.0 artwork.
