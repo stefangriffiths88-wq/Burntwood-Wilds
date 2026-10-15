@@ -472,7 +472,7 @@ const isZak=()=>selected==='zak';
 let zakClouds=[],zakBurst=0,zakLaunch=0,zakLaughClouds=[],zakMood=0,zakGasTrail=[],zakShots=[];
 function resetZak(){zakClouds=[];zakLaughClouds=[];zakGasTrail=[];zakShots=[];zakBurst=zakLaunch=zakMood=0;}
 // Automatic ranged weapon. Target acquisition is independent of other characters.
-function zakGasBlast(){if(!isZak()||!p)return false;let e=nearest(p,null,340);if(!e)return false;let dx=e.x-p.x,dy=e.y-p.y,n=Math.hypot(dx,dy)||1,base=Math.atan2(dy,dx);let count=tier>=3?3:1;
+function zakGasBlast(){if(!isZak()||!p)return false;let e=nearest(p,new Set(),340);if(!e)return false;let dx=e.x-p.x,dy=e.y-p.y,n=Math.hypot(dx,dy)||1,base=Math.atan2(dy,dx);let count=tier>=3?3:1;
 for(let i=0;i<count;i++){let a=base+(i-(count-1)/2)*.19;zakShots.push({x:p.x+Math.cos(a)*17,y:p.y+Math.sin(a)*17,px:p.x,py:p.y,vx:Math.cos(a)*370,vy:Math.sin(a)*370,life:1.15,r:tier>=1?9:7,damage:(tier>=2?12:9)*(tier>=5?1.2:1),pierce:tier>=4?2:1,hit:new Set()});}
 zakMood=.35;p.throwT=.18;pop(p.x+dx/n*19,p.y+dy/n*19,'#a8eb62',4);return true;}
 function zakExplosion(){if(state!=='playing'||p.action||p.chargeCD>0)return;p.chargeCD=specialCooldown();zakBurst=.8;zakMood=1.15;let r=105+(S(2)?25:0),life=2.5+(S(1)?1.5:0);zakLaughClouds.push({x:p.x,y:p.y,r,life,max:life,age:0,tick:0,hit:new Set()});radialEffect(p.x,p.y,r,'#c4a3e7');pop(p.x,p.y,'#a3db5b',24);float(p.x,p.y-42,'TOXIC FART CLOUD!','#d8f68c');for(let e of enemies){if(e.hp<=0||dist(p,e)>r+e.r)continue;let dx=e.x-p.x,dy=e.y-p.y,n=Math.hypot(dx,dy)||1;damageEnemy(e,16*(S(3)?1.35:1),dx/n,dy/n,false,'special');zakMakeLaugh(e,life);}if(S(5))zakClouds.push({x:p.x,y:p.y,r:72,life:3,tick:0,age:0});}
