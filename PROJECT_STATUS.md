@@ -1,45 +1,33 @@
 # Burntwood Wilds — project status
 
-Updated: 15 October 2026. Read with DEVELOPMENT_GUIDE.md before editing.
+Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md and this file before edits.
 
-## Released
-- Version **10.2.0** on main: Mimi. Release merge: `710432d2863fbb47330060fc2203653ba3904ba8`; PR #42. Previous 10.1.2 release was PR #35.
-- Play in Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.html?v=1020
-- Exact approved full-resolution Zak selection portrait installed (1024×1536 WebP, 249,644 bytes). Removed hardcoded zak-cap.svg override and obsolete SVG; normal portrait discovery now applies to all six characters.
-- User reported “Worked perfect” after release. User's browser/device for that test was not independently recorded.
+## Release in verification: 10.3.0 — Run charms
+- Prior live release: **10.2.0**, Mimi, merge 710432d2863fbb47330060fc2203653ba3904ba8, PR #42. User now reports Mimi “Works perfect”.
+- New versioned page: burntwood-journey-v10.3.0.html?v=1030; maintained burntwood-journey-v10.html remains compatible. latest.html points to the new release.
+- Twelve run-only charms, three equipment slots, duplicate/spare bag, reward choices and same-copy fusion at Mabel.
+- Heroic wildlife at 1:00 per arena; final boss at 2:00. Eight timed upgrades finish at 1:48.
+- No permanent progression. Charms carry between arenas, reset on a new run.
+- Full specification and numeric limits: journey-v10/CHARMS.md.
 
-## Decisions preserved
-- Selection portraits and playable sprites are separate assets.
-- Keep approved Option A Street Zak sprite and all character gameplay unchanged for portrait work.
-- Preserve Gas Blast, Toxic Fart Cloud, Gas-Powered Launch and Zak upgrades.
-- Characters/arenas/combat/progression stay modular; diagnose specific failures before balance changes.
-- Recover and use approved artwork; do not generate substitutes unnecessarily.
+## Preserved decisions
+- All seven heroes and their approved artwork remain. Portraits and playable sprites are separate. Mimi uses approved Little Headband sprite and exact woodland portrait; Zak Street sprite unchanged.
+- Individual attacks, character upgrades and arena identities stay independently configurable.
+- Charm mechanics own their own module; shared hooks integrate only the required effects. No global enemy nerf to favour one hero.
+- Fusion consumes two identical same-rank copies into one higher rank; no duplicate equipped effects. Current three-arena route permits a meaningful choice between filling slots and rank-II fusion.
 
-## Verification
-- Local build and gameplay regression passed, including all six heroes, upgrades, three-arena journeys, hub, shop, quarry and shrines.
-- Branch Actions run 38720861578 passed; main run 38720994299 passed.
-- Mobile Chromium suite passed: image loading, exact Zak dimensions, all six hero choices/abilities, touch/dodge, no zoom, short-screen layout and no JavaScript exceptions.
-- Inspected CI 390×844 Zak selection and gameplay screenshots; portrait fully framed with cap, tail and both paws visible.
-- Pages run 38720995017 succeeded. Public HTML returned BUILD_ID 10.1.2 and correct portrait path; live image bytes matched the approved source exactly.
-- Committed binary hash matches local Git blob hash. No character gameplay source changed.
-- Automation is mobile Chromium, not native iPhone Safari; simulations do not establish human balance.
+## Verification completed locally
+- Build, syntax and existing seven-hero regression pass with new 120-second boss timing.
+- All twelve effects tested: exact damage/cooldowns, nonstacking slows, no recursive procs, shield, healing, echo, knockback, caps.
+- Heroic timing/rewards in all four arenas, paused reward UI, duplicate click prevention, fusion, bag/replacement, carry-over and new-run reset pass.
+- 84 hero/charm combinations tested through actual normal/special/dodge actions.
+- 21 full journeys / 63 arenas: seven heroes × three builds × rugby/Chasewater/quarry, actual attack kills, real upgrade/reward flow. Every journey completed.
+- Three tested builds: storm/frost/ember, hunter/watch/moon, bell/locket/thorn. Scripted totals are in journey-v10/charm-test-results.json; no human balance ranking claimed.
+- Branch CI run 38729350423 passed: standard regression, extended charm matrix and mobile tests. Inspected charm-reward.png, charm-fusion.png and heroic-quarry.png at 390×844; UI fits, fusion values visible, heroic telegraph readable. Production checks follow merge.
 
-## Known problems and outstanding work
-- No unresolved defect identified in the portrait correction; this does not claim the entire game has no bugs.
-- Existing technical debt: legacy v9 HTML shell inheritance and duplicated version strings.
-- Broader composite design reference remains uncommitted; do not claim all artwork matches that reference.
-- Mimi implementation authorized; automated mechanics and regression tests pass locally. Branch CI/mobile run 38725376549 passed; screenshots inspected. Main regression/mobile run 38725597821 and Pages deployment 38725596746 succeeded. User playtest pending.
-
-## Exact next priorities
-1. Obtain the user's next requested improvement or play-test report.
-2. Inspect its owned modules and dependencies; implement the smallest effective isolated change.
-3. Test affected systems, run required release checks once stable, merge and verify production.
-4. Update this status and guide with verified outcomes and any proven workflow improvements.
-
-## Workflow continuity
-The permanent working agreement and proven binary image transfer method are in DEVELOPMENT_GUIDE.md. GitHub is authoritative; ChatGPT Memory is optional and cannot replace these files.
-
-## Mimi 10.2.0
-Approved Little Headband simple Canvas sprite and exact 1024×1536 woodland selection portrait. Independent characters/mimi.js; sword, gated 300% Vanish, Nine Lives progressive pounces and finite clone, five dodge and stat upgrades. Other character modules and arena balance unchanged. Next priority: user playtest Mimi sword reach, Vanish rhythm, pounce targeting and clone readability; fix specific feedback. Release PR #42; main regression/mobile 38725597821 and production Pages 38725596746 succeeded.
-
-Release tracking: PR #42; gameplay commit 844897ce7c969c7e74bd40c83432028c2af57e37. Branch workflow 38725376549 passed including expanded seven-hero regression and mobile browser suite. Inspected mimi-selection.png and sankeys-mimi.png at 390×844. Exact portrait blob 02d10a67f9c7af078eab31324fa1ffa693f6ad3b. User playtest remains pending.
+## Limits and next actions
+- Full simulations use scripted positioning and invulnerability, not human skill or survival balance.
+- Mobile Chromium is not native iPhone Safari. User playtest pending for charm pacing, heroic threat, fusion usability and combination feel.
+- Rank III is supported but needs four base copies; current three-reward route normally permits rank II. No extra acquisition source has been added without discussion.
+- Next: merge verified PR #44, verify Pages and public version, record production evidence. Then obtain user playtest feedback and fix reported systems specifically.
+- No permanent-progression work is authorized in this update.

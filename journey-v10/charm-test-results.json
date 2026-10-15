@@ -1,0 +1,152 @@
+{
+  "limits": "Scripted positioning and invulnerability; actual attack damage and real upgrade/reward flow. Not human balance testing.",
+  "journeys": [
+    {
+      "hero": "jackson",
+      "build": "storm+frost+ember",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 553
+    },
+    {
+      "hero": "jackson",
+      "build": "hunter+watch+moon",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 490
+    },
+    {
+      "hero": "jackson",
+      "build": "bell+locket+thorn",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 550
+    },
+    {
+      "hero": "ava",
+      "build": "storm+frost+ember",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 460
+    },
+    {
+      "hero": "ava",
+      "build": "hunter+watch+moon",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 440
+    },
+    {
+      "hero": "ava",
+      "build": "bell+locket+thorn",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 463
+    },
+    {
+      "hero": "stef",
+      "build": "storm+frost+ember",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 561
+    },
+    {
+      "hero": "stef",
+      "build": "hunter+watch+moon",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 520
+    },
+    {
+      "hero": "stef",
+      "build": "bell+locket+thorn",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 553
+    },
+    {
+      "hero": "jodie",
+      "build": "storm+frost+ember",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 645
+    },
+    {
+      "hero": "jodie",
+      "build": "hunter+watch+moon",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 614
+    },
+    {
+      "hero": "jodie",
+      "build": "bell+locket+thorn",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 598
+    },
+    {
+      "hero": "evie",
+      "build": "storm+frost+ember",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 584
+    },
+    {
+      "hero": "evie",
+      "build": "hunter+watch+moon",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 572
+    },
+    {
+      "hero": "evie",
+      "build": "bell+locket+thorn",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 538
+    },
+    {
+      "hero": "zak",
+      "build": "storm+frost+ember",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 533
+    },
+    {
+      "hero": "zak",
+      "build": "hunter+watch+moon",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 503
+    },
+    {
+      "hero": "zak",
+      "build": "bell+locket+thorn",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 532
+    },
+    {
+      "hero": "mimi",
+      "build": "storm+frost+ember",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 560
+    },
+    {
+      "hero": "mimi",
+      "build": "hunter+watch+moon",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 510
+    },
+    {
+      "hero": "mimi",
+      "build": "bell+locket+thorn",
+      "arenas": 3,
+      "heroics": 3,
+      "combatSeconds": 547
+    }
+  ]
+}

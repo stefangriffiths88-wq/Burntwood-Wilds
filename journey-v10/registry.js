@@ -18,6 +18,8 @@ function spawn(kind,at){ARENA_MODULES[arenaKey].spawn(kind,at);}
 function ground(){ARENA_MODULES[arenaKey].ground();}
 function rugbyWave(){let pt=pressureTime(),roll=rand(),kind=pt>10&&roll<.19?'charger':pt>20&&roll>.83?'heavy':'swarm';spawn(kind);if(pt>20&&rand()<.45){spawn('swarm');spawn('swarm');}nextSpawn=stageSpawnDelay(Math.max(.42,.88-time*.0018));}
 
+function normalAttack(){let f=run.charmFX,old=f?{attacks:f.attacks,echo:f.echo}:null;charmAttackStarted();let ok=CHARACTER_MODULES[selected].attack();if(!ok&&old){f.attacks=old.attacks;f.echo=old.echo;}return ok;}
+
 function normalAttackInterval(){return (CHARACTER_MODULES[selected].interval?.()??CHARACTERS[selected].rate)*normalRate();}
 
 function charge(){CHARACTER_MODULES[selected].special();}
