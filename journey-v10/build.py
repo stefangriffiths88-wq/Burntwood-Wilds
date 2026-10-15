@@ -1,15 +1,23 @@
 from pathlib import Path
 import json
-from urllib.parse import quote
 r=Path(__file__).parent;root=r.parent
 s=(root/'burntwood-rewards-v9.html').read_text();i=s.index('<script>const PORTRAITS=');e=s.index(';\n',i)+2;head=s[:e].replace('Rewards Test 9','Journey Test 10')
-zak_svg='''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 450 600"><defs><linearGradient id="sky" x2="0" y2="1"><stop stop-color="#3d574c"/><stop offset="1" stop-color="#172f29"/></linearGradient><radialGradient id="light"><stop stop-color="#edc991" stop-opacity=".6"/><stop offset="1" stop-color="#edc991" stop-opacity="0"/></radialGradient></defs><rect width="450" height="600" fill="url(#sky)"/><rect y="310" width="450" height="290" fill="#5b5c52"/><rect x="0" y="125" width="140" height="235" fill="#8a6454"/><rect x="290" y="95" width="160" height="280" fill="#9c715d"/><rect x="10" y="145" width="120" height="60" fill="#315e4e"/><text x="70" y="184" text-anchor="middle" font-size="18" fill="#f3e0b4" font-family="serif" font-weight="bold">SANKEY'S</text><path d="M0 360H450M0 450H450M130 310V600M315 310V600" stroke="#b6a48a" stroke-width="8" opacity=".35"/><circle cx="355" cy="110" r="170" fill="url(#light)"/><path d="M290 405Q432 480 358 320" fill="none" stroke="#816a9e" stroke-width="49" stroke-linecap="round"/><path d="M290 405Q410 453 365 342" fill="none" stroke="#b19bc9" stroke-width="12" stroke-linecap="round" opacity=".55"/><ellipse cx="225" cy="400" rx="108" ry="139" fill="#282630"/><path d="M125 305Q225 250 325 305L335 480Q225 510 115 480Z" fill="#36333e"/><path d="M150 310Q225 275 300 310" fill="none" stroke="#514957" stroke-width="18"/><path d="M194 320L191 390M256 320L259 390" stroke="#9a81a8" stroke-width="5"/><path d="M160 440Q225 465 290 440" stroke="#504956" stroke-width="8" fill="none"/><circle cx="76" cy="391" r="39" fill="#9179ac"/><circle cx="376" cy="391" r="39" fill="#9179ac"/><circle cx="68" cy="382" r="19" fill="#b8a3cb"/><circle cx="367" cy="382" r="19" fill="#b8a3cb"/><path d="M96 213L80 65 188 145 267 145 373 65 352 213" fill="#8d75ab" stroke="#66517c" stroke-width="9"/><path d="M105 170L103 99 171 156M279 156L346 99 344 170" fill="#d3a9c9"/><ellipse cx="225" cy="244" rx="142" ry="123" fill="#8d75ab"/><ellipse cx="164" cy="282" rx="45" ry="30" fill="#ac93c2" opacity=".4"/><ellipse cx="288" cy="282" rx="45" ry="30" fill="#ac93c2" opacity=".4"/><ellipse cx="177" cy="238" rx="31" ry="37" fill="#e4efb7"/><ellipse cx="273" cy="238" rx="31" ry="37" fill="#e4efb7"/><ellipse cx="183" cy="240" rx="12" ry="24" fill="#2b392e"/><ellipse cx="280" cy="240" rx="12" ry="24" fill="#2b392e"/><circle cx="174" cy="226" r="6" fill="#fff"/><circle cx="271" cy="226" r="6" fill="#fff"/><ellipse cx="225" cy="304" rx="57" ry="37" fill="#c5adce"/><path d="M208 299L225 310 241 299M225 310Q204 331 184 309M225 310Q249 331 267 309" fill="none" stroke="#5b4561" stroke-width="6" stroke-linecap="round"/><path d="M95 206Q94 133 164 131Q212 102 270 131Q326 125 355 202Q313 177 288 192Q249 168 219 193Q171 181 144 203Q111 183 95 206Z" fill="#694831"/><path d="M107 177Q164 136 226 164Q258 151 302 170" stroke="#8d6847" stroke-width="12" fill="none" stroke-linecap="round"/><text x="225" y="564" font-size="29" text-anchor="middle" fill="#efdcaf" font-family="serif" font-weight="bold">THE GENTLE GIANT</text></svg>'''
-head=head.replace('const PORTRAITS={', 'const PORTRAITS={"zak":"data:image/svg+xml,'+quote(zak_svg,safe='')+'",')
+# Character portraits are real, independently versioned image assets.
+# No image data is embedded in build code; a missing asset fails the build.
+portrait_dir=r/'assets'/'portraits'
+portrait_names=('ava','jackson','stef','jodie','evie','zak')
+portraits={}
+for name in portrait_names:
+    matches=[p for ext in ('webp','png','jpg','svg') if (p:=portrait_dir/(name+'.'+ext)).is_file()]
+    if len(matches)!=1:
+        raise SystemExit(f'Expected exactly one artwork file for {name}, found {len(matches)}. Run assets/import_legacy_portraits.py for initial migration.')
+    portraits[name]='journey-v10/assets/portraits/'+matches[0].name
+head=s[:i]+ 'const PORTRAITS='+json.dumps(portraits,separators=(',',':'))+';\n'
 head=head.replace('<button id="pickEvie">Evie</button>','<button id="pickEvie">Evie</button><button id="pickZak">Zak</button>')
 head=head.replace('<button id="pickChasewater">Chasewater</button>','<button id="pickChasewater">Chasewater</button><button id="pickSankeys">Sankey’s</button>')
 head=head.replace('<button id="pickSankeys">Sankey’s</button>','<button id="pickSankeys">Sankey’s</button><button id="pickQuarry">Quarry</button>')
-head=head.replace('<div class="choose">CHOOSE YOUR CHARACTER</div>','<div class="choose">CHOOSE YOUR CHARACTER · BUILD 10.0.5</div>')
-head=head.replace('<canvas id="game"></canvas>','<canvas id="game"></canvas><canvas id="hubMap" width="118" height="150" aria-label="Burntwood hub map"></canvas><button id="hubMenu">MENU · 10.0.4</button><button id="shrineUse">USE SHRINE</button><div id="blessingHud"></div>')
+head=head.replace('<div class="choose">CHOOSE YOUR CHARACTER</div>','<div class="choose">CHOOSE YOUR CHARACTER · BUILD 10.0.6</div>')
+head=head.replace('<canvas id="game"></canvas>','<canvas id="game"></canvas><canvas id="hubMap" width="118" height="150" aria-label="Burntwood hub map"></canvas><button id="hubMenu">MENU · 10.0.6</button><button id="shrineUse">USE SHRINE</button><div id="blessingHud"></div>')
 head=head.replace('</style>',(r/'menu.css').read_text()+'</style>')
 manifest=json.loads((r/'manifest.json').read_text());code='\n'.join((r/f).read_text() for f in manifest)
 (r/'game.js').write_text(code)
