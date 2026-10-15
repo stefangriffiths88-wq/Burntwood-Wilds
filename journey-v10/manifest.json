@@ -18,6 +18,7 @@
   "arenas/sankeys.js",
   "arenas/quarry.js",
   "arenas/rugby.js",
+  "characters/mimi.js",
   "registry.js",
   "controls.js"
 ]

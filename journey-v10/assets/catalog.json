@@ -36,6 +36,16 @@
       "status": "existing-game-artwork",
       "approved_reference": "historical selection art",
       "gameplay_sprite": "characters/evie.js"
+    },
+    "mimi": {
+      "asset": "assets/portraits/mimi.png",
+      "status": "user-approved",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "gameplay_sprite": "characters/mimi.js",
+      "approved_reference": "Option 3 Little Headband; approved full-resolution woodland portrait, 15 October 2026"
     }
   },
   "zak": {
