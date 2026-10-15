@@ -30,3 +30,10 @@ Capture: all six menu portraits, Zak portrait full-size, Zak in-game sprite idle
 4. Show concepts for user selection before replacing any asset; never integrate unapproved concept art.
 5. Validate crop, phone-scale readability and character-selection presentation before release.
 6. Keep artwork references and candidates catalogued separately from production portraits, and mark approved versus draft status explicitly.
+
+
+## Approved Zak direction and character expansion procedure — October 2026
+- User selected Zak portrait concept **Option 3: cap**. Maintain the established purple-grey cat, brown fringe, hoodie, floating paws without limbs, fluffy tail and Sankey's Corner background. Concept selection is not approval of a production asset crop; do not claim portrait integrated until it is.
+- Target gameplay identity: automatic ranged **Gas Blast** weapon; **Toxic Fart Cloud** area special; **Gas-Powered Launch** dodge. Preserve the game's separate weapon/special/dodge upgrades and shared stat upgrades; don't let lingering-cloud gameplay be the only viable way to fight.
+- New-character checklist: compare against existing six portraits; create independent `characters/<id>.js` module; register it in `manifest.json` and `registry.js`; provide character stats, PROFILES, five special upgrades, five dodge upgrades, weapon progression, five stat names, reset/update/draw and effects; verify selection UI, HUD, shop, save/progression and touch controls; test full combat and mobile selection; do not modify other characters to accommodate a new one.
+- Keep concept artwork separate from production portraits, and get user approval before replacing portrait assets.
