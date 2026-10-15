@@ -25,7 +25,7 @@ for(let i=pendingShots.length-1;i>=0;i--){pendingShots[i].delay-=dt;if(pendingSh
 nextSpawn-=dt;if(nextSpawn<=0&&enemies.length<90&&!bossSpawned){ARENA_MODULES[arenaKey].wave();}
 
 if(!bossSpawned&&time>=BOSS_TIME){spawn('boss',{x:clamp(p.x,100,WORLD.w-100),y:clamp(p.y-330,100,WORLD.h-100)});}
-for(let e of enemies){if(e.hp<=0)continue;e.age+=dt;e.flash=Math.max(0,e.flash-dt);e.stagger=Math.max(0,e.stagger-dt);e.attackCD=Math.max(0,e.attackCD-dt);e.timer-=dt;if(e.market){stepMarketEnemy(e,dt);continue;}if(e.chase){stepChaseEnemy(e,dt);continue;}let goal=enemyGoal(e),dx=goal.x-e.x,dy=goal.y-e.y,d=Math.hypot(dx,dy)||1,move=e.speed;
+for(let e of enemies){if(e.hp<=0)continue;e.age+=dt;e.flash=Math.max(0,e.flash-dt);e.stagger=Math.max(0,e.stagger-dt);e.attackCD=Math.max(0,e.attackCD-dt);e.timer-=dt;if(e.quarry){stepQuarryEnemy(e,dt);continue;}if(e.market){stepMarketEnemy(e,dt);continue;}if(e.chase){stepChaseEnemy(e,dt);continue;}let goal=enemyGoal(e),dx=goal.x-e.x,dy=goal.y-e.y,d=Math.hypot(dx,dy)||1,move=e.speed;
 if(e.kind==='charger'||e.kind==='boss'){
 if(e.mode==='walk'&&e.timer<=0){e.mode='wind';e.timer=e.kind==='boss'?.95:.70;e.dx=dx/d;e.dy=dy/d;}
 else if(e.mode==='wind'){move=0;if(e.timer<=0){e.mode='rush';e.timer=e.kind==='boss'?1.0:.65;}}
@@ -53,7 +53,7 @@ function drawRugbyHero(){let bob=Math.sin(p.walk*2)*Math.min(1,Math.hypot(p.vx,p
 
 
 
-function draw(){if(state==='hub'){drawHub();return;}ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle='#264a32';ctx.fillRect(0,0,W,H);if(!p)return;ctx.save();let sx=shake?(rand()-.5)*shake:0,sy=shake?(rand()-.5)*shake:0;ctx.translate(W/2-cam.x*scale+sx,H*.47-cam.y*scale+sy);ctx.scale(scale,scale);ground();drawStefGuide();drawZakClouds();drawChaseWarnings();drawMeteorGround();drawMarketWarnings();drawShrine();
+function draw(){if(state==='hub'){drawHub();return;}ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle='#264a32';ctx.fillRect(0,0,W,H);if(!p)return;ctx.save();let sx=shake?(rand()-.5)*shake:0,sy=shake?(rand()-.5)*shake:0;ctx.translate(W/2-cam.x*scale+sx,H*.47-cam.y*scale+sy);ctx.scale(scale,scale);ground();drawStefGuide();drawZakClouds();drawChaseWarnings();drawMeteorGround();drawMarketWarnings();drawQuarryWarnings();drawShrine();
 for(let e of enemies)if(!e.chase&&e.mode==='wind'&&e.hp>0){let len=e.kind==='boss'?440:230,width=e.kind==='boss'?e.r*1.5:22;ctx.save();ctx.translate(e.x,e.y);ctx.rotate(Math.atan2(e.dy,e.dx));ctx.fillStyle='#efb64d44';ctx.fillRect(0,-width/2,len,width);line([[0,-width/2],[len,-width/2]],'#ffcd71aa',2);line([[0,width/2],[len,width/2]],'#ffcd71aa',2);ctx.restore();}
 for(let g of gems){let bob=Math.sin(time*4+g.phase)*2;ctx.fillStyle='#a5e1ab';ctx.beginPath();ctx.moveTo(g.x,g.y-5+bob);ctx.lineTo(g.x+4,g.y+bob);ctx.lineTo(g.x,g.y+5+bob);ctx.lineTo(g.x-4,g.y+bob);ctx.fill();}
 for(let f of fx)if(f.ghost){ctx.globalAlpha=f.life/f.max*.3;ellipse(f.x,f.y,14,18,f.color);ctx.globalAlpha=1;}
