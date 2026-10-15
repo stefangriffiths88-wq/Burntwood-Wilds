@@ -67,6 +67,27 @@
         "assets/references/joseph-approved-portrait-source.jpeg",
         "assets/references/joseph-approved-sprite-options.jpeg"
       ]
+    },
+    "tom": {
+      "asset": "assets/portraits/tom.webp",
+      "status": "user-approved-source-crop",
+      "dimensions": [
+        512,
+        526
+      ],
+      "source_sha256": "6e1f60de306ac0fd7fe538049fe29cd7d8ecd894a74230ba5e7af9859d1c04e6",
+      "source_crop": [
+        1024,
+        0,
+        1536,
+        526
+      ],
+      "approved_reference": "Option 3 olive tactical portrait, exact right pane without number badge; compact gameplay reference has detached floating paws, no arms/legs/feet.",
+      "gameplay_sprite": "characters/tom.js",
+      "reference_assets": [
+        "assets/references/tom-approved-portrait-options.jpeg",
+        "assets/references/tom-approved-gameplay-reference.jpeg"
+      ]
     }
   },
   "zak": {
