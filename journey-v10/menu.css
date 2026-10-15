@@ -21,7 +21,7 @@
 #profile small{font-size:9px;color:#bbcdba;margin:1px 0 0;line-height:1.3}
 #arenaChoices{display:flex;gap:8px}#arenaChoices button{flex:1;background:#244838a8;border:1px solid #8a9c7480;border-radius:9px;font-size:12px;padding:8px 4px;color:#cddabd}#arenaChoices button.active{background:#c6d5ac;border-color:#dce5bc;color:#173f30}
 #menu #start{width:100%;margin:0;padding:11px 8px;font-size:16px;border-radius:11px;background:linear-gradient(#f4d58e,#ddb668);box-shadow:0 3px 14px #0003}
-.picks{display:grid;grid-template-columns:repeat(6,1fr);gap:5px;margin:0;border-top:1px solid #c7af6b55;padding-top:9px}
+.picks{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;margin:0;border-top:1px solid #c7af6b55;padding-top:9px}
 .picks button{font-size:11px;min-width:0;padding:11px 2px;border-radius:9px;border:1px solid #b09b6366;background:#12352c;color:#e1d1a4}
 .picks button.selected{background:#edce8a;color:#163c2e;border-color:#ffe7b2;box-shadow:0 0 0 1px #f9d89633}
 button:focus-visible{outline:3px solid #e6edbc;outline-offset:2px}

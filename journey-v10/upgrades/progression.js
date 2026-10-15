@@ -7,7 +7,7 @@ function normalRate(){return !isJodie()&&hasStat(2)?.9:1;}
 
 function damageScale(source){if(source==='cat')return hasStat(4)?1.1:1;if(source!=='weapon')return 1;return (run.shopBought?.includes('power')?1.1:1)*(isJodie()?(hasStat(2)?1.15:1):(hasStat(4)?1.1:1));}
 
-function specialCooldown(){let base=CHARACTERS[selected].specialCD;return S(4)?({jackson:7,ava:7,stef:8,jodie:9,evie:8,zak:9}[selected]):base;}
+function specialCooldown(){let base=CHARACTERS[selected].specialCD;return S(4)&&!isMimi()?({jackson:7,ava:7,stef:8,jodie:9,evie:8,zak:9}[selected]):base;}
 
 function dodgeCooldown(){return isStef()?(D(4)?2.3:3):(D(4)?selected==='jackson'?1.05:1.25:1.65);}
 
@@ -15,7 +15,7 @@ function resetProgression(){shrine=null;shrineBuff=null;hearts=[];nextHeartAt=0;
 
 function nextXP(){return 12+run.stagePicks*4;}
 
-function weaponData(){return isZak()?[zakNames,zakText]:isEvie()?[evieNames,evieText]:isJodie()?[jodieNames,jodieText]:isStef()?[stefNames,stefText]:isAva()?[avaNames,avaText]:[upgradeNames,upgradeText];}
+function weaponData(){return isMimi()?[mimiNames,mimiText]:isZak()?[zakNames,zakText]:isEvie()?[evieNames,evieText]:isJodie()?[jodieNames,jodieText]:isStef()?[stefNames,stefText]:isAva()?[avaNames,avaText]:[upgradeNames,upgradeText];}
 
 function buildOffers(){let candidates=[];if(tier<maxTier()){let [names,texts]=weaponData();candidates.push({path:'weapon',index:tier,name:names[tier],text:texts[tier],rank:tier+(isStef()||isEvie()?2:1)});}if(run.special<5){let [name,text]=SPECIALS[selected][run.special];candidates.push({path:'special',index:run.special,name,text,rank:run.special+1});}if(run.dodge<5){let [name,text]=DODGES[selected][run.dodge];candidates.push({path:'dodge',index:run.dodge,name,text,rank:run.dodge+1});}let stat=[0,1,2,3,4].filter(i=>!run.stat.has(i));if(stat.length){let index=stat[Math.floor(rewardRandom()*stat.length)];candidates.push({path:'stat',index,name:STAT_NAMES[selected][index],text:statText(index),rank:0});}
 // Rotate the missing path deterministically; no duplicate paths in an offer.

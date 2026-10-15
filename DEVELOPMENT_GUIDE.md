@@ -117,20 +117,5 @@ Merge only after required checks pass, confirm production Pages deployment, prov
 ### Future automation opportunity
 Once two or more new characters have been shipped successfully with this process, evaluate a reusable character scaffold/generator that creates a new module, registry entries, portrait path, upgrade templates and test fixtures. Do not introduce a speculative generator or refactor the entire character system while another Work chat is actively developing an arena. Document a working scaffold only after testing it against the real repository.
 
-
-## Mandatory character completion gate — lessons from Mimi
-**No unfinished character may enter the playable game, production character selection, main branch or public release.** Starting a character-design conversation, choosing a concept or approving a portrait does **not** authorize implementation or deployment. In particular, do not begin integrating a character while the user is still deciding or revising moves and artwork.
-
-Use explicit lifecycle states:
-1. **Concept in progress:** brainstorm names, personality, silhouettes and combat ideas; draft artwork stays outside production assets.
-2. **Design awaiting approval:** assemble one complete character specification covering final approved selection portrait, in-game sprite/animation direction, normal weapon, special ability, dodge/mobility, their effects and visual animations, upgrades, stats and identity. Mark missing decisions visibly.
-3. **Design locked:** the user has clearly approved **the entire specification**, including all moves and artwork. Record approval and a versioned specification in a non-production design record. Approval of one element is not approval of the others. If the user requests a design change, reopen the gate and wait for renewed approval of the affected specification.
-4. **Implementation on isolated feature branch:** only after design lock, build and test the complete character off main. A draft branch must not trigger public Pages publication; do not merge or expose unfinished character through selection. Production asset directories should contain only approved artwork.
-5. **Release ready:** all approved art and moves are implemented, visual assets are verified, character-specific and regression/mobile tests pass, and no placeholders, missing upgrades or disabled mechanics remain. The user must approve any intentional change from the locked design.
-6. **Released / awaiting playtest:** merge, verify public deployment and provide the playable link. Record user feedback separately; post-release balancing remains allowed through focused updates.
-
-**Pre-integration checklist (all required):** approved portrait; approved gameplay sprite/animation direction; normal attack and its visual effects; special and effects; dodge and effects; upgrade paths; starting stats; gameplay strengths/weaknesses; confirmed name/identity; any character-specific interaction; user confirmation that character design is complete. Ask one concise question about remaining missing decisions, rather than asking for each item individually. Do not interpret "build a new character" as permission to skip this gate.
-
-**Mimi-specific instruction:** the user reports that Mimi's Work session began processing/integrating her before the design was finished. If that session is still active, its release owner must stop any merge/publication until Mimi's full final artwork and move set have been explicitly approved and implemented. Existing draft work may be retained on a private feature branch; do not discard useful work or overwrite the approved design. This documentation change alone does not stop an already-running Work task; the user should tell that session directly to respect this gate.
-
-**No speculative production:** do not add placeholder heroes, partially wired selection buttons, unapproved portrait substitutions or temporary attacks to main merely to demonstrate progress. If an early playable prototype is specifically requested, keep it isolated and label it as a prototype, never a production release.
+## Binary transfer verification refinement
+Large exec output can truncate Base64 even when an upload succeeds. Read binary in chunks (for example 99,999 bytes, a multiple of three), concatenate complete Base64 chunks, and compare local Git blob hash with create_blob SHA before committing. An uploaded blob with a different SHA is incomplete or altered: correct it before merge. Mimi confirmed this failure mode.
