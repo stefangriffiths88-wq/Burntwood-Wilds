@@ -6,7 +6,7 @@
 - One Work session owns gameplay/release changes at a time. A parallel audit chat may update documentation only. Do not collide with an active feature branch.
 - The maintained source is `journey-v10/`; `manifest.json` determines JS concatenation order. `journey-v10/game.js` and published HTML are **generated**, never edit directly. Keep historical versions and public links working.
 - Scope character bugs to the character and its shared dependencies; do not silently rebalance every arena. Keep shared XP, rewards, collision and transitions consistent across heroes.
-- **Character completion gate:** concepts and approved portraits are not permission to integrate. Obtain explicit approval of the complete portrait, playable sprite, normal attack, special, dodge, effects, upgrades and stats before implementing. Implement on a feature branch; do not release placeholders or partially complete heroes.
+- **Character completion gate:** concepts and approved portraits alone are not permission to integrate. Obtain approval for the complete character, or explicit user delegation to fill in gameplay details for playtest; record the resulting full specification and delegated decisions. Respect existing authorization without repeated approval requests. Implement on a feature branch; do not release placeholders or partially complete heroes.
 - All approved selection art is stored as individual assets in `journey-v10/assets/portraits/`. Gameplay Canvas sprites are separate; verify both against approved references. Zak's approved WebP and Mimi's approved PNG are committed production assets. Do not run legacy portrait import scripts for routine updates.
 - Public repository: never upload private family photos, court material or secrets.
 
@@ -16,3 +16,6 @@
 - Build with `python3 journey-v10/build.py`, but **be aware that current CI auto-commits generated files**. Avoid concurrent feature/release pushes and check for CI-created commits; separating verification and publication is a priority future refactor, not yet implemented.
 - Merge only tested complete work. Verify main-branch Pages, publish an exact versioned playable link and update `PROJECT_STATUS.md` with commit, tests, limitations and user playtest status.
 - Do not reorganise or rename gameplay paths during another Work update. For structural cleanup, first update docs, then isolate build/CI refactors, then modular extraction, each with its own tests and rollout.
+
+## Resuming after another session
+Check remote main and deployed source before editing. Preserve dirty local work and use a clean worktree when it predates a newer release. Do not overwrite newer art/code with an already merged candidate. PROJECT_STATUS.md must record the latest verified release, exact CI/Pages evidence and pending user acceptance. Reuse checks at the exact tested commit when only documentation changes.

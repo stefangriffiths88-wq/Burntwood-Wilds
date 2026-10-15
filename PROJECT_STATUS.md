@@ -1,6 +1,28 @@
 # Burntwood Wilds — project status
 
-Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
+Updated 16 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
+
+## Current verified release: 10.10.0 — coherent playable character proportions
+- Release PR #60; merge ab86242be799422fa2f4a4a50ef5004780d0bc92 (reviewed 16 October 2026, Europe/London). Havannah, Joseph and Tom are already complete and playable; do not resume their old candidate branches or rebuild them.
+- Open in Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.10.0.html?v=10100
+- Stable current entry: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/latest.html
+- Ten heroes, five arenas and thirty charms. Latest change is presentation only: Jodie adult baseline; Jackson small/slim (11), Ava smaller (7), Stefan tallest/slim, Zak Jodie's height and athletic, Joseph larger than Ava, Evie slightly larger/rounder than Jackson. Tom stays stocky, Havannah child-sized, Mimi medium. All have detached paws and no conventional limbs. Town and combat use character-owned sizing without old town correction multipliers.
+- New visuals/cat-art.js contains shared drawing primitives; each character owns its identity, proportions and animation. Reference: journey-v10/visuals/README.md. Approved portraits and historical game files are preserved.
+
+### Cross-check evidence — 16 October 2026
+- Exact source: ab86242be799422fa2f4a4a50ef5004780d0bc92. Main CI 38822801386 and Pages 38822802195 (including deploy) succeeded. Main artifact 12014355172 contains 124 files, including forty ten-character idle/attack/town/short-screen captures. All forty sprite captures and the short Havannah selector were visually reviewed; native Safari/user visual acceptance is still pending.
+- Rebuilt from manifest with build.py; game.js, canonical HTML and versioned 10.10.0 HTML reproduced exactly. JS syntax passed.
+- Fresh local runs passed test.cjs, joseph-test.cjs, tom-test.cjs, havannah-test.cjs, builds-test.cjs, town-test.cjs and encounters-test.cjs. They cover existing combat/progression, all fifteen upgrades per new hero, dodge/CC/proc limits, save/import/storage failure, all five arenas, first charms, dialogue and retained journeys.
+- The existing full CI also passed charms-test.cjs and all five browser suites (base, Joseph, Tom, Havannah, visuals). Charm artifact records 21 five-area journeys / 105 arenas across the original seven heroes and three builds; those heroes cover 210 single-charm combinations. Joseph/Tom/Havannah each add thirty single-charm checks and actual five-arena heroic/final combat. Havannah additionally has a retained five-area/30-choice journey. These counts do not mean all ten completed the same three-build journey matrix.
+- Cross-compared 10.9.0 source at 85d0135f0cb5f106d1da2d1f32482133ae81f611: only eleven drawing-function bodies changed, six drawing helpers were added; all other top-level function declarations are unchanged. CHARACTERS, PROFILES, SPECIALS, DODGES and STAT_NAMES are identical. Portrait tree diff is empty. Mobile tests confirm collision radius remains 14 for all ten.
+- Public versioned and canonical game: 281183 bytes, SHA256 571e9242992775344a9649344da6041073572c5428da580ccad848b580a8524f, exactly matching this tested source. latest.html destination is 10.10.0. All ten public portraits match repository bytes. Public 10.9.0 and 10.8.0 files also match their preserved historical bytes.
+- No failing automated checks found. Human survival balance, sustained native iPhone performance and final visual acceptance are not established by protected scripted runs or Chromium automation. Town road geography remains illustrative. CI still runs the legacy importer and can push generated files; isolate that maintenance change from gameplay updates.
+
+### Current workflow checkpoint
+- This review changes documentation only; no game version bump or gameplay/art change. It corrects this status file previously stopping at 10.9.0 despite a verified 10.10.0 release.
+- Current authoritative source is main, not the stale original scratch checkout. A separate clean worktree was used so prior uncommitted 10.9.0 files could not overwrite the 10.10.0 artwork.
+- Next: user Safari comparison of all ten sprites in town/combat, attack readability and size relationships; diagnose specific feedback locally. Thumbnail selector, opening cinematic, escape tokens and accurate road redesign remain separate/unstarted work. Dedicated CI write-safety/template/version-registration cleanup follows user priorities, not an automatic rewrite.
+- Earlier sections below preserve release-time evidence. Their old latest.html destinations or playtest status describe those releases; this top section is the current truth.
 
 ## Released: 10.9.0 — Havannah
 - PR #58 merged on 15 October 2026 at commit c25057951722d9d99f4224ca35673b466e502d31.
