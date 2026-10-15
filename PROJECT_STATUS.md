@@ -23,11 +23,11 @@ Updated 15 October 2026. Read DEVELOPMENT_GUIDE.md and this file before edits.
 - 84 hero/charm combinations tested through actual normal/special/dodge actions.
 - 21 full journeys / 63 arenas: seven heroes × three builds × rugby/Chasewater/quarry, actual attack kills, real upgrade/reward flow. Every journey completed.
 - Three tested builds: storm/frost/ember, hunter/watch/moon, bell/locket/thorn. Scripted totals are in journey-v10/charm-test-results.json; no human balance ranking claimed.
-- Browser tests and production checks must pass before merge/release declaration.
+- Branch CI run 38729350423 passed: standard regression, extended charm matrix and mobile tests. Inspected charm-reward.png, charm-fusion.png and heroic-quarry.png at 390×844; UI fits, fusion values visible, heroic telegraph readable. Production checks follow merge.
 
 ## Limits and next actions
 - Full simulations use scripted positioning and invulnerability, not human skill or survival balance.
 - Mobile Chromium is not native iPhone Safari. User playtest pending for charm pacing, heroic threat, fusion usability and combination feel.
 - Rank III is supported but needs four base copies; current three-reward route normally permits rank II. No extra acquisition source has been added without discussion.
-- Next: finish mobile screenshot review and CI, merge, verify Pages and public version, record exact release evidence. Then obtain user playtest feedback and fix reported systems specifically.
+- Next: merge verified PR #44, verify Pages and public version, record production evidence. Then obtain user playtest feedback and fix reported systems specifically.
 - No permanent-progression work is authorized in this update.
