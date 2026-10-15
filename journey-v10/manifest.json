@@ -4,6 +4,7 @@
   "upgrades/permanent.js",
   "state.js",
   "engine/core.js",
+  "visuals/cat-art.js",
   "characters/jackson.js",
   "ui/menu.js",
   "characters/ava.js",

@@ -5,7 +5,7 @@ This file is the permanent handover for future ChatGPT development sessions. Rea
 ## Project
 - Repository: `stefangriffiths88-wq/Burntwood-Wilds`, branch `main`.
 - Published game: `https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.html`.
-- Mobile HTML Canvas roguelike with characters Ava, Jackson, Stefan, Jodie, Evie, Zak, Mimi, Joseph and Tom.
+- Mobile HTML Canvas roguelike with characters Ava, Jackson, Stefan, Jodie, Evie, Zak, Mimi, Joseph, Tom and Havannah.
 - Core files: `journey-v10/build.py`, `state.js`, `manifest.json`, `menu.css`, `ui/menu.js`, `characters/*.js`, `assets/portraits/*`, `assets/catalog.json`, `assets/ART_DIRECTION.md`, `test.cjs`, `browser.cjs`.
 - The generated published HTML is `burntwood-journey-v10.html`.
 

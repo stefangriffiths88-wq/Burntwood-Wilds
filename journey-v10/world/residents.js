@@ -11,8 +11,8 @@ const TOWN_RESIDENTS=[
  {key:'zak',x:615,y:296,place:'Sankey’s Corner'}
 ];
 function townResidents(){let shop=shopkeeperKey();return TOWN_RESIDENTS.filter(n=>n.key!==selected&&n.key!==shop);}
-// Hub-only scale corrections; approved combat sprite modules and hitboxes stay intact.
-const TOWN_DRAW_SCALE={havannah:1,tom:1,joseph:1,jackson:1,ava:1,stef:.88,jodie:1,evie:.9,zak:.68,mimi:.78};
+// Shared visual sizing lives in the character renderers, identical in town and combat.
+const TOWN_DRAW_SCALE={havannah:1,tom:1,joseph:1,jackson:1,ava:1,stef:1,jodie:1,evie:1,zak:1,mimi:1};
 function drawTownHero(key,x,y,phase=0){let player=p,hero=selected;ctx.save();try{ctx.translate(x,y);let size=TOWN_DRAW_SCALE[key]||1;ctx.scale(size,size);if(key==='havannah'){drawHavannahBody(0,0,phase,{dir:{x:0,y:1}});return;}if(key==='tom'){drawTomBody(0,0,phase,{dir:{x:0,y:1}});return;}if(key==='joseph'){drawJosephBody(0,0,phase,{dir:{x:0,y:1}});return;}if(key==='mimi'){drawMimiBody(0,Math.sin(phase*2),1,0,0);return;}p={x:0,y:0,vx:0,vy:0,r:14,walk:phase,inv:0,throwT:0,action:null,actionT:0,dir:{x:0,y:1},swing:null,claws:null,frenzy:0,kittenCall:0};selected=key;CHARACTER_MODULES[key].draw();}finally{p=player;selected=hero;ctx.restore();}}
 function drawHubPlayer(){ctx.save();ctx.translate(p.x,p.y);let size=TOWN_DRAW_SCALE[selected]||1;ctx.scale(size,size);ctx.translate(-p.x,-p.y);CHARACTER_MODULES[selected].draw();ctx.restore();}
 function townName(x,y,name,color='#fff0bd'){ctx.font='bold 10px system-ui';ctx.textAlign='center';ctx.fillStyle='#173c2dcc';ctx.fillRect(x-39,y-57,78,17);ctx.fillStyle=color;ctx.fillText(name,x,y-45);}

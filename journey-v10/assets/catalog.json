@@ -131,20 +131,24 @@
     "rugby",
     "chasewater",
     "sankeys",
-    "quarry"
+    "quarry",
+    "park"
   ],
   "town_presentation": {
-    "version": "10.5.0",
+    "version": "10.10.0",
     "source": "world/residents.js",
-    "scale_scope": "Hub NPCs and selected hub hero only. Existing gameplay renderers and all portraits unchanged.",
+    "scale_scope": "Character-owned proportions shared by hub and combat; user-authorized consistency rework, 16 October 2026.",
     "scale": {
-      "jackson": 1,
       "ava": 1,
-      "stef": 0.88,
+      "jackson": 1,
+      "stef": 1,
       "jodie": 1,
-      "evie": 0.9,
-      "zak": 0.68,
-      "mimi": 0.78
+      "evie": 1,
+      "zak": 1,
+      "mimi": 1,
+      "joseph": 1,
+      "tom": 1,
+      "havannah": 1
     },
     "boss_states": "Original sprite; wounded/resting after current-run victory. Bruce mouth ellipse removed by user request.",
     "acceptance": "Requested by user; mobile screenshots inspected for 10.5.0. Native Safari/user playtest pending; see PROJECT_STATUS.md."
@@ -162,5 +166,12 @@
       "Patch (heroic)"
     ],
     "reference": "User-approved Chase Terrace Park, umbrella attacks and bounded rubbish healing; October 2026"
+  },
+  "gameplay_visuals": {
+    "version": "10.10.0",
+    "spec": "visuals/README.md",
+    "approval": "User authorized rework with Jodie as baseline, small slim Jackson (11), smaller Ava (7), tall slim Stefan, athletic Zak same height as Jodie, Joseph larger than Ava, Evie slightly larger and rounder than Jackson.",
+    "portraits": "All approved selection portraits preserved byte-for-byte",
+    "acceptance": "Implementation candidate; native Safari/user visual playtest pending"
   }
 }

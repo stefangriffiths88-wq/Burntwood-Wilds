@@ -12,28 +12,14 @@ function glitterBurst(x,y,damage){pop(x,y,'#f8bde7',18);fx.push({x,y,vx:0,vy:0,r
 
 function starArt(x,y,r,angle=0){ctx.save();ctx.translate(x,y);ctx.rotate(angle);ctx.beginPath();for(let i=0;i<10;i++){let a=-Math.PI/2+i*Math.PI/5,v=i%2?r*.45:r;i?ctx.lineTo(Math.cos(a)*v,Math.sin(a)*v):ctx.moveTo(Math.cos(a)*v,Math.sin(a)*v);}ctx.closePath();ctx.fillStyle='#ffe6a0';ctx.fill();ctx.strokeStyle='#98714d';ctx.lineWidth=.7;ctx.stroke();ctx.restore();}
 
-function drawAvaSprite(ctx,x,y,s,type){ctx.save();ctx.translate(x,y);ctx.scale(s*.86,s*.86);const ink=type===0?'#6b5052':type===1?'#775047':'#4d465b',fur=type===0?'#e6d6bd':type===1?'#cf997d':'#a699b5',cream=type===0?'#fff0d9':type===1?'#f8ddc8':'#e8dfe9';function fill(path,color,stroke=true){ctx.fillStyle=color;ctx.fill(path);if(stroke){ctx.strokeStyle=ink;ctx.lineWidth=.65;ctx.stroke(path);}}function oval(x,y,rx,ry,color,stroke=true){let p=new Path2D();p.ellipse(x,y,rx,ry,0,0,Math.PI*2);fill(p,color,stroke);}function line(pts,color,w){ctx.strokeStyle=color;ctx.lineWidth=w;ctx.lineCap='round';ctx.lineJoin='round';ctx.beginPath();pts.forEach(([x,y],i)=>i?ctx.lineTo(x,y):ctx.moveTo(x,y));ctx.stroke();}
-oval(0,19,12,3,'#1b412b55',false);ctx.strokeStyle=type===0?'#ceb99b':type===1?'#b97960':'#867995';ctx.lineWidth=4;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(6,10);ctx.bezierCurveTo(20,21,25,10,22,5);ctx.stroke();ctx.strokeStyle=cream;ctx.lineWidth=3.4;ctx.beginPath();ctx.moveTo(22,5);ctx.quadraticCurveTo(21,2,18,3);ctx.stroke();
-let body=new Path2D();body.moveTo(-7,-6);body.quadraticCurveTo(0,-9.4,7,-6);body.quadraticCurveTo(5.1,1,5.6,5);body.lineTo(8,14);body.quadraticCurveTo(0,18,-8,14);body.lineTo(-5.6,5);body.quadraticCurveTo(-5.1,1,-7,-6);body.closePath();fill(body,type===0?'#bc7799':type===1?'#9b78b8':'#608caa');ctx.save();ctx.clip(body);ctx.fillStyle=type===0?'#dfadbf':type===1?'#c6a5da':'#9bbbcf';ctx.fillRect(-13,7,26,10);ctx.fillStyle='#4f4765';ctx.fillRect(-13,3.7,26,2.8);ctx.restore();line([[-5,-7],[0,-4],[5,-7]],'#f0e9d3',1.1);
-let hy=-13;for(let side of [-1,1]){let ear=new Path2D();ear.moveTo(side*3,hy-3);ear.lineTo(side*8,hy-8.6);ear.quadraticCurveTo(side*10,hy-5,side*6.5,hy-.6);ear.closePath();fill(ear,fur);let inner=new Path2D();inner.moveTo(side*4.7,hy-4);inner.lineTo(side*7,hy-6.9);inner.lineTo(side*7,hy-3);inner.closePath();fill(inner,'#c69696',false);}
-oval(0,hy,7,6.5,fur);oval(0,hy+3,4.8,2.8,cream);oval(-2.5,hy,1.05,1.5,'#e8eee4',false);oval(2.5,hy,1.05,1.5,'#e8eee4',false);oval(-2.4,hy,.55,1.1,'#2e7586',false);oval(2.4,hy,.55,1.1,'#2e7586',false);oval(0,hy+3,1,.7,'#b07875',false);line([[-6.6,hy],[-5.1,hy+1]],'#526a70',.75);line([[6.6,hy],[5.1,hy+1]],'#526a70',.75);
-// Short sides, a raised side part and asymmetric swept fringe, not a flat cap.
-// Simple feminine hairstyles, kept clear of the short cat ears.
-// Same soft bob on every option, gently framing the cheeks.
-const hairColor=type===0?'#926244':type===1?'#714734':'#655064';let h=new Path2D();h.moveTo(-6.8,hy-2);h.quadraticCurveTo(-7.1,hy-7,-1.2,hy-7.3);h.quadraticCurveTo(4,hy-7.6,6.8,hy-3);h.quadraticCurveTo(2.2,hy-5,-1.8,hy-.4);h.lineTo(-1,hy-3);h.quadraticCurveTo(-4,hy-1.9,-6.8,hy-2);h.closePath();fill(h,hairColor);
-for(let side of [-1,1]){let lock=new Path2D();lock.moveTo(side*6.1,hy-4);lock.bezierCurveTo(side*10.2,hy,side*9.5,hy+8.8,side*5.6,hy+8.2);lock.quadraticCurveTo(side*7.5,hy+3,side*6.1,hy-4);fill(lock,hairColor);}
-line([[-5,hy-5],[-1,hy-6.1],[3,hy-5.3]],type===2?'#a58a9a':'#ba946d',.65);
-// Small bow clip, readable eye shape and subtle cheek colour.
-let bow=new Path2D();bow.moveTo(5,hy-4.7);bow.lineTo(3.1,hy-6.1);bow.lineTo(3.1,hy-3.2);bow.closePath();fill(bow,'#eed4df');let bow2=new Path2D();bow2.moveTo(5,hy-4.7);bow2.lineTo(7.1,hy-6.1);bow2.lineTo(7.1,hy-3.2);bow2.closePath();fill(bow2,'#eed4df');oval(5,hy-4.7,.6,.7,'#e4abc4',false);
-oval(-4.4,hy+1.4,1.25,.65,type===0?'#dcb6ad':type===1?'#d48e85':'#b590b2',false);oval(4.4,hy+1.4,1.25,.65,type===0?'#dcb6ad':type===1?'#d48e85':'#b590b2',false);
-// Two tiny lash marks suggest Ava without exaggerated make-up.
-line([[-3.4,hy-.8],[-4.3,hy-1.7]],ink,.65);line([[-3.3,hy-.3],[-4.5,hy-.5]],ink,.6);line([[3.4,hy-.8],[4.3,hy-1.7]],ink,.65);line([[3.3,hy-.3],[4.5,hy-.5]],ink,.6);
-function star(x,y,r,color){let p=new Path2D();for(let i=0;i<10;i++){let a=-Math.PI/2+i*Math.PI/5,rr=i%2?r*.46:r;let xx=x+Math.cos(a)*rr,yy=y+Math.sin(a)*rr;i?p.lineTo(xx,yy):p.moveTo(xx,yy);}p.closePath();fill(p,color);}
-star(-5,5.1,2.2,'#f6db82');star(0,5.1,2.6,'#ffe8a1');star(5,5.1,2.2,'#f6db82');
-// Two detached paws, with open space separating them from the jersey.
-let rightY=1-(p?.throwT>0?Math.sin(p.throwT/.2*Math.PI)*5:0);oval(-12,5,3,3.5,cream);oval(12,rightY,3,3.5,cream);line([[-13.1,6],[-11.4,6]],'#abb3a5',.55);line([[10.9,rightY+1],[12.6,rightY+1]],'#abb3a5',.55);
-// Held throwing star, with no arm or weapon attached to the body.
-star(15,rightY-4,5,'#ffe7a0');ctx.restore();}
+function drawAvaSprite(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.73,s*.73);
+ ellipse(0,23,12,3.2,'#18372855');catTail('#c8b192','#fff0d9',5);
+ catShape('M -10 -5 Q 0 -10 10 -5 Q 8 6 13 17 Q 0 25 -13 17 Q -8 6 -10 -5 Z','#ba7899','#6b5052');
+ catShape('M -11 11 Q 0 15 11 11 L 13 17 Q 0 25 -13 17 Z','#e2acbf','#8b607b');line([[-9,5],[9,5]],'#63506e',3);line([[-6,-5],[0,-1],[6,-5]],'#f7e9d9',2);for(let xx of [-6,0,6])starArt(xx,5,xx?2.3:3,0);
+ for(let side of [-1,1])catOval(side*13,-12,4,12,'#926244','#6b5052');catFace({fur:'#e6d6bd',cream:'#fff0d9',eye:'#398b9c',ink:'#6b5052',wide:16});
+ catShape('M -15 -22 Q -16 -34 -1 -31 Q 10 -33 15 -22 Q 5 -28 -3 -19 L -2 -25 Q -9 -20 -15 -22 Z','#926244','#6b5052');line([[-10,-27],[-3,-29],[5,-27]],'#c39870',1.2);
+ catShape('M 9 -26 L 4 -30 L 4 -22 Z','#f5d7e5','#9c708a');catShape('M 9 -26 L 15 -30 L 15 -22 Z','#f5d7e5','#9c708a');ellipse(9,-26,1.6,1.7,'#e6a5c4');
+ let sway=Math.sin((p?.walk||0)*2)*1.2,cast=p?.throwT>0?Math.sin(p.throwT/.2*Math.PI)*7:0;catPaw(-24,5+sway,5,'#fff0d9');catPaw(24,3-sway-cast,5,'#fff0d9');if(!cast)starArt(29,-4,5.5,.1);c.restore();}
 
 function glitterShower(mult=1){let damage=(S(2)?10:6)*mult,duration=S(1)?4.5:3;glitterTime=.8;for(let e of enemies){if(e.hp<=0)continue;e.slowUntil=Math.max(e.slowUntil||0,time+duration);if(S(3))e.glitterUntil=time+3;damageEnemy(e,damage,0,0,false,'special');}}
 

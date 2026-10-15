@@ -49,3 +49,6 @@ Selection: exact Option 3 (right pane) from references/tom-approved-portrait-opt
 
 ## Havannah — approved Tiny Rebel and blue eyes
 Six-year-old girl cat, cream/ginger fur, blonde high side ponytail, yellow rectangular clip, plum hoodie with turquoise star, fluffy tail and direct menacing-cheeky gaze. Blue eyes are the user's explicit correction after selecting option 3; the approved portrait PNG is authoritative over the earlier green-eyed sprite sheet. Native Canvas gameplay has two detached floating paws, compact child proportions and no arms/legs/feet. Preserve approved 1024×1536 selection image; do not regenerate. Sources: references/havannah-approved-portrait.png and references/havannah-sprite-options.png.
+
+## 10.10.0 — user-authorized gameplay consistency rework
+Jodie is the adult size baseline; Jackson (11) small/slim, Ava (7) smaller, Stefan tallest/slim, Zak same height as Jodie and athletic, Joseph bigger than Ava, Evie slightly bigger/rounder than Jackson. Preserve outfits, hair, colors and separate approved portraits. Shared chibi facial readability and detached paws; no legs/feet. Town and combat use identical sizes. See visuals/README.md. Native Safari/user acceptance pending.
