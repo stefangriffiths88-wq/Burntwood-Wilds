@@ -1,17 +1,17 @@
 # Burntwood Wilds — maintained game architecture
 
-Read `../DEVELOPMENT_GUIDE.md`, `../PROJECT_STATUS.md` and `../AGENTS.md` first. The status file is the source of truth for the current verified release (10.5.0 at this documentation update). The maintained source is `journey-v10/`; `manifest.json` controls concatenation order. `game.js`, root `burntwood-journey-v10.html` and versioned HTML releases are generated outputs; do not edit them directly. `latest.html` is the stable public entry point.
+Read `../DEVELOPMENT_GUIDE.md`, `../PROJECT_STATUS.md` and `../AGENTS.md` first. The status file is the source of truth for the current verified release (see PROJECT_STATUS.md for verified deployment). The maintained source is `journey-v10/`; `manifest.json` controls concatenation order. `game.js`, root `burntwood-journey-v10.html` and versioned HTML releases are generated outputs; do not edit them directly. `latest.html` is the stable public entry point.
 
 ## Source ownership
 - `characters/{ava,jackson,stef,jodie,evie,zak,mimi}.js`: seven individual heroes, moves, stats, gameplay Canvas drawings and upgrades.
-- `arenas/{rugby,chasewater,sankeys,quarry}.js`: four arenas and their visuals/encounters; `arenas/heroic.js`: heroic encounters and reward scheduling.
-- `items/charms.js`: 12 run-only charms, inventory, fusion, effect hooks. See `CHARMS.md`.
+- `arenas/{rugby,chasewater,sankeys,quarry,park}.js`: five arenas and their visuals/encounters; `arenas/heroic.js`: heroic encounters and reward scheduling.
+- `items/{charm-catalog,charms,economy}.js`: 30 run-only charms, rarity, fusion, inventory, gold shops and starter unlocks. See `CHARMS.md`.
 - `world/{hub,residents,conversations,workshop,shopkeeper,shrines,burntwood-details}.js`: town, resident display, shopkeeper and interactions. See `TOWN.md`.
-- `upgrades/{progression,rewards}.js`: shared run upgrades and boss rewards; `upgrades/permanent.js`: saved essence, character ranks and validated backups.
+- `upgrades/{build-stats,progression,rewards}.js`: shared run upgrades and boss rewards; `upgrades/permanent.js`: saved essence, character ranks and validated backups.
 - `engine/core.js`, `state.js`, `registry.js`: shared runtime, state and character/arena dispatch.
 - `ui/menu.js`, `controls.js`, `menu.css`: selection, interface and mobile controls.
 - `assets/portraits/*`: approved separate selection portraits; `assets/catalog.json` and `assets/ART_DIRECTION.md` record artwork status and visual standards.
-- `test.cjs`, `town-test.cjs`, `encounters-test.cjs`, `charms-test.cjs`, `browser.cjs`: gameplay, encounter, charm and mobile-browser checks.
+- `test.cjs`, `builds-test.cjs`, `town-test.cjs`, `encounters-test.cjs`, `charms-test.cjs`, `browser.cjs`: gameplay, encounter, charm and mobile-browser checks.
 - `build.py`: current generator. Generated `game.js` and HTML are not primary sources.
 
 ## Artwork and new characters

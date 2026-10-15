@@ -91,5 +91,19 @@
     },
     "boss_states": "Original sprite; wounded/resting after current-run victory. Bruce mouth ellipse removed by user request.",
     "acceptance": "Requested by user; mobile screenshots inspected for 10.5.0. Native Safari/user playtest pending; see PROJECT_STATUS.md."
+  },
+  "park": {
+    "source": "arenas/park.js",
+    "status": "approved-design-native-canvas-implementation-awaiting-playtest",
+    "boss": "Fictional Umbrella Man",
+    "enemies": [
+      "Scrapper",
+      "Hedge Pouncer",
+      "Bin Bandit",
+      "Bench Bruiser",
+      "Spitter",
+      "Patch (heroic)"
+    ],
+    "reference": "User-approved Chase Terrace Park, umbrella attacks and bounded rubbish healing; October 2026"
   }
 }

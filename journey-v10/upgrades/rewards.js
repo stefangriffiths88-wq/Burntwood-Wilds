@@ -3,23 +3,23 @@ function rewardRandom(){return rewardRolls.length?rewardRolls.shift():Math.rando
 
 function rollPerks(){let keys=Object.keys(PERKS);for(let i=keys.length-1;i>0;i--){let j=Math.floor(rewardRandom()*(i+1));[keys[i],keys[j]]=[keys[j],keys[i]];}return keys.slice(0,3);}
 
-function openBossReward(){if(state!=='won'||run.stage!==0||run.perk)return;if(!run.rewardOffers)run.rewardOffers=rollPerks();state='perk';$('panel').style.display='grid';$('panelTitle').textContent='BOSS REWARD · CHOOSE ONE';$('panelName').textContent='Give this run a new twist';$('panelText').textContent='Three random perks. Pick one for the next arena. No rerolls.';$('panelButton').style.display='none';$('continue').style.display='none';$('back').style.display='none';$('upgradeChoices').innerHTML=run.rewardOffers.map((key,i)=>'<button class="upgradeCard perkCard" data-choice="'+i+'" style="--perk:'+PERKS[key].color+'"><span>BOSS PERK</span><b>'+PERKS[key].name+'</b><small>'+PERKS[key].text+'</small></button>').join('');$('upgradeChoices').style.display='grid';for(let i=0;i<3;i++)$('upgradeChoices').children[i].onclick=()=>chooseBossPerk(i);}
+function openBossReward(){$('runSummary').style.display='none';if(state!=='won'||run.stage!==0||run.perk)return;if(!run.rewardOffers)run.rewardOffers=rollPerks();state='perk';$('panel').style.display='grid';$('panelTitle').textContent='BOSS REWARD · CHOOSE ONE';$('panelName').textContent='Give this run a new twist';$('panelText').textContent='Three random perks. Pick one for the next arena. No rerolls.';$('panelButton').style.display='none';$('continue').style.display='none';$('back').style.display='none';$('upgradeChoices').innerHTML=run.rewardOffers.map((key,i)=>'<button class="upgradeCard perkCard" data-choice="'+i+'" style="--perk:'+PERKS[key].color+'"><span>BOSS PERK</span><b>'+PERKS[key].name+'</b><small>'+PERKS[key].text+'</small></button>').join('');$('upgradeChoices').style.display='grid';for(let i=0;i<3;i++)$('upgradeChoices').children[i].onclick=()=>chooseBossPerk(i);}
 
 function chooseBossPerk(i){if(state!=='perk'||run.stage!==0||run.perk||!run.rewardOffers?.[i])return;run.perk=run.rewardOffers[i];run.vampBudget=2;run.lightningAt=-1;state='won';continueRun();}
 
-function recoverHealth(amount){let old=p.hp;p.hp=Math.min(stats().hp,p.hp+Math.max(0,amount)*(1+activePermanentBonus('healing')/100));let healed=p.hp-old;if(healed>.01){float(p.x,p.y-24,'+'+healed.toFixed(healed<1?1:0),'#bcf0a9');radialEffect(p.x,p.y,17,'#95ddb1');}return healed;}
+function recoverHealth(amount,kind='normal'){let old=p.hp;p.hp=Math.min(stats().hp,p.hp+Math.max(0,amount)*healingFactor(kind==='blood'));let healed=p.hp-old;if(healed>.01){float(p.x,p.y-24,'+'+healed.toFixed(healed<1?1:0),'#bcf0a9');radialEffect(p.x,p.y,17,'#95ddb1');}return healed;}
 
 function dropHeart(e){if(e.kind==='boss'||hearts.length>=6)return;let milestone=kills%12===0,low=p.hp/stats().hp<.45,chance=low?.28:.06;if(milestone||(time>=nextHeartAt&&rewardRandom()<chance)){let q=walkable(e.x,e.y,7);hearts.push({x:q.x,y:q.y,life:30,heal:Math.max(10,Math.round(stats().hp*.10))});nextHeartAt=time+2.5;}}
 
-function hitPerk(e,actual,source){if(!run.perk||actual<=0||source==='perk'||source==='status'||source==='charm')return;
-if(run.perk==='vampiric'){let amount=Math.min(actual*.04,(run.vampBudget||0)/(1+activePermanentBonus('healing')/100));if(p.hp<stats().hp){let healed=recoverHealth(amount);run.vampBudget=Math.max(0,(run.vampBudget||0)-healed);}return;}
+function hitPerk(e,actual,source){if(!run.perk||actual<=0||source==='perk'||source==='status'||source==='charm'||source==='clone')return;
+if(run.perk==='vampiric'){let amount=Math.min(actual*.04,(run.vampBudget||0)/Math.max(.01,healingFactor()));if(p.hp<stats().hp){let healed=recoverHealth(amount);run.vampBudget=Math.max(0,(run.vampBudget||0)-healed);}return;}
 if(run.perk==='lightning'){if(time>=(run.lightningAt||-1)){let other=nearest(e,new Set([e.id]),120);if(other){run.lightningAt=time+.65;fx.push({x:e.x,y:e.y,vx:0,vy:0,life:.18,max:.18,arcX:other.x,arcY:other.y,color:'#f3e49b',r:0});damageEnemy(other,8,0,0,false,'perk');}}return;}
 if(e.hp<=0)return;
 if(run.perk==='fire'){e.burnUntil=time+2.4;if(!(e.burnNext>time))e.burnNext=time+.4;}
 else if(run.perk==='ice'){e.frostUntil=time+1.2;e.slowUntil=Math.max(e.slowUntil||0,e.frostUntil);}
 else if(run.perk==='wounding'){if(time>=(e.nextWound||0)){if(!(e.bleedUntil>time))e.bleedStacks=0;e.bleedStacks=Math.min(3,(e.bleedStacks||0)+1);e.nextWound=time+.2;}e.bleedUntil=time+3;if(!(e.bleedNext>time))e.bleedNext=time+.5;}}
 
-function onDefeated(e){heroicDefeated(e);charmOnKill(e);dropHeart(e);if(run.perk==='fire'&&e.burnUntil>time){let other=nearest(e,new Set([e.id]),65);if(other){other.burnUntil=Math.max(other.burnUntil||0,time+1.2);if(!(other.burnNext>time))other.burnNext=time+.4;radialEffect(other.x,other.y,13,'#efab64');}}}
+function onDefeated(e){dropGold(e);heroicDefeated(e);charmOnKill(e);dropHeart(e);if(run.perk==='fire'&&e.burnUntil>time){let other=nearest(e,new Set([e.id]),65);if(other){other.burnUntil=Math.max(other.burnUntil||0,time+1.2);if(!(other.burnNext>time))other.burnNext=time+.4;radialEffect(other.x,other.y,13,'#efab64');}}}
 
 function rewardStep(dt){if(run.perk==='vampiric')run.vampBudget=Math.min(2,(run.vampBudget||0)+2*dt);
 for(let e of enemies){if(e.hp<=0)continue;if(e.burnUntil>time&&time>=e.burnNext){e.burnNext=time+.4;damageEnemy(e,2,0,0,false,'perk');}if(e.hp>0&&e.bleedUntil>time&&time>=e.bleedNext){e.bleedNext=time+.5;damageEnemy(e,1.5*(e.bleedStacks||1),0,0,false,'perk');}}

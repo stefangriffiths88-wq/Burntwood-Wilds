@@ -1,4 +1,6 @@
 [
+  "upgrades/build-stats.js",
+  "items/charm-catalog.js",
   "upgrades/permanent.js",
   "state.js",
   "engine/core.js",
@@ -21,10 +23,12 @@
   "arenas/rugby.js",
   "characters/mimi.js",
   "items/charms.js",
+  "arenas/park.js",
   "arenas/heroic.js",
   "world/conversations.js",
   "world/workshop.js",
   "world/residents.js",
+  "items/economy.js",
   "registry.js",
   "controls.js"
 ]
