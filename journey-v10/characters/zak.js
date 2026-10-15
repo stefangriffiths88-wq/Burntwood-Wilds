@@ -18,26 +18,33 @@ for(let c of zakLaughClouds){c.life-=dt;c.age+=dt;c.tick-=dt;if(c.tick<=0){c.tic
 function drawZakClouds(){if(!isZak())return;for(let shot of zakShots){line([[shot.px,shot.py],[shot.x,shot.y]],'#d7fba5',3);ellipse(shot.x,shot.y,shot.r,shot.r*.85,'#9ae653');ellipse(shot.x-2,shot.y-2,shot.r*.35,shot.r*.35,'#e4ffb5');}for(let c of zakClouds){ctx.save();ctx.globalAlpha=Math.min(.43,c.life*.18);for(let i=0;i<7;i++){let a=i*TAU/7+c.age*.4,r=c.r*.48;ellipse(c.x+Math.cos(a)*r,c.y+Math.sin(a)*r,c.r*.47,c.r*.34,i%2?'#8ecb53':'#c1e776');}ctx.restore();}
 for(let c of zakLaughClouds){ctx.save();ctx.globalAlpha=Math.min(.33,c.life*.19);for(let i=0;i<9;i++){let a=i*TAU/9+c.age*.35,r=c.r*(.3+.2*Math.sin(i*3));ellipse(c.x+Math.cos(a)*r,c.y+Math.sin(a)*r,c.r*.37,c.r*.30,i%2?'#a7dc81':'#cba7ed');}ctx.restore();radialDraw(c.x,c.y,c.r,'#b5a0e644');}
 if(zakBurst>0)radialDraw(p.x,p.y,105*(1-zakBurst/.8),'#b3ed78');if(zakLaunch>0)radialDraw(p.x,p.y,40*(1-zakLaunch/.5),'#c5e982');}
+// Street Zak (approved option A): flat game-scale silhouette, detached paws, no limbs.
 function drawZak(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*1.25)*1.3+(zakLaunch>0?-Math.sin((.5-zakLaunch)/.5*Math.PI)*8:0));ctx.scale(1.08,1.1);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;
-ellipse(0,21,15,4,'#142e2a55');
-// Tail, detached paws and floating hoodie body: the shared family silhouette.
-ctx.strokeStyle='#735b91';ctx.lineWidth=6;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(11,9);ctx.bezierCurveTo(31,20,34,-3,20,-2);ctx.stroke();ellipse(22,-3,5,4,'#9b83b5');
-ellipse(0,6,15,18,'#26232d');ellipse(0,7,12,15,'#38313f');ellipse(0,-3,13,7,'#45404c');
-line([[-5,-5],[-4,5]],'#a98ab9',1.1);line([[5,-5],[4,5]],'#a98ab9',1.1);
-ellipse(0,13,7,4,'#49414c');line([[-7,16],[7,16]],'#201d29',1);
-// Distinct, independently bobbing floating paws, no arms or feet.
+ellipse(0,21,17,4,'#142e2a55');
+// Long grey-purple tail, kept separate from the hoodie.
+ctx.strokeStyle='#555267';ctx.lineWidth=8;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(11,11);ctx.bezierCurveTo(34,24,39,-5,27,-9);ctx.stroke();ellipse(27,-9,6,6,'#b9b4c3');
+// Floating black hoodie, zipped front, purple hood and small waist pouch. No arms or legs.
+ellipse(0,6,16,19,'#24232c');ellipse(0,8,13,16,'#33313d');
+ellipse(0,-5,15,8,'#493d61');ellipse(0,2,11,13,'#292b33');
+line([[-7,-4],[-4,7]],'#a187c5',1.3);line([[7,-4],[4,7]],'#a187c5',1.3);
+line([[0,-1],[0,15]],'#b8aa95',1);ellipse(0,6,1.6,2,'#dfc17b');
+ellipse(0,14,9,5,'#5b463b');ellipse(0,13,8,3,'#7b5b40');ellipse(0,12,2.8,2.8,'#e3b95c');
+// Independent floating paws positioned well away from body, no connecting sleeves.
 let swing=Math.sin(p.walk*2)*2.2,reach=p.throwT>0?5:0;
-ellipse(-24-reach,-1+swing,7,7,'#9b83b5');ellipse(24+reach,-1-swing,7,7,'#9b83b5');
-ellipse(-25-reach,-3+swing,4,3,'#b69fc9');ellipse(23+reach,-3-swing,4,3,'#b69fc9');
-// Rounded teenage cat face with soft cheeks and a brown near-bowl-cut fringe.
-ellipse(0,-14,17,15,'#8d76ac');
-ctx.fillStyle='#8d76ac';ctx.beginPath();ctx.moveTo(-14,-19);ctx.lineTo(-12,-33);ctx.lineTo(-3,-24);ctx.lineTo(4,-24);ctx.lineTo(12,-33);ctx.lineTo(14,-19);ctx.fill();
-ctx.fillStyle='#c6a6d3';ctx.beginPath();ctx.moveTo(-11,-25);ctx.lineTo(-11,-30);ctx.lineTo(-6,-24);ctx.moveTo(6,-24);ctx.lineTo(11,-30);ctx.lineTo(11,-25);ctx.fill();
-ellipse(-7,-12,4.3,5,'#d9efad');ellipse(7,-12,4.3,5,'#d9efad');ellipse(-6,-12,1.7,3,'#29352a');ellipse(8,-12,1.7,3,'#29352a');ellipse(-7,-14,1,1,'#ffffff');ellipse(6,-14,1,1,'#ffffff');
-ellipse(0,-4,7,4.7,'#c7b0d0');ellipse(0,-6,2,1.4,'#6b5169');line([[-4,-3],[0,-1],[4,-3]],'#5a425b',1.4);
-ctx.fillStyle='#654532';ctx.beginPath();ctx.moveTo(-14,-23);ctx.quadraticCurveTo(-9,-34,0,-30);ctx.quadraticCurveTo(10,-34,15,-23);ctx.quadraticCurveTo(6,-26,3,-24);ctx.quadraticCurveTo(-2,-21,-5,-24);ctx.quadraticCurveTo(-11,-22,-14,-23);ctx.fill();ellipse(-4,-27,9,3,'#7b573c');
+for(let side of [-1,1]){let hx=side*(27+reach),hy=-1-side*swing;ellipse(hx,hy,6.4,6.5,'#b8a8c2');ellipse(hx,hy+1,4.7,4.8,'#e1d7e0');ellipse(hx,hy+1,2.4,2.2,'#9e84b0');for(let k=-1;k<=1;k++)ellipse(hx+k*2.5,hy-3.4,1,1.2,'#a68ab4');}
+// Teenage grey-purple cat face and untidy brown fringe.
+ellipse(0,-15,17,15,'#8b8797');
+ctx.fillStyle='#777283';ctx.beginPath();ctx.moveTo(-14,-19);ctx.lineTo(-13,-32);ctx.lineTo(-3,-25);ctx.lineTo(4,-25);ctx.lineTo(12,-32);ctx.lineTo(14,-19);ctx.fill();
+ctx.fillStyle='#c6b1c5';ctx.beginPath();ctx.moveTo(-11,-26);ctx.lineTo(-11,-30);ctx.lineTo(-6,-25);ctx.moveTo(6,-25);ctx.lineTo(11,-30);ctx.lineTo(11,-26);ctx.fill();
+ellipse(-7,-12,4.1,5,'#a9d581');ellipse(7,-12,4.1,5,'#a9d581');ellipse(-6,-12,1.6,3,'#263b29');ellipse(8,-12,1.6,3,'#263b29');ellipse(-7,-14,1,1,'#fff');ellipse(6,-14,1,1,'#fff');
+ellipse(0,-5,8,5,'#d9cbd6');ellipse(0,-7,2,1.4,'#a27886');line([[-4,-3],[0,-1],[4,-3]],'#604b60',1.4);
+ctx.fillStyle='#755039';ctx.beginPath();ctx.moveTo(-15,-24);ctx.quadraticCurveTo(-8,-32,0,-29);ctx.quadraticCurveTo(11,-34,15,-23);ctx.quadraticCurveTo(6,-25,3,-22);ctx.quadraticCurveTo(-2,-20,-5,-23);ctx.quadraticCurveTo(-11,-21,-15,-24);ctx.fill();ellipse(-3,-27,8,2.8,'#8b6041');
+// Sideways black cap with green paw emblem. Brim projects to Zak's left.
+ctx.fillStyle='#1b2028';ctx.beginPath();ctx.moveTo(-15,-27);ctx.quadraticCurveTo(-14,-39,-1,-39);ctx.quadraticCurveTo(13,-40,16,-29);ctx.lineTo(15,-26);ctx.quadraticCurveTo(0,-31,-15,-27);ctx.fill();
+ctx.fillStyle='#151b23';ctx.beginPath();ctx.moveTo(-8,-29);ctx.quadraticCurveTo(-21,-31,-25,-27);ctx.quadraticCurveTo(-24,-23,-11,-24);ctx.lineTo(2,-27);ctx.fill();
+ellipse(-9,-33,2.5,2.2,'#8cd53f');for(let k=0;k<3;k++)ellipse(-12+k*2.4,-36,1,1,'#8cd53f');
 if(zakMood>0)ellipse(0,-1,2.5,2.2,'#563b59');
-if(p.throwT>0){ellipse(-15,12,9,5,'#b4e16a77');ellipse(-21,9,5,3,'#a9d76b99');}ctx.restore();}
+if(p.throwT>0){ellipse(-17,12,9,5,'#b4e16a77');ellipse(-22,9,5,3,'#a9d76b99');}ctx.restore();}
 CHARACTERS.zak={name:'Zak',hp:130,speed:145,damage:6,rate:1.20,dodgeSpeed:500,dodgeTime:.28,specialCD:12};
 PROFILES.zak={role:'GENTLE GIANT',tag:'Big heart. Bigger farts.',attack:'Gas Blast',attackDesc:'Automatic ranged gas shots · targeted',special:'Toxic Fart Cloud',specialDesc:'Poisonous area burst · crowd control · 12s',dodge:'Gas-Powered Launch',dodgeDesc:'Explosive escape · backblast · 1.65s'};
 SPECIALS.zak=[['Extra Nasty','Toxic cloud lasts 1.5 seconds longer.'],['Big Stink','Toxic cloud radius grows by 25 units.'],['Toxic Overload','Cloud burst impact damage increases 35%.'],['Rapid Recharge','Toxic Fart Cloud cooldown 12 → 9 seconds.'],['Lingering Blast','Toxic cloud also leaves a 3-second poisonous patch.']];
