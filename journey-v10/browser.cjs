@@ -18,6 +18,23 @@ await page.locator('[data-equip]').first().tap();assert.equal(await page.evaluat
 // A live heroic encounter remains below the final boss and has a visible warning.
 await page.evaluate(()=>{let t=__test;t.menu();t.select('mimi');t.startJourney();t.enterArena('quarry');t.player.inv=999;t.player.attack=999;t.spawnHeroic();for(let i=0;i<140;i++)t.step(1/60);t.draw();});await page.screenshot({path:'journey-v10/browser/heroic-quarry.png'});
 
+// Native pointer/touch interaction on the map: shop hosts and bosses replace gates.
+async function worldTap(x,y){let screen=await page.evaluate(({x,y})=>{let a=__test.hubScreenPoint(0,0),b=__test.hubScreenPoint(100,0),px=100/(b.x-a.x);return{x:(x-a.x)*px,y:(y-a.y)*px};},{x,y});assert(screen.x>0&&screen.x<390&&screen.y>0&&screen.y<844);await page.touchscreen.tap(screen.x,screen.y);}
+for(let hero of ['ava','jackson','stef','jodie','evie','zak','mimi']){
+ await page.evaluate(hero=>{let t=__test;t.menu();t.select(hero);t.startJourney();t.player.x=680;t.player.y=425;for(let i=0;i<90;i++)t.step(1/60);t.draw();},hero);
+ assert.equal(await page.evaluate(()=>__test.townResidents().length+1),6);
+ await worldTap(719,379);assert.equal(await page.evaluate(()=>__test.state.state),'shop');
+ assert.equal(await page.locator('#shopSpeaker').innerText(),hero==='mimi'?'JODIE':'MIMI');assert.equal(await page.locator('#shopGreeting').innerText(),hero==='mimi'?'Heyy Mimiiii… How can I help you save us all?':'Okay human, you’re in my world now. Allow me to help you.');
+ assert.equal(await page.locator('#shopPanel').evaluate(el=>el.scrollTop),0);if(hero==='mimi'||hero==='ava')await page.screenshot({path:'journey-v10/browser/shop-host-'+hero+'.png'});
+ await page.locator('#shopClose').tap();assert.equal(await page.evaluate(()=>__test.state.state),'hub');
+}
+for(let area of ['rugby','chasewater','sankeys','quarry']){
+ let g=await page.evaluate(area=>{let t=__test;t.menu();t.select('mimi');t.startJourney();let g=t.hub.portals.find(n=>n.key===area);t.player.x=g.x-60;t.player.y=g.y+95;for(let i=0;i<90;i++)t.step(1/60);t.draw();return g;},area);
+ await page.screenshot({path:'journey-v10/browser/town-boss-'+area+'.png'});await worldTap(g.x,g.y);assert.equal(await page.evaluate(()=>__test.state.state),'playing');assert.equal(await page.evaluate(()=>__test.state.arena),area);
+}
+// The normal starting view contains residents; draw must not mutate hero identity.
+await page.evaluate(()=>{let t=__test;t.menu();t.select('jackson');t.startJourney();for(let i=0;i<30;i++)t.step(1/60);t.draw();});await page.screenshot({path:'journey-v10/browser/town-residents.png'});assert.equal(await page.evaluate(()=>__test.state.selected),'jackson');
+
 // Full three-arena journey, choosing every upgrade through real buttons.
 await page.evaluate(()=>{__test.menu();__test.select('jodie');});await page.locator('#start').tap();await page.screenshot({path:'journey-v10/browser/burntwood-hub.png'});await page.evaluate(()=>{let t=__test;t.player.x=719;t.player.y=379;t.step(.02);});assert.equal(await page.evaluate(()=>__test.hub.nearShop),true);await page.locator('#charge').dispatchEvent('pointerdown');assert.equal(await page.evaluate(()=>__test.state.state),'shop');assert(await page.locator('#shopItems .shopItem').count()===5);await page.screenshot({path:'journey-v10/browser/burntwood-shop.png'});await page.locator('#shopClose').tap();assert.equal(await page.evaluate(()=>__test.state.state),'hub');
 for(let [round,area] of ['rugby','chasewater','sankeys'].entries()){await page.evaluate(area=>__test.enterArena(area),area);for(let n=0;n<8;n++){await page.evaluate(()=>{let t=__test;t.player.inv=999;for(let i=0;i<7000&&t.state.state==='playing'&&!t.boss;i++){t.step(1/60);if(i%120===0&&!t.boss)t.clear();}});assert.equal(await page.evaluate(()=>__test.state.state),'upgrade');assert.equal(await page.locator('.upgradeCard').count(),3);await page.locator('.upgradeCard').nth(n%3).tap();}await page.evaluate(()=>{let t=__test;for(let i=0;i<1000&&!t.boss;i++){t.player.inv=999;t.step(1/60);}t.draw();});assert.equal(await page.evaluate(()=>__test.run.level),1+(round+1)*8);let label=await page.locator('#bossHud').innerText();assert(label.includes(['BRUCE','NIGHT OWL','TROLLEY KING'][round]));await page.screenshot({path:'journey-v10/browser/boss-'+area+'.png'});await page.evaluate(()=>__test.damageEnemy(__test.boss,999999,0,0));if(round<2){await page.locator('#continue').tap();if(round===0){assert.equal(await page.locator('.perkCard').count(),3);await page.locator('.perkCard').first().tap();}assert.equal(await page.evaluate(()=>__test.state.state),'hub');}else assert.equal(await page.locator('#continue').isVisible(),false);}

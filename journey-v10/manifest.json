@@ -21,6 +21,7 @@
   "characters/mimi.js",
   "items/charms.js",
   "arenas/heroic.js",
+  "world/residents.js",
   "registry.js",
   "controls.js"
 ]
