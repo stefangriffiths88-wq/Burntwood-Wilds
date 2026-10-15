@@ -39,10 +39,10 @@
     }
   },
   "zak": {
-    "asset": "assets/portraits/zak.svg",
-    "source": "10.0.5 procedural placeholder",
-    "status": "unapproved-placeholder",
-    "approved_reference": "October 2026 user-provided detailed Sankey's Corner Zak composite image; needs stored image asset",
+    "asset": "assets/portraits/zak.webp",
+    "source": "Crop of October 2026 rendered Sankey's Corner Zak mock-up",
+    "status": "rendered-portrait-pending-user-approval",
+    "approved_reference": "User-provided detailed Zak reference; portrait crop has limited resolution",
     "gameplay_sprite": "characters/zak.js",
     "requirements": [
       "purple teenage cat",
