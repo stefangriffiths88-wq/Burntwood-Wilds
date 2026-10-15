@@ -40,8 +40,8 @@
   },
   "zak": {
     "asset": "assets/portraits/zak.webp",
-    "source": "Crop of October 2026 rendered Sankey's Corner Zak mock-up",
-    "status": "rendered-portrait-pending-user-approval",
+    "source": "User-selected cap variation cropped from concept board; temporary 84x96 embedded image for mobile testing, higher-resolution production asset needed",
+    "status": "selected-option-3-cap-preview-low-resolution",
     "approved_reference": "User-provided detailed Zak reference; portrait crop has limited resolution",
     "gameplay_sprite": "characters/zak.js",
     "requirements": [
@@ -50,7 +50,8 @@
       "stylish dark hoodie without paw badge",
       "floating paws, no arms or feet",
       "Sankey's Corner background"
-    ]
+    ],
+    "selection_asset": "assets/portraits/zak-cap.svg"
   },
   "arenas": [
     "rugby",
