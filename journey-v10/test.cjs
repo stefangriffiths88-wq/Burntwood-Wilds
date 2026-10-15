@@ -7,15 +7,15 @@ function target(dx=50,dy=0,kind='heavy'){let p=t.player;t.spawn(kind,{x:p.x+dx,y
 function grant(path,n){for(let i=0;i<n;i++)t.grant(path);}
 
 reset('zak');t.startJourney();assert.equal(t.state.state,'hub');assert.equal(t.hub.portals.length,4);assert(t.hub.portals.find(g=>g.key==='sankeys').y<t.hub.portals.find(g=>g.key==='rugby').y);assert(t.hub.portals.find(g=>g.key==='chasewater').x<t.hub.portals.find(g=>g.key==='rugby').x);assert.equal(t.hub.coins,120);t.player.x=450;t.player.y=620;t.step(.01);assert.equal(t.openHubShop(),false,'shop requires physical NPC proximity');t.player.x=t.hub.shop.x;t.player.y=t.hub.shop.y;t.step(.01);assert(t.openHubShop());assert.equal(t.state.state,'shop');assert(t.buyHubItem('speed'));assert.equal(t.hub.coins,70);assert.equal(t.effectiveStats().speed,145*1.05);assert.equal(t.buyHubItem('speed'),false);t.closeHubShop();assert.equal(t.state.state,'hub');assert(t.enterArena('quarry'));assert.equal(t.state.arena,'quarry');t.menu();console.log('PASS Burntwood geography, four gates, shop interaction, money, upgrades and quarry entry');
-// Zak's distinct giant silhouette, damage cloud, laughter crowd-control and launch.
+// Zak's ranged attack, poison special and independent launch.
 reset('zak');assert.equal(t.effectiveStats().hp,130);assert.equal(t.effectiveStats().speed,145);assert.equal(t.effectiveStats().rate,1.20);
-let zakTarget=target(20,0,'swarm');zakTarget.hp=zakTarget.maxHp=1000;
-assert(t.shoot());assert.equal(t.zakClouds.length,1);steps(.6,false);assert(zakTarget.hp<1000,'toxic fart damages nearby enemies');
-t.player.chargeCD=0;t.charge();assert.equal(t.zakLaughClouds.length,1);assert(zakTarget.zakLaughUntil>t.state.time,'laughing gas stuns nearby enemies');
-let laughBefore=zakTarget.hp;steps(.4,false);assert(zakTarget.hp<laughBefore,'laughing gas has an impact');
-t.player.dodgeCD=0;t.dodge();assert(t.player.action==='dodge','gas launch triggers dodge');
+let zakTarget=target(85,0,'swarm');zakTarget.hp=zakTarget.maxHp=1000;
+assert(t.shoot(),'Zak acquires a ranged target');steps(.4,false);assert(zakTarget.hp<1000,'Gas Blast hits a distant enemy');
+t.player.x=zakTarget.x-20;t.player.chargeCD=0;t.charge();assert.equal(t.zakLaughClouds.length,1);assert(zakTarget.zakLaughUntil>t.state.time,'Toxic Fart Cloud controls nearby enemies');
+let cloudBefore=zakTarget.hp;steps(.4,false);assert(zakTarget.hp<cloudBefore,'Toxic Fart Cloud damages enemies');
+t.player.dodgeCD=0;t.dodge();assert(t.player.action==='dodge','Gas-Powered Launch triggers dodge');
 t.draw();reset('jackson');assert.equal(t.zakClouds.length,0,'Zak clouds reset between characters');
-console.log('PASS Zak gentle giant health/speed, toxic farts, laughing gas control, launch and isolated reset');
+console.log('PASS Zak ranged Gas Blast, poison cloud, dodge and isolated reset');
 // Three different paths, one purchase; ordered chains and individual nonrepeatable stats.
 for(let name of heroes){reset(name);assert.equal(t.run.level,1);for(let n=0;n<8;n++){t.setXP(999);assert.equal(t.state.state,'upgrade');let offer=t.offers();assert.equal(offer.length,3);assert.equal(new Set(offer.map(o=>o.path)).size,3);let prior=t.run.history.length;t.upgrade(n%3);assert.equal(t.run.history.length,prior+1);assert.equal(t.run.level,n+2);assert.equal(t.state.state,'playing');}assert.equal(t.run.stagePicks,8);t.setXP(999);assert.equal(t.state.state,'playing');}
 reset();t.setXP(999);let statIndex=t.offers().findIndex(o=>o.path==='stat');let stat=t.offers()[statIndex].index;t.upgrade(statIndex);assert(t.run.stat.has(stat));for(let i=0;i<12;i++)assert(!t.buildOffers().some(o=>o.path==='stat'&&o.index===stat));
