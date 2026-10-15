@@ -165,3 +165,10 @@ For town UI, keep the hub renderer active behind paused conversations and shop p
 
 ## Five-area build verification (10.6 source)
 Keep charm identity/rarity, effect processing, economy and stat aggregation in their respective modules. Use builds-test.cjs for rarity boundaries/caps, growth, old-save migration, starter and reroll transactions, crit conflicts and bounded Park healing. Retain first-acquisition checks for every hero/arena and the actual-attack charm matrix/journeys. When changing intentional pacing rules, update stale test expectations explicitly; do not remove unrelated combat assertions. Inspect 390×844 and 390×650 inventory/shop/rarity/boss screenshots before merge. Generated images are unnecessary for native Canvas arena additions; never replace approved hero art for a systems update.
+
+## Release evidence and critical-hit integration — proven in 10.6.0
+Verify the exact final branch head after fixes, not an earlier successful run. Inspect refreshed phone screenshots after CSS changes; a green tap test can miss overlapping labels or HUD controls above a modal. Capture valid AI timers and disable screenshot animations for reliable visual review. Keep inventory controls below upgrade overlays, and rarity labels separate from price grid cells.
+
+When multiple systems can create a critical hit, calculate one final multiplier and reset guarantee counters for every actual critical. Test through the real damage pipeline, including shrine effects and critical-suppression items; direct helper tests alone can miss double multiplication.
+
+Record the tested commit, workflow run IDs, public-file comparison and explicit simulation limits in PROJECT_STATUS.md. Generated test-result JSON is an example run, not a substitute for the final workflow artifact. Keep accurate road geography pending a user-agreed reference, and record deferred work rather than silently inventing it. The 10.6 release used hash-verified UTF-8 blobs, a tree, commit and expected-SHA branch update through the connected GitHub tools; images were unchanged.
