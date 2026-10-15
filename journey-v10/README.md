@@ -1,35 +1,28 @@
-# Burntwood Wilds — maintained game architecture (10.0.6)
+# Burntwood Wilds — maintained game architecture
 
-## Read this first when continuing in another chat
-The only maintained gameplay is **journey-v10/**. Read `AGENTS.md`, this document, `assets/ART_DIRECTION.md`, `assets/catalog.json`, and `manifest.json` before editing. The public entry point is `latest.html`; the generated playable file is `burntwood-journey-v10.html`.
+Read `../DEVELOPMENT_GUIDE.md`, `../PROJECT_STATUS.md` and `../AGENTS.md` first. The status file is the source of truth for the current verified release (10.4.1 at this documentation update). The maintained source is `journey-v10/`; `manifest.json` controls concatenation order. `game.js`, root `burntwood-journey-v10.html` and versioned HTML releases are generated outputs; do not edit them directly. `latest.html` is the stable public entry point.
 
-**Do not edit** `journey-v10/game.js` or `burntwood-journey-v10.html` directly. Build with `python3 journey-v10/build.py`. Do not modify old prototype files or delete historical versions.
+## Source ownership
+- `characters/{ava,jackson,stef,jodie,evie,zak,mimi}.js`: seven individual heroes, moves, stats, gameplay Canvas drawings and upgrades.
+- `arenas/{rugby,chasewater,sankeys,quarry}.js`: four arenas and their visuals/encounters; `arenas/heroic.js`: heroic encounters and reward scheduling.
+- `items/charms.js`: 12 run-only charms, inventory, fusion, effect hooks. See `CHARMS.md`.
+- `world/{hub,residents,shopkeeper,shrines,burntwood-details}.js`: town, resident display, shopkeeper and interactions. See `TOWN.md`.
+- `upgrades/{progression,rewards}.js`: shared upgrades and boss rewards.
+- `engine/core.js`, `state.js`, `registry.js`: shared runtime, state and character/arena dispatch.
+- `ui/menu.js`, `controls.js`, `menu.css`: selection, interface and mobile controls.
+- `assets/portraits/*`: approved separate selection portraits; `assets/catalog.json` and `assets/ART_DIRECTION.md` record artwork status and visual standards.
+- `test.cjs`, `encounters-test.cjs`, `charms-test.cjs`, `browser.cjs`: gameplay, encounter, charm and mobile-browser checks.
+- `build.py`: current generator. Generated `game.js` and HTML are not primary sources.
 
-## Ownership and file map
-- `characters/{ava,jackson,stef,jodie,evie,zak}.js`: gameplay stats, unique abilities, Canvas sprite drawing, upgrades.
-- `arenas/{rugby,chasewater,sankeys,quarry}.js`: per-arena visuals, waves, enemies and bosses.
-- `assets/portraits/<character>.<format>`: one selection portrait per hero. **Replace the file to change the artwork**, not the build script.
-- `assets/catalog.json`: artwork status, approval, and reference/implementation gaps.
-- `assets/ART_DIRECTION.md`: binding visual style and review checklist.
-- `world/hub.js`: four destinations, three arenas per run; `world/shrines.js`: optional shrines.
-- `upgrades/progression.js` and `upgrades/rewards.js`: shared upgrade and rewards logic.
-- `state.js`: state and version; `registry.js`: character/arena dispatch; `engine/core.js`: common engine.
-- `ui/menu.js`, `controls.js`, `menu.css`: selection and mobile controls.
-- `manifest.json`: explicit ordered JS sources.
+## Artwork and new characters
+Preserve user-approved source/reference assets and record their status in the catalog. Seven production portraits exist, including approved full-resolution Zak WebP and Mimi PNG; the old Zak placeholder description is obsolete. Selection portraits and in-game Canvas sprites are different assets and both require visual checks. For a new character, complete and obtain approval of **all** artwork, normal/special/dodge moves, effects, upgrades and stats **before** integrating on an isolated branch. No incomplete character on main.
 
-## Artwork pipeline
-1. Preserve the approved reference in the asset directory (or record that the reference has **not yet been uploaded**).
-2. Mark approval and intended usage in `assets/catalog.json`. Do not mark a placeholder approved.
-3. Add/replace a single portrait asset. The build fails if a portrait is missing or duplicated across extensions.
-4. Implement matching in-game animation in its character module. Keep floating paws detached, no conventional arms or feet.
-5. Build and compare actual mobile menu screenshot and gameplay sprite against approved references. Technical tests alone do not prove a visual match.
-6. Run targeted regression tests and browser smoke checks; publish only after review.
+## Current technical debt and safe migration order
+1. Correct documentation and keep future chat instructions consistent (this file, `AGENTS.md`, guide, status).
+2. Separate CI build verification from publishing; currently `.github/workflows/journey-v10.yml` auto-commits generated files. Plan and test this as a dedicated change.
+3. Replace HTML extraction from `burntwood-rewards-v9.html` with an owned template while preserving exact runtime output and old URLs.
+4. Centralise version and character/portrait registration; validate manifest order and generated-output consistency.
+5. Extract shared enemy/combat logic only where tests demonstrate safe boundaries; then consider test and asset directory moves.
+6. Preserve historical prototypes and public URLs; do not bulk-delete or relocate legacy HTML without redirect and link checks.
 
-Existing approved five portraits are recovered from the historic v9 build by `python3 journey-v10/assets/import_legacy_portraits.py` **once**; the script never overwrites them. Zak's current SVG is recovered as an explicitly unapproved placeholder. Once these files are committed, the build uses files rather than embedded portrait data. **The user's newer detailed Zak reference is not yet a repository asset.**
-
-## Known technical debt (do not silently broaden changes)
-- The HTML shell and some CSS are still inherited from the historical v9 page. The portrait data itself is now replaced by explicit asset paths; eventually extract the HTML shell into a maintained template.
-- Gameplay sprites are still Canvas functions, not external sprite sheets; character artwork and gameplay visuals are separate and must be compared.
-- Version strings still occur in more than one location; build and state should agree, and release tests should assert this.
-- The legacy versioned HTML files and older workflows remain intentionally archived in-place. Do not treat them as active source.
-- Mobile Chromium automation is not equivalent to iPhone Safari validation.
+Use focused tests for iteration, required release checks before merge, and real iPhone Safari playtests for visual/gameplay acceptance. CI simulation does not prove human balance.

@@ -143,3 +143,17 @@ Town residents and boss previews are presentation only: preserve the selected he
 
 ## First-item acquisition checks
 For shared loot systems, test every hero starting with empty equipment through the real spawn/defeat/choice path. Tests that pre-equip builds verify effects but cannot alone prove first acquisition. Keep encounter lifecycle independent of item proc state. Record reported build/version separately; never claim an unreproduced user symptom is fixed solely because tests pass. Share latest.html as the stable entry alongside the exact versioned release link; old versioned pages remain old builds.
+
+
+## Structural audit handover — 15 October 2026, verified 10.4.1
+The audit of main found seven playable heroes, four arenas, 12 charms, living town, separate heroic encounters and passing main CI/Pages for 10.4.1. `AGENTS.md` and `journey-v10/README.md` have been refreshed to remove obsolete Zak placeholder and six-hero claims. This documentation update is **not** a game-code refactor.
+
+**Confirmed risks and priority order:**
+1. CI `.github/workflows/journey-v10.yml` runs the one-time portrait importer and auto-commits/pushes generated assets/HTML during tests. In a dedicated release-owner task, separate read-only validation from explicit publishing; preserve artifacts, branch safety and required checks.
+2. `journey-v10/build.py` slices its HTML shell from `burntwood-rewards-v9.html`, uses string replacements to insert heroes/UI and hardcodes portrait names and release numbers. Extract an owned template and centralised metadata in a separate carefully tested update. First compare byte output, DOM IDs, artwork, mobile screenshots and published entry points.
+3. `manifest.json` has manual concatenation order and source files use shared globals. Introduce a static registration/manifest consistency check before changing module loading; avoid speculative rewrites.
+4. The repository root contains numerous historical HTML prototypes and legacy workflows. Do not delete or relocate public HTML without an inventory of live URLs and redirects. Deactivate obsolete workflows only after checking triggers and history.
+5. Tests and generated results sit alongside source. Move or reorganise only after CI path updates and smoke checks; optimise focused tests while retaining required release gates.
+6. Character art/catalog and character registrations need a single verifiable approved specification before implementation; preserve the character completion gate.
+
+**Execution protocol:** audit and docs are owned by the oversight chat; game implementation remains with Work. Future Work must read this section before starting the next feature, but should **not** interrupt an active update for a sweeping restructure. Propose a small dedicated maintenance release: first CI write-safety, then template/version centralisation, then character/arena registration checks, then measured module extraction, then archival cleanup. Each phase is separately reviewable, reversible and validated on mobile; do not combine a restructuring phase with new character/arena gameplay.
