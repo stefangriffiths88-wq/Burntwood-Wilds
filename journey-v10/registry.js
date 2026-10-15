@@ -10,7 +10,8 @@ const CHARACTER_MODULES={
 const ARENA_MODULES={
  rugby:{wave:rugbyWave,spawn:spawnRugby,ground:drawRugbyGround},
  chasewater:{wave:chaseWave,spawn:spawnRugby,ground:drawChasewater},
- sankeys:{wave:sankeyWave,spawn:spawnMarket,ground:drawSankeys}
+ sankeys:{wave:sankeyWave,spawn:spawnMarket,ground:drawSankeys},
+ quarry:{wave:quarryWave,spawn:spawnQuarry,ground:drawQuarry}
 };
 function spawn(kind,at){ARENA_MODULES[arenaKey].spawn(kind,at);}
 function ground(){ARENA_MODULES[arenaKey].ground();}

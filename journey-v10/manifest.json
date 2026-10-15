@@ -14,6 +14,7 @@
   "world/hub.js",
   "world/shrines.js",
   "arenas/sankeys.js",
+  "arenas/quarry.js",
   "arenas/rugby.js",
   "registry.js",
   "controls.js"
