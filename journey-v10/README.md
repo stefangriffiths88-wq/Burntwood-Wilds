@@ -5,7 +5,7 @@ Read `../DEVELOPMENT_GUIDE.md`, `../PROJECT_STATUS.md` and `../AGENTS.md` first.
 ## Source ownership
 - `characters/{ava,jackson,stef,jodie,evie,zak,mimi,joseph,tom,havannah}.js`: ten individual heroes, moves, stats, gameplay Canvas drawings and upgrades.
 - `arenas/{rugby,chasewater,sankeys,quarry,park}.js`: five arenas and their visuals/encounters; `arenas/heroic.js`: heroic encounters and reward scheduling.
-- `items/{charm-catalog,charms,economy}.js`: 30 run-only charms, rarity, fusion, inventory, gold shops and starter unlocks. See `CHARMS.md`.
+- `items/{charm-catalog,charms,economy}.js`: 38 run-only charms, rarity, fusion, inventory, gold shops and starter unlocks. See `CHARMS.md`.
 - `world/{hub,residents,conversations,workshop,shopkeeper,shrines,burntwood-details}.js`: town, resident display, shopkeeper and interactions. See `TOWN.md`.
 - `upgrades/{build-stats,progression,rewards}.js`: shared run upgrades and boss rewards; `upgrades/permanent.js`: saved essence, character ranks and validated backups.
 - `engine/core.js`, `state.js`, `registry.js`: shared runtime, state and character/arena dispatch.
@@ -27,7 +27,7 @@ Preserve user-approved source/reference assets and record their status in the ca
 
 Use focused tests for iteration, required release checks before merge, and real iPhone Safari playtests for visual/gameplay acceptance. CI simulation does not prove human balance.
 
-Joseph’s isolated implementation and locked specification are in characters/joseph.js and characters/JOSEPH.md. The selector remains name-based; portrait thumbnails are a separate unstarted task.
+Joseph’s isolated implementation and locked specification are in characters/joseph.js and characters/JOSEPH.md. The selector uses the approved coloured portrait icons.
 
 Tom’s isolated implementation/specification: characters/tom.js and characters/TOM.md; targeted tom-test.cjs and tom-browser.cjs.
 
