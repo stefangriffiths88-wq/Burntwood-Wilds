@@ -1,6 +1,6 @@
 # Active implementation checkpoint — 16 October 2026
 
-Owner: implementation chat (other audit chat is review-only). Branch feature/reward-world; PR #69. Tested implementation commit fdf81c5f73d122c017b596b6b85e054947ed9476, Git tree 730179a353da0cc1138f0c8729e2805af8cc651e; CI 38882391528 is running. Local equivalent e3fc6ba. Full approved icon binaries are committed and verified against local blob hashes.
+Owner: implementation chat (other audit chat is review-only). Branch feature/reward-world; PR #69. Tested implementation commit fdf81c5f73d122c017b596b6b85e054947ed9476, Git tree 730179a353da0cc1138f0c8729e2805af8cc651e; CI 38882391528 passed gameplay/character/build tests, failed a stale /^+1%/ text-prefix assertion because stat benefit text now comes first. Corrected to assert the exact +1% · 58% → 59% numeric text; actual cap checks retained. Next CI required. Local equivalent e3fc6ba. Full approved icon binaries are committed and verified against local blob hashes.
 
 Next: inspect this CI, fix only any actual failures, download phone-review artifact as soon as browser step completes, inspect changed screens, then merge/release 10.12.0 and verify Pages/files. Public release remains 10.11.2. Native Safari and human art/fun acceptance remain pending. Source implementation and specification are saved remotely, not just in this workspace.
 
