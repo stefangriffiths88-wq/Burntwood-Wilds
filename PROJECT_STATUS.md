@@ -1,21 +1,6 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.12.0 — rewards, clarity and world artwork
-16 October 2026. Implemented following the user's explicit Update instruction; further suggestions require a new Update instruction.
-
-- PR #69 merged at 01fd5659eea43e455ac6ca10d8c4372c476ad888. Final feature source ee55b6bdb2b82ae4deba7bc65327211019179bb0.
-- Live: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.12.0.html?v=10120
-- Added approved coloured character selector icons, clear stat benefits and consistent symbols, five gold/empty permanent upgrade sockets, illustrated charm rewards/equipment and chest/card reveals. Skipping the reveal does not select a card; selection requires a fresh deliberate card press.
-- HUD now has bottom-left health orb, green XP strip and equipped charms below it; floating joystick starts on the playfield. Existing large boss health bars retained. Menu pauses the active session; abandoning requires confirmation. Shop conversation precedes a separate open-shop action; intermediate victories preserve the active run.
-- One-tap shrines restore 30% max health and grant +20% speed/damage for 20 active seconds with blue under-player glow. Healing lockouts remain respected. All five areas' enemies/bosses have refreshed native Canvas artwork, including distinct Park cats and Trolley King; AI, hitboxes and enemy strength are unchanged.
-- Full implementation CI 38882639920 passed at 21e0d9b62d0b72205aba0a4a5505e001cb40b0f9. Final presentation/test/workflow followup CI 38883821304 passed at ee55b6bdb2b82ae4deba7bc65327211019179bb0; mechanics unchanged. Phone artifacts 12037998258 and final corrected 12039115656 were visually reviewed at 390x844/650. Earlier stale text assertions and a new browser fixture error were corrected before these successful runs.
-- Production Pages 38884068024 succeeded. Four public HTML/redirect files and all ten icon assets returned HTTP 200 and matched local bytes. Canonical/versioned game: 315448 bytes, SHA256 78dc104434bef0cd3119f6226d62cbd14229f2581b481a18373bdfdbcca49079. Automatic postmerge CI 38884068113 was still running at handover; do not infer its result from the premerge passes.
-- Native Safari playtesting, perceived reward excitement and enemy-art acceptance remain user review. Paused runs are preserved within the current session, not across reloads. Full protected journey matrix still covers the original seven heroes; focused newer-hero checks do not imply the same matrix covered all ten.
-- No further gameplay work authorised. Future map redesign, CI write-safety and legacy importer/template restructuring remain separate work. Preserve the independent audit chat's documentation.
-
-## Historical releases — current state above takes precedence
-
-## Previous release: 10.11.2 — upgrade choices in the spotlight
+## Current release: 10.11.2 — upgrade choices in the spotlight
 16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
 
 - User explicitly requested update: 10.11.1 level-up hits better, but choices still boring; glowing boxes, bold text, dull everything except the three options. Presentation-only: near-black backdrop, muted heading/container/gold frame, brighter thicker rarity borders/static glow, bold names and bright effect descriptions. Existing accepted 550ms hero glow and gold construction/cascade retained. Perk effects, balance, reward scheduling, art and saves unchanged.

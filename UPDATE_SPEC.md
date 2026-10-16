@@ -1,0 +1,20 @@
+# Combined town, monsters and progression update — authorised 16 October 2026
+
+Owner: Work implementation session. Branch feature/monster-town; base cb01fb1 (10.12.0). Explicit user authorisation: “Ok let’s get this update underway”. One combined release, town first. User will playtest and expects later tuning. Existing portraits/icons and permanent progress must survive.
+
+## Approved scope
+- Town preview in PR70 is guidance for layout/atmosphere, not an instruction to change the game's art style. Sankey's central, Chasewater southwest, rugby south beside it, Park east. Buildings/water boundaries, accessible paths, depth ordering. Compact objective top-left, route guidance to boss encounters, short movement/autoattack/special/defence guidance.
+- Compact two-column stats, details on tap. Ability icons for each hero's weapon/special/defence. Special button visibly refills against actual cooldown; readiness glow. Automatic interruption pause and deliberate resume, clear inputs. Honest shrine healing feedback and potion guard. Better defeat explanation and performance summary. RUN SDK/storage/integration and active-journey persistence remain separate, not this update.
+- Monster bosses and arena props. Bruce returns toward original stag design, polished and readable net. Quarry boss is a rock golem (NOT badger), glowing cracks, slams/boulders. Night Owl, trolley scrap monster and proposed Park monster direction approved for implementation; preserve any remaining identity details from source. Boss phases, clear warnings/escape gaps/recovery openings, no unavoidable damage. Defeated town bosses lie down with visible bandage/scuffs/breathing. Arena obstacles keep escape space and avoid spawn traps.
+- Bosses 1–4 offer three stronger charm choices instead of boss perks; no charm after fifth. Final fifth-boss victory shows Mimi: Burntwood saved, spell broken, return to human form. Do not create unapproved human portraits.
+- All charms receive recognisable consistent icons; effect redesign delegated for testing. Elemental charms available from start (not conditional unlock). Healing Wisp: green orb circles player and heals every 3s; proposed playtest tuning 2% max HP/pulse, scales with rank, honours healing lock.
+- Weapon/special/defence each have five normal upgrade levels; sixth is red MYTHIC evolution offer. Selecting that offer opens three explicit choices; same tap must not select an element. Independent tracks, choices fixed until next run.
+- Weapon: fire visibly burns/spreads enemy-to-enemy; ice frosts blue, slows 30%, adds damage; lightning visibly chains to two other enemies. Special: venom poison, leech healing, wound stacking bleed. Defensive evolution details delegated with character identity retained. Avoid proc recursion and permanent invulnerability.
+- Ten defensive directions approved with five levels delegated: Jackson Sidestep/guard; Ava Glitter Escape/decoy; Stefan Hold the Line/brace-push; Jodie Protective Circle/kittens intercept; Evie Duck and Cover/shield; Zak Gas Escape/slow cloud; Mimi Vanishing Act; Joseph Shake It Off/cleanse; Tom Stand Firm/heavy protection; Havannah Get Off Me/pushback. Preserve useful existing moves and prevent duplicate special roles.
+- Review existing automatic level growth, show real modest health/damage gains without cancelling through enemy scaling. Existing health-lock rules apply.
+
+## Release/validation
+Keep source modular and generated output from build.py. Isolate tests per module during development, then one full integration gate and mobile portrait/short/landscape visual review. Protected simulations do not establish human balance. No unapproved replacement hero art. Keep historical links. PROJECT_STATUS stays the verified live 10.12.0 until publication.
+
+## Checkpoint
+Specification saved before implementation. Next: owned town layout/collision/navigation modules, then boss/evolution modules. Full 10.12.0 postmerge CI 38884068113 passed; no need repeat unchanged baseline. PR70 design reference remains preserved independently.
