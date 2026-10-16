@@ -1,3 +1,10 @@
+# CLOSED — 10.12.0 merged and deployed
+16 October 2026. PR #69 / main 01fd5659eea43e455ac6ca10d8c4372c476ad888. Full implementation CI 38882639920 and final focused CI 38883821304 passed; Pages 38884068024 succeeded and public HTML plus ten icons matched local bytes. PROJECT_STATUS.md contains exact release evidence and limits. Automatic main CI 38884068113 was running at closeout.
+
+Next action: user phone playtest only. No more gameplay changes without an explicit Update. Prior candidate notes below are historical and do not represent unfinished implementation.
+
+---
+
 # Active implementation checkpoint — 16 October 2026
 
 Owner: implementation chat (other audit chat is review-only). Branch feature/reward-world; PR #69. Tested implementation commit fdf81c5f73d122c017b596b6b85e054947ed9476, Git tree 730179a353da0cc1138f0c8729e2805af8cc651e; CI 38882391528 passed gameplay/character/build tests, failed a stale /^+1%/ text-prefix assertion because stat benefit text now comes first. Corrected to assert the exact +1% · 58% → 59% numeric text; actual cap checks retained. Next CI required. Local equivalent e3fc6ba. Full approved icon binaries are committed and verified against local blob hashes.
