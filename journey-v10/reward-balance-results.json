@@ -1,0 +1,245 @@
+{
+  "note": "Deterministic selection/cap audit, not a survival or fun score.",
+  "builds": [
+    {
+      "hero": "ava",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 141,
+      "power": 48,
+      "tempo": 40.5
+    },
+    {
+      "hero": "ava",
+      "strategy": "special",
+      "choices": 30,
+      "health": 131,
+      "power": 63,
+      "tempo": 25.5
+    },
+    {
+      "hero": "ava",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 126,
+      "power": 28,
+      "tempo": 75.5
+    },
+    {
+      "hero": "jackson",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 136,
+      "power": 48,
+      "tempo": 12
+    },
+    {
+      "hero": "jackson",
+      "strategy": "special",
+      "choices": 30,
+      "health": 136,
+      "power": 48,
+      "tempo": 25
+    },
+    {
+      "hero": "jackson",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 183,
+      "power": 110,
+      "tempo": 73
+    },
+    {
+      "hero": "stef",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 155,
+      "power": 15,
+      "tempo": 83
+    },
+    {
+      "hero": "stef",
+      "strategy": "special",
+      "choices": 30,
+      "health": 155,
+      "power": 55,
+      "tempo": 12
+    },
+    {
+      "hero": "stef",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 223,
+      "power": 15,
+      "tempo": 0
+    },
+    {
+      "hero": "jodie",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 211,
+      "power": 70,
+      "tempo": 50
+    },
+    {
+      "hero": "jodie",
+      "strategy": "special",
+      "choices": 30,
+      "health": 125,
+      "power": 48,
+      "tempo": 25
+    },
+    {
+      "hero": "jodie",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 211,
+      "power": 50,
+      "tempo": 96
+    },
+    {
+      "hero": "evie",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 144,
+      "power": 33,
+      "tempo": 42.5
+    },
+    {
+      "hero": "evie",
+      "strategy": "special",
+      "choices": 30,
+      "health": 150,
+      "power": 40,
+      "tempo": 56.5
+    },
+    {
+      "hero": "evie",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 206,
+      "power": 94,
+      "tempo": 50.5
+    },
+    {
+      "hero": "zak",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 291,
+      "power": 40,
+      "tempo": 18
+    },
+    {
+      "hero": "zak",
+      "strategy": "special",
+      "choices": 30,
+      "health": 199,
+      "power": 63,
+      "tempo": 43
+    },
+    {
+      "hero": "zak",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 181,
+      "power": 93,
+      "tempo": 37
+    },
+    {
+      "hero": "mimi",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 164,
+      "power": 18,
+      "tempo": 25
+    },
+    {
+      "hero": "mimi",
+      "strategy": "special",
+      "choices": 30,
+      "health": 157,
+      "power": 78,
+      "tempo": 0
+    },
+    {
+      "hero": "mimi",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 151,
+      "power": 75,
+      "tempo": 43
+    },
+    {
+      "hero": "joseph",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 157.5,
+      "power": 96.5,
+      "tempo": 34
+    },
+    {
+      "hero": "joseph",
+      "strategy": "special",
+      "choices": 30,
+      "health": 134.5,
+      "power": 120.5,
+      "tempo": 27
+    },
+    {
+      "hero": "joseph",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 203.5,
+      "power": 38.5,
+      "tempo": 93
+    },
+    {
+      "hero": "tom",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 185,
+      "power": 40,
+      "tempo": 18
+    },
+    {
+      "hero": "tom",
+      "strategy": "special",
+      "choices": 30,
+      "health": 210,
+      "power": 18,
+      "tempo": 25
+    },
+    {
+      "hero": "tom",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 223,
+      "power": 72,
+      "tempo": 12
+    },
+    {
+      "hero": "havannah",
+      "strategy": "weapon",
+      "choices": 30,
+      "health": 149,
+      "power": 125.5,
+      "tempo": 24
+    },
+    {
+      "hero": "havannah",
+      "strategy": "special",
+      "choices": 30,
+      "health": 135,
+      "power": 16.5,
+      "tempo": 6
+    },
+    {
+      "hero": "havannah",
+      "strategy": "stat",
+      "choices": 30,
+      "health": 184,
+      "power": 120.5,
+      "tempo": 106
+    }
+  ]
+}

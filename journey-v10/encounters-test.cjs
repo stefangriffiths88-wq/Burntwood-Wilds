@@ -36,6 +36,6 @@ console.log('PASS shared heroic reward lifecycle is independent of charm proc st
 for(let hero of heroes)for(let finalFirst of [true,false]){
  reset(hero);t.spawn('boss',{x:500,y:500});let final=t.boss,mini=t.spawnHeroic(),coins=t.hub.coins;
  for(let e of finalFirst?[final,mini]:[mini,final])t.damageEnemy(e,999999,0,0);
- assert.equal(t.state.state,'charm',hero+' simultaneous defeat order '+finalFirst);assert.equal(t.run.charmOffers.length,3);assert(t.chooseCharm(0));assert.equal(t.state.state,'won');assert.equal(t.run.charms.length,1);assert.equal(t.hub.coins,coins+32);
+ assert.equal(t.state.state,'charm',hero+' simultaneous defeat order '+finalFirst);assert.equal(t.run.charmOffers.length,3);assert(t.chooseCharm(0));assert.equal(t.state.state,'won');assert.equal(t.run.charms.length,1);assert.equal(t.hub.coins,coins+55);
 }
 console.log('PASS all seven heroes: both simultaneous heroic/final defeat orders preserve reward and one victory payment');

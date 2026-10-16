@@ -29,6 +29,7 @@ jobs:
       - run: node journey-v10/tom-test.cjs
       - run: node journey-v10/havannah-test.cjs
       - run: node journey-v10/builds-test.cjs
+      - run: node journey-v10/reward-balance-test.cjs
       - run: node journey-v10/town-test.cjs
       - run: node journey-v10/encounters-test.cjs
       - run: node journey-v10/charms-test.cjs
@@ -40,6 +41,7 @@ jobs:
           node journey-v10/tom-browser.cjs
           node journey-v10/havannah-browser.cjs
           node journey-v10/visuals-browser.cjs
+          node journey-v10/rewards-browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -47,3 +49,4 @@ jobs:
           path: |
             journey-v10/browser
             journey-v10/charm-test-results.json
+            journey-v10/reward-balance-results.json

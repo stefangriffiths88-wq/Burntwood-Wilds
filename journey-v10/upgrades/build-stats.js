@@ -3,18 +3,18 @@ const JOURNEY_AREAS=5,UPGRADES_PER_ARENA=6,HEROIC_TIME=45;
 const RARITIES=[{name:'Common',color:'#b9c2bc',symbol:'Ⅰ'},{name:'Uncommon',color:'#8ed49e',symbol:'Ⅱ'},{name:'Rare',color:'#83baff',symbol:'Ⅲ'},{name:'Epic',color:'#cb9aef',symbol:'Ⅳ'},{name:'Legendary',color:'#f4ce70',symbol:'★'}];
 const RARITY_ODDS=[[50,30,15,5,0],[35,32,23,9,1],[20,30,30,16,4],[10,23,34,25,8],[5,15,30,35,15]];
 const STAT_TRACKS={
- health:{name:'Vitality',icon:'♥',unit:' health',gains:[3,5,7,10,15],cap:150},
- armour:{name:'Protection',icon:'⬡',unit:' armour',gains:[1,2,3,4,6],cap:40},
- regen:{name:'Recovery',icon:'✚',unit:' HP/s',gains:[.1,.15,.25,.4,.6],cap:5},
- power:{name:'Power',icon:'✦',unit:'%',gains:[3,5,7,10,15],cap:150},
- tempo:{name:'Tempo',icon:'»',unit:'%',gains:[3,5,7,10,15],cap:100},
- precision:{name:'Precision',icon:'◎',unit:'%',gains:[1,2,3,4,6],cap:60},
- ferocity:{name:'Ferocity',icon:'ϟ',unit:'%',gains:[5,8,12,18,25],cap:150},
- agility:{name:'Agility',icon:'➤',unit:'%',gains:[2,3,4,5,7],cap:50},
- reflexes:{name:'Reflexes',icon:'↪',unit:'%',gains:[2,3,4,5,7],cap:40},
- focus:{name:'Focus',icon:'◷',unit:'%',gains:[2,3,4,5,7],cap:40},
- scavenging:{name:'Scavenging',icon:'◇',unit:'%',gains:[5,8,12,18,25],cap:100},
- restoration:{name:'Restoration',icon:'✿',unit:'%',gains:[3,5,7,10,15],cap:100}
+ health:{name:'Vitality',icon:'♥',unit:' health',gains:[8,12,18,25,35],cap:150},
+ armour:{name:'Protection',icon:'⬡',unit:' armour',gains:[2,3,5,7,10],cap:40},
+ regen:{name:'Recovery',icon:'✚',unit:' HP/s',gains:[.2,.35,.5,.75,1],cap:5},
+ power:{name:'Power',icon:'✦',unit:'%',gains:[10,15,22,30,40],cap:150},
+ tempo:{name:'Tempo',icon:'»',unit:'%',gains:[8,12,18,25,35],cap:100},
+ precision:{name:'Precision',icon:'◎',unit:'%',gains:[4,6,9,12,16],cap:60},
+ ferocity:{name:'Ferocity',icon:'ϟ',unit:'%',gains:[15,22,32,45,60],cap:150},
+ agility:{name:'Agility',icon:'➤',unit:'%',gains:[5,7,10,13,16],cap:50},
+ reflexes:{name:'Reflexes',icon:'↪',unit:'%',gains:[5,7,10,13,16],cap:40},
+ focus:{name:'Focus',icon:'◷',unit:'%',gains:[5,7,10,13,16],cap:40},
+ scavenging:{name:'Scavenging',icon:'◇',unit:'%',gains:[15,25,40,60,80],cap:100},
+ restoration:{name:'Restoration',icon:'✿',unit:'%',gains:[10,15,22,30,40],cap:100}
 };
 const HERO_GROWTH={havannah:{health:.7,power:.55,tempo:.2},tom:{health:1.5,power:.6,armour:.1},joseph:{health:.65,power:.55,tempo:.3},jackson:{health:1.2,power:.6,armour:.08},ava:{health:.7,power:.6,tempo:.25},stef:{health:1.5,power:.5,armour:.12},jodie:{health:1,power:.6,restoration:.3},evie:{health:.8,power:.6,tempo:.25},zak:{health:1.3,power:.6,regen:.005},mimi:{health:.8,power:.6,precision:.08}};
 function statValue(key){return run.stats?.[key]||0;}

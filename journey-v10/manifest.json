@@ -13,6 +13,7 @@
   "characters/jodie.js",
   "characters/evie.js",
   "characters/zak.js",
+  "upgrades/feedback.js",
   "upgrades/progression.js",
   "upgrades/rewards.js",
   "world/shopkeeper.js",

@@ -7,4 +7,4 @@ const CHARM_DEFS=[
  ['phantom','Phantom Pact','♙',4,'Special summons a shadow for 4s mirroring normal hits at 40% power. Special cooldown +20%.'],['lantern','Last Light Lantern','☀',4,'Once per arena survive lethal damage at 1 HP with 2s invulnerability. Healing then disabled; normal damage +25%.']
 ];
 const CHARMS=Object.fromEntries(CHARM_DEFS.map(([key,name,icon,rarity,text])=>[key,{name,icon,rarity,color:RARITIES[rarity].color,text}]));
-const CHARM_GOLD_PRICES=[35,65,130,210,330],STARTER_COSTS=[6,12,24,40,60];
+const CHARM_GOLD_PRICES=[30,55,95,150,220],STARTER_COSTS=[6,12,24,40,60];
