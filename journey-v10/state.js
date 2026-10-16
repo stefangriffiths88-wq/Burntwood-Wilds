@@ -5,7 +5,7 @@ let state='menu',time=0,last=performance.now(),p,enemies=[],balls=[],gems=[],fx=
 const upgrades=['Main ball: 1 hit','Main ball: 2 hits','2 split balls · 50%','3 split balls · 50%','3 split balls · 75%','3 split balls · 75% · 3 hits each'];
 addEventListener('resize',resize);resize();
 const PROFILES={};
-const maxTier=()=>isStef()||isEvie()?4:5;
+const maxTier=()=>5;
 const ARENAS={};let arenaKey='rugby',enemyShots=[];
 const atChasewater=()=>arenaKey==='chasewater',arena=()=>ARENAS[arenaKey],shore=y=>177+Math.sin(y/155)*23;
 // Jodie: readable forward claws and bounded autonomous companion attacks.
@@ -21,7 +21,7 @@ const STAT_NAMES={};
 
 
 // Journey orchestration. Arena content and character implementations are split at build time.
-const BUILD_ID='10.12.0';
+const BUILD_ID='10.13.0';
 
 
 

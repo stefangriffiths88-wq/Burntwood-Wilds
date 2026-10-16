@@ -3,7 +3,7 @@ const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/st
 const source=fs.readFileSync('journey-v10/test.cjs','utf8');let harness=source.slice(0,source.indexOf("reset('zak');t.startJourney()"));harness+='\nglobalThis.h={t,els,reset,steps,target,grant,heroes,load};';let context={require,console};vm.createContext(context);vm.runInContext(harness,context);const {t,els,reset,steps,target,heroes,load}=context.h;
 const c=(key,rank=1)=>t.run.charms.push({key,rank});
 assert.equal(t.JOURNEY_AREAS,5);assert.equal(t.UPGRADES_PER_ARENA,6);assert.equal(t.HEROIC_TIME,45);assert.equal(t.BOSS_TIME,90);
-assert.deepEqual(Array.from({length:5},(_,r)=>Object.values(t.CHARMS).filter(c=>c.rarity===r).length),[8,8,7,5,2]);
+assert.deepEqual(Array.from({length:5},(_,r)=>Object.values(t.CHARMS).filter(c=>c.rarity===r).length),[8,8,15,5,2]);
 // Exact rarity boundaries and increasing late-run legendary odds.
 for(let stage=0;stage<5;stage++){reset();t.run.stage=stage;let sum=0;for(let rarity=0;rarity<5;rarity++){let weight=t.RARITY_ODDS[stage][rarity];if(weight){t.setRolls([(sum+.01)/100]);assert.equal(t.rollRarity(),rarity);t.setRolls([(sum+weight-.01)/100]);assert.equal(t.rollRarity(),rarity);}sum+=weight;}assert.equal(sum,100);}
 for(let key of Object.keys(t.STAT_TRACKS)){reset();let count=Math.min(5,Math.ceil(t.STAT_TRACKS[key].cap/t.STAT_TRACKS[key].gains[4]));for(let i=0;i<count;i++)assert(t.addStat(key,4));assert.equal(t.run.statLegendary[key],count);assert.equal(t.addStat(key,4),false);assert.equal(t.addStat(key,0),false);assert(t.statValue(key)<=t.STAT_TRACKS[key].cap);}

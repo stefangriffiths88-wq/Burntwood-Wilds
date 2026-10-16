@@ -17,7 +17,7 @@ function drawRewardHero(){
  for(let i=0;i<10;i++){let a=i*TAU/10+u*.65,d=26+u*24;starArt(x+Math.cos(a)*d,y+Math.sin(a)*d,1.5+(i%3)*.6,a);}
  ctx.restore();ctx.save();ctx.shadowColor='#ffe6a0';ctx.shadowBlur=14*fade;CHARACTER_MODULES[selected].draw();ctx.restore();
 }
-function rewardCardLabel(offer){
+function rewardCardLabel(offer){if(offer.path==='evolution')return 'MYTHIC · '+offer.ability.toUpperCase()+' LEVEL 6';
  if(offer.total)return offer.path.toUpperCase()+' · STEP '+offer.rank+' OF '+offer.total+(offer.rank===offer.total?' · FINAL UPGRADE':'');
  let rarity=RARITIES[offer.rarity];return rarity.symbol+' '+rarity.name.toUpperCase()+' · '+offer.path.toUpperCase();
 }
