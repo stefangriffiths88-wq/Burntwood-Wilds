@@ -38,6 +38,12 @@ jobs:
       - run: |
           python3 -m http.server 8765 >/tmp/journey-server.log 2>&1 &
           node journey-v10/reward-world-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: changed-screens
+          path: journey-v10/browser
+      - run: |
           node journey-v10/browser.cjs
           node journey-v10/joseph-browser.cjs
           node journey-v10/tom-browser.cjs

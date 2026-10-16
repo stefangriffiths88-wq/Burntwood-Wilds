@@ -129,3 +129,6 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 @media(prefers-reduced-motion:reduce){.chestReward .charmCard{opacity:1;transform:none;animation:none;pointer-events:auto}#chestReveal,.chestLid{animation:none}.orbLiquid{transition:none}}
 
 #health{display:none!important}#nub{left:31px;top:31px}
+/* Keep the five sockets in one row despite shared permanent-card span rules. */
+.permanentCard .rankSockets{display:flex;flex-direction:row;align-items:center;gap:9px}.permanentCard .rankSockets i{flex:0 0 19px}
+@media(max-height:720px){#chestReveal{height:102px;transform:none;margin-top:-4px;margin-bottom:8px}#chestReveal small{top:87px;font-size:8px}}
