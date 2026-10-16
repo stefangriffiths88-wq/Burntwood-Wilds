@@ -3,7 +3,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  fs.mkdirSync('journey-v10/browser',{recursive:true});let browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
  let page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true}),errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:8765/burntwood-journey-v10.html');await page.waitForFunction(()=>window.__test);
- const trigger=async()=>page.evaluate(()=>{let t=__test;t.menu();t.select('jackson');t.startJourney();t.enterArena('rugby');t.clear();t.player.attack=999;t.player.inv=999;t.run.earned=999;while(t.state.state==='playing'&&t.state.time<8.1)t.step(.01);return {time:t.state.time,level:t.run.level};});
+ const trigger=async()=>page.evaluate(()=>{let t=__test;t.menu();t.select('jackson');t.startJourney();t.enterCombatArena('rugby');t.clear();t.player.attack=999;t.player.inv=999;t.run.earned=999;while(t.state.state==='playing'&&t.state.time<8.1)t.step(.01);return {time:t.state.time,level:t.run.level};});
  for(let height of [844,650]){
   await page.setViewportSize({width:390,height});await page.emulateMedia({reducedMotion:'no-preference'});
   let before=await trigger();assert.equal(await page.evaluate(()=>__test.state.state),'upgrade');

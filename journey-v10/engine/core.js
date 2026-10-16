@@ -1,5 +1,5 @@
 // engine/core.js — source of truth.
-function reset(){$('dodge').style.display='';hub.finished=false;resetProgression();enemyShots=[];pendingShots=[];glitterTime=0;stick.x=stick.y=0;Object.keys(keys).forEach(k=>delete keys[k]);$('nub').style.transform='';seed=98721;time=0;enemies=[];balls=[];gems=[];fx=[];warnings=[];id=0;kills=tier=xp=0;bossSpawned=false;boss=null;shake=0;nextSpawn=.6;p={x:450,y:780,vx:0,vy:0,r:14,hp:stats().hp,inv:0,attack:.35,chargeCD:0,dodgeCD:0,action:null,actionT:0,dir:{x:0,y:-1},walk:0,throwT:0,hitIds:new Set()};cam={x:p.x,y:p.y};resetCats();resetDucks();resetZak();resetMimi();resetJoseph();resetTom();resetHavannah();state='playing';$('charge').style.display='';$('charge').firstChild.textContent=isHavannah()?'TANTRUM':isTom()?'QUAKE':isJoseph()?'OVERHYPE!':isMimi()?'NINE LIVES':isZak()?'EXPLODE':isEvie()?'ASSEMBLE':isJodie()?'KITTENS':isStef()?'BY ORDER!':isAva()?'GLITTER':'CHARGE';$('dodge').firstChild.textContent=isStef()?'PUSH':'DODGE';$('menu').style.display='none';$('panel').style.display='none';$('controls').style.display='block';$('hud').style.display='block';$('bossHud').style.display='none';$('arenaHud').textContent=arena().name.toUpperCase();$('bossHud').firstChild.textContent=arena().boss.toUpperCase();updateHud();}
+function reset(){WORLD.w=900;WORLD.h=1300;$('rugbyTalk').style.display='none';$('dodge').style.display='';hub.finished=false;resetProgression();enemyShots=[];pendingShots=[];glitterTime=0;stick.x=stick.y=0;Object.keys(keys).forEach(k=>delete keys[k]);$('nub').style.transform='';seed=98721;time=0;enemies=[];balls=[];gems=[];fx=[];warnings=[];id=0;kills=tier=xp=0;bossSpawned=false;boss=null;shake=0;nextSpawn=.6;p={x:450,y:780,vx:0,vy:0,r:14,hp:stats().hp,inv:0,attack:.35,chargeCD:0,dodgeCD:0,action:null,actionT:0,dir:{x:0,y:-1},walk:0,throwT:0,hitIds:new Set()};cam={x:p.x,y:p.y};resetCats();resetDucks();resetZak();resetMimi();resetJoseph();resetTom();resetHavannah();state='playing';$('charge').style.display='';$('charge').firstChild.textContent=isHavannah()?'TANTRUM':isTom()?'QUAKE':isJoseph()?'OVERHYPE!':isMimi()?'NINE LIVES':isZak()?'EXPLODE':isEvie()?'ASSEMBLE':isJodie()?'KITTENS':isStef()?'BY ORDER!':isAva()?'GLITTER':'CHARGE';$('dodge').firstChild.textContent=isStef()?'PUSH':'DODGE';$('menu').style.display='none';$('panel').style.display='none';$('controls').style.display='block';$('hud').style.display='block';$('bossHud').style.display='none';$('arenaHud').textContent=arena().name.toUpperCase();$('bossHud').firstChild.textContent=arena().boss.toUpperCase();updateHud();}
 
 function nearest(pos,exclude=new Set(),range=900){let best=null,d=range;for(let e of enemies){if(e.hp<=0||exclude.has(e.id))continue;let n=dist(pos,e);if(n<d){best=e;d=n;}}return best;}
 
@@ -15,7 +15,7 @@ function quickDodge(){if(state!=='playing'||p.action||p.dodgeCD>0)return;p.claws
 
 
 
-function advance(dt){if(state==='hub'){stepHub(dt);return;}if(state!=='playing')return;if(run.charmPending){openCharmReward();return;}time+=dt;glitterTime=Math.max(0,glitterTime-dt);progressStep();if(state!=='playing')return;p.inv=Math.max(0,p.inv-dt);p.chargeCD=Math.max(0,p.chargeCD-dt);p.dodgeCD=Math.max(0,p.dodgeCD-dt);p.throwT=Math.max(0,p.throwT-dt);shake=Math.max(0,shake-dt*25);hitFlash=Math.max(0,hitFlash-dt);
+function advance(dt){if(['playing','hub'].includes(state))stepGuidanceIdle(dt);if(state==='hub'){stepHub(dt);return;}if(state!=='playing')return;if(run.charmPending){openCharmReward();return;}time+=dt;stepRugbyRoute();if(state!=='playing')return;glitterTime=Math.max(0,glitterTime-dt);progressStep();if(state!=='playing')return;p.inv=Math.max(0,p.inv-dt);p.chargeCD=Math.max(0,p.chargeCD-dt);p.dodgeCD=Math.max(0,p.dodgeCD-dt);p.throwT=Math.max(0,p.throwT-dt);shake=Math.max(0,shake-dt*25);hitFlash=Math.max(0,hitFlash-dt);
 if(!CHARACTER_MODULES[selected]?.motion?.(dt)){
 let dx=stick.x+(keys.d||keys.ArrowRight?1:0)-(keys.a||keys.ArrowLeft?1:0),dy=stick.y+(keys.s||keys.ArrowDown?1:0)-(keys.w||keys.ArrowUp?1:0),len=Math.hypot(dx,dy);if(len<.1)dx=dy=0;else if(len>1){dx/=len;dy/=len;}let tx=dx*stats().speed*parkMovementFactor(),ty=dy*stats().speed*parkMovementFactor();if(isStef()&&p.frenzy>0){tx*=.7;ty*=.7;}
 if(p.action){p.actionT+=dt;let speed=0;if(p.action==='dodge'){speed=stats().dodgeSpeed*(1-p.actionT/stats().dodgeTime);if(p.actionT>=stats().dodgeTime){p.action=null;endDodge();}}else if(p.action==='push'){speed=0;if(p.actionT>=.44)p.action=null;}else{speed=p.actionT<.12?0:590*(S(1)?1.2:1)*(1-Math.max(0,p.actionT-.55)/.2);if(p.actionT>.75){p.action=null;if(S(5)){p.aim=Math.atan2(p.actionDir.y,p.actionDir.x);forwardFinisher(30,76,'#e9c677',false);}}}if(p.action){tx=p.actionDir.x*Math.max(0,speed);ty=p.actionDir.y*Math.max(0,speed);if(rand()<.5)fx.push({x:p.x,y:p.y,vx:0,vy:0,life:.16,max:.16,color:'#dce9bf',r:p.action==='charge'?12:8,ghost:true});}}
@@ -24,9 +24,9 @@ let smooth=1-Math.exp(-dt*(p.action?32:15));p.vx=lerp(p.vx,tx,smooth);p.vy=lerp(
 p.attack-=dt;if(p.attack<=0&&!(p.frenzy>0)&&p.action!=='charge'&&p.action!=='push'){p.attack=normalAttack()?normalAttackInterval():.08;}
 
 for(let i=pendingShots.length-1;i>=0;i--){pendingShots[i].delay-=dt;if(pendingShots[i].delay<=0){fireStar();pendingShots.splice(i,1);}}
-nextSpawn-=dt;if(nextSpawn<=0&&enemies.length<90&&!bossSpawned){ARENA_MODULES[arenaKey].wave();}
+nextSpawn-=dt;if(nextSpawn<=0&&enemies.length<90&&!bossSpawned&&rugbyWavesAllowed()){ARENA_MODULES[arenaKey].wave();}
 
-if(!bossSpawned&&time>=BOSS_TIME){spawn('boss',{x:clamp(p.x,100,WORLD.w-100),y:clamp(p.y-330,100,WORLD.h-100)});}
+if(!rugbyRouteActive()&&!bossSpawned&&time>=BOSS_TIME){spawn('boss',{x:clamp(p.x,100,WORLD.w-100),y:clamp(p.y-330,100,WORLD.h-100)});}
 for(let e of enemies){if(e.hp<=0)continue;e.age+=dt;e.flash=Math.max(0,e.flash-dt);e.stagger=Math.max(0,e.stagger-dt);e.attackCD=Math.max(0,e.attackCD-dt);e.timer-=dt;if(stepMonsterBoss(e,dt))continue;if(e.park){stepParkEnemy(e,dt);continue;}if(e.heroic){stepHeroic(e,dt);continue;}if(e.quarry){stepQuarryEnemy(e,dt);continue;}if(e.market){stepMarketEnemy(e,dt);continue;}if(e.chase){stepChaseEnemy(e,dt);continue;}let goal=enemyGoal(e),dx=goal.x-e.x,dy=goal.y-e.y,d=Math.hypot(dx,dy)||1,move=e.speed;
 if(e.kind==='charger'||e.kind==='boss'){
 if(e.mode==='walk'&&e.timer<=0){e.mode='wind';e.timer=e.kind==='boss'?.95:.70;e.dx=dx/d;e.dy=dy/d;}
@@ -38,14 +38,14 @@ if(selected==='jackson'&&p.action==='dodge'&&!p.hitIds.has(e.id)&&dist(p,e)<e.r+
 if(p.action==='charge'&&!p.hitIds.has(e.id)&&dist(p,e)<e.r+p.r+(S(3)?24:12)){p.hitIds.add(e.id);chargeImpact(e);shake=3;}
 if(e.hp>0&&!(e.stunUntil>time)&&dist(p,e)<p.r+e.r&&e.attackCD<=0){hurt(e.kind==='boss'?18:e.kind==='heavy'?8:e.mode==='rush'?10:4,e);e.attackCD=.8;}
 }
-stepDefence(dt);stepEvolutions(dt);CHARACTER_MODULES[selected].update(dt);bonusStep(dt);rewardStep(dt);stepBuildStats(dt);stepGold(dt);stepPark(dt);stepHeroicEncounter();stepCharms(dt);stepShrine(dt);stepEnemyShots(dt);if(atChasewater()){let pos=walkable(p.x+(p.extX||0)*dt,p.y+(p.extY||0)*dt,p.r);p.x=pos.x;p.y=pos.y;p.extX=(p.extX||0)*Math.exp(-dt*7);p.extY=(p.extY||0)*Math.exp(-dt*7);}
+stepDefence(dt);stepEvolutions(dt);CHARACTER_MODULES[selected].update(dt);bonusStep(dt);rewardStep(dt);stepBuildStats(dt);stepGold(dt);stepPark(dt);stepHeroicEncounter();stepCharms(dt);stepShrine(dt);stepEnemyShots(dt);if(atChasewater()||rugbyRouteActive()){let pos=walkable(p.x+(p.extX||0)*dt,p.y+(p.extY||0)*dt,p.r);p.x=pos.x;p.y=pos.y;p.extX=(p.extX||0)*Math.exp(-dt*7);p.extY=(p.extY||0)*Math.exp(-dt*7);}
 // Light separation prevents enemies occupying exactly the same spot.
 for(let i=0;i<enemies.length;i++){let a=enemies[i];if(a.hp<=0)continue;for(let j=i+1;j<enemies.length;j++){let b=enemies[j];if(b.hp<=0)continue;let dx=b.x-a.x,dy=b.y-a.y,d=Math.hypot(dx,dy),min=(a.r+b.r)*.75;if(d>0&&d<min){let push=(min-d)*.5*dt*5;dx/=d;dy/=d;a.x-=dx*push;a.y-=dy*push;b.x+=dx*push;b.y+=dy*push;}}}
 for(let i=balls.length-1;i>=0;i--){let b=balls[i];if(b.star){updateStar(b,dt);if(b.life<=0)balls.splice(i,1);continue;}b.life-=dt;b.px=b.x;b.py=b.y;b.x+=b.vx*dt;b.y+=b.vy*dt;b.spin+=dt*18;if(b.life<=0){balls.splice(i,1);continue;}
 for(let e of enemies){if(e.hp<=0||b.hit.has(e.id))continue;let sx=b.x-b.px,sy=b.y-b.py,l=sx*sx+sy*sy,t=l?clamp(((e.x-b.px)*sx+(e.y-b.py)*sy)/l,0,1):0;if(Math.hypot(e.x-(b.px+sx*t),e.y-(b.py+sy*t))<e.r+b.r){b.hit.add(e.id);b.hitsMade=(b.hitsMade||0)+1;let v=Math.hypot(b.vx,b.vy)||1;damageEnemy(e,b.damage,b.vx/v,b.vy/v);if(b.main&&tier>=2&&!b.split){b.split=true;splitBall(b,e);}if(b.hitsMade>=b.maxHits){b.life=0;break;}let target=nearest(e,b.hit,330);if(!target){b.life=0;break;}let dx=target.x-e.x,dy=target.y-e.y,d=Math.hypot(dx,dy)||1;b.x=e.x+dx/d*(e.r+6);b.y=e.y+dy/d*(e.r+6);b.vx=dx/d*v;b.vy=dy/d*v;if(b.main)b.damage=13;pop(e.x,e.y,'#f9ce6c',5);break;}}
 }
 for(let i=gems.length-1;i>=0;i--){let g=gems[i],d=dist(p,g);let pickup=135*(1+buildStats().pickup/100);if(d<pickup){let v=(180+(pickup-d)*5)*dt;g.x+=(p.x-g.x)/(d||1)*Math.min(v,d);g.y+=(p.y-g.y)/(d||1)*Math.min(v,d);}if(d<20){run.earned+=g.value;gems.splice(i,1);showUpgrade();}}
-for(let i=fx.length-1;i>=0;i--){let f=fx[i];f.life-=dt;f.x+=f.vx*dt;f.y+=f.vy*dt;if(f.life<=0)fx.splice(i,1);}enemies=enemies.filter(e=>e.hp>0);if(atChasewater())for(let e of enemies){let q=walkable(e.x,e.y,e.r);e.x=q.x;e.y=q.y;}cam.x=lerp(cam.x,p.x,1-Math.exp(-dt*8));cam.y=lerp(cam.y,p.y,1-Math.exp(-dt*8));updateHud();}
+for(let i=fx.length-1;i>=0;i--){let f=fx[i];f.life-=dt;f.x+=f.vx*dt;f.y+=f.vy*dt;if(f.life<=0)fx.splice(i,1);}enemies=enemies.filter(e=>e.hp>0);if(atChasewater()||rugbyRouteActive())for(let e of enemies){let q=walkable(e.x,e.y,e.r);e.x=q.x;e.y=q.y;}cam.x=lerp(cam.x,p.x,1-Math.exp(-dt*8));cam.y=lerp(cam.y,p.y,1-Math.exp(-dt*8));updateHud();}
 
 function ellipse(x,y,rx,ry,color){ctx.fillStyle=color;ctx.beginPath();ctx.ellipse(x,y,Math.max(.1,rx),Math.max(.1,ry),0,0,TAU);ctx.fill();}
 
@@ -67,7 +67,7 @@ function resize(){W=innerWidth;H=innerHeight;DPR=Math.min(devicePixelRatio||1,2)
 
 function drawHero(c,x,y,s,ava){(ava?drawAvaSprite:drawJacksonSprite)(c,x,y,s,ava?0:2);}
 
-function walkable(x,y,r=14){y=clamp(y,65,WORLD.h-65);return arenaObjectPosition(clamp(x,atChasewater()?shore(y)+r+12:36,WORLD.w-36),y,r);}
+function walkable(x,y,r=14){if(rugbyRouteActive())return rugbyRoutePosition(x,y,r);y=clamp(y,65,WORLD.h-65);return arenaObjectPosition(clamp(x,atChasewater()?shore(y)+r+12:36,WORLD.w-36),y,r);}
 
 function radialEffect(x,y,r,color){fx.push({x,y,vx:0,vy:0,r,life:.35,max:.35,color,ring:true});}
 

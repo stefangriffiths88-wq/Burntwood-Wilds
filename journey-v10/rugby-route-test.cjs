@@ -1,0 +1,20 @@
+const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/strict');
+let source=fs.readFileSync('journey-v10/monster-town-test.cjs','utf8'),sandbox={require,console};vm.createContext(sandbox);vm.runInContext(source.slice(0,source.indexOf('const {t,c}=load();'))+'globalThis.h=load();',sandbox);const {t,c,els}=sandbox.h,ev=code=>vm.runInContext(code,c);
+function enter(hero='jackson'){t.menu();t.select(hero);t.startJourney();assert(t.enterArena('rugby'));assert.equal(t.player.x,1800);assert.equal(t.player.y,400);t.run.stagePicks=6;t.player.inv=999;t.player.attack=999;t.step(.01);assert.equal(t.state.state,'routeDialogue');assert(t.closeRugbyTalk());t.clear();}
+function tick(){t.step(.01);if(t.state.state==='upgrade')t.choose(0);}
+for(let hero of ['jackson','ava','stef','jodie','evie','zak','mimi','joseph','tom','havannah']){
+ enter(hero);let before=t.state.time;t.openPause();t.step(10);assert.equal(t.state.time,before);t.resumeRun();
+ assert.equal(t.rugbyRoutePosition(1480,7900).x,1654,'fenced railway cannot be crossed');assert(t.rugbyRoutePosition(1480,8360).x===1480,'walk around rail END through gates');assert(t.rugbyRoutePosition(980,8200).x===980);assert(t.rugbyRoutePosition(980,6400).x===980);
+ ev('time=59.9');assert(t.rugbyWavesAllowed());ev('time=60');assert(!t.rugbyWavesAllowed());tick();assert(!t.run.heroicSpawned,'timer alone does not teleport guard to the lane');
+ ev('time=200');tick();assert(!t.boss,'Bruce never starts on a timer');Object.assign(t.player,t.RUGBY_ROUTE.guard);tick();assert.equal(t.state.state,'routeDialogue');assert(!t.run.heroicSpawned);t.closeRugbyTalk();assert(t.run.heroicSpawned);let guard=t.enemies.find(e=>e.heroic);assert(guard);assert(!t.rugbyWavesAllowed());t.damageEnemy(guard,999999,0,0);tick();assert.equal(t.state.state,'charm');t.chooseCharm(0);tick();assert.equal(t.state.state,'routeDialogue');t.closeRugbyTalk();assert(t.run.heroicRewarded);assert(t.rugbyWellReady());assert(!t.rugbyWavesAllowed());
+ Object.assign(t.player,t.RUGBY_ROUTE.well);t.player.vx=t.player.vy=0;tick();assert.equal(t.state.state,'routeDialogue');let paused=t.state.time;t.step(20);assert.equal(t.state.time,paused);t.closeRugbyTalk();t.player.hp=10;assert(t.openShrine());assert(t.player.hp>10);assert.equal(t.openShrine(),false,'well once per visit');
+ t.player.x=980;t.player.y=5960;tick();assert.equal(t.state.state,'routeDialogue');assert(!t.boss);t.closeRugbyTalk();assert(t.boss);assert.equal(t.boss.y,5180);t.step(.01);assert(t.boss.monster);t.draw();t.enterHub();assert.equal(ev('WORLD.h'),1300);assert.equal(t.run.rugby,null);
+}
+// Actual movement along the lane, idle threshold, collision and first-stage enemy pacing.
+enter();ev('keys.s=true');for(let i=0;i<60*10;i++)t.step(1/60);assert(t.player.y>1800&&t.player.y<2100);assert.equal(t.run.guideIdle,0);ev('keys.s=false');t.player.vx=t.player.vy=0;t.clear();for(let i=0;i<89;i++)t.step(1/60);assert(t.run.guideIdle<1.5);t.step(3/60);assert(t.run.guideIdle>=1.5);ev('keys.d=true');t.step(.02);assert.equal(t.run.guideIdle,0);ev('keys.d=false');
+// The guarded 60–90s transition resumes ordinary waves only after the heroic.
+enter();Object.assign(t.player,t.RUGBY_ROUTE.guard);ev('time=60');tick();t.closeRugbyTalk();t.damageEnemy(t.enemies.find(e=>e.heroic),999999,0,0);tick();t.chooseCharm(0);tick();t.closeRugbyTalk();assert(t.rugbyWavesAllowed());assert(!t.rugbyWellReady());
+// At 90s ordinary enemies retreat without rewards; heroic remains for completion.
+enter();t.spawn('swarm',{x:1800,y:600});let ordinary=t.enemies.at(-1),kills=t.state.kills;ev('time=89.99');t.step(.02);assert(ordinary.hp<=0);assert.equal(t.state.kills,kills);assert(!t.boss);
+// Other arenas retain their dimensions and original timed heroic/boss behaviour.
+t.enterHub();t.enterArena('sankeys');assert.equal(ev('WORLD.h'),1300);assert(!t.run.rugby);t.run.stagePicks=6;t.player.inv=999;t.player.attack=999;ev('time=89.99');t.step(.02);assert(t.boss);console.log('PASS ten-hero physical rugby route, gate/guard/well/Bruce ordering, no rail crossing, idle 1.5s arrow, safe dialogue/pause, retreat without rewards, other arenas unchanged');
