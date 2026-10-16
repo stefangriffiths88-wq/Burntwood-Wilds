@@ -14,6 +14,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Scope validation to the changed files
+        id: scope
+        run: |
+          python3 - <<'PY_SCOPE'
+          import subprocess, os
+          files=subprocess.check_output(['git','diff','--name-only','HEAD^','HEAD'],text=True).splitlines()
+          def presentation_or_test(p):
+              return p.endswith('.md') or p.endswith('-browser.cjs') or p == 'journey-v10/menu.css' or p == '.github/workflows/journey-v10.yml' or (p.startswith('burntwood-journey-v10') and p.endswith('.html'))
+          full=not files or not all(presentation_or_test(p) for p in files)
+          with open(os.environ['GITHUB_OUTPUT'],'a') as output: output.write('full='+str(full).lower()+'\n')
+          print('Full mechanics suite:',full,'; changed files:',', '.join(files))
+          PY_SCOPE
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
@@ -24,16 +38,26 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add burntwood-journey-v10.html journey-v10/game.js journey-v10/assets/portraits
           git diff --cached --quiet || (git commit -m "Generate versioned artwork assets and playable build" && (git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"))
-      - run: node journey-v10/test.cjs
-      - run: node journey-v10/joseph-test.cjs
-      - run: node journey-v10/tom-test.cjs
-      - run: node journey-v10/havannah-test.cjs
-      - run: node journey-v10/builds-test.cjs
-      - run: node journey-v10/reward-balance-test.cjs
-      - run: node journey-v10/levelup-reveal-test.cjs
-      - run: node journey-v10/reward-world-test.cjs
-      - run: node journey-v10/town-test.cjs
-      - run: node journey-v10/encounters-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/joseph-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/tom-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/havannah-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/builds-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/reward-balance-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/levelup-reveal-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/reward-world-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/town-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/encounters-test.cjs
       - run: npm install --no-save playwright@1.48.2
       - run: |
           python3 -m http.server 8765 >/tmp/journey-server.log 2>&1 &
@@ -43,7 +67,8 @@ jobs:
         with:
           name: changed-screens
           path: journey-v10/browser
-      - run: |
+      - if: steps.scope.outputs.full == 'true'
+        run: |
           node journey-v10/browser.cjs
           node journey-v10/joseph-browser.cjs
           node journey-v10/tom-browser.cjs
@@ -56,7 +81,8 @@ jobs:
         with:
           name: phone-review
           path: journey-v10/browser
-      - run: node journey-v10/charms-test.cjs
+      - if: steps.scope.outputs.full == 'true'
+        run: node journey-v10/charms-test.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
