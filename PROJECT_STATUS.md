@@ -1,12 +1,20 @@
 # Burntwood Wilds — project status
 
-## 10.11.1 candidate — level-up glow and gold reward reveal
-16 October 2026. User reported upgrades still felt fast/unrewarding and the popup annoying, then specifically requested a character glow followed fractions later by an impressive gold frame building around the choice screen. Implemented a 550ms anticipation using the existing safe upgrade pause, animated SVG gold frame and staggered cards, immediate reduced-motion alternative, synchronous cancellation and 0.35s resume grace. No new confirmation. Core reward frequency/strength remains the 10.11.0 system. Spec: journey-v10/BUILDS.md.
+## Current release: 10.11.1 — level-up glow and gold reward reveal
+16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
 
-Local all-ten natural-XP/pause/cancellation tests and reward contracts passed; full release CI/mobile review/deployment pending. Character modules, portraits, progression saves and historical releases preserved. User emotional/visual acceptance remains pending; do not equate automated checks with fun.
+- **User working rule:** suggestions/ideas are discussion only. Only change the game when Stef explicitly says to update. User authorised finishing this current update on 16 October; no future updates are authorised. This rule is also saved in AGENTS.md.
+- User reported upgrades still felt fast/unrewarding and the popup annoying, then suggested a character glow followed fractions later by a gold frame building around the choice screen. 10.11.1 provides a 550ms anticipation using the existing safe upgrade pause, warm native hero halo/stars, animated SVG gold frame and staggered cards. Immediate reduced-motion alternative, synchronous cancellation and 0.35s resume grace. No extra confirmation. Reward frequency/strength remains the 10.11.0 system. Spec: journey-v10/BUILDS.md.
+- PR #66 merged at 289d85b1054c74db432ab662b697b4a3c10233b1; exact tested source 6cec44d71e2a0737719ca4c787d760c058fdfb49. Full feature CI 38838613671 passed all gameplay/character/build/reward/reveal/town/encounter checks, seven browser suites and the full existing charm matrix/journeys. Artifact 12020595299.
+- Local all-ten natural-XP/pause/cancellation tests, reward contracts and full gameplay tests passed. Browser captures reviewed for glow, gold construction and ready cards at 390x844/650 plus reduced motion; cards fit both phone heights. Native Canvas halo was also inspected. Tests verify paused combat/clock, one choice, immediate cancellation and no delayed reopening.
+- Character modules, portraits, progression saves and historical releases preserved. No new game state or timeout; reveal uses the existing upgrade pause. Phone browser automation is not native Safari and does not establish fun. User emotional/visual acceptance remains pending.
+- Production Pages 38839153292 succeeded at documentation head 34209cec11323b2da739178d5119ae37294187f8 with identical runtime. Initial merge Pages 38839108225 was superseded/cancelled by that documentation build, not a game failure.
+- Public versioned/canonical HTML, latest.html and preserved 10.11.0 returned HTTP 200 and exactly matched local tested bytes. Game: 291962 bytes, SHA256 7dcad28405068a35337082716f25e5a93b301b225c6131ff9cb9a619b0597f35.
+- Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.11.1.html?v=10111 ; latest.html points here.
+- Automatic post-merge main CI 38839108593 is still running at closeout (browser step active; earlier checks passed). Full pre-merge CI passed at unchanged runtime. Check its eventual result before any explicitly authorised future update. Documentation-only closeout changes no game files.
+- Next: user playtest reward presentation/native Safari. Do not implement further suggestions unless Stef explicitly instructs an update.
 
-
-## Current release: 10.11.0 — meaningful rewards and staged challenge
+## Previous release: 10.11.0 — meaningful rewards and staged challenge
 Updated 16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
 
 - User requested rewards that feel dramatic/exciting, then authorized whole-game reward/balance work. PR #65 merged at e847739b6103e0654bdcdfcc0338f04da2a73391; exact tested source 28714ecdfab6f610251ac5858cf90ffc9d23888f, tree 8fb50a001e39881b8989f2836708eac09c467f69. Specification/numbers/rationale: journey-v10/BUILDS.md, 10.11.0 section.
