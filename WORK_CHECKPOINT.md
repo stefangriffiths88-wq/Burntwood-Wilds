@@ -8,3 +8,10 @@ Focused monster-town-test passes: ten hero evolution/defence activation, town so
 Browser unavailable locally so far; runtime Playwright exists but no installed Chromium found. Use CI browser or install supported browser. Baseline full CI38884068113 passed unchanged10.12.0; new candidate is not released. Preserve PR70 design/reference; do not overwrite independent audit docs. Commit source incrementally and verify remote checkpoint.
 
 Next: finish icons/integration tests and visual review, then one full candidate gate. No final readiness claim until deployment is verified.
+
+## Integration checkpoint — 16 October, continued afternoon
+- First phone job38913223735 changed-review passed; artifact12051575859 reviewed. Found and locally fixed action fill escaping circle (position relative), tall stat details padding, boss label background, isolated actor depth and Mythic fixture extra buttons. Richer pitched roofs/gardens/lamps, dedicated ability icons and final Mimi portrait added. Needs refreshed captures.
+- Local main gameplay/town/Joseph/Tom/Havannah/builds/reward/level reveal/reward-world checks passed after intentional assertions updated. New monster-town test additionally covers90 Mythic choices, exact elements/two lightning targets/nonrecursion, Leech/Wisp lockouts, gold guard and geography.
+- Encounter test exposed boss custom handler skipping Jackson charge contact; fixed in monster-bosses.js and exact charge assertions now pass. Simultaneous heroic/boss tests must consume BOTH chests; final fifth gives no chest. Charms count now38, seven-hero actions266; the21 retained journeys still need completion.
+- Browser available in CI only; local Playwright Chromium download was truncated. Use changed-review job/screens rather than repeat local installation. Never claim native iPhone acceptance.
+- First source checkpoint branch initially based on old tree accidentally reverted3 release docs; corrected next commit using fresh main base. Main docs preserved. No release yet.

@@ -11,3 +11,5 @@ const HERO_ABILITY_ART={
  tom:['M2 11 6 6 11 7 12 12 11 20 3 19ZM13 12 14 7 19 6 23 11 22 19 14 20Z','M2 18 7 14 10 20 14 8 18 15 22 11M4 5 9 7M16 3 20 5'],
  havannah:['M12 2 14 8 21 7 17 12 22 17 15 17 12 23 9 17 2 17 7 12 3 7 10 8Z','M3 12Q3 2 12 2Q21 2 21 12M5 11 9 8M15 8 19 11M6 20 9 15 12 21 15 15 18 20']};
 function heroAbilityIcon(hero,path){let d=path==='dodge'?GLYPHS.armour:HERO_ABILITY_ART[hero]?.[path==='special'?1:0]||GLYPHS.star;return '<svg class="uiGlyph abilityArt" viewBox="0 0 24 24" aria-hidden="true"><path d="'+d+'"/></svg>';}
+function updateActionIcons(){for(let [id,path]of [['charge','special'],['dodge','dodge']]){let el=$(id);el.querySelector?.('.abilityArt')?.remove();el.insertAdjacentHTML?.('beforeend',heroAbilityIcon(selected,path));}}
+const DEFENCE_BUTTONS={jackson:'SIDESTEP',ava:'ESCAPE',stef:'BRACE',jodie:'CIRCLE',evie:'COVER',zak:'ESCAPE',mimi:'VANISH',joseph:'SHAKE OFF',tom:'BRACE',havannah:'GET OFF!'};

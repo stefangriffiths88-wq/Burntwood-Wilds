@@ -4,7 +4,7 @@ const source=fs.readFileSync('journey-v10/test.cjs','utf8');let harness=source.s
 function settle(sec){for(let i=0;i<Math.ceil(sec*120);i++){t.player.inv=999;t.step(1/120);if(t.state.state==='upgrade')t.choose(0);if(t.state.state==='charm')t.chooseCharm(0);}}
 function empty(){t.clear();t.player.attack=999;}
 function c(key,rank=1){t.run.charms.push({key,rank});}
-assert.equal(Object.keys(t.CHARMS).length,30);
+assert.equal(Object.keys(t.CHARMS).length,38);
 // Procs never recursively trigger perks or other charms; bounded queues and fire patches.
 reset('mimi');c('storm');c('bell');c('echo');t.run.perk='lightning';let e=target(40),b=target(90),d=target(130);let before=b.hp;t.damageEnemy(e,10,0,0,false,'charm');assert.equal(t.run.charmFX.queue.length,0);t.damageEnemy(e,10,0,0);assert(t.run.charmFX.queue.length<=2);settle(.1);assert(b.hp<before);assert.equal(t.run.charmFX.queue.length,0);let stormAt=t.run.charmFX.stormAt;for(let i=0;i<30;i++)t.damageEnemy(e,1,0,0);assert.equal(t.run.charmFX.stormAt,stormAt);assert(t.run.charmFX.queue.length<=1);
 reset('mimi');c('bell');e=target(40);b=target(70);for(let i=0;i<8;i++){t.damageEnemy(e,1,0,0);settle(.16);}assert(b.hp<10000,'bell shockwave hits nearby foe');
@@ -29,7 +29,7 @@ for(let area of ['rugby','chasewater','sankeys','quarry','park']){reset('mimi',a
 console.log('PASS heroic timing/rewards in five arenas, 90s bosses, fusion, bag, replacement, carry-over and new-run reset');
 // Every hero with every charm: real normal attack, special, dodge and 3 seconds of combat.
 for(let hero of heroes)for(let key of Object.keys(t.CHARMS)){reset(hero);c(key);for(let i=0;i<5;i++){t.grant('weapon');t.grant('special');t.grant('dodge');}for(let n=0;n<4;n++)target(35+n*20,n*5);t.player.attack=0;t.charge();settle(2);t.player.action=null;t.player.dodgeCD=0;t.dodge();settle(.5);t.draw();assert(t.run.charmFX.queue.length<=48);assert(t.run.charmFX.patches.length<=8);assert(Number.isFinite(t.player.hp));}
-console.log('PASS 210 hero/charm combinations through actual combat actions');
+console.log('PASS '+(heroes.length*Object.keys(t.CHARMS).length)+' hero/charm combinations through actual combat actions');
 // Three builds, seven heroes, full three-arena progression using actual damage to defeat heroic/final bosses.
 const builds=[['frost','opportunist','still'],['keen','heavy','patient'],['clockwork','phantom','blood']];let reports=[];
 for(let hero of heroes)for(let build of builds){t.menu();t.select(hero);t.startJourney();for(let k of build)t.gainCharm(k);let wins=0,heroics=0,totalTime=0;
