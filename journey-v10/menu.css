@@ -69,3 +69,12 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 .townPanel button:disabled{opacity:.45;cursor:default}
 
 .picks{grid-template-columns:repeat(5,minmax(0,1fr))}.picks button{font-size:10px;padding:10px 1px}
+/* Reward hierarchy: ability progress is separate from rolled stat rarity. */
+.rewardHint{display:block;font:700 10px system-ui;color:#e6d4a5;margin-top:7px;font-style:normal;letter-spacing:.35px}
+#rewardToast{position:fixed;top:calc(env(safe-area-inset-top,0px) + 190px);left:50%;transform:translateX(-50%);width:min(84vw,350px);z-index:10;pointer-events:none;text-align:center;background:linear-gradient(130deg,#284d3af5,#122f26f5);border:1px solid var(--reward-color,#f4ce70);border-radius:13px;padding:13px 16px;box-shadow:0 8px 24px #001a1488;opacity:0}
+#rewardToast b{display:block;font:bold 13px system-ui;letter-spacing:1.2px;color:var(--reward-color,#f4ce70)}
+#rewardToast span{display:block;margin-top:5px;font:600 13px/1.4 system-ui;color:#fff0cd}
+#rewardToast.rewardShow{animation:rewardCelebrate 1.85s ease-out forwards}
+@keyframes rewardCelebrate{0%{opacity:0;translate:0 6px}12%,78%{opacity:1;translate:0 0}100%{opacity:0;translate:0 -4px;visibility:hidden}}
+@media(max-height:680px){.rewardHint{margin-top:4px;font-size:9px}#rewardToast{top:168px;padding:10px 12px}button.buildCard b{font-size:15px}button.buildCard small{line-height:1.35}}
+@media(prefers-reduced-motion:reduce){#rewardToast.rewardShow{animation:rewardFade 1.85s linear forwards}@keyframes rewardFade{0%,80%{opacity:1}100%{opacity:0;visibility:hidden}}}

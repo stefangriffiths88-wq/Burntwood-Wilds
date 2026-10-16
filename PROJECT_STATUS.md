@@ -1,5 +1,11 @@
 # Burntwood Wilds — project status
 
+## 10.11.0 reward/balance candidate — in progress
+User authorized a whole-game reward and balance pass after reporting that upgrades feel pointless. Branch balance/reward-power-10110. Implements larger capped stats, two ability choices when available, guaranteed Rare+ milestone stats/heroic charms, staged enemy challenge without per-pick enemy buffs, more usable gold/shop rewards, Power-scaled damage perks and separate reward feedback module. Full specification: journey-v10/BUILDS.md, 10.11.0 section. Existing characters/moves/artwork and saved progression remain unchanged.
+
+Local targeted mechanics and 30-build/900-choice contract checks passed. Required release CI, phone browser captures and production deployment pending. User fun/survival/visual acceptance remains pending; do not claim testing proves balance. Prior 10.10.1 release remains live while this branch is verified.
+
+
 ## Current release: 10.10.1 — measured character heights
 Updated 16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
 
