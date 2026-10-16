@@ -1,14 +1,23 @@
 # Burntwood Wilds — project status
 
-## 10.10.1 height correction — implementation in progress
-16 October 2026: user clarified and authorized scaling: Stefan 6ft3; Jodie/Zak 5ft10; Jackson 5ft1; Evie 5ft2 (one inch taller). Corrected native character drawing scales using measured opaque idle silhouettes. Jodie remains baseline; Jackson grows, Stefan reduces, Zak aligns exactly, Evie retains slightly greater height and rounder build. Other six sprites unchanged. No portrait, combat or save changes.
+## Current release: 10.10.1 — measured character heights
+Updated 16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
 
-Targeted gameplay/town checks and mobile visual measurements are being verified; release CI/deployment pending. Native Safari/user visual acceptance remains pending: do not treat the prior consistency issue as user-accepted. Earlier checkpoint below is historical.
+- User clarified/authorized: Stefan 6ft3, Jodie/Zak 5ft10, Jackson 5ft1 (9 inches shorter), Evie 5ft2 (one inch taller than Jackson). Corrected four character drawing scales; Jodie stays baseline. Other six sprites retain established sizes/builds.
+- PR #64 merged at 34432b28a93d67274e726b3e8cc11011d3d35edf; tested source 77a66cadb75141f43fb75fad89277f4780ac18b2.
+- Feature CI 38827119252 passed all gameplay/character/progression/save/encounter/charm and five mobile-browser suites. Artifact 12016320109; reviewed changed heroes' idle/attack/town/short-screen captures, plus native all-ten lineup/town render. Browser measurements (opaque idle silhouette, excluding shadow): Stefan 61, Jodie/Zak 57, Jackson 49.667, Evie 50.333 world units. Raster tolerance 1.2% around requested height ratios.
+- Fresh local gameplay, Joseph/Tom/Havannah, builds, town and encounter checks passed. Quick audit passed manifest completeness/uniqueness, deterministic build, JS syntax, diff whitespace, ten unique portrait assets and consistent version/redirect. Character diff is exactly four drawing scale calls; combat logic/stats/hitboxes/progression/arenas untouched. Approved portraits and historical 10.10.0 unchanged.
+- Versioned game: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.10.1.html?v=10101 ; latest.html points here.
+- Production Pages 38828035318 succeeded. Public versioned/canonical HTML matched the tested bytes; latest redirect and preserved 10.10.0 also matched. Versioned/canonical HTML: 281199 bytes, SHA256 105e237eff496130c846cd64c167f486e271ed72216930d178f70366ba5cc5ea.
+- Main post-merge CI 38828036109 was still running at closeout; the full pre-merge run passed at the exact unchanged source. Check its final result before further development.
+- User requested a quick audit and closeout. No new defects found in this scope. Known CI auto-commit/legacy importer debt remains deferred; no unsolicited refactor. Native Safari/user visual acceptance of 10.10.1 remains pending.
+- Next action: user phone comparison of corrected heights and silhouettes; do not claim visual acceptance or start unrelated work automatically. Preserve small/slim Jackson, rounder Evie, athletic Zak, tall/slim Stefan and smaller children.
 
+## Earlier checkpoints (historical; current state above takes precedence)
 
 Updated 16 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
 
-## OPEN ISSUE — character sizes and consistency remain unresolved
+## Historical 10.10.0 feedback — corrected scaling implemented in 10.10.1; user acceptance pending
 Updated from user feedback, 16 October 2026 at 00:52–00:53 Europe/London, after the 10.10.0 testing sign-off.
 
 The user reports: “The sizes and character consistency still being an issue.” This supersedes the earlier positive visual/playtest interpretation. The automated checks and deployment passed, but they did not prove that the size relationships and visual consistency meet the user's expectations. Do not describe the character presentation as accepted, fixed or fully consistent.
