@@ -62,6 +62,7 @@ jobs:
       - run: |
           python3 -m http.server 8765 >/tmp/journey-server.log 2>&1 &
           node journey-v10/reward-world-browser.cjs
+          node journey-v10/rewards-browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -74,7 +75,6 @@ jobs:
           node journey-v10/tom-browser.cjs
           node journey-v10/havannah-browser.cjs
           node journey-v10/visuals-browser.cjs
-          node journey-v10/rewards-browser.cjs
           node journey-v10/levelup-reveal-browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
