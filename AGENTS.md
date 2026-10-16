@@ -11,7 +11,8 @@
 - Public repository: never upload private family photos, court material or secrets.
 
 ## Change and release contract
-- Translate informal feedback into a targeted reproducible change. Use proportional focused tests during development, and required release checks before merge. Browser automation is not native iPhone Safari; scripted invulnerable runs are not evidence of human balance.
+- **User direction, 16 October 2026:** suggestions and ideas are discussion only. Do not edit, implement or release game changes until Stef explicitly says to update. He authorised finishing 10.11.1 as a one-time continuation; this does not authorise future updates.
+- Once an update is explicitly authorised, translate its feedback into a targeted reproducible change. Use proportional focused tests during development, and required release checks before merge. Browser automation is not native iPhone Safari; scripted invulnerable runs are not evidence of human balance.
 - Give honest progress checkpoints, with the five-block progress bar for meaningful updates. Respect explicit pauses.
 - Build with `python3 journey-v10/build.py`, but **be aware that current CI auto-commits generated files**. Avoid concurrent feature/release pushes and check for CI-created commits; separating verification and publication is a priority future refactor, not yet implemented.
 - Merge only tested complete work. Verify main-branch Pages, publish an exact versioned playable link and update `PROJECT_STATUS.md` with commit, tests, limitations and user playtest status.
