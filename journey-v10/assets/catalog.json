@@ -173,5 +173,101 @@
     "approval": "User authorized rework with Jodie as baseline, small slim Jackson (11), smaller Ava (7), tall slim Stefan, athletic Zak same height as Jodie, Joseph larger than Ava, Evie slightly larger and rounder than Jackson.",
     "portraits": "All approved selection portraits preserved byte-for-byte",
     "acceptance": "Implementation candidate; native Safari/user visual playtest pending"
+  },
+  "selection_icons": {
+    "ava": {
+      "asset": "assets/icons/ava.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "4823669e37794a78f97479a4847d045ee162a72459ff0bbc63cfc2ed9837f2ea"
+    },
+    "jackson": {
+      "asset": "assets/icons/jackson.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "740d2ade39d9ec092aea0a733e63852883d19c110d6dd15920f179613eeaa236"
+    },
+    "stef": {
+      "asset": "assets/icons/stef.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "de12ededd2eb3e11f46d42ef6ccb389f0dee291510c10eb40986354e707bc5c0"
+    },
+    "jodie": {
+      "asset": "assets/icons/jodie.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "72abe7dd89dcca4d596d899ea55428a82be1e78364a2ac9a5e17c53633fa97f6"
+    },
+    "evie": {
+      "asset": "assets/icons/evie.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "f10101933028f0e344f4b97ae847c3561a7d7f8ed00c54b74ab6abf8332ff84b"
+    },
+    "zak": {
+      "asset": "assets/icons/zak.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "21e98dd672d311d46db9fa08851b4abebd5a6c284319560438a535d770032789"
+    },
+    "mimi": {
+      "asset": "assets/icons/mimi.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "4139ca6060b8e5d81400b580250ffdbf4c89b1141f782ca394e64b8e66170f71"
+    },
+    "joseph": {
+      "asset": "assets/icons/joseph.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "e23e92310e06fec601246fed9e884954811d67774f014e33928e0b90e6bc3ad7"
+    },
+    "tom": {
+      "asset": "assets/icons/tom.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "768c72bd8cc59e69f1ebcb803e630b92f935b629357fb08692f2e149950c5ffc"
+    },
+    "havannah": {
+      "asset": "assets/icons/havannah.webp",
+      "dimensions": [
+        512,
+        512
+      ],
+      "status": "user-approved-individual-icon-and-colour-background-16-October-2026",
+      "sha256": "929dc94d9e3aa5b92ee4d443fbab50c2bd3e605bd283fd482bb0c05b94deef25"
+    }
+  },
+  "enemy_visuals": {
+    "source": "visuals/enemy-art.js",
+    "scope": "All five areas, all ordinary/heroic/final bosses. Shaded native Canvas silhouettes. Combat unchanged. User requested overhaul, human visual acceptance pending."
   }
 }
