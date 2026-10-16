@@ -91,3 +91,21 @@ jobs:
             journey-v10/browser
             journey-v10/charm-test-results.json
             journey-v10/reward-balance-results.json
+  changed-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 journey-v10/build.py
+      - run: node journey-v10/monster-town-test.cjs
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/monster-server.log 2>&1 &
+          node journey-v10/monster-town-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: monster-phone-review
+          path: journey-v10/browser

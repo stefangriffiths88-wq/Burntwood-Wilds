@@ -9,4 +9,4 @@ function updateHealthOrb(){let max=stats().hp,hp=clamp(p.hp,0,max),pct=max?hp/ma
 function interruptionPause(){if(['playing','hub'].includes(state))openPause();else stopMovement();}
 addEventListener('blur',interruptionPause);addEventListener('pagehide',interruptionPause);if(typeof document.addEventListener==='function')document.addEventListener('visibilitychange',()=>{if(document.hidden)interruptionPause();});
 
-function updateActionFills(){for(let [id,left,max]of [['charge',p.chargeCD,specialCooldown()],['dodge',p.dodgeCD,dodgeCooldown()]]){$(id).style.setProperty('--ready-fill',clamp(1-left/Math.max(.01,max),0,1)*100+'%');}}
+function updateActionFills(){for(let [id,left,max]of [['charge',p.chargeCD,specialCooldown()],['dodge',p.dodgeCD,dodgeCooldown()]]){$(id).setAttribute?.('aria-label',(id==='charge'?PROFILES[selected].special:DEFENCE_NAMES[selected])+' · '+(left>0?Math.ceil(left)+' seconds':'ready'));$(id).style.setProperty('--ready-fill',clamp(1-left/Math.max(.01,max),0,1)*100+'%');}}

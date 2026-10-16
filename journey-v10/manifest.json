@@ -46,5 +46,6 @@
   "arenas/monster-bosses.js",
   "visuals/monster-art.js",
   "arenas/objects.js",
+  "ui/ability-art.js",
   "controls.js"
 ]
