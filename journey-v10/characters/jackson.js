@@ -5,7 +5,7 @@ function splitBall(b,e){let count=tier>=3?3:2,used=new Set([e.id]);for(let i=0;i
 
 function ballArt(x,y,r,angle=0,small=false){ctx.save();ctx.translate(x,y);ctx.rotate(angle);ellipse(1,3,r*.75,r*.48,'#203b3544');ellipse(0,0,r,r*.59,small?'#ffe4a0':'#fff3d6');line([[-r*.57,-r*.42],[-r*.75,0],[-r*.57,r*.42]],'#c5413c',r*.19);line([[r*.57,-r*.42],[r*.75,0],[r*.57,r*.42]],'#c5413c',r*.19);line([[-r*.22,0],[r*.22,0]],'#a08b68',1);ctx.restore();}
 
-function drawJacksonSprite(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.84,s*.84);
+function drawJacksonSprite(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.9272,s*.9272);
  ellipse(0,23,13,3.4,'#18372855');catTail('#83969b','#dfdfce',5.2);
  catShape('M -10 -5 Q 0 -10 10 -5 L 10 15 Q 0 24 -10 15 Z','#148461');
  ctx.save();let jersey=new Path2D('M -10 -5 Q 0 -10 10 -5 L 10 15 Q 0 24 -10 15 Z');ctx.clip(jersey);for(let y of [-1,8,17]){ctx.fillStyle='#bd493f';ctx.fillRect(-12,y,24,4.5);}line([[-8,4],[-8,14]],'#ffffff25',1.2);ctx.restore();

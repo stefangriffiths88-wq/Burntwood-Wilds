@@ -23,7 +23,7 @@ function drawStefGuide(){if(!isStef()||!p)return;let a=p.swing?.aim??p.aim??Math
 
 function drawStef(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*2)*.5);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;drawStefBody(ctx,0,0,1,0);for(let h of stefHands()){if(h.moving&&!h.push){ctx.strokeStyle='#f4d28d88';ctx.lineWidth=2;ctx.beginPath();let r=Math.hypot(h.x,h.y);ctx.arc(0,0,r,h.a-.18,h.a+.18);ctx.stroke();}if(h.push){ctx.strokeStyle='#8bcdf180';ctx.lineWidth=1.3;ctx.beginPath();ctx.moveTo(h.x+(h.x>0?-9:9),h.y-4);ctx.lineTo(h.x+(h.x>0?-17:17),h.y-4);ctx.stroke();}catPaw(h.x,h.y,h.size+(!h.moving?1:0),'#e2dfcf','#bd969c',h.a);}ctx.restore();}
 
-function drawStefBody(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.91,s*.98);
+function drawStefBody(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.8421,s*.9068);
  ellipse(0,24,12,3,'#18372855');catTail('#7e8d91','#e2dfcf',5);
  // One continuous floating coat hem: no trousers, legs or feet.
  catShape('M -10 -8 Q 0 -12 10 -8 L 11 20 Q 0 27 -11 20 Z','#414b4a');
