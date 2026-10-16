@@ -101,3 +101,20 @@ These informed our own design decisions; they do not establish numeric balance.
 The new deterministic 30-build/900-choice audit checks contracts and caps, not
 human survival or excitement. Existing actual-combat, charm and browser suites
 remain required, followed by user phone playtesting.
+
+## 10.11.1 — level-up anticipation and gold reveal
+User feedback: the repeated screen felt like an inconvenience, rather than a reward.
+User requested character glow first, then the choice screen a fraction later with
+gold building around it. The existing upgrade pause now begins a 550ms unobstructed
+hero halo/sparkle glow. A native SVG gold perimeter traces around the panel while
+three cards enter in sequence. No extra confirmation or click is added. Combat and
+its timer remain frozen throughout; choice grants a bounded 0.35s resume grace.
+Reduced-motion preference shows the panel immediately without movement.
+
+Presentation lives in upgrades/feedback.js and menu.css. Unit/API forced choice
+screens bypass anticipation for deterministic mechanics tests; natural XP and
+real browser timing are covered separately by levelup-reveal-test.cjs and
+levelup-reveal-browser.cjs. Cancellation clears the visual state synchronously;
+there is no delayed JavaScript callback that can reopen a menu. The normal number,
+strength and timing of rewards are retained in this presentation-focused update.
+User excitement and native Safari visual acceptance remain to be playtested.
