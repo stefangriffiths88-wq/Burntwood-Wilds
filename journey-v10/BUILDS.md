@@ -118,3 +118,6 @@ levelup-reveal-browser.cjs. Cancellation clears the visual state synchronously;
 there is no delayed JavaScript callback that can reopen a menu. The normal number,
 strength and timing of rewards are retained in this presentation-focused update.
 User excitement and native Safari visual acceptance remain to be playtested.
+
+## 10.11.2 — choices in the spotlight
+User explicitly requested update: glowing boxes, bold text, everything except the three choices dulled. Existing accepted 550ms glow/gold reveal retained. Scoped levelReward CSS darkens the paused world and outer container, mutes the heading and frame, increases option border/glow and name/body weight. Removes the instructional paragraph only in the level-up presentation. Perk effects, rarity, choice scheduling and controls unchanged. No new artwork or motion. 390x844/650 browser review required.
