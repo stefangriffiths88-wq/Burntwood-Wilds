@@ -19,7 +19,7 @@ function drawZakClouds(){if(!isZak())return;for(let shot of zakShots){line([[sho
 for(let c of zakLaughClouds){ctx.save();ctx.globalAlpha=Math.min(.33,c.life*.19);for(let i=0;i<9;i++){let a=i*TAU/9+c.age*.35,r=c.r*(.3+.2*Math.sin(i*3));ellipse(c.x+Math.cos(a)*r,c.y+Math.sin(a)*r,c.r*.37,c.r*.30,i%2?'#a7dc81':'#cba7ed');}ctx.restore();radialDraw(c.x,c.y,c.r,'#b5a0e644');}
 if(zakBurst>0)radialDraw(p.x,p.y,105*(1-zakBurst/.8),'#b3ed78');if(zakLaunch>0)radialDraw(p.x,p.y,40*(1-zakLaunch/.5),'#c5e982');}
 // Street Zak (approved option A): flat game-scale silhouette, detached paws, no limbs.
-function drawZak(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*1.25)*1.3+(zakLaunch>0?-Math.sin((.5-zakLaunch)/.5*Math.PI)*8:0));ctx.scale(.91,.90);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;
+function drawZak(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*1.25)*1.3+(zakLaunch>0?-Math.sin((.5-zakLaunch)/.5*Math.PI)*8:0));ctx.scale(.9021,.8922);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;
 ellipse(0,21,17,4,'#142e2a55');
 // Long grey-purple tail, kept separate from the hoodie.
 ctx.strokeStyle='#555267';ctx.lineWidth=8;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(11,11);ctx.bezierCurveTo(34,24,39,-5,27,-9);ctx.stroke();ellipse(27,-9,6,6,'#b9b4c3');

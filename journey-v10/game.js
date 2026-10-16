@@ -101,7 +101,7 @@ const STAT_NAMES={};
 
 
 // Journey orchestration. Arena content and character implementations are split at build time.
-const BUILD_ID='10.10.0';
+const BUILD_ID='10.10.1';
 
 
 
@@ -220,7 +220,7 @@ function splitBall(b,e){let count=tier>=3?3:2,used=new Set([e.id]);for(let i=0;i
 
 function ballArt(x,y,r,angle=0,small=false){ctx.save();ctx.translate(x,y);ctx.rotate(angle);ellipse(1,3,r*.75,r*.48,'#203b3544');ellipse(0,0,r,r*.59,small?'#ffe4a0':'#fff3d6');line([[-r*.57,-r*.42],[-r*.75,0],[-r*.57,r*.42]],'#c5413c',r*.19);line([[r*.57,-r*.42],[r*.75,0],[r*.57,r*.42]],'#c5413c',r*.19);line([[-r*.22,0],[r*.22,0]],'#a08b68',1);ctx.restore();}
 
-function drawJacksonSprite(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.84,s*.84);
+function drawJacksonSprite(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.9272,s*.9272);
  ellipse(0,23,13,3.4,'#18372855');catTail('#83969b','#dfdfce',5.2);
  catShape('M -10 -5 Q 0 -10 10 -5 L 10 15 Q 0 24 -10 15 Z','#148461');
  ctx.save();let jersey=new Path2D('M -10 -5 Q 0 -10 10 -5 L 10 15 Q 0 24 -10 15 Z');ctx.clip(jersey);for(let y of [-1,8,17]){ctx.fillStyle='#bd493f';ctx.fillRect(-12,y,24,4.5);}line([[-8,4],[-8,14]],'#ffffff25',1.2);ctx.restore();
@@ -334,7 +334,7 @@ function drawStefGuide(){if(!isStef()||!p)return;let a=p.swing?.aim??p.aim??Math
 
 function drawStef(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*2)*.5);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;drawStefBody(ctx,0,0,1,0);for(let h of stefHands()){if(h.moving&&!h.push){ctx.strokeStyle='#f4d28d88';ctx.lineWidth=2;ctx.beginPath();let r=Math.hypot(h.x,h.y);ctx.arc(0,0,r,h.a-.18,h.a+.18);ctx.stroke();}if(h.push){ctx.strokeStyle='#8bcdf180';ctx.lineWidth=1.3;ctx.beginPath();ctx.moveTo(h.x+(h.x>0?-9:9),h.y-4);ctx.lineTo(h.x+(h.x>0?-17:17),h.y-4);ctx.stroke();}catPaw(h.x,h.y,h.size+(!h.moving?1:0),'#e2dfcf','#bd969c',h.a);}ctx.restore();}
 
-function drawStefBody(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.91,s*.98);
+function drawStefBody(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.8421,s*.9068);
  ellipse(0,24,12,3,'#18372855');catTail('#7e8d91','#e2dfcf',5);
  // One continuous floating coat hem: no trousers, legs or feet.
  catShape('M -10 -8 Q 0 -12 10 -8 L 11 20 Q 0 27 -11 20 Z','#414b4a');
@@ -523,7 +523,7 @@ function drawDuck(d){ctx.save();ctx.translate(d.x,d.y);let s=d.r/7,jump=d.mode==
 
 function drawDuckExtras(){for(let e of eggs){line([[e.px,e.py],[e.x,e.y]],'#fff1cc77',1.5);ellipse(e.x,e.y,2.6,3.6,'#fff0d4');}if(duckSignal>0){ctx.strokeStyle='#bb82e5';ctx.lineWidth=2;ctx.beginPath();ctx.arc(p.x,p.y-38,8+(1-duckSignal/.65)*10,0,TAU);ctx.stroke();starArt(p.x,p.y-38,4,time*3);}}
 
-function drawEvie(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*2)*.6);ctx.scale(.80,.80);ctx.rotate(p.dir.x*.04);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;
+function drawEvie(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*2)*.6);ctx.scale(.7920,.7920);ctx.rotate(p.dir.x*.04);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;
  ellipse(0,24,15,3.5,'#183b2955');catTail('#a9a4ad','#f5e9d8');
  catShape('M -13 -5 Q 0 -12 13 -5 Q 18 13 12 20 Q 0 28 -12 20 Q -18 13 -13 -5 Z','#392447','#33283d');catShape('M -10 0 Q -13 11 -9 19 L -4 21 Q -8 10 -6 1 Z','#624078',null);line([[-10,8],[10,8]],'#a17a44',2);ellipse(0,8,2.3,1.8,'#e7bf72');line([[-8,1],[0,4],[8,1]],'#8956a6',3);line([[-8,21],[8,21]],'#82549c',1.2);
  for(let side of [-1,1])catOval(side*14,-10,4.4,13,'#ead092','#9e8859');catFace({fur:'#b9b4bd',cream:'#fff0de',eye:'#794d9a',wide:17});
@@ -567,7 +567,7 @@ function drawZakClouds(){if(!isZak())return;for(let shot of zakShots){line([[sho
 for(let c of zakLaughClouds){ctx.save();ctx.globalAlpha=Math.min(.33,c.life*.19);for(let i=0;i<9;i++){let a=i*TAU/9+c.age*.35,r=c.r*(.3+.2*Math.sin(i*3));ellipse(c.x+Math.cos(a)*r,c.y+Math.sin(a)*r,c.r*.37,c.r*.30,i%2?'#a7dc81':'#cba7ed');}ctx.restore();radialDraw(c.x,c.y,c.r,'#b5a0e644');}
 if(zakBurst>0)radialDraw(p.x,p.y,105*(1-zakBurst/.8),'#b3ed78');if(zakLaunch>0)radialDraw(p.x,p.y,40*(1-zakLaunch/.5),'#c5e982');}
 // Street Zak (approved option A): flat game-scale silhouette, detached paws, no limbs.
-function drawZak(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*1.25)*1.3+(zakLaunch>0?-Math.sin((.5-zakLaunch)/.5*Math.PI)*8:0));ctx.scale(.91,.90);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;
+function drawZak(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*1.25)*1.3+(zakLaunch>0?-Math.sin((.5-zakLaunch)/.5*Math.PI)*8:0));ctx.scale(.9021,.8922);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;
 ellipse(0,21,17,4,'#142e2a55');
 // Long grey-purple tail, kept separate from the hoodie.
 ctx.strokeStyle='#555267';ctx.lineWidth=8;ctx.lineCap='round';ctx.beginPath();ctx.moveTo(11,11);ctx.bezierCurveTo(34,24,39,-5,27,-9);ctx.stroke();ellipse(27,-9,6,6,'#b9b4c3');

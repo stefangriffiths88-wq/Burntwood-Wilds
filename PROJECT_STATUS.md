@@ -1,5 +1,11 @@
 # Burntwood Wilds — project status
 
+## 10.10.1 height correction — implementation in progress
+16 October 2026: user clarified and authorized scaling: Stefan 6ft3; Jodie/Zak 5ft10; Jackson 5ft1; Evie 5ft2 (one inch taller). Corrected native character drawing scales using measured opaque idle silhouettes. Jodie remains baseline; Jackson grows, Stefan reduces, Zak aligns exactly, Evie retains slightly greater height and rounder build. Other six sprites unchanged. No portrait, combat or save changes.
+
+Targeted gameplay/town checks and mobile visual measurements are being verified; release CI/deployment pending. Native Safari/user visual acceptance remains pending: do not treat the prior consistency issue as user-accepted. Earlier checkpoint below is historical.
+
+
 Updated 16 October 2026. Read DEVELOPMENT_GUIDE.md, this file and AGENTS.md before editing.
 
 ## OPEN ISSUE — character sizes and consistency remain unresolved

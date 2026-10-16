@@ -35,7 +35,7 @@ function drawDuck(d){ctx.save();ctx.translate(d.x,d.y);let s=d.r/7,jump=d.mode==
 
 function drawDuckExtras(){for(let e of eggs){line([[e.px,e.py],[e.x,e.y]],'#fff1cc77',1.5);ellipse(e.x,e.y,2.6,3.6,'#fff0d4');}if(duckSignal>0){ctx.strokeStyle='#bb82e5';ctx.lineWidth=2;ctx.beginPath();ctx.arc(p.x,p.y-38,8+(1-duckSignal/.65)*10,0,TAU);ctx.stroke();starArt(p.x,p.y-38,4,time*3);}}
 
-function drawEvie(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*2)*.6);ctx.scale(.80,.80);ctx.rotate(p.dir.x*.04);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;
+function drawEvie(){ctx.save();ctx.translate(p.x,p.y+Math.sin(p.walk*2)*.6);ctx.scale(.7920,.7920);ctx.rotate(p.dir.x*.04);if(p.inv>0&&Math.floor(p.inv*22)%2===0)ctx.globalAlpha=.65;
  ellipse(0,24,15,3.5,'#183b2955');catTail('#a9a4ad','#f5e9d8');
  catShape('M -13 -5 Q 0 -12 13 -5 Q 18 13 12 20 Q 0 28 -12 20 Q -18 13 -13 -5 Z','#392447','#33283d');catShape('M -10 0 Q -13 11 -9 19 L -4 21 Q -8 10 -6 1 Z','#624078',null);line([[-10,8],[10,8]],'#a17a44',2);ellipse(0,8,2.3,1.8,'#e7bf72');line([[-8,1],[0,4],[8,1]],'#8956a6',3);line([[-8,21],[8,21]],'#82549c',1.2);
  for(let side of [-1,1])catOval(side*14,-10,4.4,13,'#ead092','#9e8859');catFace({fur:'#b9b4bd',cream:'#fff0de',eye:'#794d9a',wide:17});
