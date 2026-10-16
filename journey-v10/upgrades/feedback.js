@@ -25,7 +25,7 @@ function rewardCardHint(offer){
  if(!offer.total)return '';
  return '<em class="rewardHint">'+(offer.rank===offer.total?'COMPLETE THIS ABILITY':offer.total-offer.rank+' further steps to master')+'</em>';
 }
-function clearRewardNotice(){endLevelReward();let el=$('rewardToast');el.classList.remove('rewardShow');el.style.display='none';}
+function clearRewardNotice(){endLevelReward();endCharmChest();let el=$('rewardToast');el.classList.remove('rewardShow');el.style.display='none';}
 function rewardNotice(title,detail,color){
  let el=$('rewardToast');el.style.setProperty('--reward-color',color);el.firstChild.textContent=title;
  // Separate text nodes keep all reward wording literal and accessible.

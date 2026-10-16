@@ -3,7 +3,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  fs.mkdirSync('journey-v10/browser',{recursive:true});
  let browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
  let page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true}),errors=[];
- page.on('pageerror',e=>errors.push(e.message));
+ await page.emulateMedia({reducedMotion:'reduce'});page.on('pageerror',e=>errors.push(e.message));
  await page.goto('http://127.0.0.1:8765/burntwood-journey-v10.html');await page.waitForFunction(()=>window.__test);
  for(let height of [844,650]){
   await page.setViewportSize({width:390,height});

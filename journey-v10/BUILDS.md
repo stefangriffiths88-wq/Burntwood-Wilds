@@ -121,3 +121,6 @@ User excitement and native Safari visual acceptance remain to be playtested.
 
 ## 10.11.2 — choices in the spotlight
 User explicitly requested update: glowing boxes, bold text, everything except the three choices dulled. Existing accepted 550ms glow/gold reveal retained. Scoped levelReward CSS darkens the paused world and outer container, mutes the heading and frame, increases option border/glow and name/body weight. Removes the instructional paragraph only in the level-up presentation. Perk effects, rarity, choice scheduling and controls unchanged. No new artwork or motion. 390x844/650 browser review required.
+
+## 10.12.0 — clarity and reward presentation
+See PROJECT_STATUS.md candidate for exact user request/specification. New owned modules ui/clarity.js (stat symbols/benefits and deliberate choice input), ui/session.js (pause/orb), ui/charm-art.js (30 object illustrations), visuals/enemy-art.js (render-only enemy family). Approved individual hero icon assets are external full-square WebPs. No hero moves/stats, enemy AI/hitboxes, saved schema/prices or charm effects changed. Shrine deliberately changes to 30% immediate healing plus combined 20% speed/damage for 20 active seconds. Menu pausing is in-session, not a persistent resumable save across browser reloads.

@@ -1,5 +1,18 @@
 # Burntwood Wilds — project status
 
+## 10.12.0 candidate — clarity, rewards, safer controls and enemy art
+16 October 2026. User explicitly said “Ok let’s update” at 10:25 Europe/London, authorising accumulated feedback below. Single implementation owner: this feature branch. No competing implementation/merge from audit chats.
+
+- Approved all ten purpose-made coloured selection icons; production full-square 512px WebP copies replace bottom selector names, preserve full approved original portraits. Palette/source record in assets/catalog.json. Generated high-resolution originals remain in conversation/Library; production copies are not arbitrary portrait crops.
+- Every stat has a short benefit and common SVG symbol across choice/build/workshop views; weapon choices identify the character attack (Jackson rugby ball). Build breakdown is optional. Five gold/empty rank sockets show permanent purchases.
+- Thirty distinct code-native charm object illustrations across reward/slots/inventory/starter/shop. Chest opens, cards fly/flip in sequence, first tap skips only, next fresh card press chooses. Existing accepted level-up glow/gold animation preserved. Card-only press/release guards stop background/synthetic/stale gameplay touches buying rewards.
+- Bottom-left filled health orb with slim green XP rail; equipped charm slots below open the equipped inventory. Floating joystick starts at finger location on playfield; UI taps remain separate. Boss health presentation retained and separated from charms/gold. Consistent rounded HP display.
+- Menu pauses and resumes intact run; abandon requires explicit confirmation. Intermediate victory primary returns through perk/continue to town without ending run, preventing the reported shop-disabled route. Shopkeeper talk precedes separate Open Shop action. Explicit end/loss/final completion still disables run supplies. Screenshots supplied by user show build 10.11.1; do not imply they were 10.11.2.
+- Shrines: single use/tap, exact 30% max HP heal when healing allowed, +20% movement and all damage for 20 active seconds, blue under-player aura and countdown. Pauses suspend duration; expires/reset per arena; Last Light healing lockout preserved.
+- Every enemy/final boss renderer across five areas overhauled, including distinct Park cat identities, royal Trolley King/cart/crown/beard, shaded owl/badger/stag and detailed Umbrella Man. Render-only source visuals/enemy-art.js; AI/hitboxes/stats/warnings unchanged. Native all-type lineup inspected; phone review and user art acceptance pending.
+- Focused new reward-world-test.cjs covers run continuity/shop/menu/gating/shrine/contracts. Mobile suite covers held-touch carry-through, skip-vs-select, pause, slots, icon selector, stats, sockets, talk/shop, all five enemy galleries. CI phone-review artifact now uploads before unchanged long charm matrix so visual review is not blocked by it.
+- Status: implemented locally, focused numeric and existing reveal/town tests passed. Local main suite found an outdated direct-to-shop expectation after its earlier mechanics/journey checks passed; updated that assertion to talk then open. Full CI/mobile/deployment still pending. No human playtest acceptance claimed.
+
 ## Current release: 10.11.2 — upgrade choices in the spotlight
 16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
 
