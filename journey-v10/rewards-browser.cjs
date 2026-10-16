@@ -7,7 +7,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  await page.goto('http://127.0.0.1:8765/burntwood-journey-v10.html');await page.waitForFunction(()=>window.__test);
  for(let height of [844,650]){
   await page.setViewportSize({width:390,height});
-  await page.evaluate(()=>{let t=__test;t.menu();t.select('evie');t.startJourney();t.enterArena('rugby');t.clear();t.run.stagePicks=2;t.setRolls([.25,0]);t.setXP(999);});
+  await page.evaluate(()=>{let t=__test;t.menu();t.select('evie');t.startJourney();t.enterArena('rugby');t.clear();t.run.stagePicks=2;t.setRolls([.30,0]);t.setXP(999);});
   assert.match(await page.locator('#panelTitle').innerText(),/BREAKTHROUGH/);
   assert.equal(await page.locator('.rewardHint').count(),2);
   for(let card of await page.locator('.buildCard').all()){let box=await card.boundingBox();assert(box.y>=0&&box.y+box.height<=height,'reward card fits phone');}

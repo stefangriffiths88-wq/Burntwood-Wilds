@@ -56,12 +56,14 @@ portraits, collision, saves and permanent upgrade prices remain intact.
 | Recovery | .2 / .35 / .5 / .75 / 1 HP/s |
 | Power | 10 / 15 / 22 / 30 / 40% |
 | Tempo | 8 / 12 / 18 / 25 / 35% |
-| Precision | 4 / 6 / 9 / 12 / 16 points |
-| Ferocity | 15 / 22 / 32 / 45 / 60 points |
+| Precision | 8 / 12 / 16 / 22 / 30 points |
+| Ferocity | 25 / 35 / 50 / 70 / 90 points |
 | Agility, Reflexes, Focus | 5 / 7 / 10 / 13 / 16% |
 | Scavenging | 15 / 25 / 40 / 60 / 80% |
 | Restoration | 10 / 15 / 22 / 30 / 40% |
 
+Scavenging also grants 5/8/12/18/25 gold immediately on selection.
+Ferocity is only offered with existing critical chance or Patient Fang.
 Existing chosen-stat and combined caps still apply. Blunt Promise suppresses crit
 stat offers. After Last Light, regeneration/healing-effect offers are withheld for
 that arena. Every third pick offers a Rare+ stat (Epic+ in areas four/five).

@@ -2,15 +2,15 @@
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 let s=fs.readFileSync('journey-v10/test.cjs','utf8');
 let harness=s.slice(0,s.indexOf("reset('zak');t.startJourney()"))+'\nglobalThis.h={t,els,reset,target};';
-let context={require,console};vm.createContext(context);vm.runInContext(harness,context);
+let rewardSeed=314159,testMath=Object.create(Math);testMath.random=()=>{rewardSeed=(rewardSeed*1664525+1013904223)>>>0;return rewardSeed/4294967296;};
+let context={require,console,Math:testMath};vm.createContext(context);vm.runInContext(harness,context);
 const {t,els,reset,target}=context.h;
 const heroes=['ava','jackson','stef','jodie','evie','zak','mimi','joseph','tom','havannah'];
-let random=Math.random;Math.random=()=>.999;
-try{
+{
  for(let hero of heroes){
   reset(hero);let e=target(),base=e.hp;t.damageEnemy(e,50,0,0);let before=base-e.hp;
   let hp=e.hp,max=e.maxHp,damage=e.damageScale,spawn=t.stageSpawnDelay(1),pressure=t.pressureTime();
-  t.setRolls([3.1/12,0]);t.setXP(999);let i=t.offers().findIndex(o=>o.path==='stat'&&o.index==='power');assert(i>=0);
+  t.setRolls([(Object.keys(t.STAT_TRACKS).filter(k=>t.rewardStatAvailable(k)).indexOf('power')+.1)/Object.keys(t.STAT_TRACKS).filter(k=>t.rewardStatAvailable(k)).length,0]);t.setXP(999);let i=t.offers().findIndex(o=>o.path==='stat'&&o.index==='power');assert(i>=0);
   assert.equal(t.offers().filter(o=>o.total).length,2);t.choose(i);
   assert.equal(e.hp,hp,hero+' reward must not heal an enemy');assert.equal(e.maxHp,max);assert.equal(e.damageScale,damage);
   assert.equal(t.stageSpawnDelay(1),spawn);assert.equal(t.pressureTime(),pressure);
@@ -30,6 +30,8 @@ try{
   t.run.level=31;let scale=t.enemyScale('swarm');t.run.level=1;assert.deepEqual(scale,t.enemyScale('swarm'));
   let charms=t.rollCharmOffers();assert.equal(new Set(charms).size,3);assert(charms.some(k=>t.CHARMS[k].rarity>=(stage>=3?3:2)));
  }
+ reset();assert(!t.rewardStatAvailable('ferocity'));t.addStat('precision',0);assert(t.rewardStatAvailable('ferocity'));
+ reset();let statKeys=Object.keys(t.STAT_TRACKS).filter(k=>t.rewardStatAvailable(k));t.setRolls([(statKeys.indexOf('scavenging')+.1)/statKeys.length,0]);t.setXP(999);let scavenge=t.offers().findIndex(o=>o.index==='scavenging');assert(scavenge>=0);assert.match(t.offers()[scavenge].text,/5 gold now/);let gold=t.hub.coins;t.choose(scavenge);assert.equal(t.hub.coins,gold+5);
  reset();t.run.charms.push({key:'blunt',rank:1});assert(!t.rewardStatAvailable('precision'));assert(!t.rewardStatAvailable('ferocity'));
  t.run.charmFX.lanternUsed=true;assert(!t.rewardStatAvailable('regen'));assert(!t.rewardStatAvailable('restoration'));
  assert.equal(t.rewardCardLabel({path:'weapon',rank:5,total:5}),'WEAPON · STEP 5 OF 5 · FINAL UPGRADE');
@@ -59,4 +61,4 @@ try{
  }
  fs.writeFileSync('journey-v10/reward-balance-results.json',JSON.stringify({note:'Deterministic selection/cap audit, not a survival or fun score.',builds:report},null,2));
  console.log('PASS 30 ten-hero/three-strategy selection builds: 900 choices, finite stats/cooldowns and retained caps');
-}finally{Math.random=random;}
+}
