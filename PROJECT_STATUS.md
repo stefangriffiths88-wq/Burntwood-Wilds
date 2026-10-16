@@ -1,5 +1,11 @@
 # Burntwood Wilds — project status
 
+## 10.11.1 candidate — level-up glow and gold reward reveal
+16 October 2026. User reported upgrades still felt fast/unrewarding and the popup annoying, then specifically requested a character glow followed fractions later by an impressive gold frame building around the choice screen. Implemented a 550ms anticipation using the existing safe upgrade pause, animated SVG gold frame and staggered cards, immediate reduced-motion alternative, synchronous cancellation and 0.35s resume grace. No new confirmation. Core reward frequency/strength remains the 10.11.0 system. Spec: journey-v10/BUILDS.md.
+
+Local all-ten natural-XP/pause/cancellation tests and reward contracts passed; full release CI/mobile review/deployment pending. Character modules, portraits, progression saves and historical releases preserved. User emotional/visual acceptance remains pending; do not equate automated checks with fun.
+
+
 ## Current release: 10.11.0 — meaningful rewards and staged challenge
 Updated 16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
 

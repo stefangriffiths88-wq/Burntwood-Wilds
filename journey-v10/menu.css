@@ -78,3 +78,21 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 @keyframes rewardCelebrate{0%{opacity:0;translate:0 6px}12%,78%{opacity:1;translate:0 0}100%{opacity:0;translate:0 -4px;visibility:hidden}}
 @media(max-height:680px){.rewardHint{margin-top:4px;font-size:9px}#rewardToast{top:168px;padding:10px 12px}button.buildCard b{font-size:15px}button.buildCard small{line-height:1.35}}
 @media(prefers-reduced-motion:reduce){#rewardToast.rewardShow{animation:rewardFade 1.85s linear forwards}@keyframes rewardFade{0%,80%{opacity:1}100%{opacity:0;visibility:hidden}}}
+/* Level-up: hero glow first, then a gold frame and a short card cascade. */
+.goldRewardFrame{display:none;position:absolute;inset:-2px;width:calc(100% + 4px);height:calc(100% + 4px);overflow:visible;pointer-events:none;z-index:2}
+#panel.levelReward{background:transparent;animation:rewardBackdrop .2s .55s ease-out forwards}
+#panel.levelReward .card{position:relative;isolation:isolate;border-color:transparent;background:linear-gradient(145deg,#284a35,#163b2d);box-shadow:0 12px 45px #031c1688;visibility:hidden;opacity:0;animation:rewardPanelEntry .22s .55s ease-out forwards}
+.levelReward .goldRewardFrame{display:block;filter:drop-shadow(0 0 5px #f6ce7377)}
+.goldRewardFrame rect{fill:none;stroke:#f4ce70;stroke-width:2.5;vector-effect:non-scaling-stroke;stroke-dasharray:100;stroke-dashoffset:100}
+.levelReward .goldRewardFrame rect{animation:rewardGoldDraw .65s .6s ease-out forwards}
+#panel.levelReward #panelTitle{color:#ffe4a1;font-weight:800;letter-spacing:2px}
+#panel.levelReward #panelName{color:#ffe6ad;text-shadow:0 2px 12px #e7bb4533}
+#panel.levelReward .buildCard{opacity:0;animation:rewardCardEntry .22s .69s ease-out forwards}
+#panel.levelReward .buildCard:nth-child(2){animation-delay:.79s}#panel.levelReward .buildCard:nth-child(3){animation-delay:.89s}
+#panel.levelReward.instantReveal{background:#102f23df;animation:none}
+#panel.levelReward.instantReveal .card,#panel.levelReward.instantReveal .buildCard{visibility:visible;opacity:1;animation:none}
+@keyframes rewardBackdrop{to{background:#102f23df}}
+@keyframes rewardPanelEntry{from{visibility:visible;opacity:0;transform:scale(.97) translateY(5px)}to{visibility:visible;opacity:1;transform:none}}
+@keyframes rewardGoldDraw{to{stroke-dashoffset:0}}
+@keyframes rewardCardEntry{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){#panel.levelReward{background:#102f23df;animation:none}#panel.levelReward .card,#panel.levelReward .buildCard{visibility:visible;opacity:1;transform:none;animation:none}.levelReward .goldRewardFrame rect{stroke-dashoffset:0;animation:none}}
