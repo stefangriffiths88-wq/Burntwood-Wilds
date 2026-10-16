@@ -1,7 +1,16 @@
 # Burntwood Wilds — project status
 
-## 10.11.2 candidate — glowing choice cards
-User explicitly said update, 16 October 2026: 10.11.1 level-up hits better; options still boring. Interpreted “going boxes” as glowing boxes, bold text and dull everything except three choices. Presentation-only scope: muted heading/outer frame, near-black world backdrop, brighter thicker rarity borders/static glow, bold perk names and readable effects. No perk/balance/art changes. Existing reveal remains. Validation/phone review/deployment pending.
+## Current release: 10.11.2 — upgrade choices in the spotlight
+16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
+
+- User explicitly requested update: 10.11.1 level-up hits better, but choices still boring; glowing boxes, bold text, dull everything except the three options. Presentation-only: near-black backdrop, muted heading/container/gold frame, brighter thicker rarity borders/static glow, bold names and bright effect descriptions. Existing accepted 550ms hero glow and gold construction/cascade retained. Perk effects, balance, reward scheduling, art and saves unchanged.
+- User rule remains: suggestions are discussion only; only update when Stef explicitly says update. No further game updates are authorised.
+- PR #67 merged at aa21b25faafdf28e3e99db2f9491b75f622a62b6. Exact tested source 3ba88832e94c1a80fefac3688f45ac28c9ad4e98. Feature CI 38839801020 completed successfully; artifact 12020776946. Phone screenshots reviewed at 390x844 and 390x650 plus reduced motion; all three options fit and remain readable/tappable.
+- Build/syntax, natural-XP/pause/choice/cancellation and ten-hero reward checks passed locally. Existing full workflow also ran all gameplay/character/build/town/encounter/browser/charm checks. Main automatic CI 38840508097 is running at closeout; unchanged runtime already passed pre-merge. Do not wait for or rerun unrelated simulations for this visual release.
+- Production Pages 38840507659 succeeded. Public canonical/versioned HTML and latest.html returned HTTP 200 and exactly matched tested local bytes. Game: 293789 bytes, SHA256 a1f078b82b2744b111b8a2ada2457507515f12b8a0bfb46426b69fcd07f68fd3.
+- Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.11.2.html?v=10112 ; latest.html points here.
+- Efficiency feedback: user asked to finish and avoid unnecessary checks. Identified delay: automatic workflow always runs broad gameplay suites and uploads phone screenshots only after the long charm simulations (feature run ~7m). No extra CI run was requested. Manual reward checks were broader than this CSS/heading change needed. AGENTS.md now requires proportional checks: build/syntax, affected mobile layout/taps/reduced motion and production verification for presentation-only edits; reuse unchanged combat/balance evidence. A focused visual workflow/earlier screenshot upload would remove the automation bottleneck in a separately authorised tooling update.
+- Native Safari and subjective card appeal remain for user playtest. Next action: feedback only; do not implement further suggestions without explicit update instruction. Historical HTML/art/saves preserved. Documentation-only closeout changes no runtime.
 
 ## Previous release: 10.11.1 — level-up glow and gold reward reveal
 16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
@@ -14,7 +23,7 @@ User explicitly said update, 16 October 2026: 10.11.1 level-up hits better; opti
 - Production Pages 38839153292 succeeded at documentation head 34209cec11323b2da739178d5119ae37294187f8 with identical runtime. Initial merge Pages 38839108225 was superseded/cancelled by that documentation build, not a game failure.
 - Public versioned/canonical HTML, latest.html and preserved 10.11.0 returned HTTP 200 and exactly matched local tested bytes. Game: 291962 bytes, SHA256 7dcad28405068a35337082716f25e5a93b301b225c6131ff9cb9a619b0597f35.
 - Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.11.1.html?v=10111 ; latest.html points here.
-- Automatic post-merge main CI 38839108593 is still running at closeout (browser step active; earlier checks passed). Full pre-merge CI passed at unchanged runtime. Check its eventual result before any explicitly authorised future update. Documentation-only closeout changes no game files.
+- Follow-up: main CI 38839108593 completed successfully before the 10.11.2 update. User playtest: level-up hits better; choice cards still felt boring. 10.11.2 addresses card presentation.
 - Next: user playtest reward presentation/native Safari. Do not implement further suggestions unless Stef explicitly instructs an update.
 
 ## Previous release: 10.11.0 — meaningful rewards and staged challenge
