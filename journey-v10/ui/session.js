@@ -5,3 +5,8 @@ function resumeRun(){if(state!=='paused')return false;state=pauseResume;pauseRes
 function abandonRun(){if(state!=='paused')return false;hub.finished=true;pauseResume=null;$('pauseMenu').style.display='none';returnToMenu();return true;}
 function stopMovement(){stick.x=stick.y=0;if(p)p.vx=p.vy=0;Object.keys(keys).forEach(k=>delete keys[k]);if(typeof pid!=='undefined')pid=null;$('joystick').style.opacity='0';$('nub').style.transform='';}
 function updateHealthOrb(){let max=stats().hp,hp=clamp(p.hp,0,max),pct=max?hp/max*100:0;$('healthOrb').style.setProperty('--health',pct+'%');$('healthOrb').setAttribute?.('aria-label',Math.round(hp)+' of '+Math.round(max)+' health');$('orbValue').textContent=Math.round(hp);$('orbMax').textContent='/ '+Math.round(max);$('xpRailFill').style.height=(run.stagePicks>=UPGRADES_PER_ARENA?100:clamp(run.earned/nextXP()*100,0,100))+'%';}
+
+function interruptionPause(){if(['playing','hub'].includes(state))openPause();else stopMovement();}
+addEventListener('blur',interruptionPause);addEventListener('pagehide',interruptionPause);if(typeof document.addEventListener==='function')document.addEventListener('visibilitychange',()=>{if(document.hidden)interruptionPause();});
+
+function updateActionFills(){for(let [id,left,max]of [['charge',p.chargeCD,specialCooldown()],['dodge',p.dodgeCD,dodgeCooldown()]]){$(id).style.setProperty('--ready-fill',clamp(1-left/Math.max(.01,max),0,1)*100+'%');}}

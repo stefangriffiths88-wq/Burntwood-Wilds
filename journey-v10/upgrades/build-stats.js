@@ -1,6 +1,6 @@
 // Shared build stats, rarity and growth. Values are additive before documented caps.
 const JOURNEY_AREAS=5,UPGRADES_PER_ARENA=6,HEROIC_TIME=45;
-const RARITIES=[{name:'Common',color:'#b9c2bc',symbol:'Ⅰ'},{name:'Uncommon',color:'#8ed49e',symbol:'Ⅱ'},{name:'Rare',color:'#83baff',symbol:'Ⅲ'},{name:'Epic',color:'#cb9aef',symbol:'Ⅳ'},{name:'Legendary',color:'#f4ce70',symbol:'★'}];
+const RARITIES=[{name:'Common',color:'#b9c2bc',symbol:'Ⅰ'},{name:'Uncommon',color:'#8ed49e',symbol:'Ⅱ'},{name:'Rare',color:'#83baff',symbol:'Ⅲ'},{name:'Epic',color:'#cb9aef',symbol:'Ⅳ'},{name:'Legendary',color:'#f4ce70',symbol:'★'},{name:'Mythic',color:'#ff5561',symbol:'✹'}];
 const RARITY_ODDS=[[50,30,15,5,0],[35,32,23,9,1],[20,30,30,16,4],[10,23,34,25,8],[5,15,30,35,15]];
 const STAT_TRACKS={
  health:{name:'Vitality',icon:'♥',unit:' health',gains:[8,12,18,25,35],cap:150},

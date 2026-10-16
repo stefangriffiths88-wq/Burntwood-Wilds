@@ -3,9 +3,9 @@ function rewardRandom(){return rewardRolls.length?rewardRolls.shift():Math.rando
 
 function rollPerks(){let keys=Object.keys(PERKS);for(let i=keys.length-1;i>0;i--){let j=Math.floor(rewardRandom()*(i+1));[keys[i],keys[j]]=[keys[j],keys[i]];}return keys.slice(0,3);}
 
-function openBossReward(){$('runSummary').style.display='none';if(state!=='won'||run.stage!==0||run.perk)return;if(!run.rewardOffers)run.rewardOffers=rollPerks();clearRewardNotice();state='perk';$('panel').style.display='grid';$('panelTitle').textContent='BOSS REWARD · CHOOSE ONE';$('panelName').textContent='Give this run a new twist';$('panelText').textContent='Three random perks. Pick one for the next arena. No rerolls.';$('panelButton').style.display='none';$('continue').style.display='none';$('back').style.display='none';$('upgradeChoices').innerHTML=run.rewardOffers.map((key,i)=>'<button class="upgradeCard perkCard" data-choice="'+i+'" style="--perk:'+PERKS[key].color+'"><span>BOSS PERK</span><b>'+PERKS[key].name+'</b><small>'+PERKS[key].text+'</small></button>').join('');$('upgradeChoices').style.display='grid';bindRewardChoices(chooseBossPerk);}
-
-function chooseBossPerk(i){if(state!=='perk'||run.stage!==0||run.perk||!run.rewardOffers?.[i])return;run.perk=run.rewardOffers[i];run.vampBudget=2;run.lightningAt=-1;state='won';continueRun();}
+function rollBossCharms(){let offers=[rollCharmKey(3)];for(let i=0;offers.length<3&&i<100;i++){let key=rollCharmKey(2);if(!offers.includes(key))offers.push(key);}for(let key of Object.keys(CHARMS))if(offers.length<3&&CHARMS[key].rarity>=2&&!offers.includes(key))offers.push(key);return offers;}
+function openBossReward(){if(state!=='won'||!run.bossRewardPending||run.visited.length>=5)return false;run.bossCharmOpening=true;run.charmPending=true;return openCharmReward();}
+function chooseBossPerk(){return false;}
 
 function recoverHealth(amount,kind='normal'){let old=p.hp;p.hp=Math.min(stats().hp,p.hp+Math.max(0,amount)*healingFactor(kind==='blood'));let healed=p.hp-old;if(healed>.01){float(p.x,p.y-24,'+'+healed.toFixed(healed<1?1:0),'#bcf0a9');radialEffect(p.x,p.y,17,'#95ddb1');}return healed;}
 

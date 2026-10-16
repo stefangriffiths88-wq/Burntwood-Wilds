@@ -31,3 +31,12 @@ const CHARM_ART={
  phantom:'<path d="M15 50V29Q14 8 32 8Q50 8 49 29V50L40 44 32 51 23 44Z"/><ellipse cx="25" cy="28" rx="3" ry="6"/><ellipse cx="39" cy="28" rx="3" ry="6"/>',
  lantern:'<path d="M23 16Q21 2 32 5Q43 2 41 16M18 19H46L42 49H22ZM16 52H48M20 16H44M32 24Q21 39 32 42Q43 39 32 24Z"/>'};
 function charmArtwork(key,small=false){let c=CHARMS[key];return '<svg class="charmArtwork '+(small?'mini':'')+'" viewBox="0 0 64 64" role="img" aria-label="'+c.name+'" style="--rarity:'+c.color+'"><rect x="2" y="2" width="60" height="60" rx="15" fill="#0e241d" stroke="'+c.color+'"/><g fill="'+c.color+'22" stroke="'+c.color+'" stroke-width="2.7" stroke-linejoin="round" stroke-linecap="round">'+CHARM_ART[key]+'</g><path d="M12 10H24" stroke="#fff6cf" stroke-width="2" opacity=".65"/></svg>';}
+
+CHARM_ART.wisp='<circle cx="32" cy="30" r="13"/><path d="M21 45Q1 51 9 27M43 13Q62 9 55 36M32 24V36M26 30H38"/>';
+CHARM_ART.element_fire='<path d="M32 9Q12 31 21 45Q32 59 46 43Q52 28 39 21Q41 39 30 39Q23 36 32 9Z"/>';
+CHARM_ART.element_ice='<path d="M32 8V56M11 20 53 44M11 44 53 20M23 13 32 22 41 13M23 51 32 42 41 51"/>';
+CHARM_ART.element_lightning='<path d="M38 7 16 35H30L24 57 49 27H35Z"/>';
+CHARM_ART.element_venom='<path d="M20 12 44 12 40 24Q56 50 32 54Q8 50 24 24ZM22 39H42"/>';
+CHARM_ART.element_leech='<path d="M18 14H46V33Q44 47 32 45Q20 47 18 33ZM32 45V55M23 55H41"/>';
+CHARM_ART.element_wound='<path d="M16 11 28 53M28 11 40 53M40 11 52 53"/>';
+CHARM_ART.element_retaliation='<path d="M32 8 53 22 46 48 32 56 18 48 11 22ZM20 32H44M32 20V44"/>';

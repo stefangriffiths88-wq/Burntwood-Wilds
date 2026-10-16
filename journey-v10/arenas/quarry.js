@@ -1,5 +1,5 @@
 // The Burntwood Quarry — local wildlife, separate arena module.
-ARENAS.quarry={name:'The Burntwood Quarry',short:'Quarry',boss:'Big Barry · The Badger',bossShort:'BIG BARRY'};
+ARENAS.quarry={name:'The Burntwood Quarry',short:'Quarry',boss:'Barry · The Quarry Golem',bossShort:'BIG BARRY'};
 function quarryWave(){let t=pressureTime(),r=rand(),kind=t>31&&r>.82?'badger':t>17&&r<.3?'crow':t>9&&r>.62?'mole':'rabbit';spawn(kind);if(t>18&&rand()<.35)spawn('rabbit');nextSpawn=stageSpawnDelay(Math.max(.65,1.08-time*.002));}
 function spawnQuarry(kind,at){kind=kind==='swarm'?'rabbit':kind==='charger'?'badger':kind;let spec={rabbit:[20,12,66],mole:[34,15,45],crow:[36,16,48],badger:[105,24,34],boss:[1350,47,36]}[kind]||[20,12,66],a=rand()*TAU,r=305,x=at?.x??p.x+Math.cos(a)*r,y=at?.y??p.y+Math.sin(a)*r,q=walkable(x,y,spec[1]);let e={id:++id,kind,quarry:true,x:q.x,y:q.y,r:spec[1],hp:spec[0],maxHp:spec[0],speed:spec[2],kx:0,ky:0,flash:0,stagger:0,age:rand()*6,mode:'walk',timer:1.2+rand(),attackCD:0,dx:0,dy:1,sequence:0};applyEnemyScale(e);enemies.push(e);if(kind==='boss'){boss=e;bossSpawned=true;float(p.x,p.y-65,'BIG BARRY IS NOT HAPPY!','#f1d58c');}}
 function stepQuarryEnemy(e,dt){let goal=enemyGoal(e),dx=goal.x-e.x,dy=goal.y-e.y,d=Math.hypot(dx,dy)||1,mx=dx/d,my=dy/d,speed=e.speed;

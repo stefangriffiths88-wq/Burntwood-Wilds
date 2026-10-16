@@ -27,4 +27,4 @@ function normalAttack(){let f=run.charmFX,old=f?{attacks:f.attacks,echo:f.echo}:
 function normalAttackInterval(){return (CHARACTER_MODULES[selected].interval?.()??CHARACTERS[selected].rate)*normalRate();}
 
 function charge(){let before=p?.chargeCD||0;CHARACTER_MODULES[selected].special();if(p?.chargeCD>before)charmSpecialUsed();}
-function dodge(){if(state==='hub')return;CHARACTER_MODULES[selected].dodge();}
+function dodge(){return activateDefence();}

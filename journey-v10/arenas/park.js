@@ -1,5 +1,5 @@
 // Chase Terrace Park: rival cats and the fictional Umbrella Man. No existing arena AI is changed.
-ARENAS.park={name:'Chase Terrace Park',short:'Chase Terrace Park',boss:'Umbrella Man',bossShort:'UMBRELLA MAN'};
+ARENAS.park={name:'Chase Terrace Park',short:'Chase Terrace Park',boss:'The Bramble Beast',bossShort:'BRAMBLE BEAST'};
 const PARK_PILES=[{x:165,y:280},{x:730,y:480},{x:270,y:1060}];
 let parkPiles=[],parkSlips=[];
 function resetPark(){parkPiles=PARK_PILES.map(p=>({...p,charge:1}));parkSlips=[];}

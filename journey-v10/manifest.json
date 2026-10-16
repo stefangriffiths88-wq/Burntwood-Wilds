@@ -39,5 +39,12 @@
   "world/residents.js",
   "items/economy.js",
   "registry.js",
+  "world/town-layout.js",
+  "ui/guidance.js",
+  "upgrades/evolutions.js",
+  "characters/defences.js",
+  "arenas/monster-bosses.js",
+  "visuals/monster-art.js",
+  "arenas/objects.js",
   "controls.js"
 ]
