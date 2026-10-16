@@ -2,6 +2,22 @@
 
 This file is the permanent handover for future ChatGPT development sessions. Read this file and `PROJECT_STATUS.md` **at the start of every chat and before editing**. Treat the repository as authoritative; verify file contents, tests and current deployment instead of trusting old chat summaries.
 
+## Continuous continuity — user direction, 16 October 2026
+
+Stef has lost chats to the conversation limit without an opportunity to request a handover. Do not rely on a final prompt or a warning: the assistant cannot reliably see remaining chat capacity or guarantee an advance warning.
+
+- Treat this guide as a living working agreement. Whenever a workaround, correction, communication preference or verified process improvement is established, persist it promptly with its date, reason and replacement rule. Consolidate superseded guidance rather than leave contradictory instructions. Clearly distinguish proposed workarounds from proven ones.
+- Save meaningful decisions and approved designs as they are agreed, including approval scope, rejected approaches and why, known defects and reproduction, and pending user acceptance. Preserve approved source assets in the appropriate project records. Never put private family material or secrets in this public repository.
+- The implementation owner must commit recoverable work at meaningful milestones (a completed module, resolved blocker, approval or test checkpoint), before a long operation or change of phase, and before ending a working turn. Do not wait until release or imminent chat exhaustion. Small coherent commits are preferred over repeating unchanged tests.
+- Keep a concise dated working checkpoint on the active feature branch: owner/session role, branch and exact commit, goal/authorization, completed work, in-progress/remaining work, affected files, latest tests and failures, approved decisions/assets, blockers and exact next action. Link it from the PR body as soon as the PR exists. Distinguish committed work from unsaved local work and implemented from tested/deployed/user-accepted.
+- PROJECT_STATUS.md remains the verified release record. Active work belongs on its owner's branch/PR; do not label an unfinished candidate as the live release or overwrite another session's status. An audit chat records review findings and workflow improvements only, on a separate documentation branch.
+- After saving, verify the remote file/commit/ref exists and give a short checkpoint link. An uploaded blob, local file, chat memory or promise to save is not a repository checkpoint. If saving fails, state what remains unsaved and provide a compact copyable recovery note immediately.
+- Every new chat must read AGENTS.md, this guide and PROJECT_STATUS.md, then inspect current main, open PRs, active branch checkpoints, latest commits and relevant CI/Pages evidence. Resume the recorded next action; do not rebuild already completed work, regenerate approved art, repeat rejected approaches or rerun unchanged checks merely because the chat is new. Resolve contradictions using current source and the latest explicit user instruction; ask only for genuinely missing decisions.
+- A handover prompt is a convenience, not the source of truth. "Continue Burntwood Wilds; read the repository instructions and active work checkpoint" should be enough when the repository checkpoint is current.
+- Keep ownership explicit: this audit chat is review-only except for expressly requested workflow documentation. Suggestions do not authorise game implementation. Never edit, merge or publish competing gameplay changes.
+
+This routine reduces loss of project knowledge; it does not automatically archive every chat message. Do not claim another chat's unpublished/local work has been recovered or saved without verifying it.
+
 ## Project
 - Repository: `stefangriffiths88-wq/Burntwood-Wilds`, branch `main`.
 - Published game: `https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.html`.
