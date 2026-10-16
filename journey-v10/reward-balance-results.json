@@ -158,14 +158,14 @@
       "strategy": "special",
       "choices": 30,
       "health": 114,
-      "power": 132,
+      "power": 110,
       "tempo": 0
     },
     {
       "hero": "mimi",
       "strategy": "stat",
       "choices": 30,
-      "health": 187,
+      "health": 195,
       "power": 40,
       "tempo": 12
     },

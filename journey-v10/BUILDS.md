@@ -63,7 +63,9 @@ portraits, collision, saves and permanent upgrade prices remain intact.
 | Restoration | 10 / 15 / 22 / 30 / 40% |
 
 Scavenging also grants 5/8/12/18/25 gold immediately on selection.
-Ferocity is only offered with existing critical chance or Patient Fang.
+Ferocity is only offered with at least 8% critical chance or Patient Fang.
+Offers also respect effective caps from equipped charms; partial gains are
+clamped and displayed accurately instead of offering a zero-effect boost.
 Existing chosen-stat and combined caps still apply. Blunt Promise suppresses crit
 stat offers. After Last Light, regeneration/healing-effect offers are withheld for
 that arena. Every third pick offers a Rare+ stat (Epic+ in areas four/five).

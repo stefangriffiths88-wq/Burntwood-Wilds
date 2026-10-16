@@ -22,7 +22,7 @@ function growthValue(key){return Math.max(0,(run.level||1)-1)*(HERO_GROWTH[selec
 function rollRarity(min=0){let n=rewardRandom()*100,sum=0;for(let i=0;i<5;i++){sum+=RARITY_ODDS[Math.min(4,['hub','shop'].includes(state)?run.visited?.length||0:run.stage||0)][i];if(n<sum)return Math.max(min,i);}return 4;}
 function statAvailable(key){return (run.statLegendary?.[key]||0)<5&&statValue(key)<STAT_TRACKS[key].cap;}
 function statGain(key,rarity){return Math.min(STAT_TRACKS[key].gains[rarity],STAT_TRACKS[key].cap-statValue(key));}
-function addStat(key,rarity){if(!statAvailable(key))return false;let gain=statGain(key,rarity);run.stats[key]=statValue(key)+gain;if(rarity===4)run.statLegendary[key]=(run.statLegendary[key]||0)+1;run.stat.add(key);return true;}
+function addStat(key,rarity,limit=Infinity){if(!statAvailable(key))return false;let gain=Math.min(statGain(key,rarity),limit);if(gain<=0)return false;run.stats[key]=statValue(key)+gain;if(rarity===4)run.statLegendary[key]=(run.statLegendary[key]||0)+1;run.stat.add(key);return true;}
 function charmFlat(key){return charmPower(key);}
 function buildStats(){let inMenu=state==='menu',level=inMenu?0:Math.max(0,(run.level||1)-1),v=k=>inMenu?0:statValue(k)+growthValue(k),c=k=>inMenu?0:charmPower(k),b=CHARACTERS[selected];return {
  health:(b.hp+activePermanentBonus('health')+v('health')+(run.shopBought?.includes('shield')&&!inMenu?20:0)+10*c('sturdy'))*(c('glass')?.8:1),
