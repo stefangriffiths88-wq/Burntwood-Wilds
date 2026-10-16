@@ -18,6 +18,10 @@ Stef has lost chats to the conversation limit without an opportunity to request 
 
 This routine reduces loss of project knowledge; it does not automatically archive every chat message. Do not claim another chat's unpublished/local work has been recovered or saved without verifying it.
 
+## Approved town design reference
+
+Before any future town overhaul, read [the approved direction and exact concept image](docs/design/town-overhaul-2026-10-16.md). This is design approval only; implementation remains with the release owner and requires explicit update instruction.
+
 ## Project
 - Repository: `stefangriffiths88-wq/Burntwood-Wilds`, branch `main`.
 - Published game: `https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.html`.
