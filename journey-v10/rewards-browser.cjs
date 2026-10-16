@@ -29,7 +29,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  await page.locator('.buildCard').filter({hasText:'Break the Line'}).tap();
  assert.equal(await page.evaluate(()=>__test.run.special),5);assert.match(await page.locator('#rewardToast').innerText(),/ABILITY MASTERED/);
  await page.evaluate(()=>{let t=__test;t.menu();t.select('mimi');t.startJourney();t.enterArena('rugby');t.clear();t.run.charmPending=true;t.openCharmReward();});
- assert.equal(await page.locator('.charmCard').count(),3);assert((await page.locator('#upgradeChoices').innerText()).includes('RARE'));
+ assert.equal(await page.locator('.charmCard').count(),3);assert(await page.evaluate(()=>__test.run.charmOffers.some(key=>__test.CHARMS[key].rarity>=2)),'Heroic reward guarantees Rare or better');
  for(let card of await page.locator('.charmCard').all()){let box=await card.boundingBox();assert(box.y>=0&&box.y+box.height<=650);}
  await page.screenshot({animations:'disabled',path:'journey-v10/browser/reward-heroic.png'});
  await page.locator('.charmCard').first().tap();assert.equal(await page.evaluate(()=>__test.run.charms.length),1);

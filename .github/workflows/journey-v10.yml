@@ -23,7 +23,7 @@ jobs:
           import subprocess, os
           files=subprocess.check_output(['git','diff','--name-only','HEAD^','HEAD'],text=True).splitlines()
           def presentation_or_test(p):
-              return p.endswith('.md') or p.endswith('-browser.cjs') or p == 'journey-v10/menu.css' or p == '.github/workflows/journey-v10.yml' or (p.startswith('burntwood-journey-v10') and p.endswith('.html'))
+              return p.endswith('.md') or p.endswith('-browser.cjs') or p == 'journey-v10/menu.css' or (p.startswith('burntwood-journey-v10') and p.endswith('.html'))
           full=not files or not all(presentation_or_test(p) for p in files)
           with open(os.environ['GITHUB_OUTPUT'],'a') as output: output.write('full='+str(full).lower()+'\n')
           print('Full mechanics suite:',full,'; changed files:',', '.join(files))
@@ -36,7 +36,7 @@ jobs:
           python3 journey-v10/build.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add burntwood-journey-v10.html journey-v10/game.js journey-v10/assets/portraits
+          git add burntwood-journey-v10.html burntwood-journey-v10.*.html journey-v10/game.js journey-v10/assets/portraits
           git diff --cached --quiet || (git commit -m "Generate versioned artwork assets and playable build" && (git pull --rebase origin "${GITHUB_REF_NAME}" && git push origin "HEAD:${GITHUB_REF_NAME}"))
       - if: steps.scope.outputs.full == 'true'
         run: node journey-v10/test.cjs
