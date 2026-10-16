@@ -12,6 +12,7 @@
 
 ## Change and release contract
 - **User direction, 16 October 2026:** suggestions and ideas are discussion only. Do not edit, implement or release game changes until Stef explicitly says to update. He authorised finishing 10.11.1 as a one-time continuation; this does not authorise future updates.
+- **Efficiency direction, 16 October 2026:** keep checks proportional. For presentation-only updates, validate build/syntax, affected mobile layouts/taps/reduced motion and live deployment; reuse existing combat/balance evidence when mechanics are unchanged. Do not manually rerun unrelated suites. Existing automatic CI may run broadly; do not start extra runs without a failure or source change.
 - Once an update is explicitly authorised, translate its feedback into a targeted reproducible change. Use proportional focused tests during development, and required release checks before merge. Browser automation is not native iPhone Safari; scripted invulnerable runs are not evidence of human balance.
 - Give honest progress checkpoints, with the five-block progress bar for meaningful updates. Respect explicit pauses.
 - Build with `python3 journey-v10/build.py`, but **be aware that current CI auto-commits generated files**. Avoid concurrent feature/release pushes and check for CI-created commits; separating verification and publication is a priority future refactor, not yet implemented.
