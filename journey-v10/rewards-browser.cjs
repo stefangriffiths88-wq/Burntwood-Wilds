@@ -23,7 +23,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   await page.evaluate(()=>__test.menu());assert.equal(await page.locator('#rewardToast').isVisible(),false);
  }
  await page.emulateMedia({reducedMotion:'reduce'});
- await page.evaluate(()=>{let t=__test;t.menu();t.select('jackson');t.startJourney();t.enterArena('park');t.clear();t.run.special=4;t.run.dodge=5;t.setTier(5);t.setXP(999);});
+ await page.evaluate(()=>{let t=__test;t.menu();t.select('jackson');t.startJourney();t.enterArena('park');t.clear();t.run.special=4;t.run.dodge=5;t.setTier(5);t.run.evolutions={weapon:'fire',dodge:'aegis'};t.setXP(999);});
  assert((await page.locator('#upgradeChoices').innerText()).includes('FINAL UPGRADE'));
  await page.screenshot({animations:'disabled',path:'journey-v10/browser/reward-final-ability.png'});
  await page.locator('.buildCard').filter({hasText:'Break the Line'}).tap();
