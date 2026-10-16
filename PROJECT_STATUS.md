@@ -1,6 +1,9 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.11.1 — level-up glow and gold reward reveal
+## 10.11.2 candidate — glowing choice cards
+User explicitly said update, 16 October 2026: 10.11.1 level-up hits better; options still boring. Interpreted “going boxes” as glowing boxes, bold text and dull everything except three choices. Presentation-only scope: muted heading/outer frame, near-black world backdrop, brighter thicker rarity borders/static glow, bold perk names and readable effects. No perk/balance/art changes. Existing reveal remains. Validation/phone review/deployment pending.
+
+## Previous release: 10.11.1 — level-up glow and gold reward reveal
 16 October 2026. Read AGENTS.md and DEVELOPMENT_GUIDE.md before editing.
 
 - **User working rule:** suggestions/ideas are discussion only. Only change the game when Stef explicitly says to update. User authorised finishing this current update on 16 October; no future updates are authorised. This rule is also saved in AGENTS.md.
