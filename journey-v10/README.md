@@ -32,3 +32,6 @@ Joseph’s isolated implementation and locked specification are in characters/jo
 Tom’s isolated implementation/specification: characters/tom.js and characters/TOM.md; targeted tom-test.cjs and tom-browser.cjs.
 
 Havannah: characters/havannah.js and characters/HAVANNAH.md; targeted havannah-test.cjs and havannah-browser.cjs. User delegated the initial full gameplay tuning for playtest.
+
+## 10.13.0 module ownership
+Town geometry/collision/routing: world/town-layout.js; objectives: ui/guidance.js. Monster boss patterns/warnings: arenas/monster-bosses.js; boss materials/silhouettes: visuals/monster-art.js; arena props: arenas/objects.js. Level-six choices and elemental effects: upgrades/evolutions.js. Character defensive identity/guard/evolution: characters/defences.js, retaining native movement hooks. Ability illustrations: ui/ability-art.js. Monster-town tests cover90 Mythic choices, exact effect sources/caps, geometry and interruptions; phone suite includes portrait, short portrait and landscape. Existing full suites retain combat/save/transaction checks with boss-charm expectations.

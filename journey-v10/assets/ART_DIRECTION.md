@@ -52,3 +52,8 @@ Six-year-old girl cat, cream/ginger fur, blonde high side ponytail, yellow recta
 
 ## 10.10.0 — user-authorized gameplay consistency rework
 Jodie is the adult size baseline; Jackson (11) small/slim, Ava (7) smaller, Stefan tallest/slim, Zak same height as Jodie and athletic, Joseph bigger than Ava, Evie slightly bigger/rounder than Jackson. Preserve outfits, hair, colors and separate approved portraits. Shared chibi facial readability and detached paws; no legs/feet. Town and combat use identical sizes. See visuals/README.md. Native Safari/user acceptance pending.
+
+## 10.13.0 combined update — explicit user direction, 16 October 2026
+Stef authorised monster bosses for the RUN entry while retaining the native crisp artwork system. This supersedes the old wildlife-only restriction for bosses. Bruce uses his original brown stag/rugby identity with polished shaded forms and a less obstructive net. Quarry boss is a rock golem, explicitly replacing Barry's badger design. Other bosses: giant owl, trolley-fused scrap creature, bramble Park beast. Native code drawings are delegated for playtest; approved hero sprites/portraits/icons are unchanged. Bosses rest on their side with bandage and bruise after defeat. No human-form artwork was approved: final Mimi dialogue promises restoration without inventing human portraits.
+
+Town concept in PR70 guides geographic relationships and atmosphere, not a style replacement. Implement modern shopping frontage, pitched-roof homes, connected streets, water boundaries and building collision in the current native system. The existing Park encounter is used for the eastward town Park destination; no sixth arena is introduced. Detailed native visual acceptance remains the user's playtest.
