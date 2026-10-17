@@ -38,6 +38,7 @@ function celebrateReward(offer){
 }
 function charmRewardHint(key){
  let copies=[...run.charms,...run.charmBag].filter(c=>c.key===key&&c.rank===1).length;
+ if(!run.legacyCombat)return copies||charmRank(key)?'MATCHING COPY · KEEP IN BAG':'EQUIP, SWAP OR KEEP IN BAG';
  if(copies)return 'MATCHING COPY · FUSE IN TOWN';
  if(charmRank(key))return 'BAG COPY · KEEP FOR FUSION';
  if(run.charms.length>=3)return 'BAG · EQUIP OR SWAP IN TOWN';
