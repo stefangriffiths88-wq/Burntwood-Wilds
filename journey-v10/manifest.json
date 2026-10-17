@@ -47,5 +47,7 @@
   "visuals/monster-art.js",
   "arenas/objects.js",
   "ui/ability-art.js",
+  "arenas/rugby-route.js",
+  "arenas/rugby-route-art.js",
   "controls.js"
 ]
