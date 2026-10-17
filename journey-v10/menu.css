@@ -156,3 +156,7 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 #rugbyTalk b{font:700 10px system-ui;letter-spacing:.5px;color:#f3cd74}#rugbyTalk p{font:13px/1.35 system-ui;margin:4px 0 0}#rugbyTalk button{display:none}
 @media(max-width:480px){#rugbyTalk{left:27%;width:46%;bottom:calc(env(safe-area-inset-bottom,0px) + 145px);padding:8px}#rugbyTalk p{font-size:11px}#rugbyTalk b{font-size:9px}}
 @media(max-height:500px){#rugbyTalk{left:30%;width:40%;bottom:12px;padding:7px 10px}#rugbyTalk p{font-size:11px}}
+
+#townInteract,#rewardInteract{position:fixed;right:18px;bottom:calc(28px + env(safe-area-inset-bottom));z-index:10;background:#e8c97c;color:#173f30;border:2px solid #f7e6b2;border-radius:15px;padding:15px 18px;font:bold 14px system-ui;min-height:52px;max-width:180px;touch-action:manipulation}
+#rewardInteract{bottom:calc(225px + env(safe-area-inset-bottom));font-size:12px}#panel .charmCompare{display:flex;align-items:center;gap:10px;text-align:left;padding:10px}#panel .charmCompare .charmArtwork{width:52px;height:52px;flex-shrink:0}#panel .charmCompare small{display:block;font-size:11px}#panel .charmCompare b{font-size:14px}#panel .charmCompare span{font-size:10px}#panel .charmCompare .charmArtwork g{stroke-width:2}
+@media(max-height:500px){#rewardInteract{right:115px;bottom:20px}#townInteract{bottom:20px}#panel .charmCompare{padding:6px}#panel .charmCompare .charmArtwork{width:38px;height:38px}}
