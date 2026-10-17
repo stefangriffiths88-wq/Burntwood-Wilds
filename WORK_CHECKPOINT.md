@@ -1,11 +1,9 @@
-# Work checkpoint — CLOSED
+# Active update — town/lane detail 10.15.0
 
-17 October 2026: user-authorised Rugby Club 10.14.0 published. PR #72 merged at 7ef6b4673bc0260e7d51ffd70622b186b2c3a3d6. Pages 39035805650 succeeded; 25 public files matched local hashes.
+17 October 2026. User explicitly authorised update after feedback: winding/potholed Rugby lane; forward enemy arrivals; nonblocking bottom Mimi text; less frequent Rugby level-ups; remove town arrow; clear signed routes/buildings along roads; Mimi inside shopping centre behind counter/open door/sign; detailed Bruce.
 
-Full CI 38926260549 and final isolated Rugby CI 38927597913 passed. Final packaged head c62905596b701e77e080b5ec3196aa1379b012b6. Canonical/versioned runtime SHA256 21fe87bcbd0569f1158e82417ab12dae7c3639bd7a8cb3c6cc65fab27a926613 (372157 bytes). Automatic postmerge CI 39035805932 still in progress at closeout.
+Owner: this Work session, branch feature/town-lane-detail. Implementation complete pending browser/CI review and release. No competing feature PR found (70 is approved reference documentation only).
 
-Live: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.14.0.html?v=10140
+Local route/all-ten/evolution/town/level-reveal checks passed. Shared baseline regression running. Rugby pacing is isolated to the physical Rugby journey: earliest choices at 14,34,54,76,98,120 seconds, at least18 seconds apart, six-cap preserved. Other four arenas and abstract legacy combat fixtures retain existing pacing and difficulty. New Ruby waves spawn ahead; explicit scripted/boss placements remain authored. Caption expiry uses active seconds and does not pause combat/clear inputs.
 
-Scope: physical Rugby lane/rail-end route, timed heroic gate and well break, deliberate pitch entry for Bruce, paused Mimi dialogue, 1.5-second idle arrow and map-reference Bruce redesign. Other arenas preserved. See PROJECT_STATUS.md for exact evidence and limitations.
-
-Next: user phone playtest for route geography/length, pressure, well pacing and artwork. No future gameplay update authorised automatically. Preserve other worktrees and independent audit notes.
+Next: full existing CI once, phone screenshots (lane/bends/caption, Bruce, signed town/shop), fix discovered failures, merge only green and verify Pages/live bytes. Native phone balance/art remains user acceptance.

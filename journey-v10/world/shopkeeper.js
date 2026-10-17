@@ -1,5 +1,5 @@
 // The selected hero stays unique: Jodie covers the shop when Mimi is playable.
-const SHOPKEEPER={x:719,y:379,reach:67,phase:0};
+const SHOPKEEPER={x:719,y:379,reach:100,phase:0};
 function shopkeeperKey(){return selected==='mimi'?'jodie':'mimi';}
 function shopkeeperName(){return CHARACTERS[shopkeeperKey()].name;}
 function shopkeeperGreeting(){return selected==='mimi'?'Heyy Mimiiii… How can I help you save us all?':'Okay human, you’re in my world now. Allow me to help you.';}
