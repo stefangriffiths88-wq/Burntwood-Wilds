@@ -1,13 +1,13 @@
-# Active update — town/lane detail 10.15.0
+# Active release checkpoint — 10.15.0
 
-17 October 2026. User explicitly authorised update after feedback: winding/potholed Rugby lane; forward enemy arrivals; nonblocking bottom Mimi text; less frequent Rugby level-ups; remove town arrow; clear signed routes/buildings along roads; Mimi inside shopping centre behind counter/open door/sign; detailed Bruce.
+17 October 2026. This Work session owns feature/town-lane-detail and PR #73. User explicitly authorised Rugby/town/Bruce detail update.
 
-Owner: this Work session, branch feature/town-lane-detail. Implementation complete pending browser/CI review and release. No competing feature PR found (70 is approved reference documentation only).
+Final source: 6f841eb8e1aaba7e0a09a680e5c8452b6d988f3a. Generated/package head: f3e1161b76516a4313a0d706cbc5128b4a8714dd. Final CI 39060991575: numeric/character/upgrade/save/economy/encounter and broad phone suites passed; charm matrix still running. Changed-review job117478809500 passed. Phone artifact12111407244 reviewed at390x844/650 and844x390; Mimi shop, route, Bruce, caption clearance accepted for user playtest. No new runtime edits planned.
 
-Local route/all-ten/evolution/town/level-reveal and shared baseline regression passed. CI 39060561748 phone review job passed; artifact 12111003578 reviewed for Bruce, lane, town and Mimi shop. That review exposed caption/bag overlap and a road across the pitch; corrected in final source 8669dafb533bc2dc6f523f12874df256e22c0e55. Final CI 39060714623 queued behind the initial full run. No game release yet. Rugby pacing is isolated to the physical Rugby journey: earliest choices at 14,34,54,76,98,120 seconds, at least18 seconds apart, six-cap preserved. Other four arenas and abstract legacy combat fixtures retain existing pacing and difficulty. New Ruby waves spawn ahead; explicit scripted/boss placements remain authored. Caption expiry uses active seconds and does not pause combat/clear inputs.
+Canonical/versioned runtime380521 bytes, SHA256704dc587bc553ddea0af3e327a0efa1eccf70fdb6f032d50d62d2a185aa458f9, Git blob0fd82931fab9c5b9856850ef4c7ce7d29e1334cb. Historical10.14.0 preserved.
 
-Next: full existing CI once, phone screenshots (lane/bends/caption, Bruce, signed town/shop), fix discovered failures, merge only green and verify Pages/live bytes. Native phone balance/art remains user acceptance.
+Implemented: winding/potholed lane with forward arrivals; nonblocking Mimi captions; spaced Rugby-only upgrades (14/34/54/76/98/120s, minimum18s); signed town streets/pavements and minimap; no town arrow; shopkeeper behind counter inside open MIMI’S frontage; contoured/furred detailed reference-based Bruce. All other arenas/hero art and permanent saves preserved.
 
-Broad browser CI caught its old hardcoded shop tap (345,350) after the shop moved inside to y280. Updated the fixture to read hub.shop and still require real pointer dialogue→shop behaviour for all seven heroes. No runtime fix was needed for that failure. Initial CI’s mechanics/encounters/reward browsers passed; broad browser stopped before the charm matrix. Final rerun must include the corrected fixture.
+Earlier full runs39060561748/39060714623 failed only at an old hardcoded shop tap; corrected fixture reads hub.shop, still using actual touchscreen dialogue→shop. Phone inspection fixed caption/bag and fascia overlap, plus a road junction in a building. Superseded pending runs cancelled by concurrency.
 
-Final scenery review moved the rugby-side town junction outside the southern home footprint; added a geometric check that every road junction stays outside buildings. No further runtime changes planned.
+NEXT: wait for final CI39060991575. If green, verify branch/main heads, merge PR73, confirm Pages success and24public byte hashes (/tmp/detail-release-hashes.json), then close PROJECT_STATUS.md/this checkpoint and return10.15.0?v10150 link. Native Safari/fun balance remains Stef’s playtest. Other worktrees and docs PR70 preserved.
