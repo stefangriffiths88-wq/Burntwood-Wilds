@@ -1,7 +1,7 @@
 // Owned town geometry: the same footprints drive drawing, collision and routing.
 const TOWN_BLOCKS=[{x:220,y:170,w:400,h:135,shop:true},{x:60,y:390,w:110,h:85},{x:240,y:410,w:95,h:80},{x:70,y:560,w:110,h:90},{x:665,y:420,w:105,h:90},{x:675,y:650,w:115,h:85},{x:360,y:1085,w:175,h:70,club:true},{x:620,y:1030,w:95,h:80}];
 const TOWN_WATER={x:35,y:820,w:230,h:370};
-const TOWN_NODES=[{x:440,y:360},{x:440,y:560},{x:580,y:560},{x:790,y:560},{x:440,y:790},{x:300,y:790},{x:300,y:1030},{x:620,y:1060},{x:720,y:900},{x:800,y:1140}];
+const TOWN_NODES=[{x:440,y:360},{x:440,y:560},{x:580,y:560},{x:790,y:560},{x:440,y:790},{x:300,y:790},{x:300,y:1030},{x:610,y:990},{x:720,y:900},{x:800,y:1140}];
 const TOWN_EDGES=[[0,1],[1,2],[2,3],[1,4],[4,5],[5,6],[4,8],[8,9],[8,7]];
 function initialiseTown(){hub.solids=[...TOWN_BLOCKS.map(b=>({...b})),{...TOWN_WATER}];hub.portals=[{key:'sankeys',x:530,y:355},{key:'park',x:790,y:560},{key:'chasewater',x:300,y:1030},{key:'rugby',x:480,y:1000},{key:'quarry',x:800,y:1140}];hub.shop.x=SHOPKEEPER.x=345;hub.shop.y=SHOPKEEPER.y=280;WORKSHOP.x=215;WORKSHOP.y=550;const points={havannah:[600,520],tom:[600,680],joseph:[530,900],jackson:[395,900],ava:[480,520],jodie:[200,650],evie:[300,850],zak:[650,350]};for(let n of TOWN_RESIDENTS)if(points[n.key])[n.x,n.y]=points[n.key];}
 function townRoad(points,width=52){line(points,'#476849',width+20);line(points,'#b6b09b',width+8);line(points,'#737b72',width);ctx.setLineDash([9,13]);line(points,'#e0d6b7',2);ctx.setLineDash([]);}

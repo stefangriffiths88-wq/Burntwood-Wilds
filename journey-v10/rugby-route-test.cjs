@@ -27,3 +27,5 @@ t.menu();t.startJourney();t.enterArena('rugby');t.clear();t.player.inv=999;t.pla
 // Town arrow is removed while scenery, signed paths and shop remain interactive.
 t.enterHub();ev('run.guideIdle=10');t.draw();assert.equal(ev('SHOPKEEPER.y'),280);assert.equal(ev('TOWN_SIDE_STREETS.length'),5);t.player.x=345;t.player.y=335;assert(ev('shopkeeperNear()'));assert(ev('interactShopkeeper()'));assert.equal(t.state.state,'dialogue');
 console.log('PASS forward lane spawns, winding collision, non-blocking captions, spaced upgrades and inset shop interaction');
+
+for(let n of ev('TOWN_NODES'))for(let b of ev('TOWN_BLOCKS'))assert(!(n.x>b.x&&n.x<b.x+b.w&&n.y>b.y&&n.y<b.y+b.h),'town road junction stays outside building');

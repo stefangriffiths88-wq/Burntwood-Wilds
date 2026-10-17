@@ -9,3 +9,5 @@ Local route/all-ten/evolution/town/level-reveal and shared baseline regression p
 Next: full existing CI once, phone screenshots (lane/bends/caption, Bruce, signed town/shop), fix discovered failures, merge only green and verify Pages/live bytes. Native phone balance/art remains user acceptance.
 
 Broad browser CI caught its old hardcoded shop tap (345,350) after the shop moved inside to y280. Updated the fixture to read hub.shop and still require real pointer dialogue→shop behaviour for all seven heroes. No runtime fix was needed for that failure. Initial CI’s mechanics/encounters/reward browsers passed; broad browser stopped before the charm matrix. Final rerun must include the corrected fixture.
+
+Final scenery review moved the rugby-side town junction outside the southern home footprint; added a geometric check that every road junction stays outside buildings. No further runtime changes planned.
