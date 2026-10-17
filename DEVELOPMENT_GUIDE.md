@@ -247,3 +247,11 @@ For isolated Rugby-owned followups, reuse the successful full shared-combat cand
 Rugby feedback about frequent upgrades is tuned in the physical Rugby route first; upgradeTimes and nextXP retain the other four arenas’ guaranteed schedules and XP thresholds. The shared natural-XP gate now uses the scheduled time rather than its former three-second early window; record that small pacing change explicitly. Keep authored reinforcements distinct from new ordinary forward arrivals. Nonblocking captions expire in active gameplay time and must clear bag/health/ability controls in portrait and landscape; changing a modal into a status caption requires tests that the clock still advances.
 
 Moving Mimi inside a shop changes world tap coordinates. Browser fixtures must read hub.shop rather than hardcode the former outdoor position; retain actual pointer→conversation→shop assertions. Inspect the town overview for roads crossing pitch/building footprints as well as checking collision. Phone screenshots caught caption overlap and frontage text overlap before release. Preserve pre-release failures and corrected evidence rather than call the first failed run successful.
+
+
+## Engagement flow — 10.16.0
+Production reward lifecycle lives in world/reward-flow.js: opt-in chest → three choices → same-panel equip/swap/bag, then safe cleared-area movement and explicit exit. Keep essence/gold/duration single-counted and preserve old equipment in bag. Clear active attacks/particles at victory; movement and pickups continue without combat or level-up interruption. Leech charm increases healing, so concise text must not promise damage.
+
+Legacy enterCombatArena and __test.reset retain explicit automatic-reward behavior only for bounded combat matrices. New reward-flow-test/browser suites verify the real production lifecycle (50 hero/area combinations plus a full five-area walkout journey and actual touch). Always distinguish these coverage scopes. Town button tests target townInteract; workshop taps derive coordinates from WORKSHOP.
+
+Feature CI cancellation now replaces superseded runs; main remains uncancelled. Confirm final-source tests finish and generated blob matches before merge. Do not treat cancelled obsolete candidates as passing evidence. This does not replace the future build/publication separation work.

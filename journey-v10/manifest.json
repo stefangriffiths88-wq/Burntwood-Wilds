@@ -49,5 +49,6 @@
   "ui/ability-art.js",
   "arenas/rugby-route.js",
   "arenas/rugby-route-art.js",
+  "world/reward-flow.js",
   "controls.js"
 ]

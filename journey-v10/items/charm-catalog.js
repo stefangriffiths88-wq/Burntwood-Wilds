@@ -5,13 +5,13 @@ const CHARM_DEFS=[
  ['purse','Loaded Purse','₲',2,'Starting charm only: +100 gold once on a fresh run.'],['patient','Patient Fang','Ⅴ',2,'Five eligible non-critical hits: next eligible hit guaranteed critical. Any critical resets it.'],['storm','Storm Button','ϟ',2,'Direct hits chain to 2 foes; 1.5s cooldown.'],['bell','Cracked Bell','◉',2,'Eight qualifying hits release a nearby shockwave.'],['guardian','Guardian Bell','◇',2,'20s without damage grants a one-hit shield.'],['echo','Echo Coin','◎',2,'Every fifth normal attack primes one 40%-damage echo.'],['opportunist','Opportunist’s Pin','✧',2,'+20% normal damage to slowed or stunned foes.'],
  ['glass','Glass Collar','♦',3,'+30% normal damage; −20% maximum health.'],['still','Stillwater Stone','▣',3,'Stand still for 1s: +25% normal damage. Moving removes it.'],['blood','Bloodstained Ribbon','♥',3,'Normal hits heal 2% of damage, capped at 2 HP/s. Other healing −30%.'],['blunt','Blunt Promise','✖',3,'+25% normal damage. Your attacks cannot critically hit.'],['clockwork','Clockwork Heart','⚙',3,'Special cooldown −30%; normal attack speed −15%.'],
  ['wisp','Healing Wisp','✚',2,'A green orb circles you. Heal 2% max health every 3s.'],
- ['element_fire','Cinder Heart','✦',2,'+35% fire evolution damage. Collect before evolving; active after choosing it.'],
- ['element_ice','Glacial Shard','✦',2,'+35% ice evolution damage. Collect before evolving; active after choosing it.'],
- ['element_lightning','Storm Prism','✦',2,'+35% lightning evolution damage. Collect before evolving; active after choosing it.'],
- ['element_venom','Venom Fang','✦',2,'+35% venom evolution damage. Collect before evolving; active after choosing it.'],
- ['element_leech','Crimson Chalice','✦',2,'+35% Leech healing. Still capped at 4% max health per second; active after choosing Leech.'],
- ['element_wound','Serrated Seal','✦',2,'+35% wound evolution damage. Collect before evolving; active after choosing it.'],
- ['element_retaliation','Revenge Crest','✦',2,'+35% retaliation evolution damage. Collect before evolving; active after choosing it.'],
+ ['element_fire','Cinder Heart','✦',2,'+35% fire damage.'],
+ ['element_ice','Glacial Shard','✦',2,'+35% ice damage.'],
+ ['element_lightning','Storm Prism','✦',2,'+35% lightning damage.'],
+ ['element_venom','Venom Fang','✦',2,'+35% venom damage.'],
+ ['element_leech','Crimson Chalice','✦',2,'+35% Leech healing.'],
+ ['element_wound','Serrated Seal','✦',2,'+35% wound damage.'],
+ ['element_retaliation','Revenge Crest','✦',2,'+35% retaliation damage.'],
  ['phantom','Phantom Pact','♙',4,'Special summons a shadow for 4s mirroring normal hits at 40% power. Special cooldown +20%.'],['lantern','Last Light Lantern','☀',4,'Once per arena survive lethal damage at 1 HP with 2s invulnerability. Healing then disabled; normal damage +25%.']
 ];
 const CHARMS=Object.fromEntries(CHARM_DEFS.map(([key,name,icon,rarity,text])=>[key,{name,icon,rarity,color:RARITIES[rarity].color,text}]));
