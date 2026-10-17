@@ -1,3 +1,7 @@
+# Release verified — recovery closeout, 18 October 2026
+
+10.16.0 is complete and live. PR74 merged at 326dd73553d3520f77b70e7a8d09fbbfce33f2cf. Final feature CI39075096905, main CI39075894580 and Pages39075894316 all succeeded. Public canonical/versioned HTML and latest redirect matched committed bytes. PROJECT_STATUS.md now records the release and pending native-phone acceptance. No runtime edits or repeated gameplay matrices during recovery. The historical pending-check statements below are superseded by this closeout. Next: Stef tests 10.16.0; retain separate Cow Queen/story and damage investigation direction below.
+
 # Active release — 10.16.0 engagement flow
 
 17 October2026. Explicit user update authorises the next small engagement-focused release. Scope: physical opt-in heroic/boss charm chests, same-screen equip/replace/bag selection, safe post-clear walkout and exit, simple town interaction instead of combat buttons, clearer non-overlapping road junctions and workshop frontage, filled individual charm illustrations/simple elemental wording. Cow Queen/story expansion and enemy damage tuning remain separate next pieces, as explained to user.
