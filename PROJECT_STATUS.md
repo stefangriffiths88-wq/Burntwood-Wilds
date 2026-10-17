@@ -1,6 +1,18 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.15.0 — Rugby detail and readable town routes
+## Current release: 10.16.0 — opt-in charm chests and clear town flow
+18 October 2026. Resumed after conversation limit; implementation was already merged and deployed. This closeout changes documentation only.
+
+- PR #74 merged at 326dd73553d3520f77b70e7a8d09fbbfce33f2cf. Final runtime source fba18f667893f2bf630c8ffbbedade8b65d700c8 passed full feature CI 39075096905. Main CI 39075894580 and Pages 39075894316 both completed successfully.
+- Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.16.0.html?v=10160 . Public canonical and versioned HTML both matched local bytes on recovery: 390715 bytes, SHA256 6322b1c3f66596c1ada893b7dbc10da0ae2240773cf100fa4214aad20e51beb9. latest.html also matched and points to 10.16.0.
+- Heroic/boss rewards use physical chests opened deliberately. Three charm choices lead to equip/replace/bag selection in the same panel; replaced charms remain in the bag. Charm artwork and concise descriptions improved.
+- Clearing an area stops threats and retains movement/pickups with a deliberate exit. Unclaimed loot is labelled without another confirmation popup. Town uses an interaction button, clearer junctions, workshop frontage and pocket garden.
+- Existing final phone artifact 12116991078 was reviewed by the implementation session for swap/short/landscape, town, workshop, chests and exits. Production flow checks cover all 50 hero/arena combinations. Legacy bounded combat fixtures retain explicit automatic rewards; they do not establish production chest coverage.
+- Native iPhone/Safari, enjoyment and survival balance await Stef's playtest. Recovery reused successful exact-source CI rather than repeating unchanged gameplay suites.
+- Separate pending work: investigate low incoming damage/hit reliability before tuning; Mimi opening and fifth-area lead-in; difficult Cow Queen/husky finale and approved cat-food victory line. These were not implemented in 10.16.0. Preserve the detailed direction in WORK_CHECKPOINT.md.
+
+
+## Previous release: 10.15.0 — Rugby detail and readable town routes
 17 October 2026. User explicitly authorised this update after playtest feedback. No further suggestions authorise another release automatically.
 
 - PR #73. Final source 6f841eb8e1aaba7e0a09a680e5c8452b6d988f3a; packaged f3e1161b76516a4313a0d706cbc5128b4a8714dd. Merged at136fc7a09e13abaf1f71637e8aa9d3cff50503fe.
