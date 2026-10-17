@@ -1,11 +1,13 @@
-# Work checkpoint — CLOSED
+# Active release checkpoint — 10.15.0
 
-17 October 2026: user-authorised Rugby Club 10.14.0 published. PR #72 merged at 7ef6b4673bc0260e7d51ffd70622b186b2c3a3d6. Pages 39035805650 succeeded; 25 public files matched local hashes.
+17 October 2026. This Work session owns feature/town-lane-detail and PR #73. User explicitly authorised Rugby/town/Bruce detail update.
 
-Full CI 38926260549 and final isolated Rugby CI 38927597913 passed. Final packaged head c62905596b701e77e080b5ec3196aa1379b012b6. Canonical/versioned runtime SHA256 21fe87bcbd0569f1158e82417ab12dae7c3639bd7a8cb3c6cc65fab27a926613 (372157 bytes). Automatic postmerge CI 39035805932 still in progress at closeout.
+Final source: 6f841eb8e1aaba7e0a09a680e5c8452b6d988f3a. Generated/package head: f3e1161b76516a4313a0d706cbc5128b4a8714dd. Final CI 39060991575: numeric/character/upgrade/save/economy/encounter and broad phone suites passed; charm matrix still running. Changed-review job117478809500 passed. Phone artifact12111407244 reviewed at390x844/650 and844x390; Mimi shop, route, Bruce, caption clearance accepted for user playtest. No new runtime edits planned.
 
-Live: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.14.0.html?v=10140
+Canonical/versioned runtime380521 bytes, SHA256704dc587bc553ddea0af3e327a0efa1eccf70fdb6f032d50d62d2a185aa458f9, Git blob0fd82931fab9c5b9856850ef4c7ce7d29e1334cb. Historical10.14.0 preserved.
 
-Scope: physical Rugby lane/rail-end route, timed heroic gate and well break, deliberate pitch entry for Bruce, paused Mimi dialogue, 1.5-second idle arrow and map-reference Bruce redesign. Other arenas preserved. See PROJECT_STATUS.md for exact evidence and limitations.
+Implemented: winding/potholed lane with forward arrivals; nonblocking Mimi captions; spaced Rugby-only upgrades (14/34/54/76/98/120s, minimum18s); signed town streets/pavements and minimap; no town arrow; shopkeeper behind counter inside open MIMI’S frontage; contoured/furred detailed reference-based Bruce. All other arenas/hero art and permanent saves preserved.
 
-Next: user phone playtest for route geography/length, pressure, well pacing and artwork. No future gameplay update authorised automatically. Preserve other worktrees and independent audit notes.
+Earlier full runs39060561748/39060714623 failed only at an old hardcoded shop tap; corrected fixture reads hub.shop, still using actual touchscreen dialogue→shop. Phone inspection fixed caption/bag and fascia overlap, plus a road junction in a building. Superseded pending runs cancelled by concurrency.
+
+NEXT: wait for final CI39060991575. If green, verify branch/main heads, merge PR73, confirm Pages success and24public byte hashes (/tmp/detail-release-hashes.json), then close PROJECT_STATUS.md/this checkpoint and return10.15.0?v10150 link. Native Safari/fun balance remains Stef’s playtest. Other worktrees and docs PR70 preserved.

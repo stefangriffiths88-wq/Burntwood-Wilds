@@ -150,3 +150,9 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 
 /* Threat bars clear the measured objective panel, including safe-area offsets. */
 #bossHud,#bossHud[data-heroic="true"]{top:var(--threat-top,125px)!important}#questHud{top:calc(65px + env(safe-area-inset-top));max-width:205px}#rugbyTalk .dialoguePanel{max-height:85dvh;overflow:auto}#rugbyTalkPortrait{max-height:140px;object-fit:contain}#rugbyTalkContinue{min-height:48px}@media(max-height:500px){#questHud{top:45px;max-width:185px}#rugbyTalkPortrait{max-height:70px}#rugbyTalk h2{font-size:20px}#rugbyTalk .townPanel{padding:12px}}
+
+/* Mimi speaks without stealing movement or covering the action controls. */
+#rugbyTalk{position:fixed;z-index:9;pointer-events:none;left:calc(50% - 125px);bottom:calc(env(safe-area-inset-bottom,0px) + 22px);width:250px;box-sizing:border-box;padding:10px 12px;background:#123d32ee;border:1px solid #d9c181;border-radius:12px;color:#fff0c4;box-shadow:0 3px 16px #102e3270;text-align:left}
+#rugbyTalk b{font:700 10px system-ui;letter-spacing:.5px;color:#f3cd74}#rugbyTalk p{font:13px/1.35 system-ui;margin:4px 0 0}#rugbyTalk button{display:none}
+@media(max-width:480px){#rugbyTalk{left:27%;width:46%;bottom:calc(env(safe-area-inset-bottom,0px) + 145px);padding:8px}#rugbyTalk p{font-size:11px}#rugbyTalk b{font-size:9px}}
+@media(max-height:500px){#rugbyTalk{left:30%;width:40%;bottom:12px;padding:7px 10px}#rugbyTalk p{font-size:11px}}
