@@ -11,3 +11,6 @@ Rootstep0.22s440-speed directional collision-respecting dash, brief damage avoid
 Public TEST_ROSTER_UNLOCK=true reveals/selects all11 heroes for testing without changing persistent unlock flags. Shops still require first final boss victory. Retained lock-rule tests explicitly turn the toggle off; new Immy browser verifies actual default public access with no privileged fixture. Toggle is temporary; saved earned progression stays intact.
 
 Local focused tests and required release CI/phone review tracked in PROJECT_STATUS/WORK_CHECKPOINT. Protected scripted tests do not prove native Safari or human balance.
+
+##10.19.1 approved Wild Form revision
+User chose quadruped lynx option2 and authorised Update on18 October2026. visuals/immy-lynx.js owns a genuine four-legged animal body, idle, running gait, left/right/front/rear presentation and attached forepaw swipe. drawImmyBody dispatches to it only during Wild Form. No combat or collision changes; normal portrait/sprite retained.
