@@ -1,3 +1,7 @@
+#10.19.1 four-legged Immy lynx complete and live
+
+PR79 merged at42fb37970b2b8f65b1f4fc6e515733158cfd5a03. Full feature CI39149413068, focused main CI39150236513 and Pages39150236189 passed. Final phone artifact12144204220 reviewed; all26 public game/art files match local bytes. PROJECT_STATUS.md has exact hashes, test scope and visual/native Safari limitations. Approved four-legged lynx now replaces upright enlarged morph; normal form/portrait and all combat retained. All11 characters remain unlocked for public testing. User playtest pending. Historical pending statements below superseded; no unfinished release work. Story/damage/RUN/recovery remain separate.
+
 # Final lynx candidate —10.19.1
 
 PR79 source a3334e5c9a8c15f7a2f182a93fae5b5eef1c097e, full feature CI39149413068 in progress (long charm suite only). Final phone artifact12144204220 inspected: four visible staggered-depth paws, larger bushy tail, idle/left/rear, two diagonal gait samples and forepaw swipe across390x844/390x650/844x390. Corrected far/near leg overlap found in earlier artifact12144896131. Rendering matches native game vocabulary; user visual/native Safari acceptance still awaits playtest. All character combat functions, stats and upgrade tables are byte-identical to10.19.0.
