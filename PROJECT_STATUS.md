@@ -1,6 +1,20 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.17.0 — earned XP and clear reward/exit flow
+## Current release: 10.18.0 — roster unlocks and Stefan/Jackson workshop
+18 October2026. Explicit user update authorises the roster/shop/gift specification in UPDATE_SPEC.md. PR76 rebased onto main at5d33a54e48cc16527664a15ef6820471b78e8af5.
+
+- Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.18.0.html?v=10180 . Pages39089330247 and main CI39089330122 passed. All24 public files matched local bytes: canonical/versioned game, latest redirect, preserved10.17.0, ten portraits and ten icons.
+- Fresh saves start with Ava/Jackson/Mimi. Other menu buttons contain??? without portraits/name metadata and reject selection; locked residents are absent. One final arena boss (not heroic) unlocks the whole test roster permanently. Both shops require saved first boss victory and unlocked owner/cover; unavailable services are shuttered and absent from active minimap markers.
+- Old schema1/2 saves with recorded awards, essence or paid ranks migrate earned access. Keep schema2/storage key with strictly validated optional firstBossDefeated and jacksonGiftClaimed booleans. Existing victories remain unlocked, so current players do not need to repeat their first boss.
+- Stefan owns an open-front workshop signed Swan Island in the illustrative town. Keeper greeting -> OPEN WORKSHOP -> choose character/upgrade. Jackson covers when Stefan is playable; no duplicate Jackson resident/marker. One JACKSON’S GIFT permanent rank upgrade per save while he covers, for any chosen character. Gift/rank save atomically before memory changes; cancellation, repeated confirmation, re-entry/reload and failed saving are covered. Normal paid prices and next-fresh-journey bonus snapshots retained.
+- Full final feature CI39087728346 passed at runtime source8dbae760f071a6079a2ef8bbf503d993d5e85582, including character/save/reward/encounter/phone checks and266 original-seven hero/charm combinations plus21 protected journeys/105 arenas. Newer heroes retain focused suites. New production roster-workshop test/browser uses empty saves and actual production selection/taps, boss defeat/reload, service denial, unique keepers, welcome/hero choice/free purchase and all three phone viewports. Existing __test.select/reset explicitly enable full-access compatibility fixtures; these are not proof of fresh-save lock progression.
+- Final phone artifact12120793876 reviewed for locked selectors, shuttered/open fronts, clear workshop signboard, Jackson/Stefan welcome, gift choices and portrait/short/landscape. Superseded39087579262 was cancelled after its new phone tests passed because screenshot review found the sign overlapping windows; the final signboard/heading correction was retested and reviewed.
+- Main CI used focused postmerge production/phone checks, reusing the exact unchanged successful full feature runtime. No further runtime changes in documentation closeout.
+- Canonical/versioned HTML399234 bytes, SHA25691de4b84e50111066a4b4b0c7766c3a42d2c50b99fa39960c9ef116718f6e879; blob89fe8dfc284b0f62be74f09474238ccacb6e3359. Prior earned-XP/two-minute Rugby/chest/top-exit flows and approved hero art/combat retained.
+- Native iPhone/Safari and user visual/engagement acceptance await Stef’s playtest. Cow Queen/story, incoming-damage investigation, RUN hosting/SDK and active-run recovery remain separate.
+
+
+## Previous release: 10.17.0 — earned XP and clear reward/exit flow
 18 October 2026. Explicit user update authorises the playtest fixes in UPDATE_SPEC.md. PR #75 rebased onto main at a95b7e25190acedb6eb0579cbe9abdd2b04a791e.
 
 - Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.17.0.html?v=10170 . Pages39083991087 and main CI39083991311 succeeded. All24 public files matched local bytes: latest redirect, canonical/versioned game, preserved10.16.0, ten portraits and ten icons. Initial checks during deployment saw the old build/404; the three changed files were rechecked successfully after Pages completed.
