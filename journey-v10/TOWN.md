@@ -40,3 +40,6 @@ Future: opening spell scene, expanded conversations/discoveries, gold escape tok
 
 ## Starter and run shop additions
 Stefan unlocks one selectable starting charm at a time for fresh runs, globally across heroes. Costs rise by rarity: 6/12/24/40/60 essence. Mimi sells three charms for run gold; rerolls cost 2/4/6… saved essence across the whole run, with explicit confirmation. Fresh runs start at zero gold unless Loaded Purse is the selected starter (100 once). See BUILDS.md and CHARMS.md for complete rules. BUILD / BAG pauses combat and supports town-only equipment/fusion.
+
+## 10.18.0 current access and workshop (supersedes older self-service notes)
+Fresh saves start with Ava/Jackson/Mimi; other NPCs/selector portraits are hidden until the first arena boss unlocks the test roster. Both shops remain closed until that saved victory and unlocked owner/cover. Stefan owns the Swan Island-signed open workshop; Jackson covers when Stefan is selected. The keeper greets before OPEN WORKSHOP, then choose a hero and permanent upgrade. Jackson offers one free rank upgrade per save, saved atomically; later upgrades use existing essence prices. Older earned saves migrate access, optional validated flags retain schema2 and the same storage key. Active-journey snapshots remain unchanged.

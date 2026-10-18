@@ -255,3 +255,10 @@ Production reward lifecycle lives in world/reward-flow.js: opt-in chest → thre
 Legacy enterCombatArena and __test.reset retain explicit automatic-reward behavior only for bounded combat matrices. New reward-flow-test/browser suites verify the real production lifecycle (50 hero/area combinations plus a full five-area walkout journey and actual touch). Always distinguish these coverage scopes. Town button tests target townInteract; workshop taps derive coordinates from WORKSHOP.
 
 Feature CI cancellation now replaces superseded runs; main remains uncancelled. Confirm final-source tests finish and generated blob matches before merge. Do not treat cancelled obsolete candidates as passing evidence. This does not replace the future build/publication separation work.
+
+## Roster and service access — 10.18.0
+Keep selection, NPC visibility, minimap services and all direct service entry points behind shared access helpers. Locked buttons must contain??? without portrait/name metadata; keyboard/program selection must also reject locked heroes. Preserve legacy earned progress through migration. Use optional validated schema2 flags so historical clients do not reject a schema bump. One-boss testing unlock is permanent across new journeys.
+
+Gift purchases save the once-only flag and target rank in the same write, before in-memory mutation. Test cancellation, repeated confirmation, re-entry, reload and failed saving. Jackson’s counter replaces his wandering resident when covering Stefan; include exactly one identity/marker. Welcome -> workshop is a real two-step interaction, separate from the internal panel opener.
+
+Existing __test.select/reset deliberately provision a full-access compatibility fixture; do not confuse those matrices with fresh production unlock coverage. New roster-workshop tests/browser start with real empty saves and actual production selection/taps. Character browser fixtures provision access before testing approved locked portraits. Preserve original combat/save assertions; update stale self-service/greeting expectations to Jackson cover.
