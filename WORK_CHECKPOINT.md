@@ -1,3 +1,7 @@
+# 10.18.0 complete and live — 18 October2026
+
+PR76 merged at5d33a54e48cc16527664a15ef6820471b78e8af5. Full feature CI39087728346, main CI39089330122 and Pages39089330247 passed. Final phone artifact12120793876 inspected; all24 public files matched local bytes. PROJECT_STATUS.md records final source, production-vs-fixture coverage, migration and gift behavior. Pending: Stef’s native-phone playtest. Historical pending statements below are superseded. No further gameplay changes authorised by suggestions alone.
+
 # Active update — 10.18.0 roster and workshop
 18 October 2026. Explicit authorisation: “Let’s update. Obviously shops don’t become available until first boss defeat. Only open when character unlocked.” Branch feature/roster-workshop from verified21c93a4. One gameplay owner; no competing gameplay PR. Original dirty10.17 checkout preserved; work in separate clean worktree.
 
