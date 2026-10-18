@@ -1,6 +1,17 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.19.0 — Immy Druid and full testing roster
+## Current release: 10.19.1 — Immy’s four-legged lynx Wild Form
+18 October 2026. User explicitly requested a four-legged cat transformation, chose option2 lynx and authorised Update. PR79 rebased onto main at42fb37970b2b8f65b1f4fc6e515733158cfd5a03.
+
+- Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.19.1.html?v=10191 . Full feature CI39149413068 at a3334e5c9a8c15f7a2f182a93fae5b5eef1c097e, focused main CI39150236513 and Pages39150236189 passed. All26 public files match local bytes: canonical/versioned HTML, latest redirect, preserved10.19.0 and all11 portraits/icons.
+- Separate visuals/immy-lynx.js renders a horizontal grey/cream spotted lynx with four attached staggered-depth legs/paws, tufted ears, glasses, bushy cream-tipped tail, golden tuft and red collar. Idle, left/rear presentation, diagonal running gait and connected forepaw swipe replace the enlarged upright morph. First native phone review found far legs overlapping; final version spaces them at different depths and adds coat/tail volume. Native drawings approximate the approved concept within existing game style; user visual acceptance remains pending.
+- Rendering only. All Immy combat functions, stats and upgrade tables are byte-identical to10.19.0. Collision, attack damage/reach, protection, duration/cooldowns, normal sprite/portrait and other heroes are retained. Public all11-character testing roster and first-boss shop rules retained.
+- Local focused Immy contracts and full existing feature mechanics/character/save/phone/charm gate passed. Final monster-phone-review artifact12144204220 inspected for idle, left/rear, two running phases and swipe at390x844,390x650,844x390. Actual touch selection, special/dodge/upgrades and automatic Bruce killing-blow/RAF/exit checks remain. Main uses focused postmerge coverage and reuses unchanged successful full feature runtime. Chromium/scripted positioning and invulnerability do not establish native Safari or human balance.
+- Initial focused no-heal fixture failed because automatic Wild Form attacks could kill random ambient enemies and collect a healing drop. Disabled ambient wave spawning only inside the isolated character fixture; healing assertions retained, manual real-attack boss/charm tests and shared wave/combat matrices retained. No healing gameplay changed. Earlier run39148945722 and pre-refinement39149123459 are superseded.
+- Canonical/versioned HTML413688 bytes; SHA256dab2e2565ecca7652bc4e8e62305423fcf5e9b96b39fa77593932339919c571c, blob08c0e550c4d0f2227a23e5807b449cf5300fa380. Selection art and icons unchanged. No private photos uploaded. Native-phone/visual playtest pending; story/damage/RUN/recovery remain separate.
+
+
+## Previous release: 10.19.0 — Immy Druid and full testing roster
 18 October 2026. User selected smoky-grey sprite option2, approved the giant-cat selection portrait and Bramble Lash/Wild Form/Rootstep proposal, then explicitly authorised building and integration. PR78 rebased onto main at ac45665138432fbb7fce08fdbbd3f17e8ce5e8f5.
 
 - Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.19.0.html?v=10190 . Full feature CI39144991730, focused main CI39145827883 and Pages39145827459 passed. All26 public files match local bytes: canonical/versioned HTML, latest redirect, preserved10.18.1 and all11 portraits/icons.
