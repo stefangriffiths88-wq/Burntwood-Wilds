@@ -168,3 +168,6 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 .lockedHero{font-size:18px;font-weight:900;color:#d6cfaf}#menu button:disabled{opacity:.65}#workshopGift{padding:12px;background:#284d3b;border:1px solid #ebcb7a;border-radius:10px;color:#ffe3a1;font-weight:bold}
 
 .rosterHint{font-size:11px;color:#dbc795;margin:5px 0 9px;text-align:center}
+/* Eleven-character playtest roster: two portrait rows, one landscape row. */
+.picks{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-height:500px) and (min-width:600px){.picks{grid-template-columns:repeat(11,minmax(0,1fr))}}
