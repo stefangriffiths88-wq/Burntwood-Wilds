@@ -1,6 +1,16 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.18.0 — roster unlocks and Stefan/Jackson workshop
+## Current release: 10.18.1 — Bruce victory freeze hotfix
+18 October 2026. User reported freezing on defeating Bruce. PR77 rebased onto main at0c106077596e2ae5bbcd55fff74d86c72d01e8b8. Source860e4ec34a342254afa00784197a07da36cba060.
+
+- Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.18.1.html?v=10181 . Full feature CI39142218989, focused main CI39142731633 and Pages39142731530 passed.
+- Reproduced pre-fix crash in the real advance collision loop with multiple projectiles: victory empties balls/eggs synchronously, then the next indexed projectile access throws and prevents RAF rescheduling. Stop ball/star/egg updates and subsequent combat phases when victory starts. No balance, save-schema, roster/shop or geography changes.
+- Local build/syntax/reward-flow/roster-workshop/monster-town checks pass. New regression covers simultaneous ball/star/egg killing collisions, movement after victory and exit. Phone browser performs the killing collision inside advance, asserts RAF continues, walks north and taps ENTER/CONTINUE. Exact feature monster-phone-review artifact12142101161 inspected for guidance, reachable top exit and Mimi arrival. Full existing mechanics/phone/charm gate passed; protected simulations do not establish human balance or native Safari behavior.
+- Public canonical and10.18.1 HTML match local399517 bytes, SHA2563e7451999ad7998a9ad084db77392ce05f8f5e7363eeca562b4344addb033ebd, blob1e955106d9843dfedcef7c916766d7cc69475988. Latest redirect matches and points to10.18.1; preserved10.18.0 bytes unchanged. User native-phone playtest pending.
+- User then said “Character building please”; clarification pending: new character creation or upgrades/builds for existing heroes. No new character mechanics implemented from that ambiguous request. Earlier story/damage/RUN/recovery work remains separate.
+
+
+## Previous release: 10.18.0 — roster unlocks and Stefan/Jackson workshop
 18 October2026. Explicit user update authorises the roster/shop/gift specification in UPDATE_SPEC.md. PR76 rebased onto main at5d33a54e48cc16527664a15ef6820471b78e8af5.
 
 - Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.18.0.html?v=10180 . Pages39089330247 and main CI39089330122 passed. All24 public files matched local bytes: canonical/versioned game, latest redirect, preserved10.17.0, ten portraits and ten icons.
