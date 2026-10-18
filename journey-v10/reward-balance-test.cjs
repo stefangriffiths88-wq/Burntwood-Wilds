@@ -37,7 +37,7 @@ const heroes=['ava','jackson','stef','jodie','evie','zak','mimi','joseph','tom',
  reset();t.run.charms.push({key:'clockwork',rank:3},{key:'watch',rank:3});assert(!t.rewardStatAvailable('focus'),'capped cooldown must not be offered');
  reset();t.run.charms.push({key:'keen',rank:3});t.run.stats.precision=59;assert(!t.rewardStatAvailable('precision'),'capped critical chance must not be offered');
  t.run.stats.precision=58;assert(t.rewardStatAvailable('precision'));let available=Object.keys(t.STAT_TRACKS).filter(k=>t.rewardStatAvailable(k));t.setRolls([(available.indexOf('precision')+.1)/available.length,0]);t.setXP(999);let at=t.offers().findIndex(o=>o.index==='precision');assert.match(t.offers()[at].text,/ \+1% · 58% → 59%/);t.choose(at);assert.equal(t.statValue('precision'),59);assert.equal(t.buildStats().critChance,75);
- assert.equal(t.rewardCardLabel({path:'weapon',rank:5,total:5}),'WEAPON · STEP 5 OF 5 · FINAL UPGRADE');
+ assert.equal(t.rewardCardLabel({path:'weapon',rank:5,total:5}),'NORMAL ATTACK · STEP 5 OF 5 · FINAL UPGRADE');
  console.log('PASS milestone rarity, two distinct ability paths, useful stat filtering, honest ability labels and Rare+/Epic+ heroic rewards');
 
  for(let stage=0;stage<5;stage++)for(let coins of [0,30,55,95,150,220]){
