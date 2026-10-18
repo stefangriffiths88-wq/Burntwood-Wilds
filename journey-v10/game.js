@@ -1384,7 +1384,7 @@ function showSaveTools(){if(state!=='workshop')return;$('saveTools').style.displ
 
 // Town-only presentation. Reuses approved hero renderers without running combat AI.
 const TOWN_RESIDENTS=[
- {key:'harvey',x:600,y:700,place:'Park path'},
+ {key:'harvey',x:600,y:780,place:'Park path'},
  {key:'immy',x:300,y:720,place:'Woodland path'},
  {key:'mimi',x:400,y:330,place:'Shopping centre'},
  {key:'havannah',x:630,y:505,place:'Town garden'},
