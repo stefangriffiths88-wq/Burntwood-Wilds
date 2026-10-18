@@ -1,3 +1,9 @@
+# Immy10.19.0 complete and live —18 October2026
+
+PR78 merged at ac45665138432fbb7fce08fdbbd3f17e8ce5e8f5. Full feature CI39144991730 at4571e740b92037ed0fd11a60573ebe039b50b992, focused main CI39145827883 and Pages39145827459 passed. Final phone artifact12143530276 reviewed. All26 public files matched local bytes, including new Immy portrait/icon, canonical/versioned game, latest and preserved10.18.1. Exact evidence/limitations in PROJECT_STATUS.md, complete approved design in journey-v10/IMMY.md.
+
+All11 characters unlocked for public testing via TEST_ROSTER_UNLOCK, while first-boss shops and saved earned flags remain intact. User native-phone/balance playtest pending. No unfinished Immy work remains; historical pending checkpoints below superseded. Future story/damage/RUN/recovery work remains separate, and suggestions alone do not authorise new gameplay updates.
+
 # Immy final release candidate — verification pending
 
 PR78 candidate4571e740b92037ed0fd11a60573ebe039b50b992, full feature CI39144991730. Runtime unchanged after selector sizing; source/art hashes match local. Native front/wild/claws/vines/roots reviewed in artifact12143425455 from prior same-runtime candidate; current browser adds a proper portrait decode wait. Earlier39144600705 passed new Immy phone flows but shared browser expected9 town identities; updated to10. Earlier39144868074 reached two phone viewports but raced image decoding on third. Final workflow explicitly executes BOTH immy-test and retained roster-workshop-test (correct multiline run). Full final gate required before merge.
