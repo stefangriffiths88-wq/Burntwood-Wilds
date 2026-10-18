@@ -8,3 +8,8 @@ Implementation and focused contracts pass locally. Existing legacy bounded comba
 Next: final CI and actual phone screenshot review; fix any failures, merge only tested candidate, verify Pages/public bytes and update PROJECT_STATUS.md. Main verified live remains 10.16.0 until release.
 
 Preserved Cow Queen direction: opening Mimi explains curse/cat townsfolk/aggressive wildlife; after all five areas Mimi invites deliberate finale entry; large fictional woman with glasses/brown bun and pet husky, difficult readable coordinated fight. Approved final line: “You did it! The curse is broken—we can finally be human again! And Jodie can stop eating my bloody cat food.” Investigate low incoming damage/hit reliability before numeric tuning.
+
+## Final candidate and phone review
+Runtime source a4a8db37a606817e3710e5e4e794f27942bcaae2, packaged head 7ff9fa9d444ecba137f23121013d96d47a785e48. CI39083286050 changed-review passed; artifact12119761624 inspected for all-ten upgrades/short/landscape, Rugby top entrance, fixed pitch-label overlap and single Mimi town arrival. Full browser/mechanics gate still running. Runtime392945 bytes, SHA256433c43feddd307d907bea8badedf54cc295f3256f20fef11c3b47916f48cdebf, blob13271ec324217e626ed90d44e5f7bc4167446c3f.
+
+Prior CI39083071259 failed only at browser fixture expectations: Rugby waited too few frames to reach120 seconds; broad phone test injected999 XP then expected no further earned levels after a choice. Corrected to enough navigation time and exactly one threshold of XP, retaining real tap/assertions. Numeric checks and new chest/walkout phone suite passed there. Updated normal-attack label expectation also passed. Do not claim obsolete failing candidates as fully green.
