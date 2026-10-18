@@ -23,3 +23,6 @@ console.log('PASS all charm combinations through Immy actions and all five produ
 fresh();t.player.hp=70;t.player.inv=0;t.charge();t.hurt(20,{kind:'swarm',x:400,y:650});assert.equal(t.player.hp,70);assert.equal(t.immy.shield,7.5);t.player.inv=0;t.hurt(20,{kind:'swarm',x:400,y:650});assert.equal(t.player.hp,57.5);assert.equal(t.immy.shield,0);
 // Wider sweep reaches an off-axis enemy that the base vine misses.
 fresh();let angled=foe(550,740,'swarm');t.setTier(0);foe(540,650);t.shoot();assert.equal(angled.hp,10000);t.setTier(3);t.shoot();assert(angled.hp<10000);console.log('PASS actual incoming damage shield depletion and wider-vine upgrade contact');
+
+// Approved portrait bytes are immutable; do not substitute a draft or a private photo.
+{let bytes=fs.readFileSync('journey-v10/assets/portraits/immy.webp'),hash=require('node:crypto').createHash('sha1').update('blob '+bytes.length+'\0').update(bytes).digest('hex');assert.equal(hash,'5140dc241e113f5eebb5a5e64e0352b523d3c446');}
