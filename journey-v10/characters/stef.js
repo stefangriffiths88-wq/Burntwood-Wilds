@@ -34,9 +34,9 @@ function drawStefBody(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.8421,s*
 
 CHARACTERS.stef={"name":"Stefan","hp":110,"speed":150,"damage":23,"rate":1.1,"dodgeSpeed":0,"dodgeTime":0.36,"specialCD":10};
 
-PROFILES.stef={"role":"CROWD BRAWLER","tag":"Sharp style. Fast paws.","attack":"Left Jab","attackDesc":"Fast left jabs · heavy hook at weapon level 5","special":"By Order!","specialDesc":"2s punch flurry · 10s cooldown","dodge":"Push","dodgeDesc":"360° push · no damage · 3s"};
+PROFILES.stef={"role":"CROWD BRAWLER","tag":"Sharp style. Fast paws.","attack":"Left Jab","attackDesc":"Fast left jabs · heavy hook at weapon level 5","special":"By Order!","specialDesc":"2s rapid two-paw combinations · 10s cooldown","dodge":"Push","dodgeDesc":"360° push · no damage · 3s"};
 
-SPECIALS.stef=[["Long Combination","Flurry lasts 2.6 seconds."],["Long Arms","Special hooks reach 15 units farther with bigger paws."],["Heavy Combination","Flurry hits deal 30 instead of 23 damage."],["Back in Business","Flurry cooldown 10 → 8 seconds."],["Final Word","Finish with a heavy two-paw forward strike for 45 damage."]];
+SPECIALS.stef=[["Long Combination","By Order! lasts 2 → 2.6 seconds of rapid two-paw combinations."],["Long Arms","Special hooks reach 15 units farther with bigger paws."],["Heavy Combination","By Order! punch damage: 23 → 30 per hit."],["Back in Business","By Order! cooldown: 10 → 8 seconds."],["Final Word","Finish with a heavy two-paw forward strike for 45 damage."]];
 
 DODGES.stef=[["Wider Push","Push radius 82 → 100."],["Firm Hands","Push ordinary enemies 25% harder."],["Hold Your Ground","Push protection lasts 0.65 instead of 0.48 seconds."],["Quick Reset","Push cooldown 3 → 2.3 seconds."],["Clear Some Space","Push briefly stuns small enemies; bosses barely react."]];
 

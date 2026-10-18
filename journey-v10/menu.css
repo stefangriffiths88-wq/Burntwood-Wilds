@@ -162,3 +162,5 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 @media(max-height:500px){#rewardInteract{right:115px;bottom:20px}#townInteract{bottom:20px}#panel .charmCompare{padding:6px}#panel .charmCompare .charmArtwork{width:38px;height:38px}}
 
 #panel .charmCompare span{display:block;margin-bottom:3px;letter-spacing:.4px}#panel .charmCompare b{display:block;margin:2px 0 5px}#panel .charmCompare div{min-width:0}
+
+.weaponPortrait{object-fit:cover;border-radius:50%;border:2px solid #eed38a}.abilitySubject{font-weight:800!important;color:#ffe4a4!important}

@@ -18,7 +18,7 @@ function drawRewardHero(){
  ctx.restore();ctx.save();ctx.shadowColor='#ffe6a0';ctx.shadowBlur=14*fade;CHARACTER_MODULES[selected].draw();ctx.restore();
 }
 function rewardCardLabel(offer){if(offer.path==='evolution')return 'MYTHIC · '+offer.ability.toUpperCase()+' LEVEL 6';
- if(offer.total)return offer.path.toUpperCase()+' · STEP '+offer.rank+' OF '+offer.total+(offer.rank===offer.total?' · FINAL UPGRADE':'');
+ if(offer.total)return ({weapon:'NORMAL ATTACK',special:'SPECIAL',dodge:'DEFENCE'}[offer.path]||offer.path.toUpperCase())+' · STEP '+offer.rank+' OF '+offer.total+(offer.rank===offer.total?' · FINAL UPGRADE':'');
  let rarity=RARITIES[offer.rarity];return rarity.symbol+' '+rarity.name.toUpperCase()+' · '+offer.path.toUpperCase();
 }
 function rewardCardHint(offer){
