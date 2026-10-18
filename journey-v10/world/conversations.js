@@ -1,5 +1,6 @@
 // Short resident conversations, changed only by victories in this journey.
 const TOWN_CHAT={
+ immy:['The forest is listening. I think it wants us to fight back.','Small paws can still make a big difference.'],
  havannah:["I’m not scared. They should be scared of ME!","Told you. Tiny paws, massive attitude."],
  tom:["I’ve seen bigger monsters in the pub on a Friday night!","I’ve seen bigger monsters in the pub on a Friday night!"],
  joseph:["If those monsters think they’re getting past me, they’ve never seen my tackle!","If those monsters think they’re getting past me, they’ve never seen my tackle!"],
