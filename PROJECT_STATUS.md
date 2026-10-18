@@ -1,6 +1,22 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.16.0 — opt-in charm chests and clear town flow
+## Current release: 10.17.0 — earned XP and clear reward/exit flow
+18 October 2026. Explicit user update authorises the playtest fixes in UPDATE_SPEC.md. PR #75 rebased onto main at a95b7e25190acedb6eb0579cbe9abdd2b04a791e.
+
+- Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.17.0.html?v=10170 . Pages39083991087 and main CI39083991311 succeeded. All24 public files matched local bytes: latest redirect, canonical/versioned game, preserved10.16.0, ten portraits and ten icons. Initial checks during deployment saw the old build/404; the three changed files were rechecked successfully after Pages completed.
+- Normal play now requires physically collected enemy XP. Time never fills the XP requirement; collecting enough XP immediately earns the choice. Existing thresholds and six-choice arena cap retained. Legacy bounded combat fixtures explicitly retain timed rewards for their established combat matrices; production uses enterArena and separate no-time-award/pickup contracts across all five areas.
+- Physical Rugby waves continue for120 active seconds, then ordinary enemies retreat without rewards and direction guidance remains visible while moving towards the objective. Guard/well/Bruce physical ordering preserved; well/pitch readiness now120s. Swarm combat role draws mostly antlerless does, other roles stags; a deterministic1000 lightweight sample gave896 does/104 rabbits. Existing AI roles/hitboxes/damage preserved.
+- Chosen charms equip immediately when a slot is empty. Full equipment shows replace/bag choices; replaced charms remain in the bag. Duplicate equipped copies auto-bag rather than duplicate active slots.
+- Rugby exit is at north/top of Bruce’s pitch, with persistent arrow, chevrons and large ENTER marker. Other areas also use north-side entrances. ENTER returns to town, then one boss-specific Mimi screen explains that earned essence can strengthen the player at the workshop. Existing fifth-area ending is preserved pending Cow Queen. Rewards/essence/time remain single-counted.
+- Upgrade cards use approved selected-hero icons for NORMAL ATTACK; SPECIAL and DEFENCE share their gameplay-button icons. Distinct defence pictograms for character identities; clearer labels and subject emphasis. Stef By Order! text names actual duration/damage/cooldown instead of generic flurry. Jab-hand correction was cancelled; attacks unchanged.
+- Runtime source a4a8db37a606817e3710e5e4e794f27942bcaae2 passed full feature CI39083286050, including broad phone/character/save/reward checks and266 original-seven hero/charm combinations plus21 protected journeys/105 arenas. New production contracts cover50 hero/area flows and actual movement through Rugby collision to the exit; phone suite covers all-ten upgrade presentations at portrait/short/landscape, auto-equip, full-slot bag choice, real exit touch and Mimi arrival. Newer heroes retain their focused character suites; do not claim the original-seven matrix covers all ten.
+- Final phone artifact12119761624 inspected, including clean top-pitch marker after hiding the overlapping scenery label. Main CI used focused postmerge checks and reused the successful unchanged full feature runtime; docs-only closeout does not require repeating gameplay matrices.
+- Earlier CI39083071259 stopped on outdated browser fixtures: insufficient frames to reach the new120s wave boundary and injected999 XP causing legitimate immediate further upgrades. Fixtures now wait long enough and inject exactly one threshold for one-choice assertions. No gameplay assertions removed; final full gate green.
+- Canonical/versioned HTML392945 bytes, SHA256433c43feddd307d907bea8badedf54cc295f3256f20fef11c3b47916f48cdebf; blob13271ec324217e626ed90d44e5f7bc4167446c3f. Approved portrait/icon assets, save schema, other arena enemy balance and old URLs preserved.
+- Native iPhone/Safari, reward pacing, enjoyment and survival balance await Stef’s playtest. Separate pending work: low incoming-damage investigation/hit feedback and Mimi/Cow Queen/husky story finale. RUN hosting/SDK and active-journey recovery remain deferred.
+
+
+## Previous release: 10.16.0 — opt-in charm chests and clear town flow
 18 October 2026. Resumed after conversation limit; implementation was already merged and deployed. This closeout changes documentation only.
 
 - PR #74 merged at 326dd73553d3520f77b70e7a8d09fbbfce33f2cf. Final runtime source fba18f667893f2bf630c8ffbbedade8b65d700c8 passed full feature CI 39075096905. Main CI 39075894580 and Pages 39075894316 both completed successfully.
