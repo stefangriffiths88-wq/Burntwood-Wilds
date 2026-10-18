@@ -1,5 +1,5 @@
 const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/strict');let src=fs.readFileSync('journey-v10/monster-town-test.cjs','utf8'),box={require,console};vm.createContext(box);vm.runInContext(src.slice(0,src.indexOf('const {t,c}=load();'))+'globalThis.loadGame=load;',box);let load=box.loadGame;
-function fresh(storage=new Map()){let h=load(storage);return {...h,ev:s=>vm.runInContext(s,h.c),storage};}
+function fresh(storage=new Map()){let h=load(storage);vm.runInContext("TEST_ROSTER_UNLOCK=false;initialiseCharacterIcons()",h.c);return {...h,ev:s=>vm.runInContext(s,h.c),storage};}
 let h=fresh(),{t,els,ev}=h;
 assert.equal(t.state.selected,'jackson');for(let hero of ev('HERO_IDS'))assert.equal(t.heroUnlocked(hero),['ava','jackson','mimi'].includes(hero));assert.equal(ev("selectCharacter('stef')"),false);assert.equal(t.state.selected,'jackson');assert.equal(els.pickStef.disabled,true);assert(els.pickStef.innerHTML.includes('???'));assert(!els.pickStef.innerHTML.includes('<img'));
 t.startJourney();assert.deepEqual(Array.from(t.townResidents(),n=>n.key).sort(),['ava','mimi']);assert(!t.serviceOpen('mimi'));assert(!t.serviceOpen('stef'));assert(!t.openWorkshop());assert(!t.openHubShop(true));assert(!t.openShopConversation());assert(!t.interactWorkshop(true));assert(!t.townMapMarkers().some(x=>['shop','workshop'].includes(x.kind)));t.draw();

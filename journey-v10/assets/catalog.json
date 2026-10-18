@@ -103,6 +103,13 @@
         "assets/references/havannah-approved-portrait.png",
         "assets/references/havannah-sprite-options.png"
       ]
+    },
+    "immy": {
+      "asset": "assets/portraits/immy.webp",
+      "status": "user-approved 18 October 2026",
+      "source": "Approved generated selection portrait; no private reference photo committed",
+      "gameplay_sprite": "characters/immy.js",
+      "approved_reference": "Smoky grey option2 sprite; clear glasses, red hoodie, long ombre hair; user approved complete Druid spec and implementation"
     }
   },
   "zak": {
