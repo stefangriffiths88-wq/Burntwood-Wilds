@@ -103,7 +103,8 @@ jobs:
         with:
           node-version: '22'
       - run: python3 journey-v10/build.py
-      - run: node journey-v10/immy-test.cjs
+      - run: |
+          node journey-v10/immy-test.cjs
           node journey-v10/roster-workshop-test.cjs
       - run: node journey-v10/reward-flow-test.cjs
       - run: node journey-v10/rugby-route-test.cjs
