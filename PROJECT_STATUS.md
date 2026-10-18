@@ -1,6 +1,19 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.18.1 — Bruce victory freeze hotfix
+## Current release: 10.19.0 — Immy Druid and full testing roster
+18 October 2026. User selected smoky-grey sprite option2, approved the giant-cat selection portrait and Bramble Lash/Wild Form/Rootstep proposal, then explicitly authorised building and integration. PR78 rebased onto main at ac45665138432fbb7fce08fdbbd3f17e8ce5e8f5.
+
+- Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.19.0.html?v=10190 . Full feature CI39144991730, focused main CI39145827883 and Pages39145827459 passed. All26 public files match local bytes: canonical/versioned HTML, latest redirect, preserved10.18.1 and all11 portraits/icons.
+- Immy:110 HP,146 movement,16 base attack/0.7s. Bramble Lash vines,6s giant-cat Wild Form (8s upgraded) with broad claws and consumable protection, directional Rootstep with ordinary-enemy holds and boss/heroic slows. All15 upgrades, named stats, evolution compatibility, ability icons, town resident/dialogue, workshop ranks and validated save registration are complete. IMMY.md records exact tuning and approved native-sprite direction. Shared character balance/arena difficulty remain unchanged.
+- Temporary public TEST_ROSTER_UNLOCK=true reveals/selects all11 characters without modifying saved earned unlock flags. Shops still require first final-boss victory. Retained normal-lock tests explicitly turn this public toggle off; new default-browser tests select Immy through actual production buttons with rosterTestAccess false. Save schema/key retained; existing progress is preserved.
+- Local focused tests cover actual vine/claw/root/burst contact, wider sweep, shield depletion through hurt/no healing, pause, collision-aware dash, boss resistance, resets/save validation, all charm action combinations and five production boss families defeated by real attacks. Four in-frame killing-blow types preserve safe walkout. Full existing feature suite passed, including original-seven266 hero/charm combinations and21 protected journeys/105 arenas; do not claim this older matrix covers all11 heroes.
+- Final monster-phone-review artifact12143530276 inspected: actual Immy selection, front/back/giant sprite, vines/claws/roots, upgrade cards and touch controls at390x844,390x650,844x390. Browser asserts actual automatic Bruce killing blow, continued RAF and exit/town transition. Its immediate post-teleport cleared screenshot catches camera easing and is not evidence of human navigation; existing route browser retains actual navigation coverage. Scripted positioning/invulnerability and Chromium do not establish human balance/native Safari. User playtest pending.
+- Earlier failed/superseded runs found test timing/count issues: HUD label queried before next frame, upgrade fixture at capped6 picks, old town identity count9 rather than10, portrait decode race on third viewport. Fixtures corrected without removing gameplay assertions. Final workflow explicitly runs both Immy and retained roster unit suites; no tests skipped to release.
+- Canonical/versioned HTML409117 bytes; SHA2561e0e9ece190e806f5384879d36b77ff7e6e69b73c09588dd8bd8970c4749f74a, blob6503ab4722d6d0ddbd6159e8fa3cf0b9db64fc87. Approved portrait blob5140dc241e113f5eebb5a5e64e0352b523d3c446 (457546 bytes), icon d7daa2fd8ef394a86ddc6b7fb9986360187e431c (94000 bytes). No private reference photo uploaded. Old URLs/art retained.
+- Main used focused postmerge checks, reusing unchanged successful full feature runtime. Cow Queen/story, incoming-damage investigation, RUN hosting/SDK and active-journey recovery remain separate. No further gameplay changes authorised by suggestions alone.
+
+
+## Previous release: 10.18.1 — Bruce victory freeze hotfix
 18 October 2026. User reported freezing on defeating Bruce. PR77 rebased onto main at0c106077596e2ae5bbcd55fff74d86c72d01e8b8. Source860e4ec34a342254afa00784197a07da36cba060.
 
 - Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.18.1.html?v=10181 . Full feature CI39142218989, focused main CI39142731633 and Pages39142731530 passed.
