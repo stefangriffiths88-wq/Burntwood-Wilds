@@ -1,3 +1,7 @@
+# 10.17.0 complete and verified — 18 October 2026
+
+PR75 merged at a95b7e25190acedb6eb0579cbe9abdd2b04a791e. Full feature CI39083286050, main CI39083991311 and Pages39083991087 passed. Final phone artifact12119761624 inspected; all24 public files matched committed/local bytes. PROJECT_STATUS.md now records the release, earlier fixture corrections and exact validation scopes. Remaining: Stef’s native-phone playtest. No further runtime changes authorised by suggestions alone. Historical pending statements below are superseded by this closeout.
+
 # Active update — 10.17.0 earned rewards and clear flow
 18 October 2026. Explicit user instruction: “Ok let’s update these”. Owner: current Work implementation session. Branch feature/earned-rewards-flow from 9a1edadfc0de388537d6bf1cf4b5702616de82e9. No competing gameplay PR.
 
