@@ -30,3 +30,6 @@ t.enterHub();ev('run.guideIdle=10');t.draw();assert.equal(ev('SHOPKEEPER.y'),280
 console.log('PASS forward lane spawns, winding collision, non-blocking captions, spaced upgrades and inset shop interaction');
 
 for(let n of ev('TOWN_NODES'))for(let b of ev('TOWN_BLOCKS'))assert(!(n.x>b.x&&n.x<b.x+b.w&&n.y>b.y&&n.y<b.y+b.h),'town road junction stays outside building');
+
+// Deterministic Rugby population is predominantly does with stag combat roles.
+enter();let wildlife={};for(let i=0;i<1000;i++){t.spawn('swarm');let e=t.enemies.at(-1);wildlife[e.wildlife]=(wildlife[e.wildlife]||0)+1;}assert(wildlife.doe>800);assert(wildlife.rabbit<200);t.spawn('charger');assert.equal(t.enemies.at(-1).wildlife,'stag');console.log('PASS seeded Rugby deer-dominant population',wildlife);
