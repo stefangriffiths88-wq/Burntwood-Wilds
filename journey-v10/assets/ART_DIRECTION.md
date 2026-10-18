@@ -64,3 +64,6 @@ User rejected the sparse Bruce as too few shapes. Retain the approved map-refere
 
 ## Immy — approved18 October2026
 User chose smoky-grey option2 native sprite concept, then approved the selection portrait with giant cat spirit and complete Druid proposal. Clear rounded glasses, long brown-to-gold hair, red hoodie, cream muzzle/paws, grey fluffy tail. Two detached paws, no arms/legs/feet. Native compact sprite uses shared cat primitives and a larger version during Wild Form; normal-form height is a provisional moderate silhouette, not an assertion of real age/height. Exact approved generated portrait is converted to WebP without repainting/cropping; private photo stays out of repository.
+
+## Immy Wild Form correction — approved18 October2026
+User explicitly requested a four-legged cat instead of an enlarged upright sprite, chose option2 lynx concept, then said Update. Wild Form now uses its own native quadruped drawing: horizontal grey spotted body, four attached planted paws, tufted ears, cream chest/paws/tail tip, bushy tail, golden-brown forehead tuft, clear glasses and red collar. Idle, diagonal running gait and connected front-paw swipe. This overrides the no-legs rule only for her animal transformation. Normal form and approved selection portrait stay unchanged. Damage, duration, protection, movement/collision and upgrades are unchanged.
