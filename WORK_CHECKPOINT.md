@@ -1,3 +1,9 @@
+# Active hotfix — 10.18.1 Bruce victory freeze
+
+18 October 2026. User reports game frozen on beating Bruce. Reproduced 10.18.0 crash: a killing projectile synchronously runs finishAreaWalkout(), empties balls/eggs, then the indexed update reads a removed projectile and throws; requestAnimationFrame never reschedules. Source fix stops ball/star/egg collision processing and subsequent combat phases when play transitions to victory. No rebalance/save-schema changes.
+
+PR77, source860e4ec34a342254afa00784197a07da36cba060, required full feature CI39142218989 in progress. Local build/syntax, reward-flow (new simultaneous ball/star/egg killing-collision regression plus movement/exit), roster-workshop, monster-town pass. Browser regression now performs an in-frame killing collision, checks RAF keeps advancing, and navigates north/taps exit. Await exact-candidate CI and screenshot review before merge; main remains10.18.0. New intended link burntwood-journey-v10.18.1.html?v=10181. Preserve all earlier scope/pending notes below. User character not yet known; optional clarification returned no answer, proceed across relevant projectile families.
+
 # 10.18.0 complete and live — 18 October2026
 
 PR76 merged at5d33a54e48cc16527664a15ef6820471b78e8af5. Full feature CI39087728346, main CI39089330122 and Pages39089330247 passed. Final phone artifact12120793876 inspected; all24 public files matched local bytes. PROJECT_STATUS.md records final source, production-vs-fixture coverage, migration and gift behavior. Pending: Stef’s native-phone playtest. Historical pending statements below are superseded. No further gameplay changes authorised by suggestions alone.
