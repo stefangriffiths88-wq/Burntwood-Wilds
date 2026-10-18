@@ -1,3 +1,9 @@
+# Immy final release candidate — verification pending
+
+PR78 candidate4571e740b92037ed0fd11a60573ebe039b50b992, full feature CI39144991730. Runtime unchanged after selector sizing; source/art hashes match local. Native front/wild/claws/vines/roots reviewed in artifact12143425455 from prior same-runtime candidate; current browser adds a proper portrait decode wait. Earlier39144600705 passed new Immy phone flows but shared browser expected9 town identities; updated to10. Earlier39144868074 reached two phone viewports but raced image decoding on third. Final workflow explicitly executes BOTH immy-test and retained roster-workshop-test (correct multiline run). Full final gate required before merge.
+
+Local focused tests and shared test.cjs pass; all11 public roster selected without debug fixture, first-boss shops retained. Intended release10.19.0, canonical/versioned409117 bytes, SHA2561e0e9ece190e806f5384879d36b77ff7e6e69b73c09588dd8bd8970c4749f74a. No private photos committed. User approval and exact design in IMMY.md. Wait current CI, inspect final full phone artifact, merge exact head only green, verify main/Pages/public hashes then update PROJECT_STATUS and checkpoint. Main still10.18.1. Historical active statements below superseded.
+
 # Active approved character update — Immy10.19.0
 
 18 October2026. User chose smoky-grey sprite option2, approved giant-cat selection portrait and full Bramble Lash/Wild Form/Rootstep five-step package, then authorised “I’m happy for you to build it and put it in”. PR78, feature/immy-druid. IMMY.md records complete tuning/limitations and public TEST_ROSTER_UNLOCK=true for all11 heroes. Shops still require final boss, saves unchanged except valid Immy ranks. No private photo committed. Portrait blob5140dc241e113f5eebb5a5e64e0352b523d3c446; icon d7daa2fd8ef394a86ddc6b7fb9986360187e431c hash-verified from approved art.
