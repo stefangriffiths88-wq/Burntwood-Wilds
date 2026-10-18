@@ -1,3 +1,9 @@
+# 10.18.1 hotfix complete and live
+
+PR77 merged at0c106077596e2ae5bbcd55fff74d86c72d01e8b8. Full feature CI39142218989, focused main CI39142731633, Pages39142731530 passed. Phone artifact12142101161 reviewed: killing collision preserves RAF, movement, top exit and Mimi arrival. Canonical/versioned/latest public bytes verified;10.18.0 unchanged. PROJECT_STATUS.md contains exact evidence and native-phone limitation. Pending user clarification of “Character building please”: new character or existing build/upgrade design; no new implementation inferred.
+
+Historical active statements below superseded by this closeout.
+
 # Active hotfix — 10.18.1 Bruce victory freeze
 
 18 October 2026. User reports game frozen on beating Bruce. Reproduced 10.18.0 crash: a killing projectile synchronously runs finishAreaWalkout(), empties balls/eggs, then the indexed update reads a removed projectile and throws; requestAnimationFrame never reschedules. Source fix stops ball/star/egg collision processing and subsequent combat phases when play transitions to victory. No rebalance/save-schema changes.
