@@ -1,3 +1,9 @@
+# Active approved Immy Wild Form correction —10.19.1
+
+User requested four-legged cat morph, selected lynx option2 and authorised Update18 October2026. PR79/fix/immy-lynx from a52a759. New visuals/immy-lynx.js renders horizontal grey/cream quadruped with four connected legs, tufted ears, glasses, bushy tail, golden tuft and red collar. Idle, diagonal gait, mirrored/rear presentation and forepaw swipe. Rendering-only: same normal sprite/portrait, mechanics/collision/duration/shield/upgrades. Local focused Immy full contracts pass. Full feature CI39148945722 at64400027b3e6d9377ddb65376bd8da63f8a0a101 in progress; six deterministic pose screenshots added at each phone viewport. Must inspect actual native screenshots before release. No gameplay rebalance or public roster changes.
+
+Intended link burntwood-journey-v10.19.1.html?v=10191. Current candidate canonical/versioned413510 bytes, SHA256e6a3011b16fe8ac32480e216dc63ff263d0457da3406fe55b46febf62cc9ed03, blob85e45583e11020ff0f5e93e233c4561bdd8027b6. Main remains10.19.0 until green merge/Pages/public verification. Earlier completed releases and pending story/damage/RUN/recovery notes retained below.
+
 # Immy10.19.0 complete and live —18 October2026
 
 PR78 merged at ac45665138432fbb7fce08fdbbd3f17e8ce5e8f5. Full feature CI39144991730 at4571e740b92037ed0fd11a60573ebe039b50b992, focused main CI39145827883 and Pages39145827459 passed. Final phone artifact12143530276 reviewed. All26 public files matched local bytes, including new Immy portrait/icon, canonical/versioned game, latest and preserved10.18.1. Exact evidence/limitations in PROJECT_STATUS.md, complete approved design in journey-v10/IMMY.md.
