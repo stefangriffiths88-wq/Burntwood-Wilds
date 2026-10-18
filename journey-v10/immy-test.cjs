@@ -22,4 +22,4 @@ console.log('PASS all charm combinations through Immy actions and all five produ
 // Incoming damage consumes the form shield through the actual hurt path, without granting health.
 fresh();t.player.hp=70;t.player.inv=0;t.charge();t.hurt(20,{kind:'swarm',x:400,y:650});assert.equal(t.player.hp,70);assert.equal(t.immy.shield,7.5);t.player.inv=0;t.hurt(20,{kind:'swarm',x:400,y:650});assert.equal(t.player.hp,57.5);assert.equal(t.immy.shield,0);
 // Wider sweep reaches an off-axis enemy that the base vine misses.
-fresh();let angled=foe(550,710);t.setTier(0);foe(540,650);t.shoot();assert.equal(angled.hp,10000);t.setTier(3);t.shoot();assert(angled.hp<10000);console.log('PASS actual incoming damage shield depletion and wider-vine upgrade contact');
+fresh();let angled=foe(550,740,'swarm');t.setTier(0);foe(540,650);t.shoot();assert.equal(angled.hp,10000);t.setTier(3);t.shoot();assert(angled.hp<10000);console.log('PASS actual incoming damage shield depletion and wider-vine upgrade contact');
