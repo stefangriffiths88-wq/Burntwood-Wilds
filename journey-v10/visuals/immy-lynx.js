@@ -43,8 +43,8 @@ function drawImmyLynx(x,y,phase=0,visual={}){
   catShape('M-19 -7L-12 -10Q0 -3 12 -10L19 -7L15 4Q0 13 -15 4Z','#eee0bd',null);
   for(let s of [-1,1]){catOval(s*8,-14,5.2,6,'#f5edcf');ellipse(s*8,-13.5,3.2,4.4,'#8e9b54');ellipse(s*8,-13.5,1.35,3.6,'#253a2d');ellipse(s*8-1,-15.5,1.1,1.2,'#fff');line([[s*4,-23],[s*15,-22]],'#4c5141',1.7);}
   ellipse(0,-4,2.4,1.7,'#bd8c80');line([[0,-2],[0,0],[-3,2]],'#555647',1);line([[0,0],[3,2]],'#555647',1);
-  for(let s of [-1,1]){ctx.strokeStyle='#ebc6b3';ctx.lineWidth=1.7;ctx.beginPath();ctx.ellipse(s*8,-14,8.5,8,0,0,TAU);ctx.stroke();line([[s*16,-17],[s*20,-19]],'#ebc6b3',1.5);line([[s*11,-2],[s*23,-4]],'#d8d3b8',.8);line([[s*12,1],[s*23,3]],'#d8d3b8',.8);}
-  line([[-1,-15],[1,-15]],'#ebc6b3',1.5);
+  for(let s of [-1,1]){ctx.strokeStyle='#4d5147';ctx.lineWidth=3.6;ctx.beginPath();ctx.ellipse(s*8,-14,9.2,8.7,0,0,TAU);ctx.stroke();ctx.strokeStyle='#f3d4c7';ctx.lineWidth=2.2;ctx.stroke();line([[s*16,-17],[s*20,-19]],'#f3d4c7',2.1);line([[s*11,-2],[s*23,-4]],'#d8d3b8',.8);line([[s*12,1],[s*23,3]],'#d8d3b8',.8);}
+  line([[-1,-15],[1,-15]],'#f3d4c7',2.2);
   catShape('M-19 -25L-10 -31L-5 -29L1 -36L6 -30L14 -32L12 -25L20 -23L10 -19L6 -23L2 -17L-2 -25L-12 -18L-10 -25Z','#a07845','#5f614c',.8);
   line([[-7,-28],[-2,-29],[2,-26]],'#d0aa68',1.6);
  }

@@ -1,5 +1,6 @@
 // Shared dispatch: the engine never changes arena balance to fix one character.
 const CHARACTER_MODULES={
+ harvey:{interval:()=>.68/(tier>=4?1.2:1)/(harvey.pickle>0?1.45:1),attack:harveyAttack,draw:drawHarvey,special:harveySpecial,dodge:harveyDodge,update:updateHarvey},
  immy:{interval:()=>.7/(tier>=4?1.2:1),attack:immyAttack,draw:drawImmy,special:immySpecial,dodge:immyDodge,update:updateImmy,motion:immyMotion,avoidHit:immyAvoidHit},
  havannah:{interval:()=>.55/(tier>=2?1.2:1),attack:havAttack,draw:drawHavannah,special:havSpecial,dodge:havDodge,update:updateHavannah,motion:havMotion,avoidHit:havAvoidHit,goal:havGoal},
  tom:{interval:()=>.9/(tier>=4?1.2:1),attack:tomAttack,draw:drawTom,special:tomSpecial,dodge:tomDodge,update:updateTom,motion:tomMotion,avoidHit:tomAvoidHit,enemyDraw:drawTomEnemy},

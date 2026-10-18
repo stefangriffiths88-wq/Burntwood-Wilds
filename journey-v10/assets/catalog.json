@@ -110,6 +110,13 @@
       "source": "Approved generated selection portrait; no private reference photo committed",
       "gameplay_sprite": "characters/immy.js",
       "approved_reference": "Smoky grey option2 sprite; clear glasses, red hoodie, long ombre hair; user approved complete Druid spec and implementation"
+    },
+    "harvey": {
+      "asset": "assets/portraits/harvey.webp",
+      "status": "user-approved18 October2026; final glossy portrait",
+      "source": "Approved generated portrait converted without repainting; private photo not committed",
+      "gameplay_sprite": "characters/harvey.js",
+      "approved_reference": "Option3 tuxedo cat, dark wavy hair, round black glasses, navy hoodie; spore gun, Pickle Harvey and Portal Hop"
     }
   },
   "zak": {

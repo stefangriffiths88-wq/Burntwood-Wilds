@@ -170,4 +170,4 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 .rosterHint{font-size:11px;color:#dbc795;margin:5px 0 9px;text-align:center}
 /* Eleven-character playtest roster: two portrait rows, one landscape row. */
 .picks{grid-template-columns:repeat(6,minmax(0,1fr))}
-@media(max-height:500px) and (min-width:600px){.picks{grid-template-columns:repeat(11,minmax(0,1fr))}}
+@media(max-height:500px) and (min-width:600px){.picks{grid-template-columns:repeat(12,minmax(0,1fr))}}

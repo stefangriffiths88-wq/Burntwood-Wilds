@@ -67,3 +67,6 @@ User chose smoky-grey option2 native sprite concept, then approved the selection
 
 ## Immy Wild Form correction — approved18 October2026
 User explicitly requested a four-legged cat instead of an enlarged upright sprite, chose option2 lynx concept, then said Update. Wild Form now uses its own native quadruped drawing: horizontal grey spotted body, four attached planted paws, tufted ears, cream chest/paws/tail tip, bushy tail, golden-brown forehead tuft, clear glasses and red collar. Idle, diagonal running gait and connected front-paw swipe. This overrides the no-legs rule only for her animal transformation. Normal form and approved selection portrait stay unchanged. Damage, duration, protection, movement/collision and upgrades are unchanged.
+
+## Harvey — approved18 October2026
+Tuxedo option3, wavy dark hair, black round glasses, blue-grey eyes, navy hoodie/grey hood lining, pale detached paws and bushy black/white tail. User approved glossy full-resolution selection portrait with spore gun/portal/Pickle hint. Native gameplay keeps normal/Pickle bodies distinct, two floating paws and no arms/legs/feet; Pickle is cucumber-shaped rather than green clothing. Immy lynx glasses updated with higher-contrast pale rims/dark outline as explicitly requested.

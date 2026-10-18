@@ -1,0 +1,13 @@
+# Harvey — The Portal Prodigy
+
+18 October2026: user supplied identity photo and spore-gun/Pickle/portal theme, chose tuxedo option3, approved glossy selection portrait, then authorised Update for the complete proposed move set and15 upgrades. Private photo never committed. Approved generated portrait converted to WebP; native Canvas sprite is a separate gameplay drawing. Wavy dark hair, black round glasses, blue-grey eyes, navy hoodie, black/white fur and detached pale paws. Pickle form is an actual green bumpy pickle body retaining hair/glasses/cat face/paws/gun, no conventional limbs.
+
+100HP,146 movement,16 damage,0.68s interval. Spore Blaster430 target range,350-speed1.4s projectiles,16 direct damage and35% splash excluding the direct target,30-radius. Upgrades25% projectile speed,25% damage,46-radius splash,20% fire rate,third attack adds2 spread shots. At most72 shots.
+
+Pickle7s (upgrade10),1.45x firing speed,3 projectiles each60% normal damage. Upgrades25% stronger Pickle projectiles,wider0.22-radian spacing (base0.12),22→17s cooldown,40-damage100-radius end burst. Third-attack weapon upgrade adds2 more shots also in Pickle form. No form healing/max-health/collision changes. Pause freezes timer; new arena/town/journey/victory resets character state.
+
+Portal Hop6s cooldown,320 distance (upgrade424),8-unit path samples using walkable rules; stop at first wall/boundary/locked route segment. Dedicated pre-Bruce pitch check prevents crossing the physical approach overlap before120s and guard victory. Cannot skip bosses/objectives. Blocked travel under24 consumes nothing. Camera snaps to safe landing; portals render briefly at both ends. Base0.12s arrival invulnerability (upgrade0.5). Other upgrades:3 departure spores at7 damage,6→4.5s cooldown,both70-radius portals pulse20 damage after arrival. Delayed pulses prevent victory reentrancy inside the shared defence wrapper. Shared guard/evolutions remain; generic replacement defence upgrades/push are bypassed only for Harvey.
+
+All12 heroes publicly unlocked for testing; first-boss shops and persistent earned flags unchanged. Validated save accepts Harvey permanent ranks. Workshop/town/selection/icons/HUD/upgrades all registered. Immy lynx glasses have stronger pale frames/dark outer edge; no other Immy art or mechanics changed.
+
+Focused contracts: exact hit/splash/volley/bursts,portal range/failure/no cost/camera/solid collision/quest gates,pause/no heal/reset/save,actual in-frame wins,all charm actions and five real-attack boss families. Browser uses actual production selection/touch at390x844,390x650,844x390. Scripted positioning/invulnerability is not human balance or native Safari proof.
