@@ -48,11 +48,11 @@ function charmRewardHint(key){
 function rewardChime(legendary=false){
  try{
   let Audio=window.AudioContext||window.webkitAudioContext;if(!Audio)return;
-  let audio=rewardChime.audio||(rewardChime.audio=new Audio());
+  let audio=initGameAudio();if(!audio)return;
   const play=()=>{if(audio.state!=='running')return;let at=audio.currentTime;for(let [i,note] of (legendary?[523,659,784,1047]:[440,554,659]).entries()){
    let tone=audio.createOscillator(),gain=audio.createGain(),start=at+i*.065;tone.type='sine';tone.frequency.value=note;
    gain.gain.setValueAtTime(0,start);gain.gain.linearRampToValueAtTime(.025,start+.012);gain.gain.exponentialRampToValueAtTime(.001,start+.20);
-   tone.connect(gain);gain.connect(audio.destination);tone.start(start);tone.stop(start+.21);
+   tone.connect(gain);gain.connect(audio.effects);tone.start(start);tone.stop(start+.21);
   }};
   if(audio.state==='suspended')audio.resume().then(play).catch(()=>{});else play();
  }catch{}
