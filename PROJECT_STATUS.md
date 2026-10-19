@@ -1,6 +1,19 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.23.0 — first journey and Rugby guidance
+## Current release: 10.24.0 — journey recovery and RUN upload preparation
+19 October2026. Stef reports10.23 plays nicely and authorises audit followups. User chose restart-current-area recovery. PR84 merged at70ca96d666e704fefeb8a65e889e7de73d6f104b.
+
+Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.24.0.html?v=10240
+
+- A separate validated device-local journey save offers deliberate paused resume. Unfinished combat restarts from its entrance build/health/gold; that attempt's loot/upgrades roll back. Completed-area rewards, cleared walkout/chests and already-rolled treasure choices persist. New journeys require confirmation before replacing an unfinished one. Corrupt readable originals remain untouched until explicitly discarded; unavailable storage warns and permits unsaved play.
+- Introduction special labels use the same per-hero helper as combat, fixing inherited TALK text. Actual BUILD_ID now matches10.24.0. No balance, character mechanics or artwork changes. Existing permanent progress/save schema preserved.
+- package_run.py creates dist/index.html, all24 approved portraits/icons, release checksums and a portable ZIP (~6MB). No account/import/deploy/publish or jam entry. RUN official runtime docs confirm per-game browser storage works in published builds but may throw in Studio. Cloud/appStorage sync is separate and not implemented. GitHub saves do not automatically transfer to RUN or another device. RUN_READINESS.md records required host acceptance.
+- Final runtime source4bde9d538ff48cb9869b1c21698ba6907f6c2cfe/generated4fab0d8f4a138ade26268064c729fd38af8eec6a: CI39294868425 full browser job passed mechanics, browser and long charm journeys. Its changed-review then exposed a stale workshop fixture, corrected test-only at0dee4276e5c70f604afe3e1c0693839478191609. Both final CI39296010236 jobs passed, reusing unchanged full runtime evidence. Main CI39296489631 is still running; do not infer its eventual result.
+- Local core, all12 intro/recovery/rollback/treasure/no-duplicate, corruption/storage, exact evolutions/defences, reward flow, charm fusion/shop and town/save checks passed. Production phone tests exercise reload/resume/replacement/abandonment/labels at390x844,320x568,844x390. Nine menu/pause/replacement screenshots from12207107437 reviewed at unchanged final runtime. Final phone artifact12207354795 and portable ZIP artifact12207887594 retained. First run39294483860 exposed landscape confirmation overlap; fixed with a separate panel. RUN-style storage-read failure covered without trapping gameplay behind discard.
+- Pages39296488785 succeeded at merge. All28 public files match tested local bytes: canonical/versioned game, preserved10.23.0, latest redirect,12 portraits and12 icons. Canonical/versioned game476564 bytes/SHA256 ec19dd803b65f23a330e0c0be2942c671eecaada0a6ff32117434ede7f9c35a1. Live browser verified correct GLITTER label, saved Ava journey after reload and deliberate restored pause.
+- Pending acceptance: native iPhone/Android in RUN itself (host safe areas/audio/device storage), human pacing/balance/retention and user recovery playtest. Scripted protected journeys do not establish human balance. Existing10.23 playtest feedback was positive, not acceptance of untested10.24 cases. RUN upload/publication and competition eligibility/submission remain separate; private host testing is the next release-readiness step. No further gameplay scope authorised automatically.
+
+## Previous release: 10.23.0 — first journey and Rugby guidance
 19 October2026. Stef authorised Update/Resume and transferred completion to this session. PR83 merged at24529690ae142c2e2db018a7efd6526b8363c78e.
 
 Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.23.0.html?v=10230
