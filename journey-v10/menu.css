@@ -171,3 +171,17 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 /* Eleven-character playtest roster: two portrait rows, one landscape row. */
 .picks{grid-template-columns:repeat(6,minmax(0,1fr))}
 @media(max-height:500px) and (min-width:600px){.picks{grid-template-columns:repeat(12,minmax(0,1fr))}}
+
+/* 10.21: three simultaneous choices in portrait as well as landscape. */
+#panel.levelReward{padding:10px}
+#panel.levelReward .card{width:min(94vw,850px);max-width:850px;padding:16px 12px}
+#panel.levelReward #upgradeChoices{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;align-items:stretch}
+#panel.levelReward button.buildCard{min-width:0;padding:12px 8px;border-left-width:2px;text-align:center;overflow-wrap:anywhere;display:flex;flex-direction:column;align-items:center;gap:7px}
+#panel.levelReward button.buildCard>.uiGlyph{float:none;width:44px;height:44px;min-height:44px;margin:0 auto 5px}
+#panel.levelReward button.buildCard span{font-size:9px;letter-spacing:.3px;line-height:1.4}
+#panel.levelReward button.buildCard b{font-size:16px;line-height:1.15;margin:0}
+#panel.levelReward button.buildCard small{font-size:12px;line-height:1.35}
+#panel.levelReward button.buildCard .abilitySubject{color:#e6c779;font-size:11px}
+#panel.levelReward button.buildCard .rewardHint{margin-top:auto;padding-top:5px;font-size:9px}
+@media(max-width:360px){#panel.levelReward .card{padding:12px 7px}#panel.levelReward #upgradeChoices{gap:5px}#panel.levelReward button.buildCard{padding:10px 5px}#panel.levelReward button.buildCard b{font-size:15px}}
+@media(max-height:500px) and (min-width:600px){#panel.levelReward .card{padding:10px 12px}#panel.levelReward button.buildCard{gap:4px;padding:8px 10px}#panel.levelReward button.buildCard>.uiGlyph{width:30px;height:30px;min-height:30px;margin:0}#panel.levelReward #panelName{margin:5px 0 8px}}
