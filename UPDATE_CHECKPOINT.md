@@ -20,7 +20,7 @@ Phone job118043837273 passed. Final artifact12184112654 contains227 screenshots.
 
 Canonical/versioned HTML447975 bytes, SHA2561315d79b69b96ba07ee2144621a34f8c2ec88e42ccfa4633aed2c5dee6193441, blobee4dd65bd8cab4f0acb203fcf256fa09d7ce8794. Icons: Immy88706 bytes/blob410370a970363623609435b254498c696c42ba85; Harvey83004 bytes/blob2961980307eff5bebfaf8e3a233023fffea796f7. Historical HTML and all full portraits preserved.
 
-## Remaining release steps
-Merge only after final checks pass; verify main CI and Pages, then all28 public HTML/redirect/art files against tested bytes; update PROJECT_STATUS.md with exact evidence and playable10.22.0 URL. Live remains10.21.0 until deployment verification. Native Safari, aesthetics, music quality and human balance need user playtest. Scripted protected journeys do not establish human balance. Original screenshot's disabled merge cause was not conclusively reproduced; the reported equipped+bag matching-copy pattern is now explicitly covered through the new selection flow.
+## Released and verified
+PR82 merged at59cccb981d5fcf5b3ece9e0b75bc3a127c970016. Main CI39248629129 and Pages39248628969 passed. All28 public HTML/redirect/art files match tested bytes; canonical447975 bytes/SHA2561315d79b69b96ba07ee2144621a34f8c2ec88e42ccfa4633aed2c5dee6193441. Live: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.22.0.html?v=10220 . PROJECT_STATUS.md is the release record. Native iPhone/user aesthetic, audio and human balance acceptance pending.
 
-Cutscenes remain parked. Town restoration/reward progression, Cow Queen/story, RUN/SDK and active-run recovery remain separate future scope. No new work is authorised by those suggestions alone.
+Next: user playtest. Cutscenes parked; town reward progression/restoration, Cow Queen/story, RUN/SDK and active-run recovery remain separate future work. No further gameplay changes authorised by those suggestions alone.
