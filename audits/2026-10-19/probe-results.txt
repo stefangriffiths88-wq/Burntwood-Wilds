@@ -1,0 +1,5 @@
+PRODUCTION_PARK_BOSS {"modes":["walk","monsterWind","monsterAttack","recover"],"healUsed":0,"piles":[1,1,1],"hp":690,"maxHp":1150}
+PARK_SPECIFIC_AI_CONTROL {"modes":["seekRubbish","collect","recover","walk","shield"],"healUsed":57.5}
+ECONOMY {"bossEssence":2,"costs":[2,4,6,8,10],"upgrades":{"health":{"name":"Tough Kit","unit":"maximum health","step":2,"max":5},"damage":{"name":"Hard Hitter","unit":"normal attack damage","step":1,"max":5},"speed":{"name":"Quick Feet","unit":"movement speed","step":1,"max":5},"cooldown":{"name":"Ready Again","unit":"special cooldown reduction","step":1,"max":5},"healing":{"name":"Helping Paw","unit":"healing received","step":3,"max":5}},"rerollFirst":2,"starterCosts":[6,12,24,40,60]}
+MAX_ONE_HERO {"essence":150,"bosses":75,"perfectFiveBossJourneys":15}
+RELOAD {"savedKeys":[],"before":{"gold":77,"tier":1,"state":"playing"},"after":{"gold":0,"tier":0,"state":"menu"}}
