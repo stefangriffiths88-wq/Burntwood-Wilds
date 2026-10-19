@@ -1,17 +1,26 @@
-# Active update — 19 October 2026
+# 10.22.0 release checkpoint — 19 October 2026
 
-Owner: gameplay Work session. Branch `feature/sankeys-charms`, based on main `2241074d83a27a022cdbeb559fd3e126e042b492`. User explicitly authorised “Update”, then “Resume”. Target 10.22.0; **not released**.
+Owner: gameplay Work session, branch `feature/sankeys-charms`, PR82. User authorised “Update” and repeated “Resume”. Main baseline `2241074d83a27a022cdbeb559fd3e126e042b492`.
 
-Implemented candidate: close-up Immy/Harvey selector icons (approved full portraits unchanged); slot-preserving selected charm fusion and same-key swap; compact charm grids, inspect-before-buy stock; Ava counter at Sankeys with covering Evie; Mimi supplies and Stefan workshop together; Return to Sankeys signs/buttons; inspect-first compact upgrade cards and explicit confirmation; rugby guard distinct stag/harness and two-charge second phase; independent Bruce body blocking; shared face blink/wince/tail movement; original procedural music and separate saved audio sliders.
+## Implemented
+- Matching close-up gold-framed Immy and Harvey selector icons; approved full portraits unchanged.
+- Selected-key/rank charm merging with equipped-slot preservation, matching badges and effect preview; same-key rank swaps and bag conservation; three equipped icons first, compact bag and collapsed stats.
+- Separate Ava charm boutique (Evie covers Ava), Mimi supplies and Stefan/Jackson workshop together at Sankeys. Shop stock is inspect-first, explicit buy; starter charm unlocks move to Ava. Saved currencies, gating and all12 testing access retained.
+- Shaded object SVG charm art, rarity frames/rank badges; per-instance IDs avoid hidden-shop filter references hiding inventory art.
+- Compact horizontal ability tiles, matching icons, real short benefits, progress dots, shared detailed inspection and explicit confirmation. Existing reveal/input/reduced-motion and Mythic deferred choice retained.
+- Natural north return path/sign, objective and button explicitly Return to Sankeys.
+- Distinct heavy stag/gear car park guard, hoof scrape/charge tells, punishable recovery, double-charge second phase and kneeling/gold defeat/chest. Existing route, well and enemy-retention rules retained.
+- Independent swept Bruce body blocking with exact-overlap recovery; attacks still resolve before physical separation.
+- Subtle face blink/wince and tail idle movement, including custom hero faces. Original procedural instrumental sketch, shared effects bus, hit cue, independent saved volumes, gesture start and background suspension; no paid service.
 
-Validation checkpoint 11:39 UTC: main regression, build stats, reward balance, level reveal, reward-world, reward-flow, rugby-route, town, roster-workshop, monster-town and new sankeys-charms mechanics pass. New browser scenarios added for Ava inspect/buy/merge, inventory swap, explicit upgrade confirmation and audio. Starting charms moved to Ava’s UI, permanent workshop preserved.
+## Validation
+Full feature CI `39247780167`, source/test head `f51af3a7bdb667aa2189a3322c2ac09d0d30539c`: SUCCESS (both full regression and changed-phone review jobs). Runtime source is unchanged from `9373a51bf62abae154d1953f57b4b301e8a0aa1d`; later changes correct tests and document evidence.
 
-Earlier validation (superseded): build/syntax and monster-town, town and roster-workshop suites pass. Reward-flow test needs intentional ENTER text assertion updated. Rugby-route test has old shop position (345,335); update to current SHOPKEEPER coordinate and verify access. No browser or full regression evidence yet. No merge/deployment authorised as complete until all checks pass.
+Phone job118043837273 passed. Final artifact12184112654 contains227 screenshots. Inspected the changed roster, compact cards including320px/landscape, shop/bag objects and comparisons, three-counter hub, guard and north return sign. Earlier review caught/fixed real invisible SVG-art and absent optional Mythic-detail DOM errors. Old fixtures now use explicit upgrade confirmation/Ava services, actual card readiness instead of the removed frame animation, and freeze Bruce only while measuring the stationary idle arrow. Assertions remain for real gameplay, collision and input protections.
 
-Remaining: improve/verify charm object art visually, finish service separation/cover interactions and upgrade-touch safety, test collision/guard/audio, all-hero expressions, shop starter charm placement, update affected browser scripts for explicit upgrade confirmation/new shop coordinates, run required CI, inspect actual phone screenshots, fix failures, then merge and verify Pages exact bytes. Existing live remains 10.21.0. Cutscenes parked. All 12 heroes remain unlocked for testing; shops retain first-boss gating.
+Canonical/versioned HTML447975 bytes, SHA2561315d79b69b96ba07ee2144621a34f8c2ec88e42ccfa4633aed2c5dee6193441, blobee4dd65bd8cab4f0acb203fcf256fa09d7ce8794. Icons: Immy88706 bytes/blob410370a970363623609435b254498c696c42ba85; Harvey83004 bytes/blob2961980307eff5bebfaf8e3a233023fffea796f7. Historical HTML and all full portraits preserved.
 
-Next action: inspect candidate diff, targeted tests, add new interaction tests, upload remaining source/assets to this branch, open draft PR and execute CI. Generated files are built from source; preserve historical 10.21.0 unchanged.
+## Remaining release steps
+Merge only after final checks pass; verify main CI and Pages, then all28 public HTML/redirect/art files against tested bytes; update PROJECT_STATUS.md with exact evidence and playable10.22.0 URL. Live remains10.21.0 until deployment verification. Native Safari, aesthetics, music quality and human balance need user playtest. Scripted protected journeys do not establish human balance. Original screenshot's disabled merge cause was not conclusively reproduced; the reported equipped+bag matching-copy pattern is now explicitly covered through the new selection flow.
 
-Phone review: new Ava buy/merge/swap and compact upgrades passed at 390×844, 320×568, 844×390. Reviewed artifact 12183442767. Found and fixed invisible inventory object art: repeated SVG IDs referenced hidden shop filters. Each illustration now has instance-unique IDs, with an explicit browser assertion. Equipment moved above collapsed build stats. Old Harvey/Immy/general journeys now explicitly confirm upgrades and use Ava for charms. Awaiting final CI/phone rerun.
-
-Full source9373a51bf62abae154d1953f57b4b301e8a0aa1d passed mechanics, rewards/browser journeys, character phone checks, new shop/upgrade phones and Mythic error correction. Remaining legacy browser expectations: frame animation was deliberately removed (assert hidden and actual card readiness instead); stationary guidance fixture must freeze Bruce while measuring idle, since his new solid charge legitimately moves the player. Added a regression with a genuinely absent optional detail DOM node for Mythic commits (the older VM auto-created missing nodes). No runtime source changes in these final test corrections.
+Cutscenes remain parked. Town restoration/reward progression, Cow Queen/story, RUN/SDK and active-run recovery remain separate future scope. No new work is authorised by those suggestions alone.
