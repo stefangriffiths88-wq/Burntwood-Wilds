@@ -55,5 +55,6 @@
   "world/reward-flow.js",
   "ui/audio.js",
   "onboarding/first-journey.js",
+  "ui/journey-recovery.js",
   "controls.js"
 ]

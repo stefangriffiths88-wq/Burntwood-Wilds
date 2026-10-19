@@ -1,12 +1,12 @@
 // Pausing preserves every run object and timer; only a confirmed abandonment resets.
 let pauseResume=null;
-function openPause(){if(!['playing','hub','cleared','won','lost'].includes(state))return false;pauseResume=state;state='paused';stopMovement();$('pauseMenu').style.display='flex';$('abandonConfirm').style.display='none';$('pauseHeading').textContent=hub.finished?'JOURNEY COMPLETE':'RUN PAUSED';return true;}
+function openPause(){if(!['playing','hub','cleared','won','lost'].includes(state))return false;saveJourneyCheckpoint();pauseResume=state;state='paused';stopMovement();$('pauseMenu').style.display='flex';$('abandonConfirm').style.display='none';$('pauseHeading').textContent=hub.finished?'JOURNEY COMPLETE':'RUN PAUSED';updateRecoveryWarning();return true;}
 function resumeRun(){if(state!=='paused')return false;state=pauseResume;pauseResume=null;$('pauseMenu').style.display='none';return true;}
-function abandonRun(){if(state!=='paused')return false;hub.finished=true;pauseResume=null;$('pauseMenu').style.display='none';returnToMenu();return true;}
+function abandonRun(){if(state!=='paused'||!discardJourneyCheckpoint())return false;hub.finished=true;pauseResume=null;$('pauseMenu').style.display='none';returnToMenu();return true;}
 function stopMovement(){if(typeof run!=='undefined')run.guideIdle=0;stick.x=stick.y=0;if(p)p.vx=p.vy=0;Object.keys(keys).forEach(k=>delete keys[k]);if(typeof pid!=='undefined'){if(pid!==null)try{canvas.releasePointerCapture?.(pid);}catch{}pid=null;}$('joystick').style.opacity='0';$('nub').style.transform='';}
 function updateHealthOrb(){let max=stats().hp,hp=clamp(p.hp,0,max),pct=max?hp/max*100:0;$('healthOrb').style.setProperty('--health',pct+'%');$('healthOrb').setAttribute?.('aria-label',Math.round(hp)+' of '+Math.round(max)+' health');$('orbValue').textContent=Math.round(hp);$('orbMax').textContent='/ '+Math.round(max);$('xpRailFill').style.height=(run.stagePicks>=UPGRADES_PER_ARENA?100:clamp(run.earned/nextXP()*100,0,100))+'%';}
 
-function interruptionPause(){rewardArmed=null;try{tapStarts.clear();hubPointer=null;}catch{}if(['playing','hub','cleared'].includes(state))openPause();else stopMovement();}
+function interruptionPause(){saveJourneyCheckpoint();rewardArmed=null;try{tapStarts.clear();hubPointer=null;}catch{}if(['playing','hub','cleared'].includes(state))openPause();else stopMovement();}
 addEventListener('blur',interruptionPause);addEventListener('pagehide',interruptionPause);if(typeof document.addEventListener==='function')document.addEventListener('visibilitychange',()=>{if(document.hidden)interruptionPause();});
 
 function updateActionFills(){for(let [id,left,max]of [['charge',p.chargeCD,specialCooldown()],['dodge',p.dodgeCD,dodgeCooldown()]]){$(id).setAttribute?.('aria-label',(id==='charge'?PROFILES[selected].special:DEFENCE_NAMES[selected])+' · '+(left>0?Math.ceil(left)+' seconds':'ready'));$(id).style.setProperty('--ready-fill',clamp(1-left/Math.max(.01,max),0,1)*100+'%');}}
