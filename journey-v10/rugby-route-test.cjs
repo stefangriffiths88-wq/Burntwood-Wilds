@@ -48,3 +48,5 @@ console.log('PASS bounded car park waves beside elite, well cutoff without delet
 enter();Object.assign(t.player,t.RUGBY_ROUTE.guard);ev('time=180');tick();let pauseCount=t.enemies.length,pauseSpawn=ev('nextSpawn'),pauseTime=t.state.time;t.openPause();t.step(8);assert.equal(t.enemies.length,pauseCount);assert.equal(ev('nextSpawn'),pauseSpawn);assert.equal(t.state.time,pauseTime);t.resumeRun();
 // An attack already in flight is retained at the lane cutoff too.
 enter();ev('time=119.99;enemyShots=[{x:1800,y:1300,px:1800,py:1300,vx:0,vy:1,life:5,damage:4}]');t.step(.02);assert.equal(t.shots.length,1);assert(t.shots[0].life>0);assert.equal(t.run.earned,0);
+
+enter();assert(ev('rugbyTimerLabel()').startsWith('LANE'));Object.assign(t.player,t.RUGBY_ROUTE.guard);ev('time=180');tick();assert.equal(ev('rugbyTimerLabel()'),'CAR PARK GUARD');assert(els.timer.textContent.includes('CAR PARK'));
