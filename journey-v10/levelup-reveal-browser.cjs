@@ -15,7 +15,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   await page.waitForFunction(()=>parseFloat(getComputedStyle(document.querySelector('.goldRewardFrame rect')).strokeDashoffset)<.01);
   for(let card of await page.locator('.buildCard').all()){let b=await card.boundingBox();assert(b.y>=0&&b.y+b.height<=height);}
   await page.screenshot({path:`journey-v10/browser/levelup-ready-${height}.png`,animations:'disabled'});
-  await page.locator('.buildCard').first().tap();assert.equal(await page.evaluate(()=>__test.run.history.length),1);
+  await page.locator('.buildCard').first().tap();assert.equal(await page.evaluate(()=>__test.run.history.length),0);await page.locator('#confirmUpgrade').tap();assert.equal(await page.evaluate(()=>__test.run.history.length),1);
   assert.equal(await page.evaluate(()=>__test.state.state),'playing');assert.equal(await page.evaluate(()=>__test.levelReveal),null);
   assert.equal(await page.locator('#panel').evaluate(el=>el.classList.contains('levelReward')),false);
  }

@@ -36,7 +36,7 @@ for(let side of [-1,1]){let hx=side*(27+reach),hy=-1-side*swing;ellipse(hx,hy,6.
 ellipse(0,-15,17,15,'#8b8797');
 ctx.fillStyle='#777283';ctx.beginPath();ctx.moveTo(-14,-19);ctx.lineTo(-13,-32);ctx.lineTo(-3,-25);ctx.lineTo(4,-25);ctx.lineTo(12,-32);ctx.lineTo(14,-19);ctx.fill();
 ctx.fillStyle='#c6b1c5';ctx.beginPath();ctx.moveTo(-11,-26);ctx.lineTo(-11,-30);ctx.lineTo(-6,-25);ctx.moveTo(6,-25);ctx.lineTo(11,-30);ctx.lineTo(11,-26);ctx.fill();
-ellipse(-7,-12,4.1,5,'#a9d581');ellipse(7,-12,4.1,5,'#a9d581');ellipse(-6,-12,1.6,3,'#263b29');ellipse(8,-12,1.6,3,'#263b29');ellipse(-7,-14,1,1,'#fff');ellipse(6,-14,1,1,'#fff');
+if(heroBlink()){for(let side of [-1,1])line([[side*7-3,-12],[side*7,-11],[side*7+3,-12]],'#46394b',1.5);}else{ellipse(-7,-12,4.1,5,'#a9d581');ellipse(7,-12,4.1,5,'#a9d581');ellipse(-6,-12,1.6,3,'#263b29');ellipse(8,-12,1.6,3,'#263b29');ellipse(-7,-14,1,1,'#fff');ellipse(6,-14,1,1,'#fff');}
 ellipse(0,-5,8,5,'#d9cbd6');ellipse(0,-7,2,1.4,'#a27886');line([[-4,-3],[0,-1],[4,-3]],'#604b60',1.4);
 ctx.fillStyle='#755039';ctx.beginPath();ctx.moveTo(-15,-24);ctx.quadraticCurveTo(-8,-32,0,-29);ctx.quadraticCurveTo(11,-34,15,-23);ctx.quadraticCurveTo(6,-25,3,-22);ctx.quadraticCurveTo(-2,-20,-5,-23);ctx.quadraticCurveTo(-11,-21,-15,-24);ctx.fill();ellipse(-3,-27,8,2.8,'#8b6041');
 // Sideways black cap with green paw emblem. Brim projects to Zak's left.

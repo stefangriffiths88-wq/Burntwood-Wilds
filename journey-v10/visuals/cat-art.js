@@ -12,3 +12,5 @@ function catFace({fur,cream,eye,ink='#5a5548',wide=16,back=false}){
 }
 function catPaw(x,y,size,fur,pad='#cf9da8',angle=0){ctx.save();ctx.translate(x,y);ctx.rotate(angle);catOval(0,0,size,size*1.05,fur);ellipse(0,1,size*.43,size*.38,pad);for(let n of [-1,0,1])ellipse(n*size*.4,-size*.38,size*.16,size*.2,pad);ctx.restore();}
 function catVisualScale(x,y,sx,sy,draw){ctx.save();try{ctx.translate(x,y);ctx.scale(sx,sy);ctx.translate(-x,-y);draw();}finally{ctx.restore();}}
+
+function heroBlink(){return performance.now()%4300>4140||!!(p&&p.inv>0&&hitFlash>0);}

@@ -29,6 +29,8 @@ head=head.replace('<div id="blessingHud"></div>','<div id="blessingHud"></div><d
 head=head.replace('<div id="perkHud"></div>','<div id="perkHud"></div><div id="charmHud" aria-label="Equipped charms"></div><div id="charmBagCount"></div>')
 head=head.replace('<script>const PORTRAITS=',(r/'ui/town-panels.html').read_text()+'<script>const PORTRAITS=')
 head=head.replace('<div id="upgradeChoices"></div>','<div id="upgradeChoices"></div><div id="runSummary" style="display:none"></div>')
+# Starting charms belong with Ava, not the permanent character workshop.
+a=head.index('<details><summary>STARTING CHARM UNLOCKS</summary>');b=head.index('</details>',a)+len('</details>');starter_panel=head[a:b];head=head[:a]+head[b:];head=head.replace('<button id="shopClose">', '<div id="shopStarters">'+starter_panel+'<div id="charmStarterConfirm" style="display:none"><p id="charmStarterConfirmText"></p><button id="confirmCharmStarter">UNLOCK STARTING CHARM</button><button id="cancelCharmStarter">CANCEL</button></div></div><button id="shopClose">');
 head=head.replace('</style>',(r/'menu.css').read_text()+'</style>')
 manifest=json.loads((r/'manifest.json').read_text());code='\n'.join((r/f).read_text() for f in manifest)
 (r/'game.js').write_text(code)

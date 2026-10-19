@@ -7,7 +7,7 @@
       "choices": 30,
       "health": 106,
       "power": 18,
-      "tempo": 44.5
+      "tempo": 32.5
     },
     {
       "hero": "ava",
@@ -15,231 +15,231 @@
       "choices": 30,
       "health": 124,
       "power": 18,
-      "tempo": 25.5
+      "tempo": 32.5
     },
     {
       "hero": "ava",
       "strategy": "stat",
       "choices": 30,
-      "health": 205,
-      "power": 28,
-      "tempo": 7.5
+      "health": 194,
+      "power": 43,
+      "tempo": 25.5
     },
     {
       "hero": "jackson",
       "strategy": "weapon",
       "choices": 30,
-      "health": 154,
-      "power": 63,
-      "tempo": 60
+      "health": 169,
+      "power": 100,
+      "tempo": 35
     },
     {
       "hero": "jackson",
       "strategy": "special",
       "choices": 30,
-      "health": 148,
+      "health": 154,
       "power": 18,
-      "tempo": 12
+      "tempo": 50
     },
     {
       "hero": "jackson",
       "strategy": "stat",
       "choices": 30,
-      "health": 173,
-      "power": 140,
-      "tempo": 36
+      "health": 213,
+      "power": 70,
+      "tempo": 48
     },
     {
       "hero": "stef",
       "strategy": "weapon",
       "choices": 30,
-      "health": 180,
-      "power": 60,
-      "tempo": 100
+      "health": 173,
+      "power": 85,
+      "tempo": 25
     },
     {
       "hero": "stef",
       "strategy": "special",
       "choices": 30,
       "health": 155,
-      "power": 45,
-      "tempo": 18
+      "power": 37,
+      "tempo": 25
     },
     {
       "hero": "stef",
       "strategy": "stat",
       "choices": 30,
-      "health": 258,
-      "power": 47,
-      "tempo": 62
+      "health": 215,
+      "power": 89,
+      "tempo": 77
     },
     {
       "hero": "jodie",
       "strategy": "weapon",
       "choices": 30,
-      "health": 175,
-      "power": 100,
-      "tempo": 55
+      "health": 125,
+      "power": 98,
+      "tempo": 0
     },
     {
       "hero": "jodie",
       "strategy": "special",
       "choices": 30,
-      "health": 168,
-      "power": 95,
-      "tempo": 35
+      "health": 193,
+      "power": 70,
+      "tempo": 25
     },
     {
       "hero": "jodie",
       "strategy": "stat",
       "choices": 30,
-      "health": 161,
-      "power": 108,
-      "tempo": 30
+      "health": 205,
+      "power": 48,
+      "tempo": 51
     },
     {
       "hero": "evie",
       "strategy": "weapon",
       "choices": 30,
-      "health": 164,
-      "power": 128,
+      "health": 132,
+      "power": 108,
       "tempo": 7.5
     },
     {
       "hero": "evie",
       "strategy": "special",
       "choices": 30,
-      "health": 151,
-      "power": 92,
-      "tempo": 25.5
+      "health": 114,
+      "power": 78,
+      "tempo": 62.5
     },
     {
       "hero": "evie",
       "strategy": "stat",
       "choices": 30,
-      "health": 114,
-      "power": 102,
-      "tempo": 78.5
+      "health": 169,
+      "power": 117,
+      "tempo": 43.5
     },
     {
       "hero": "zak",
       "strategy": "weapon",
       "choices": 30,
       "health": 169,
-      "power": 18,
-      "tempo": 36
+      "power": 77,
+      "tempo": 0
     },
     {
       "hero": "zak",
       "strategy": "special",
       "choices": 30,
-      "health": 187,
+      "health": 169,
       "power": 18,
-      "tempo": 58
+      "tempo": 100
     },
     {
       "hero": "zak",
       "strategy": "stat",
       "choices": 30,
-      "health": 194,
-      "power": 168,
-      "tempo": 30
+      "health": 241,
+      "power": 48,
+      "tempo": 8
     },
     {
       "hero": "mimi",
       "strategy": "weapon",
       "choices": 30,
-      "health": 157,
-      "power": 18,
-      "tempo": 49
+      "health": 114,
+      "power": 48,
+      "tempo": 87
     },
     {
       "hero": "mimi",
       "strategy": "special",
       "choices": 30,
       "health": 114,
-      "power": 110,
-      "tempo": 0
+      "power": 103,
+      "tempo": 50
     },
     {
       "hero": "mimi",
       "strategy": "stat",
       "choices": 30,
-      "health": 195,
-      "power": 40,
-      "tempo": 12
+      "health": 132,
+      "power": 48,
+      "tempo": 99
     },
     {
       "hero": "joseph",
       "strategy": "weapon",
       "choices": 30,
       "health": 99.5,
-      "power": 38.5,
-      "tempo": 59
+      "power": 116.5,
+      "tempo": 9
     },
     {
       "hero": "joseph",
       "strategy": "special",
       "choices": 30,
-      "health": 142.5,
-      "power": 46.5,
-      "tempo": 34
+      "health": 117.5,
+      "power": 31.5,
+      "tempo": 9
     },
     {
       "hero": "joseph",
       "strategy": "stat",
       "choices": 30,
-      "health": 133.5,
-      "power": 16.5,
-      "tempo": 60
+      "health": 135.5,
+      "power": 75.5,
+      "tempo": 71
     },
     {
       "hero": "tom",
       "strategy": "weapon",
       "choices": 30,
-      "health": 215,
-      "power": 48,
+      "health": 220,
+      "power": 18,
+      "tempo": 12
+    },
+    {
+      "hero": "tom",
+      "strategy": "special",
+      "choices": 30,
+      "health": 221,
+      "power": 18,
       "tempo": 0
     },
     {
       "hero": "tom",
-      "strategy": "special",
-      "choices": 30,
-      "health": 228,
-      "power": 33,
-      "tempo": 80
-    },
-    {
-      "hero": "tom",
       "strategy": "stat",
       "choices": 30,
-      "health": 228,
-      "power": 93,
-      "tempo": 51
+      "health": 205,
+      "power": 100,
+      "tempo": 67
     },
     {
       "hero": "havannah",
       "strategy": "weapon",
       "choices": 30,
-      "health": 209,
-      "power": 16.5,
-      "tempo": 6
+      "health": 107,
+      "power": 71.5,
+      "tempo": 31
     },
     {
       "hero": "havannah",
       "strategy": "special",
       "choices": 30,
-      "health": 99,
-      "power": 46.5,
-      "tempo": 56
+      "health": 124,
+      "power": 16.5,
+      "tempo": 99
     },
     {
       "hero": "havannah",
       "strategy": "stat",
       "choices": 30,
-      "health": 149,
-      "power": 66.5,
-      "tempo": 49
+      "health": 203,
+      "power": 102.5,
+      "tempo": 39
     }
   ]
 }
