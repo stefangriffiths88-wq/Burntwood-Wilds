@@ -50,3 +50,6 @@ enter();Object.assign(t.player,t.RUGBY_ROUTE.guard);ev('time=180');tick();let pa
 enter();ev('time=119.99;enemyShots=[{x:1800,y:1300,px:1800,py:1300,vx:0,vy:1,life:5,damage:4}]');t.step(.02);assert.equal(t.shots.length,1);assert(t.shots[0].life>0);assert.equal(t.run.earned,0);
 
 enter();assert(ev('rugbyTimerLabel()').startsWith('LANE'));Object.assign(t.player,t.RUGBY_ROUTE.guard);ev('time=180');tick();assert.equal(ev('rugbyTimerLabel()'),'CAR PARK GUARD');assert(els.timer.textContent.includes('CAR PARK'));
+
+// Starting Bruce confines the player, but never teleports lane survivors onto the pitch.
+enter();t.spawn('swarm',{x:1800,y:1600});let distant=t.enemies.at(-1);t.run.heroicRewarded=true;ev('time=130');Object.assign(t.player,{x:760,y:5260});t.spawn('boss',t.RUGBY_ROUTE.bruce);tick();assert(distant.hp>0&&distant.x>1600&&distant.y<2000,'distant survivors keep their physical location');assert(t.rugbyRoutePosition(1800,1600).x<1300,'player remains inside Bruce pitch');
