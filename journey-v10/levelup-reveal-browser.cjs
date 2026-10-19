@@ -12,7 +12,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
   await page.locator('#panel .card').waitFor({state:'visible'});
   assert.equal(await page.evaluate(()=>__test.state.time),before.time);assert.equal(await page.evaluate(()=>__test.run.level),before.level);
   await page.screenshot({path:`journey-v10/browser/levelup-gold-building-${height}.png`});
-  await page.waitForFunction(()=>parseFloat(getComputedStyle(document.querySelector('.goldRewardFrame rect')).strokeDashoffset)<.01);
+  assert.equal(await page.locator('.goldRewardFrame').evaluate(el=>getComputedStyle(el).display),'none','removed outer frame stays hidden');await page.waitForFunction(()=>levelRewardProgress()>=1&&[...document.querySelectorAll('.buildCard')].every(el=>parseFloat(getComputedStyle(el).opacity)>.99));
   for(let card of await page.locator('.buildCard').all()){let b=await card.boundingBox();assert(b.y>=0&&b.y+b.height<=height);}
   await page.screenshot({path:`journey-v10/browser/levelup-ready-${height}.png`,animations:'disabled'});
   await page.locator('.buildCard').first().tap();assert.equal(await page.evaluate(()=>__test.run.history.length),0);await page.locator('#confirmUpgrade').tap();assert.equal(await page.evaluate(()=>__test.run.history.length),1);
