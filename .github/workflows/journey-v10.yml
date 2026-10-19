@@ -111,9 +111,11 @@ jobs:
       - run: node journey-v10/rugby-route-test.cjs
       - run: node journey-v10/monster-town-test.cjs
       - run: node journey-v10/sankeys-charms-test.cjs
+      - run: node journey-v10/first-journey-test.cjs
       - run: npm install --no-save playwright@1.48.2
       - run: |
           python3 -m http.server 8765 >/tmp/monster-server.log 2>&1 &
+          node journey-v10/first-journey-browser.cjs
           node journey-v10/sankeys-charms-browser.cjs
           node journey-v10/upgrade-layout-browser.cjs
           node journey-v10/harvey-browser.cjs

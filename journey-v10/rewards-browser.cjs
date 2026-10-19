@@ -4,7 +4,7 @@ const {chromium}=require('playwright'),assert=require('node:assert/strict'),fs=r
  let browser=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
  let page=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true}),errors=[];
  await page.emulateMedia({reducedMotion:'reduce'});page.on('pageerror',e=>errors.push(e.message));
- await page.goto('http://127.0.0.1:8765/burntwood-journey-v10.html');await page.waitForFunction(()=>window.__test);
+ await page.goto('http://127.0.0.1:8765/burntwood-journey-v10.html');await page.waitForFunction(()=>window.__test);await page.evaluate(()=>{progress.introComplete=true;progress.rugbyGuideComplete=true;});
  for(let height of [844,650]){
   await page.setViewportSize({width:390,height});
   await page.evaluate(()=>{let t=__test;t.menu();t.select('evie');t.startJourney();t.enterCombatArena('rugby');t.clear();t.run.stagePicks=2;t.setRolls([.30,0]);t.setXP(999);});
