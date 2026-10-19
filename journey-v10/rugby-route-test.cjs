@@ -43,3 +43,6 @@ enter('harvey');Object.assign(t.player,t.RUGBY_ROUTE.guard);ev('time=61');tick()
 // The camera exposes more world without altering movement/ranges.
 assert(Math.abs(ev('scale')-(390/450*.85))<1e-8);
 console.log('PASS bounded car park waves beside elite, well cutoff without deletion/rewards, safe drink, backtracking and pitch locks, 15% wider camera');
+
+// Pausing inside the car park cannot advance the reinforcement clock or population.
+enter();Object.assign(t.player,t.RUGBY_ROUTE.guard);ev('time=180');tick();let pauseCount=t.enemies.length,pauseSpawn=ev('nextSpawn'),pauseTime=t.state.time;t.openPause();t.step(8);assert.equal(t.enemies.length,pauseCount);assert.equal(ev('nextSpawn'),pauseSpawn);assert.equal(t.state.time,pauseTime);t.resumeRun();
