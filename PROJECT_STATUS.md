@@ -13,8 +13,6 @@ Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v
 - Known presentation issue: introduction special button inherits visible TALK text from town, while special artwork/accessibility label and ability action remain correct. Targeted followup needed; do not call it resolved. Native iPhone, comprehension/pace and human balance need Stef's playtest.
 - RUN import/SDK/player storage, active-run recovery, town restoration/progression and Cow Queen/story remain separate future work. Cutscenes/paid generation remain parked. No new gameplay scope authorised automatically.
 
-# Burntwood Wilds — project status
-
 ## Previous release: 10.22.0 — Sankeys, charms and clearer upgrades
 19 October 2026. User authorised Update and Resume. PR82 merged at `59cccb981d5fcf5b3ece9e0b75bc3a127c970016`.
 
