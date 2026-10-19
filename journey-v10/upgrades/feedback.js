@@ -23,7 +23,7 @@ function rewardCardLabel(offer){if(offer.path==='evolution')return 'MYTHIC · '+
 }
 function rewardCardHint(offer){
  if(!offer.total)return '';
- return '<em class="rewardHint">'+(offer.rank===offer.total?'COMPLETE THIS ABILITY':offer.total-offer.rank+' further steps to master')+'</em>';
+ return '<em class="rewardHint">'+(offer.rank===offer.total?'FINAL UPGRADE':offer.total-offer.rank+' further steps to master')+'</em>';
 }
 function clearRewardNotice(){endLevelReward();endCharmChest();let el=$('rewardToast');el.classList.remove('rewardShow');el.style.display='none';}
 function rewardNotice(title,detail,color){
