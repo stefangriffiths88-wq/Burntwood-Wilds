@@ -26,7 +26,7 @@ assert(ev('Math.abs(rugbyLaneX(2400)-rugbyLaneX(4200))')>10);
 // Levels require collected XP: waiting, kills and time alone never award a choice.
 for(let area of ['rugby','chasewater','sankeys','quarry','park']){t.menu();t.startJourney();t.enterArena(area);t.clear();t.player.inv=999;t.player.attack=999;ev('time=130');t.step(.01);assert.equal(t.state.state,'playing');assert.equal(t.run.earned,0);t.spawn('swarm',{x:t.player.x+250,y:t.player.y});t.damageEnemy(t.enemies.at(-1),999999,0,0);assert.equal(t.run.earned,0,'kill leaves collectible XP, not an automatic level');t.clear();ev('gems=[{x:p.x,y:p.y,value:nextXP(),phase:0}]');t.step(.01);assert.equal(t.state.state,'upgrade');t.choose(0);assert.equal(t.state.state,'playing');t.step(.01);assert.equal(t.state.state,'playing');}
 // Town arrow is removed while scenery, signed paths and shop remain interactive.
-t.enterHub();ev('run.guideIdle=10');t.draw();assert.equal(ev('SHOPKEEPER.y'),280);assert.equal(ev('TOWN_SIDE_STREETS.length'),5);t.player.x=345;t.player.y=335;assert(ev('shopkeeperNear()'));assert(ev('interactShopkeeper()'));assert.equal(t.state.state,'dialogue');
+t.enterHub();ev('run.guideIdle=10');t.draw();assert.equal(ev('SHOPKEEPER.y'),280);assert.equal(ev('TOWN_SIDE_STREETS.length'),5);t.player.x=ev("SHOPKEEPER.x");t.player.y=335;assert(ev('shopkeeperNear()'));assert(ev('interactShopkeeper()'));assert.equal(t.state.state,'dialogue');
 console.log('PASS forward lane spawns, winding collision, non-blocking captions, spaced upgrades and inset shop interaction');
 
 for(let n of ev('TOWN_NODES'))for(let b of ev('TOWN_BLOCKS'))assert(!(n.x>b.x&&n.x<b.x+b.w&&n.y>b.y&&n.y<b.y+b.h),'town road junction stays outside building');

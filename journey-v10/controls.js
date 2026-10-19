@@ -28,3 +28,5 @@ window.__test={get harvey(){return harvey;},resetHarvey,harveyPortalTarget,harve
 $('rugbyTalkContinue').onclick=closeRugbyTalk;
 
 for(let key of ['music','effects'])$('audio'+key).oninput=e=>setAudioVolume(key,e.target.value);applyAudioSettings();
+
+$('confirmCharmStarter').onclick=()=>{let item=pendingPurchase;pendingPurchase=null;$('charmStarterConfirm').style.display='none';if(item?.kind==='starter')confirmStarterUnlock(item);};$('cancelCharmStarter').onclick=()=>{pendingPurchase=null;$('charmStarterConfirm').style.display='none';};
