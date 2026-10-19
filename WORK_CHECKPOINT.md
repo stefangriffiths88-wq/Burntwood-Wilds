@@ -1,3 +1,11 @@
+# Final10.21.0 candidate — full gate pending
+
+PR81 source f658677a28e271869819da6b194482bd5931c38c; required full feature CI39240511524 in progress. Runtime426876 bytes SHA25625d7c4b2199949905bb69a62a39a21fd725969aa39d1baa9f2d52dc7cdef6af7, blob74a9c0702fd0569a310699d228c75556a2bb90bf. Native phone/art/touch/navigation suite passed at earlier same-presentation947ebe2/CI39239956262/artifact12180563505; final screenshots still to inspect at current source. All12/four-viewport horizontal cards fit, matching action icons; long names resized to avoid isolated last letters. Production touch, old-touch rejection, actual Rugby navigation/elite/charm/well/Bruce and existing Harvey/Immy exit tests retained.
+
+Final corrections: HUD now says CAR PARK GUARD and follows actual lane/well timing. Enemies retain positions when Bruce starts: player remains pitch-confined, enemy route projection uses full physical route so distant survivors never warp onto pitch. Focused all12 route and reward/victory tests pass. Unit assertions include projectile retention at120s, ordinary movement/rewards/no free XP, cap12, paused spawn clock, well cutoff/safety/backtracking and pre-Bruce locks.
+
+Earlier phone failures were fixture expectations: supplied999XP correctly opened another upgrade after tap (now supply one nextXP); wave policy correctly returned false at cap (now assert policy equals live count<12 rather than unconditional true). No gameplay assertions removed. Superseded intermediate runs cancelled for source/fixture refinements; wait full39240511524, inspect final artifact, then exact-head merge/main/Pages/28-file public comparison and close PROJECT_STATUS. No more source changes unless an actual failure. All12 heroes testing unlock preserved; no cutscene/town-progression expansion. Current live10.20.0 until verified publication.
+
 # Active approved10.21.0 — Rugby encounter and horizontal upgrades
 
 19 October2026. User authorised Implement the update after approving car park enemies/elite until well, survivors remaining after lane timer, 15% wider camera and three side-by-side upgrade cards with matching attack/special/defence icons. All12 heroes remain unlocked for testing; no cutscene/progression redesign in this update. Branch feature/rugby-flow from ec922a4. No competing gameplay PR at start.
