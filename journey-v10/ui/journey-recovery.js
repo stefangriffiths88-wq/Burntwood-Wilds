@@ -25,7 +25,7 @@ function validJourneySave(value){
  }
  return journeyClone(value);
 }
-function loadJourneyCheckpoint(){try{let raw=localStorage.getItem(JOURNEY_SAVE_KEY);if(raw){if(raw.length>500000)throw Error('Checkpoint is too large.');savedJourney=validJourneySave(JSON.parse(raw));}}catch(e){journeyRecoveryBlocked=true;journeySaveNotice='The unfinished journey could not be loaded. Permanent progress is untouched.';}renderJourneyRecovery();}
+function loadJourneyCheckpoint(){let raw;try{raw=localStorage.getItem(JOURNEY_SAVE_KEY);}catch(e){journeySaveNotice='Journey saving is unavailable here. You can still play while this game stays open.';renderJourneyRecovery();return;}try{if(raw){if(raw.length>500000)throw Error('Checkpoint is too large.');savedJourney=validJourneySave(JSON.parse(raw));}}catch(e){journeyRecoveryBlocked=true;journeySaveNotice='The unfinished journey could not be loaded. Permanent progress is untouched.';}renderJourneyRecovery();}
 function saveJourneyCheckpoint(mode){
  if(restoringJourney||rosterTestAccess||run.legacyCombat||hub.finished||!p)return false;
  if(journeyRecoveryBlocked)return false;
