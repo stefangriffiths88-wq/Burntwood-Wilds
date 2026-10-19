@@ -1,6 +1,21 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.22.0 — Sankeys, charms and clearer upgrades
+## Current release: 10.23.0 — first journey and Rugby guidance
+19 October2026. Stef authorised Update/Resume and transferred completion to this session. PR83 merged at24529690ae142c2e2db018a7efd6526b8363c78e.
+
+Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.23.0.html?v=10230
+
+- First-play Mimi road introduction uses real attacks, two encounters, physical earned XP and one upgrade carried into town. Saved completion/skip, existing-save migration and optional replay avoid forced repetition. Gold road markers guide the first Rugby rescue; first return explains gold versus permanent essence and points to the workshop. All12 testing heroes remain available.
+- Mythic evolutions use three horizontal illustrated inspect/confirm tiles without changing effects. Final phone review caught and fixed a previous celebration overlay obscuring subsequent evolution choices.
+- Final feature CI39288811376 passed atb17c171596e801e664c815a1b2794d5771f04b56; generated headc84f986b4bcff46ebf7815cd5692215f58add1a3 reproduces tested runtime. Main CI39290473769 passed, including long charm journeys. Pages39290572699 succeeded at9f43b70244067b7361c1311e4fdaed4c3336b609. That followup also fixes latest.html previously pointing to10.21.
+- Local all12 intro/save and exact evolution/defence tests passed. Reviewed18 first-journey/Mythic screenshots, then nine corrected Mythic views from artifact12203448210 at390x844,320x568,844x390. CI production phone flows passed. Local browser download failed; no local browser execution claimed. Scripted protected journeys are integration evidence, not12-hero human balance acceptance.
+- All28 public game/redirect/art files verified against expected bytes: canonical/versioned HTML, preserved10.22.0, latest redirect,12 portraits and12 icons. Canonical/versioned HTML463912 bytes/SHA256 a5081bf69e7751aa15459342b07c6a8f58539f7255f2902c027f09e8553f0d47. Live browser confirmed10.23 selector and opening Mimi road lesson.
+- Known presentation issue: introduction special button inherits visible TALK text from town, while special artwork/accessibility label and ability action remain correct. Targeted followup needed; do not call it resolved. Native iPhone, comprehension/pace and human balance need Stef's playtest.
+- RUN import/SDK/player storage, active-run recovery, town restoration/progression and Cow Queen/story remain separate future work. Cutscenes/paid generation remain parked. No new gameplay scope authorised automatically.
+
+# Burntwood Wilds — project status
+
+## Previous release: 10.22.0 — Sankeys, charms and clearer upgrades
 19 October 2026. User authorised Update and Resume. PR82 merged at `59cccb981d5fcf5b3ece9e0b75bc3a127c970016`.
 
 Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.22.0.html?v=10220
