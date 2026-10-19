@@ -1,3 +1,9 @@
+# Release gate update —10.21.0
+
+Current source641955330f5c45f94f3f753a1a82fec571a9b787, full required CI39240946199. Runtime426869 bytes SHA2569a26612b0320c25a99b0a92c1b9617b8d1f99926f269f51e97bc6d417bc37c5a, Git blobdd913060c0fa5562f453bd606f1d306fdfaa6c58. Supersedes earlier candidate hash below (one harmless CSS blank line reconciled with CI and final label). Prior39240511524 passed all focused/new phone checks but existing rewards-browser caught missing FINAL UPGRADE after compact label change; restored that cue in rewardCardHint instead of deleting assertion. Local reveal passes; current full gate running. Prior final phone artifact12180707791 reviewed for CAR PARK GUARD HUD, survivors around unsafe well, horizontal cards; final refreshed artifact must still be reviewed. Scripted invulnerable/no-attack route intentionally accumulates enemies and is not balance evidence.
+
+Next action remains wait green full gate, exact-head merge, main/Pages/public28-file verification, close status/checkpoint. User said Resume update; authorised task continues, not new scope.
+
 # Final10.21.0 candidate — full gate pending
 
 PR81 source f658677a28e271869819da6b194482bd5931c38c; required full feature CI39240511524 in progress. Runtime426876 bytes SHA25625d7c4b2199949905bb69a62a39a21fd725969aa39d1baa9f2d52dc7cdef6af7, blob74a9c0702fd0569a310699d228c75556a2bb90bf. Native phone/art/touch/navigation suite passed at earlier same-presentation947ebe2/CI39239956262/artifact12180563505; final screenshots still to inspect at current source. All12/four-viewport horizontal cards fit, matching action icons; long names resized to avoid isolated last letters. Production touch, old-touch rejection, actual Rugby navigation/elite/charm/well/Bruce and existing Harvey/Immy exit tests retained.
