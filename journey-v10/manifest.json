@@ -54,5 +54,6 @@
   "arenas/rugby-route-art.js",
   "world/reward-flow.js",
   "ui/audio.js",
+  "onboarding/first-journey.js",
   "controls.js"
 ]

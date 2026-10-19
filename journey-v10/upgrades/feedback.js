@@ -1,7 +1,7 @@
 // Reward presentation. The existing upgrade state owns the safe combat pause.
 const LEVEL_REVEAL_MS=550;
 let levelReveal=null;
-function endLevelReward(){levelReveal=null;$('panel').classList.remove('levelReward','instantReveal');}
+function endLevelReward(){levelReveal=null;$('panel').classList.remove('levelReward','instantReveal','mythicReward','evolutionTiles');}
 function beginLevelReward(instant=false){
  instant=instant||(typeof window.matchMedia==='function'&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
  let panel=$('panel');levelReveal=instant?null:{started:performance.now()};

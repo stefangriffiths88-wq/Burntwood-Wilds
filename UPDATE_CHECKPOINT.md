@@ -1,26 +1,14 @@
-# 10.22.0 release checkpoint — 19 October 2026
+# Active 10.23 update — first journey and Mythic choices
 
-Owner: gameplay Work session, branch `feature/sankeys-charms`, PR82. User authorised “Update” and repeated “Resume”. Main baseline `2241074d83a27a022cdbeb559fd3e126e042b492`.
+19 October 2026. Explicit Update authorizes once-per-save Mimi road introduction and Rugby-first guidance, plus horizontal Mythic inspect/confirm tiles. Branch feature/first-journey, draft PR83. Live remains 10.22.0; do not merge until required CI and phone screenshots pass.
 
-## Implemented
-- Matching close-up gold-framed Immy and Harvey selector icons; approved full portraits unchanged.
-- Selected-key/rank charm merging with equipped-slot preservation, matching badges and effect preview; same-key rank swaps and bag conservation; three equipped icons first, compact bag and collapsed stats.
-- Separate Ava charm boutique (Evie covers Ava), Mimi supplies and Stefan/Jackson workshop together at Sankeys. Shop stock is inspect-first, explicit buy; starter charm unlocks move to Ava. Saved currencies, gating and all12 testing access retained.
-- Shaded object SVG charm art, rarity frames/rank badges; per-instance IDs avoid hidden-shop filter references hiding inventory art.
-- Compact horizontal ability tiles, matching icons, real short benefits, progress dots, shared detailed inspection and explicit confirmation. Existing reveal/input/reduced-motion and Mythic deferred choice retained.
-- Natural north return path/sign, objective and button explicitly Return to Sankeys.
-- Distinct heavy stag/gear car park guard, hoof scrape/charge tells, punishable recovery, double-charge second phase and kneeling/gold defeat/chest. Existing route, well and enemy-retention rules retained.
-- Independent swept Bruce body blocking with exact-overlap recovery; attacks still resolve before physical separation.
-- Subtle face blink/wince and tail idle movement, including custom hero faces. Original procedural instrumental sketch, shared effects bus, hit cue, independent saved volumes, gesture start and background suspension; no paid service.
+Implemented: real attacks and physical earned XP through two encounters, one actual upgrade carried into town; skip/replay, legacy saves skip intro, new saves remember completion; contextual objectives target remaining enemies/XP/exit; gold road markers to Rugby then workshop currency guidance. All12 testing characters and first-boss shops preserved. Mythic three horizontal illustrated choices use explicit confirmation, unchanged effects. Stale start clicks rejected; post-defeat new journeys retain first Rugby guidance without recurring intro.
 
-## Validation
-Full feature CI `39247780167`, source/test head `f51af3a7bdb667aa2189a3322c2ac09d0d30539c`: SUCCESS (both full regression and changed-phone review jobs). Runtime source is unchanged from `9373a51bf62abae154d1953f57b4b301e8a0aa1d`; later changes correct tests and document evidence.
+Local build/syntax and first-journey suite pass all12 heroes, carry, migration, skip/reload/replay, storage failure, pause, damage floor, idle no timed XP/rewards and guided restart. Production phone tests authored but not yet executed. Previous full CI39284358004 and39285084842 queued externally as of latest check. Remote generated commit e30029dc2939b79f200ce89233c44344d6ec9588 descends from a23e6da0e4f5af7fed123c0f3032bb5cafe9aa2c. This commit adds final source fixes and triggers final full CI. Local worktree wilds-intro; generated outputs rebuilt locally but CI owns remote generation.
 
-Phone job118043837273 passed. Final artifact12184112654 contains227 screenshots. Inspected the changed roster, compact cards including320px/landscape, shop/bag objects and comparisons, three-counter hub, guard and north return sign. Earlier review caught/fixed real invisible SVG-art and absent optional Mythic-detail DOM errors. Old fixtures now use explicit upgrade confirmation/Ava services, actual card readiness instead of the removed frame animation, and freeze Bruce only while measuring the stationary idle arrow. Assertions remain for real gameplay, collision and input protections.
+Next: inspect latest branch CI/jobs, fix actual failures, download/review portrait/short/landscape artifacts, merge only green complete work, verify main CI/Pages/public bytes and record PROJECT_STATUS. Native Safari and human comprehension acceptance remain pending. Target short45–60s introduction, no forced timer; no paid cutscene work.
 
-Canonical/versioned HTML447975 bytes, SHA2561315d79b69b96ba07ee2144621a34f8c2ec88e42ccfa4633aed2c5dee6193441, blobee4dd65bd8cab4f0acb203fcf256fa09d7ce8794. Icons: Immy88706 bytes/blob410370a970363623609435b254498c696c42ba85; Harvey83004 bytes/blob2961980307eff5bebfaf8e3a233023fffea796f7. Historical HTML and all full portraits preserved.
+## Resume checkpoint — 19 October 2026
+Stef transferred completion to this chat. Full CI39286034767 passed at cd963a8a21ec29b6621b3b24bd6447f27a2b535d; generated head91d9280870d4f26f3cdf54dc411281e3b7402620 rebuilds exactly. Reviewed all18 first-journey/Mythic screenshots from artifact12204700105 at390x844,320x568,844x390. Found previous Mythic celebration overlay covering subsequent choice panels in rapid successive choices; clear it when opening an evolution and assert it is hidden in the existing browser flow. Local all12 intro/save and exact evolution/defence tests passed. Remaining: browser regression/new CI, inspect corrected screenshots, merge, main/Pages/public verification. No RUN upload or new gameplay scope.
 
-## Released and verified
-PR82 merged at59cccb981d5fcf5b3ece9e0b75bc3a127c970016. Main CI39248629129 and Pages39248628969 passed. All28 public HTML/redirect/art files match tested bytes; canonical447975 bytes/SHA2561315d79b69b96ba07ee2144621a34f8c2ec88e42ccfa4633aed2c5dee6193441. Live: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.22.0.html?v=10220 . PROJECT_STATUS.md is the release record. Native iPhone/user aesthetic, audio and human balance acceptance pending.
-
-Next: user playtest. Cutscenes parked; town reward progression/restoration, Cow Queen/story, RUN/SDK and active-run recovery remain separate future work. No further gameplay changes authorised by those suggestions alone.
+Final review: CI39288811376 changed-review passed. Corrected artifact12203448210 reviewed: all nine Mythic views at390x844,320x568,844x390 show clear choices, detail and confirmation without the prior overlay. Other mechanics/browser checks passed; final long charm simulation still running. Generated head c84f986b4bcff46ebf7815cd5692215f58add1a3; canonical/versioned HTML463912 bytes, SHA256 a5081bf69e7751aa15459342b07c6a8f58539f7255f2902c027f09e8553f0d47. Local browser download failed; phone execution evidence is CI, not local. Next remains full CI completion then merge/main/Pages/public verification.
