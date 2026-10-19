@@ -188,3 +188,23 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 
 /* Keep long names whole on narrow cards rather than splitting their last letter. */
 #panel.levelReward button.buildCard b{font-size:clamp(12px,3.4vw,17px);overflow-wrap:normal;word-break:normal;hyphens:auto}
+
+/* Compact inspect-first rewards and object grids. */
+#panel.levelReward .card{border:0;border-radius:22px;background:linear-gradient(145deg,#203c30,#10261e);box-shadow:0 20px 70px #000b;padding:22px 14px;max-width:680px}
+#panel.levelReward .goldRewardFrame{display:none}
+#panel.levelReward button.buildCard{min-height:172px;gap:8px;padding:14px 6px;justify-content:flex-start;border:1px solid #a4a99466;border-radius:15px;background:linear-gradient(155deg,#345344,#192e25);box-shadow:inset 0 1px #ffffff22;overflow-wrap:normal;hyphens:none}
+#panel.levelReward button.buildCard[data-path=special]{background:linear-gradient(155deg,#514363,#272235)}
+#panel.levelReward button.buildCard[data-path=dodge]{background:linear-gradient(155deg,#315b68,#1c303d)}
+#panel.levelReward button.buildCard[data-path=weapon]{background:linear-gradient(155deg,#715239,#382c21)}
+#panel.levelReward button.buildCard.selected{border:2px solid #ffe09a;box-shadow:0 0 16px #f2ca7355}
+#panel.levelReward button.buildCard>.uiGlyph{width:54px;height:54px;min-height:54px;color:#f8dda0;background:#152c2488;border-radius:50%;padding:7px}
+#panel.levelReward button.buildCard b{font-size:clamp(12px,3.5vw,17px);line-height:1.25;hyphens:none;overflow-wrap:normal;word-break:normal}
+#panel.levelReward button.buildCard span{font-size:9px;letter-spacing:.8px;color:#e9d6ab}
+.upgradeDots{display:flex;gap:4px;margin-top:auto}.upgradeDots i{width:7px;height:7px;border-radius:50%;background:#718474}.upgradeDots i.filled{background:#f1cf86;box-shadow:0 0 4px #edca78}
+#upgradeDetail{margin-top:16px;min-height:115px;padding:14px;border-radius:14px;background:#0c201aaa;text-align:left;color:#f3e7cb}#upgradeDetail p{font-size:13px;line-height:1.45;margin:7px 0}#upgradeDetail small{font-size:10px;color:#d5bd85}#confirmUpgrade{display:block;width:100%;margin-top:13px;padding:13px;font-size:13px}
+.charmGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px}.equippedGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.charmTile{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;min-width:0;aspect-ratio:1;padding:4px;border:1px solid var(--rarity)!important;border-radius:16px;background:radial-gradient(at 35% 20%,#49614e,#142d24 80%);color:#f6dfac;box-shadow:inset 0 1px #ffffff44,0 4px 8px #0003}
+.charmTile .charmArtwork{width:100%;height:auto;max-width:100px;float:none;margin:0}.charmTile span{font-size:10px}.charmTile i{position:absolute;bottom:3px;font-size:8px;background:#143d2f;padding:2px 4px;border-radius:4px;font-style:normal;color:#ffe09a}.charmTile .charmRank{position:absolute;right:5px;top:3px;font:bold 12px Georgia;text-shadow:0 1px #000}.emptyCharm{border:1px dashed #c8bf9577;border-radius:15px;display:grid;place-items:center;color:#afbcaa;font-size:11px;aspect-ratio:1}.charmInspection{padding:13px;margin-top:12px;border-radius:13px;background:#142e25}.charmInspection h3{font-size:16px}.charmInspection p{font-size:13px;line-height:1.45}.charmInspection small{display:block;font-size:10px;line-height:1.5;color:#c2cbb6}.charmInspection button{display:block;width:100%;font-size:12px;padding:10px;margin:7px 0}#stockDetail{padding:15px 4px;font-size:13px}#stockDetail h3{font-size:17px}
+@media(max-height:500px){#panel.levelReward .card{padding:10px}#panel.levelReward button.buildCard{min-height:110px;padding:6px}#panel.levelReward button.buildCard>.uiGlyph{width:35px;height:35px;min-height:35px}#upgradeDetail{min-height:0;padding:8px;margin-top:8px}#upgradeDetail p{margin:4px 0}#confirmUpgrade{margin-top:6px;padding:8px}}
+
+.audioSettings{border:1px solid #a7b48d66;border-radius:12px;margin:14px 0}.audioSettings label{display:flex;align-items:center;justify-content:space-between;padding:8px;font-size:13px}.audioSettings input{width:65%;accent-color:#e8c778}

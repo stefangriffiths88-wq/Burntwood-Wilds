@@ -4,7 +4,7 @@ const STARTER_HEROES=['ava','jackson','mimi'],HERO_IDS=['ava','jackson','stef','
 let TEST_ROSTER_UNLOCK=true; // Temporary public playtest: all characters selectable; shops still require a boss.
 let rosterTestAccess=false;
 function heroUnlocked(key){return HERO_IDS.includes(key)&&(TEST_ROSTER_UNLOCK||rosterTestAccess||STARTER_HEROES.includes(key)||progress.firstBossDefeated);}
-function serviceOpen(owner){return !!(rosterTestAccess||progress.firstBossDefeated)&&heroUnlocked(owner)&&heroUnlocked(owner==='stef'?workshopKeeperKey():shopkeeperKey());}
+function serviceOpen(owner){return !!(rosterTestAccess||progress.firstBossDefeated)&&heroUnlocked(owner)&&heroUnlocked(owner==='stef'?workshopKeeperKey():owner==='ava'?charmShopKeeper():shopkeeperKey());}
 const SAVE_KEY='burntwood-wilds-progress-v2',ESSENCE_COSTS=[2,4,6,8,10];
 const PERMANENT_UPGRADES={
  health:{name:'Tough Kit',unit:'maximum health',step:2,max:5},
