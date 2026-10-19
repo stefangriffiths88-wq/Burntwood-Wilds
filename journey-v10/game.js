@@ -189,7 +189,9 @@ let actors=[...enemies.filter(e=>e.hp>0),...cats.map(c=>({...c,isPet:true,source
 drawDefence();drawEvolutionEffects();drawDuckExtras();drawBonuses();drawPlaytestExtras();for(let shot of enemyShots){line([[shot.px,shot.py],[shot.x,shot.y]],'#b4a18788',3);ellipse(shot.x,shot.y,6,5,'#8e7b5b');ellipse(shot.x-1,shot.y-1,2,2,'#c1b18b');}for(let b of balls){if(b.life<=0)continue;if(b.star){if(b.mode==='return')line([[b.px,b.py],[b.x,b.y]],'#ffd4ef99',3);starArt(b.x,b.y,6,b.spin);continue;}line([[b.px,b.py],[b.x-b.vx*.035,b.y-b.vy*.035]],b.main?'#fff4c999':'#f8d57088',b.main?3:2);ballArt(b.x,b.y,b.r,b.spin,!b.main);}
 for(let f of fx)if(!f.ghost){ctx.globalAlpha=clamp(f.life/(f.max||.5),0,1);if(f.arcX!==undefined){let dx=f.arcX-f.x,dy=f.arcY-f.y;line([[f.x,f.y],[f.x+dx*.4+6,f.y+dy*.4-7],[f.x+dx*.65-5,f.y+dy*.65+6],[f.arcX,f.arcY]],f.color||'#f6e899',2);}else if(f.ring){ctx.globalAlpha*=.45;ctx.strokeStyle=f.color;ctx.lineWidth=2;ctx.beginPath();ctx.arc(f.x,f.y,f.r*(1-f.life/f.max*.35),0,TAU);ctx.stroke();}else if(f.text){ctx.font='bold 13px system-ui';ctx.textAlign='center';ctx.fillStyle=f.color;ctx.fillText(f.text,f.x,f.y);}else ellipse(f.x,f.y,f.r,f.r,f.color);}ctx.globalAlpha=1;ctx.restore();if(glitterTime>0){for(let i=0;i<45;i++){let x=(i*83.7)%W,y=((1-glitterTime/.8)*H+i*47)%H;starArt(x,y,2+(i%3),time+i);}}if(hitFlash>0){ctx.fillStyle='#d343341c';ctx.fillRect(0,0,W,H);}drawGuidance();}
 
-function resize(){W=innerWidth;H=innerHeight;DPR=Math.min(devicePixelRatio||1,2);canvas.width=W*DPR;canvas.height=H*DPR;canvas.style.width=W+'px';canvas.style.height=H+'px';scale=clamp(W/450,.7,1.1)*.85;}
+// Camera framing is independent of hero stats, collision and attack ranges.
+function worldViewScale(width){return clamp(width/450,.7,1.1)*.85;}
+function resize(){W=innerWidth;H=innerHeight;DPR=Math.min(devicePixelRatio||1,2);canvas.width=W*DPR;canvas.height=H*DPR;canvas.style.width=W+'px';canvas.style.height=H+'px';scale=worldViewScale(W);}
 
 function drawHero(c,x,y,s,ava){(ava?drawAvaSprite:drawJacksonSprite)(c,x,y,s,ava?0:2);}
 
