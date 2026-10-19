@@ -48,3 +48,6 @@ Saved access/migration is in upgrades/permanent.js. Menu locks and no-portrait??
 `ui/audio.js` provides an original procedural score (not a recorded acoustic soundtrack), a shared AudioContext/effects bus, independent saved volumes, gesture start and visibility suspension. Score gain automation updates only when its target changes; tones disconnect on completion. Native Safari sound quality and balance require user testing.
 
 Normal upgrade cards inspect first and commit through a separate Choose button. Preserve the 550ms reveal, armed-pointer protection and Mythic deferred choice. Tests must exercise both inspection and confirmation; direct mechanics fixtures are not a substitute for phone interaction checks.
+
+## 10.24 recovery and portable distribution
+`ui/journey-recovery.js` owns validated device-local journey checkpoints, safe area-entry rollback, saved cleared treasure and deliberate menu resume/replacement. Persistent progression stays in its existing validated save. `package_run.py` emits a complete relative-path distribution and checksummed ZIP without importing or publishing to RUN. See RUN_READINESS.md for storage limits and required actual-host acceptance. Introduction action labels now use the same character label helper as normal combat.
