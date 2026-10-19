@@ -208,3 +208,5 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 @media(max-height:500px){#panel.levelReward .card{padding:10px}#panel.levelReward button.buildCard{min-height:110px;padding:6px}#panel.levelReward button.buildCard>.uiGlyph{width:35px;height:35px;min-height:35px}#upgradeDetail{min-height:0;padding:8px;margin-top:8px}#upgradeDetail p{margin:4px 0}#confirmUpgrade{margin-top:6px;padding:8px}}
 
 .audioSettings{border:1px solid #a7b48d66;border-radius:12px;margin:14px 0}.audioSettings label{display:flex;align-items:center;justify-content:space-between;padding:8px;font-size:13px}.audioSettings input{width:65%;accent-color:#e8c778}
+
+#panel.levelReward button.buildCard .upgradeBenefit{font-size:10px;line-height:1.3;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden;color:#e8e4d5;font-weight:500;min-height:26px}#panel.levelReward button.buildCard{gap:6px}@media(max-height:500px){#panel.levelReward button.buildCard .upgradeBenefit{font-size:10px;min-height:22px;line-height:1.1}#panel.levelReward button.buildCard{gap:3px}}

@@ -38,3 +38,13 @@ Town geometry/collision/routing: world/town-layout.js; objectives: ui/guidance.j
 
 ## 10.18.0 access and workshop ownership
 Saved access/migration is in upgrades/permanent.js. Menu locks and no-portrait??? buttons use heroUnlocked; all production service entry paths use serviceOpen. First arena boss persists firstBossDefeated; heroic rewards do not. Jackson’s gift persists jacksonGiftClaimed atomically with the permanent rank. Stefan/Jackson welcome logic is in world/workshop.js, native shutter/open-front drawings in world/town-layout.js. Actual production access is verified by roster-workshop-test/browser.cjs; __test.select/reset enable explicit full-access compatibility fixtures for existing mechanics suites.
+
+## Sankeys and charm interface (10.22 candidate)
+
+`items/charms.js` owns selected same-rank fusion, equipment-slot preservation, swap conservation and icon inspection. `items/economy.js` owns prices, inspect-before-buy, rerolls, saved starter unlocks and paused inventory. `world/shopkeeper.js` owns separate Mimi and Ava service entry; `world/town-layout.js` places Mimi, Stefan/Jackson and Ava/Evie together at Sankeys. Covering keepers must remain distinct from the selected hero. Equipment changes remain town-only; different newly earned charms still auto-equip into empty slots.
+
+`ui/charm-art.js` uses a unique SVG ID prefix per rendered instance. Never reuse document-global filter/gradient IDs between hidden shop, inventory and HUD instances: a hidden source can make visible object art disappear.
+
+`ui/audio.js` provides an original procedural score (not a recorded acoustic soundtrack), a shared AudioContext/effects bus, independent saved volumes, gesture start and visibility suspension. Score gain automation updates only when its target changes; tones disconnect on completion. Native Safari sound quality and balance require user testing.
+
+Normal upgrade cards inspect first and commit through a separate Choose button. Preserve the 550ms reveal, armed-pointer protection and Mythic deferred choice. Tests must exercise both inspection and confirmation; direct mechanics fixtures are not a substitute for phone interaction checks.
