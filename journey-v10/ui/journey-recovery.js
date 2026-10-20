@@ -48,7 +48,7 @@ function resumeSavedJourney(){
   rosterTestAccess=false;selected=c.hero;reset();Object.assign(run,journeyClone(c.run));run.stat=new Set();tier=c.tier;hub.coins=c.gold;p.hp=c.hp;kills=c.kills;seed=c.seed;hub.finished=false;enterHub(true);
   if(c.mode==='area'||c.mode==='cleared'){
    run.visited=run.visited.filter(k=>k!==c.arena);enterArena(c.arena,true);let route=run.rugby;Object.assign(run,journeyClone(c.run));run.stat=new Set();run.rugby=route;tier=c.tier;hub.coins=c.gold;p.hp=Math.min(c.hp,stats().hp);kills=c.kills;seed=c.seed;
-   if(c.mode==='cleared'){if(run.chase){run.chase.restReached=true;run.chase.afterGuard=true;}time=c.time;state='cleared';run.areaCleared=true;run.areaExit=journeyClone(c.exit);run.rewardChests=journeyClone(c.chests);goldDrops=journeyClone(c.goldDrops);enemies=[];enemyShots=[];boss=null;p.x=c.exit.x;p.y=c.exit.y+100;}
+   if(c.mode==='cleared'){if(run.chase){run.chase.restReached=true;run.chase.afterGuard=true;}time=c.time;state='cleared';run.areaCleared=true;run.areaExit=journeyClone(c.exit);run.rewardChests=journeyClone(c.chests);goldDrops=journeyClone(c.goldDrops);enemies=[];enemyShots=[];boss=null;migrateChaseClearedCheckpoint(c);p.x=run.areaExit.x;p.y=run.areaExit.y+100;}
   }else if(c.mode==='intro')startIntroduction(false);
   p.hp=Math.min(c.hp,stats().hp);cam={x:p.x,y:p.y};stopMovement();updateHud();updateGuidance();openPause();$('pauseHeading').textContent='JOURNEY RESTORED';$('recoveryPauseText').textContent=c.mode==='area'?'Your interrupted area starts again from its entrance.':'Your saved journey is ready.';return true;
  }finally{restoringJourney=false;}
