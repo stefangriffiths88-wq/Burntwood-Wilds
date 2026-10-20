@@ -1,6 +1,19 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.24.0 — journey recovery and RUN upload preparation
+## Current release: 10.25.0 — overhead town guidance and boss artwork
+20 October2026. Stef reports the game live on RUN, requests overhead town guidance and better non-Bruce boss artwork, then authorises continuing improvements. PR85 merged at5e33bdacdbf22f23bf1db3886c3ea06a3ab1e98c. Detailed scope/evidence: BOSS_GUIDANCE_10_25.md.
+
+Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.25.0.html?v=10250
+
+- Gold arrow above the player stays visible during town movement and follows road turns without midway reversals. First Rugby rescue and first workshop visit take priority, then remaining destinations. Ground town chevrons removed; arrow hides at the destination, in modals and after journey completion. Intro/combat/exit timing and targeting retained.
+- Four native boss drawings now have distinct layered silhouettes: feathered owl, mossy stone golem, crowned trolley creature and four-legged woodland bramble beast. Warning/movement poses read existing state without mutating combat. Bruce's drawing function and dispatch branch match10.24 exactly. Stats, AI, hitboxes, rewards, characters, approved portraits, saved progression and all12 unlocked testing heroes are preserved.
+- Feature CI39410151657 passed both jobs at source32d8d6025f2976f2f31d436f6faa32f815ca5823/generatedc6a7141341417a9fee63a0a9c4ec31e228a4c932, including mechanics, production phone flows and long charm journeys. Main CI39411243453 passed both jobs; Pages39411243133 passed at the merge. Evidence-only documentation tail does not change tested runtime.
+- Local build/syntax, all-five ordinary-movement arrow routes/priorities, stateless renderers, all12 intro/recovery/rollback/treasure and Rugby retained-enemy checks passed. Reviewed all36 new phone screenshots from artifact12258688181 at390x844,320x568,844x390. Native Safari and human comprehension/aesthetic/balance acceptance remain pending; scripted staging/invulnerability is integration evidence only.
+- All28 public files verified against local tested bytes after Pages: canonical/versioned game, preserved10.24, latest redirect and12 portrait/icon pairs. Canonical/versioned game484753bytes/SHA256 d43eed0151aeb256de4a298efbf86803252a1be59ea6447dba9f2527eff3c01a. Initial fetch during deployment saw old10.24/404; the three affected paths passed after deployment completed. Other25 matched first time.
+- RUN artifact12258698007 includes the portable ZIP and new reproducible self-contained HTML (8305547bytes/SHA256 d9cbea1e3b2d068f125755c767f2f34e71efebd70da3b12af483ee54f4063585). All12 approved portraits/icons are embedded, with no external art paths. Embedded script passes focused arrow/boss checks; ZIP manifest and all25 game/art contents match tested bytes. Deliver as burntwood.html for replacement at public/burntwood.html, preserving the existing Studio wrapper and listing thumbnail. RUN has NOT been updated automatically; Stef must replace and publish, then test actual host/device storage/audio/safe areas.
+- No new skill/build/progression scope or paid cutscene work implemented. First town arrow comprehension and the four bosses need Stef's playtest next. Competition entry and promotion remain separate.
+
+## Previous release: 10.24.0 — journey recovery and RUN upload preparation
 19 October2026. Stef reports10.23 plays nicely and authorises audit followups. User chose restart-current-area recovery. PR84 merged at70ca96d666e704fefeb8a65e889e7de73d6f104b.
 
 Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.24.0.html?v=10240
