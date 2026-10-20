@@ -37,7 +37,7 @@ function celebrateReward(offer){
  rewardNotice(title,offer.name+' · '+(offer.path==='stat'?offer.text:offer.total?'Step '+offer.rank+' of '+offer.total:offer.text),RARITIES[offer.rarity].color);
 }
 function charmRewardHint(key){
- let copies=[...run.charms,...run.charmBag].filter(c=>c.key===key&&c.rank===1).length;
+ let combo=charmSynergy(key);if(combo)return combo;let copies=[...run.charms,...run.charmBag].filter(c=>c.key===key&&c.rank===1).length;
  if(!run.legacyCombat)return copies||charmRank(key)?'MATCHING COPY · KEEP IN BAG':'EQUIP, SWAP OR KEEP IN BAG';
  if(copies)return 'MATCHING COPY · FUSE IN TOWN';
  if(charmRank(key))return 'BAG COPY · KEEP FOR FUSION';
