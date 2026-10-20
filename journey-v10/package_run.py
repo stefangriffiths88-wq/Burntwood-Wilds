@@ -1,6 +1,6 @@
 """Build a portable, relative-path HTML5 distribution; never publish it."""
 from pathlib import Path
-import hashlib,json,re,shutil,zipfile
+import base64,hashlib,json,re,shutil,zipfile
 
 ROOT=Path(__file__).resolve().parent.parent
 DEST=ROOT/'dist'
@@ -28,6 +28,19 @@ def package():
     with zipfile.ZipFile(out) as archive:
         assert 'index.html' in archive.namelist()
         for name,info in files.items():assert hashlib.sha256(archive.read(name)).hexdigest()==info['sha256']
+    # Studio's public-folder uploader accepts individual files. Preserve the
+    # established /burntwood.html iframe workflow without external art requests.
+    def image_uri(name):
+        mime='image/png' if name.endswith('.png') else 'image/webp'
+        return 'data:'+mime+';base64,'+base64.b64encode((ROOT/name).read_bytes()).decode()
+    icons={hero:image_uri('journey-v10/assets/icons/'+hero+'.webp') for hero in portraits}
+    single=html
+    for variable in ('key','hero'):
+        single=single.replace("journey-v10/assets/icons/'+"+variable+"+'.webp", "'+INLINE_ICONS["+variable+"]+'")
+    for name in paths:single=single.replace(name,image_uri(name))
+    single=single.replace('const PORTRAITS=', 'const INLINE_ICONS='+json.dumps(icons,separators=(',',':'))+';\nconst PORTRAITS=',1)
+    assert 'journey-v10/assets/' not in single,'A standalone art dependency was missed'
+    (ROOT/('burntwood-run-'+version+'.html')).write_text(single)
     print('Portable RUN candidate:',out.name,';',len(files),'game/art files;',out.stat().st_size,'bytes; no upload performed')
     return out
 
