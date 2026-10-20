@@ -51,3 +51,6 @@ Normal upgrade cards inspect first and commit through a separate Choose button. 
 
 ## 10.24 recovery and portable distribution
 `ui/journey-recovery.js` owns validated device-local journey checkpoints, safe area-entry rollback, saved cleared treasure and deliberate menu resume/replacement. Persistent progression stays in its existing validated save. `package_run.py` emits a complete relative-path distribution and checksummed ZIP without importing or publishing to RUN. See RUN_READINESS.md for storage limits and required actual-host acceptance. Introduction action labels now use the same character label helper as normal combat.
+
+## Chasewater physical journey (10.27)
+`arenas/chasewater-route.js` owns café/crossing/woodland/long-wall topology, finite forward arrivals, lakeside guard/recovery, labelled objectives, route-only Night Owl patterns and old cleared-save geometry migration. `arenas/chasewater-route-art.js` owns native stone wall, reservoir, railway, café, trees and brick tower. `arenas/chasewater.js` retains legacy combat geometry when physical entry is disabled for old simulations. Targeted route tests cover twelve heroes; the production phone suite follows actual guidance through the route and checks chest → exit → Sankeys.

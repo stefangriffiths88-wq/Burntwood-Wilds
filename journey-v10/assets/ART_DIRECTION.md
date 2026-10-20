@@ -70,3 +70,6 @@ User explicitly requested a four-legged cat instead of an enlarged upright sprit
 
 ## Harvey — approved18 October2026
 Tuxedo option3, wavy dark hair, black round glasses, blue-grey eyes, navy hoodie/grey hood lining, pale detached paws and bushy black/white tail. User approved glossy full-resolution selection portrait with spore gun/portal/Pickle hint. Native gameplay keeps normal/Pickle bodies distinct, two floating paws and no arms/legs/feet; Pickle is cucumber-shaped rather than green clothing. Immy lynx glasses updated with higher-contrast pale rims/dark outline as explicitly requested.
+
+## Chasewater long waterfront wall — approved20 October2026
+Stef supplied reservoir-wall and aerial references and approved a substantial café → railway crossing → woods → long waterside wall → Night Owl/brick-tower journey. Use native shaded Canvas artwork: weathered stone parapet, blue rippling water on the left, dry-side grass/trees, a red-brick building with pitched roof. Compress distances/orientation for gameplay, with a broader northern boss bay for dodging. These screenshots inform scenery; do not publish third-party photo screenshots as game assets. Preserve approved heroes and Bruce. Human visual/phone acceptance remains pending.
