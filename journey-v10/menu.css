@@ -223,3 +223,7 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 
 /* Build explanations read across the panel, never down narrow icon columns. */
 #inventoryAbilities>.currentBuildEffects{grid-column:1/-1;display:block;text-align:left;padding:7px 9px;border-radius:8px;background:#173d30;font-size:12px;line-height:1.45}#inventoryAbilities>.currentBuildEffects p{margin:8px 0;color:#e1e8d6}#inventoryAbilities>.currentBuildEffects summary{font-size:11px}
+
+/* Short screens reserve the combat centre for committed boss warnings. The
+   quest/arrow remain visible; introductory travel captions are unchanged. */
+@media(max-height:650px){body:has(#bossHud[data-heroic="false"][style*="block"]) #rugbyTalk{display:none!important}}
