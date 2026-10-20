@@ -25,3 +25,11 @@ Stef reports Sankeys upgrades too weak and selected portrait too small (10.25 sc
 
 ## Validation correction checkpoint
 - CI39449990189 exposed stale Evie health expectation (92 → 100 after authorised workshop +10), corrected. New browser saved-portrait setup now disables the compatibility fixture flag so it uses real checkpoint storage. Screenshot review caught narrow vertical build explanations; moved them into full-width expandable rows. Perfect-defence phone staging now enters the actual physical Rugby route and centres the player correctly. No automated rendering is claimed as Safari/user acceptance.
+
+## Final candidate review
+- Source497763c4c5de781db3f0ab4e82df7f82eebd8437, generated head713f649dd975c961a8d9158a586cc9ae06c45ba4. CI39450821464 changed-review passed; full browser job reached final long charm matrix after all prior mechanics and phone steps passed.
+- Reviewed all21 targeted screenshots in artifact12279046404: both heroes route/build/real defence taps at390×844,320×568,844×390, plus saved Jodie portrait at all three sizes. Portrait is large, landscape art visible, recovery/actions remain reachable through scrolling, build descriptions read across full panel width. Artifact also contains broader phone suite captures.
+- Canonical/versioned local generated HTML SHA25666d133330dd20870e2066c8dd4ed79aff5f23bc24c5a7281ac3e73b8461bf5b7 (verify public bytes after deployment). Long charm result, merge and live Pages verification still pending.
+
+## Ready for merge
+Feature CI39450821464 passed both jobs at source497763c4c5de781db3f0ab4e82df7f82eebd8437/generated713f649dd975c961a8d9158a586cc9ae06c45ba4, including the full long charm matrix/journeys and all phone suites. Targeted21 screenshots reviewed; approved image/Bruce/RUN files unchanged. Next action: merge PR89, verify main checks and Pages/public bytes, record release in PROJECT_STATUS.md, deliver GitHub test link. Native Safari/human balance remain pending.
