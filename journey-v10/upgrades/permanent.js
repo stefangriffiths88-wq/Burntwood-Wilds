@@ -7,11 +7,11 @@ function heroUnlocked(key){return HERO_IDS.includes(key)&&(TEST_ROSTER_UNLOCK||r
 function serviceOpen(owner){return !!(rosterTestAccess||progress.firstBossDefeated)&&heroUnlocked(owner)&&heroUnlocked(owner==='stef'?workshopKeeperKey():owner==='ava'?charmShopKeeper():shopkeeperKey());}
 const SAVE_KEY='burntwood-wilds-progress-v2',ESSENCE_COSTS=[2,4,6,8,10];
 const PERMANENT_UPGRADES={
- health:{name:'Tough Kit',unit:'maximum health',step:2,max:5},
- damage:{name:'Hard Hitter',unit:'normal attack damage',step:1,max:5},
- speed:{name:'Quick Feet',unit:'movement speed',step:1,max:5},
- cooldown:{name:'Ready Again',unit:'special cooldown reduction',step:1,max:5},
- healing:{name:'Helping Paw',unit:'healing received',step:3,max:5}
+ health:{name:'Tough Kit',unit:'maximum health',step:10,max:5},
+ damage:{name:'Hard Hitter',unit:'normal attack damage',step:8,max:5},
+ speed:{name:'Quick Feet',unit:'movement speed',step:3,max:5},
+ cooldown:{name:'Ready Again',unit:'special cooldown reduction',step:4,max:5},
+ healing:{name:'Helping Paw',unit:'healing received',step:10,max:5}
 };
 function blankProgress(){return {schema:2,essence:0,heroes:{},awards:[],workshopSeen:false,starterUnlocks:[],starter:null,firstBossDefeated:false,jacksonGiftClaimed:false,introComplete:false,rugbyGuideComplete:false};}
 function validProgress(value){if(!value||![1,2].includes(value.schema)||!Number.isSafeInteger(value.essence)||value.essence<0||value.essence>1000000||!value.heroes||typeof value.heroes!=='object'||Array.isArray(value.heroes))throw Error('This is not a valid Burntwood save.');let out=blankProgress();out.essence=value.essence;for(let [hero,ranks] of Object.entries(value.heroes)){if(!['ava','jackson','stef','jodie','evie','zak','mimi','joseph','tom','havannah','immy','harvey'].includes(hero)||!ranks||typeof ranks!=='object'||Array.isArray(ranks))throw Error('Unknown character in save.');out.heroes[hero]={};for(let [key,rank] of Object.entries(ranks)){if(!PERMANENT_UPGRADES[key]||!Number.isInteger(rank)||rank<0||rank>5)throw Error('Invalid upgrade rank.');out.heroes[hero][key]=rank;}}if(!Array.isArray(value.awards)||value.awards.length>4096||value.awards.some(a=>typeof a!=='string'||a.length>120))throw Error('Invalid reward record.');out.awards=[...new Set(value.awards)];out.workshopSeen=value.workshopSeen===true;if(value.starterUnlocks!==undefined&&(!Array.isArray(value.starterUnlocks)||value.starterUnlocks.some(k=>!CHARMS[k])))throw Error('Invalid starter unlock.');out.starterUnlocks=[...new Set(value.starterUnlocks||[])];if(value.starter!==undefined&&value.starter!==null&&!out.starterUnlocks.includes(value.starter))throw Error('Starting charm must be unlocked.');out.starter=value.starter||null;for(let key of ['firstBossDefeated','jacksonGiftClaimed'])if(value[key]!==undefined&&typeof value[key]!=='boolean')throw Error('Invalid unlock record.');out.firstBossDefeated=value.firstBossDefeated??(out.awards.length>0||out.essence>0||Object.values(out.heroes).some(h=>Object.values(h).some(n=>n>0)));out.jacksonGiftClaimed=value.jacksonGiftClaimed===true;for(let key of ['introComplete','rugbyGuideComplete'])if(value[key]!==undefined&&typeof value[key]!=='boolean')throw Error('Invalid teaching record.');out.introComplete=value.introComplete??true;out.rugbyGuideComplete=value.rugbyGuideComplete??out.firstBossDefeated;return out;}
