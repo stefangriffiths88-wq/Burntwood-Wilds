@@ -2,3 +2,7 @@
 /burntwood-run-*.zip
 /burntwood-run-*.html
 /node_modules/
+
+/dist-run/
+/run-host/screens/
+/game.config.prod.json
