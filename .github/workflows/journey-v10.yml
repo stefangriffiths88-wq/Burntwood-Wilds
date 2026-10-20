@@ -113,6 +113,7 @@ jobs:
       - run: node journey-v10/sankeys-charms-test.cjs
       - run: node journey-v10/first-journey-test.cjs
       - run: node journey-v10/journey-recovery-test.cjs
+      - run: node journey-v10/progress-builds-test.cjs
       - run: node journey-v10/town-arrow-boss-test.cjs
       - run: python3 journey-v10/package_run.py
       - run: npm install --no-save playwright@1.48.2
