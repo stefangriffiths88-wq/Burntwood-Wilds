@@ -1,0 +1,86 @@
+name: RUN release
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/run-release.yml', 'ops/package_run_host.py', 'ops/run_release.py', 'ops/run_host*', 'run-host/**']
+permissions:
+  contents: read
+concurrency:
+  group: run-release-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    outputs:
+      publish: ${{ steps.request.outputs.publish }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 journey-v10/build.py
+      - run: python3 ops/package_run_host.py
+      - run: node ops/run_host_test.cjs
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/run-host-server.log 2>&1 &
+          node ops/run_host_browser.cjs
+      - name: Decide explicit release request
+        id: request
+        run: |
+          python3 - <<'PY'
+          import json,os,subprocess
+          from pathlib import Path
+          request=json.loads(Path('run-host/release-request.json').read_text())
+          changed=subprocess.check_output(['git','diff','--name-only','HEAD^','HEAD'],text=True).splitlines()
+          allowed=os.environ['GITHUB_REF']=='refs/heads/main' and request['action']=='publish' and ('run-host/release-request.json' in changed or os.environ['GITHUB_EVENT_NAME']=='workflow_dispatch')
+          with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('publish='+str(allowed).lower()+'\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: run-host-review
+          path: run-host/screens
+      - uses: actions/upload-artifact@v4
+        with:
+          name: run-distribution
+          path: dist-run
+  deploy:
+    if: needs.prepare.outputs.publish == 'true'
+    needs: prepare
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    permissions:
+      contents: write
+    env:
+      RUNDOT_SKIP_UPDATE_CHECK: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: run-distribution
+          path: dist-run
+      - name: Install verified official CLI
+        run: |
+          mkdir -p "$RUNNER_TEMP/run-cli"
+          curl --fail --location --retry 2 --max-time 90 https://github.com/series-ai/rundot-cli-releases/releases/download/v7.18.0/rundot-linux-x64.tar.gz -o "$RUNNER_TEMP/run-cli/cli.tar.gz"
+          echo 'e08a8dff89e49896f661b6b9b7f1a6e66a4d1188b5880cbb022f44896432cf50  '"$RUNNER_TEMP/run-cli/cli.tar.gz" | sha256sum --check
+          tar --no-same-owner -xzf "$RUNNER_TEMP/run-cli/cli.tar.gz" -C "$RUNNER_TEMP/run-cli"
+      - name: Upload verified existing game and request review
+        env:
+          RUNDOT_API_KEY: ${{ secrets.RUNDOT_API_KEY }}
+        run: python3 ops/run_release.py "$RUNNER_TEMP/run-cli/rundot"
+      - name: Save upload receipt without credentials
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add run-host/releases
+          git diff --cached --quiet || (git commit -m 'Record verified RUN upload receipt' && git push)
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: run-release-receipt
+          path: run-host/releases
