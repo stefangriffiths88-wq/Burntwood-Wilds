@@ -54,3 +54,7 @@ Normal upgrade cards inspect first and commit through a separate Choose button. 
 
 ## Chasewater physical journey (10.27)
 `arenas/chasewater-route.js` owns café/crossing/woodland/long-wall topology, finite forward arrivals, lakeside guard/recovery, labelled objectives, route-only Night Owl patterns and old cleared-save geometry migration. `arenas/chasewater-route-art.js` owns native stone wall, reservoir, railway, café, trees and brick tower. `arenas/chasewater.js` retains legacy combat geometry when physical entry is disabled for old simulations. Targeted route tests cover twelve heroes; the production phone suite follows actual guidance through the route and checks chest → exit → Sankeys.
+
+
+## Town and Rugby scenery (10.28)
+`world/town-layout.js` owns the three-frontage Sankeys square, local destination entrances and journey-victory decoration. `world/residents.js` limits names/bubbles to nearby residents. `arenas/rugby-route.js` owns parked-car/brick-wall footprints shared by `rugby-route-art.js`; its guided centreline remains open. New scenery VM/phone suites cover all twelve heroes, solid props, the complete route, real shop taps and phone artwork. RUN remains a separate release.

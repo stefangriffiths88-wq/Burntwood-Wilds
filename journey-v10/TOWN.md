@@ -43,3 +43,11 @@ Stefan unlocks one selectable starting charm at a time for fresh runs, globally 
 
 ## 10.18.0 current access and workshop (supersedes older self-service notes)
 Fresh saves start with Ava/Jackson/Mimi; other NPCs/selector portraits are hidden until the first arena boss unlocks the test roster. Both shops remain closed until that saved victory and unlocked owner/cover. Stefan owns the Swan Island-signed open workshop; Jackson covers when Stefan is selected. The keeper greets before OPEN WORKSHOP, then choose a hero and permanent upgrade. Jackson offers one free rank upgrade per save, saved atomically; later upgrades use existing essence prices. Older earned saves migrate access, optional validated flags retain schema2 and the same storage key. Active-journey snapshots remain unchanged.
+
+
+## 10.28 presentation correction
+Sankeys services remain at the same three interactive counter positions. The shared brick row now has three distinct awnings, stock and currency labels, instead of six fake storefronts behind the real services. A paved forecourt, planters, benches and a bin frame the shopping square. The current journey's victories light homes and add square bunting; persistent workshop access still follows the first saved boss defeat.
+
+Town destinations are local entrances rather than giant monster displays. `drawTownEntrance` owns five gate illustrations and nearby enter prompts; the historical `townBossPreview` data API remains for compatibility, but normal town rendering no longer draws combat models. Resident names/bubbles appear within 125/65 world units. Road graph, collision blocks, map/service positions, tap targets, conversations and overhead guidance remain shared with existing logic.
+
+The forecourt's essence notice uses actual selected-hero rank caps, essence costs and Jackson gift eligibility; it never promises an unaffordable upgrade. Changes do not alter permanent bonus values, prices, saved ranks, unlocks or recovery.
