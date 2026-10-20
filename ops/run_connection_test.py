@@ -19,13 +19,17 @@ assert calls[0][0] == ['rundot', 'login', '--api-key-stdin']
 assert calls[0][1]['input'] == key + '\n'
 assert calls[1][0] == ['rundot', 'game', 'info', '--game-id', 'TestGame']
 assert len(calls) == 2
+with contextlib.redirect_stdout(out):
+    connect('rundot', {'RUNDOT_API_KEY': key}, fake)
+assert calls[-1][0][-1] == 'TestGame'
+assert key not in out.getvalue()
 for bad in ['', 'pk_TestGame_other', 'rk_OtherGame_other']:
     try:
         connect('rundot', {'RUNDOT_API_KEY': bad, 'RUNDOT_GAME_ID': 'TestGame'}, fake)
         raise AssertionError('invalid credential accepted')
     except ValueError:
         pass
-assert len(calls) == 2
+assert len(calls) == 4
 def fail(args, **kw):
     return SimpleNamespace(returncode=1, stdout=key, stderr=key)
 try:

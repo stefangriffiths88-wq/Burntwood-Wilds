@@ -1,5 +1,6 @@
 """Read-only RUN authentication check. Never print CLI authentication output."""
 import os
+import re
 import subprocess
 import sys
 
@@ -8,8 +9,12 @@ def connect(cli='rundot', env=None, execute=subprocess.run):
     env = dict(os.environ if env is None else env)
     key = env.pop('RUNDOT_API_KEY', '').strip()
     game = env.get('RUNDOT_GAME_ID', '').strip()
+    if not game:
+        scoped = re.fullmatch(r'rk_([A-Za-z0-9]+)_[^\s_]+', key)
+        if scoped:
+            game = scoped.group(1)
     if not game or not key:
-        raise ValueError('Add RUNDOT_API_KEY as an Actions secret and RUNDOT_GAME_ID as an Actions variable.')
+        raise ValueError('Add RUNDOT_API_KEY as an Actions secret. RUNDOT_GAME_ID is optional for a scoped deploy key.')
     if not game.isalnum() or not key.startswith('rk_' + game + '_'):
         raise ValueError('Use a RUN deploy key for the configured game; playground keys are not supported.')
     commands = [([cli, 'login', '--api-key-stdin'], key + '\n'),
@@ -24,6 +29,7 @@ def connect(cli='rundot', env=None, execute=subprocess.run):
         if index == 1 and (game not in result.stdout or 'Burntwood Wilds' not in result.stdout):
             raise ValueError('RUN game information did not confirm the expected Burntwood Wilds identity.')
     print('RUN connection verified for the configured Burntwood Wilds game. No build uploaded or published.')
+    print('Confirmed game ID: ' + game)
 
 
 if __name__ == '__main__':

@@ -24,7 +24,7 @@ jobs:
           "$RUNNER_TEMP/run-cli/rundot" login --help
           "$RUNNER_TEMP/run-cli/rundot" game info --help
   connect:
-    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     needs: check
     runs-on: ubuntu-latest
     timeout-minutes: 5
