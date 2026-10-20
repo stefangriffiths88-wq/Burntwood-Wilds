@@ -1,6 +1,24 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.25.0 — overhead town guidance and boss artwork
+## Current release: 10.26.0 — guided Rugby encounters and stronger builds (GitHub playtest)
+20 October 2026. Explicitly authorised test update, including later feedback about weak Sankeys upgrades and a tiny saved-journey portrait. PR89. RUN remains on game10.25.0 / platform1.0.4; do not upload this test without a separate Update RUN request.
+
+Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.26.0.html?v=10260
+
+- Rugby uses monotonic map progress: forward groups, 12-nearby/12-per-section caps, no new enemies from passed sections, no timer-based disappearance and no artificial two-minute wait at the well. Existing enemies keep their health, attacks and rewards. Guard defeat remains mandatory; the well ends reinforcements. Harvey portal uses the same gate as walking.
+- Concise route objectives, destination-labelled moving arrow, charm reward prompt and earned-essence notice support the Rugby → Bruce → Sankeys/workshop journey. Existing first-play road introduction and saved teaching flags remain.
+- Relevant final350ms Rugby warning defence earns a brief recovery opening and distinct cue; direct attacks against recovering deer/guard/Bruce gain20%. Ordinary deer lower their stance during warnings. Existing committed charge plans remain; Bruce drawing is unchanged.
+- Tom/Stefan defence cards describe actual character moves; Build/Bag provides full-width expandable current effects. Stronger Bramble, Bell, Echo, Watch and Opportunist charms have bounded rank effects, visible cues and truthful synergy hints; rewards weight compatible choices within rarity and defer elemental charms until their matching evolution.
+- Permanent workshop ranks now grant +10 health, +8% normal/companion damage, +3% speed, −4% special cooldown or +10% healing each. Five-rank caps/essence prices/save schema are preserved; upgrades retain their fresh-journey snapshot rules. Existing saved ranks are retained.
+- Saved journeys no longer cap the selected portrait at100px or hide it in landscape: larger art with native vertical scrolling preserves access to resume/new journey/roster. Approved asset bytes and gameplay camera scale are unchanged.
+- All12 characters remain unlocked for this test. Before the next RUN release, replace testing access with agreed boss/completion/essence unlocks; exact characters/cost/migration remain to agree. Starting choices remain Ava/Jackson/Mimi unless changed by Stef.
+- Validation source497763c4c5de781db3f0ab4e82df7f82eebd8437 / generated713f649dd975c961a8d9158a586cc9ae06c45ba4; feature CI39450821464. Targeted21 phone screenshots artifact12279046404 reviewed at390×844,320×568,844×390. Native iPhone Safari, human guidance/combat feel/balance remain user acceptance tasks.
+- Initial checks exposed old recovery-damage/permanent-health numeric assertions and a browser fixture that disabled saving; corrected without removing unrelated checks. Screenshot review replaced narrow build text with full-width explanations. Feature CI39450821464 passed both jobs, including266 combinations and21 protected journeys/105 arenas across the original seven heroes; newer heroes retain focused character/route/save coverage. Main CI39452221209 passed both jobs (unchanged broad runtime reused from feature evidence; main phone/production checks passed).
+- Canonical/versioned HTML expected SHA25666d133330dd20870e2066c8dd4ed79aff5f23bc24c5a7281ac3e73b8461bf5b7, verified between local and committed generated files. RUN wrapper/key/game ID/thumbnail/release request unchanged. See UPDATE_10_26.md for scope and resumable implementation record.
+
+- Release: PR89 merged at a0ed7166bbd95b4f20b738c27dd6453929817dc5. Pages39452221676 succeeded. All28 public files matched tested local bytes: canonical/versioned10.26, preserved10.25, latest redirect, and12 portrait/icon pairs. First request during publishing returned404; verification after deployment passed all28. Public evidence: tests/public-10.26.json.
+
+## Previous release: 10.25.0 — overhead town guidance and boss artwork
 20 October2026. Stef reports the game live on RUN, requests overhead town guidance and better non-Bruce boss artwork, then authorises continuing improvements. PR85 merged at5e33bdacdbf22f23bf1db3886c3ea06a3ab1e98c. Detailed scope/evidence: BOSS_GUIDANCE_10_25.md.
 
 Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.25.0.html?v=10250

@@ -33,3 +33,6 @@ Stef reports Sankeys upgrades too weak and selected portrait too small (10.25 sc
 
 ## Ready for merge
 Feature CI39450821464 passed both jobs at source497763c4c5de781db3f0ab4e82df7f82eebd8437/generated713f649dd975c961a8d9158a586cc9ae06c45ba4, including the full long charm matrix/journeys and all phone suites. Targeted21 screenshots reviewed; approved image/Bruce/RUN files unchanged. Next action: merge PR89, verify main checks and Pages/public bytes, record release in PROJECT_STATUS.md, deliver GitHub test link. Native Safari/human balance remain pending.
+
+## Released GitHub playtest
+PR89 merged a0ed7166bbd95b4f20b738c27dd6453929817dc5. Main CI39452221209 passed both jobs; Pages39452221676 passed. All28 public files match tested bytes (tests/public-10.26.json). Play https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.26.0.html?v=10260 . Ready for Stef’s native iPhone playtest. RUN remains on10.25; the future unlock plan above remains required before its next release.
