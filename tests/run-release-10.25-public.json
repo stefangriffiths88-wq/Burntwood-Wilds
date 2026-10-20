@@ -1,0 +1,62 @@
+[
+  {
+    "path": "assets/_rundot_bootstrap.de986ca8.js",
+    "same": true,
+    "bytes": 5145,
+    "sha256": "de986ca8a0e574aa84f2aa74d9c33a9c18e3cfc90513de4332a585786bd0f187"
+  },
+  {
+    "path": "assets/burntwood.html",
+    "same": true,
+    "bytes": 8306600,
+    "sha256": "7aad782d55fdd20dfe671496b42d28c3d97775a1b5ec4abc0eedbab61cef8d9d"
+  },
+  {
+    "path": "assets/core-CUZ70pdB-BA1gbrF-.js",
+    "same": true,
+    "bytes": 1276,
+    "sha256": "9c886513d26dfaaf7bfb5e08fd3ef00caa3c6a93d4a87e48d76d3ce9d4eff597"
+  },
+  {
+    "path": "assets/dist-DxOnYUkS-BnlByyFe.js",
+    "same": true,
+    "bytes": 46945,
+    "sha256": "7c2187d7efc4707027c6b4ff070bf202aa471f99c23642c7ed964456b7bb713e"
+  },
+  {
+    "path": "assets/index-BwqwYms1.js",
+    "same": true,
+    "bytes": 334717,
+    "sha256": "21536925ecc078dba6471450f2950794509d7cf57b31f272378e37e68eef5143"
+  },
+  {
+    "path": "assets/index-ONMQv-KU.css",
+    "same": true,
+    "bytes": 15321,
+    "sha256": "9048551b4011449bf37161656c2be8c4196dcc38e000453a6362e9547b1837d0"
+  },
+  {
+    "path": "images/placeholder.png",
+    "same": true,
+    "bytes": 223,
+    "sha256": "95a0b44f81d2b37a5edaa23717bdd4a63197fa6a754965158007c52ddb16ff7b"
+  },
+  {
+    "path": "index.html",
+    "same": true,
+    "bytes": 1897,
+    "sha256": "91be244b5b3e3c92de2f7f9c510ea1a5fc975b6051754380abbfe63e21916103"
+  },
+  {
+    "path": "thumbnail.jpg",
+    "same": false,
+    "bytes": 68283,
+    "sha256": "c0e42a559c670c7f9a76ce81d6c3abf11da59a81c4c699bf31b01caa24460dce"
+  },
+  {
+    "path": "release-manifest.json",
+    "same": true,
+    "bytes": 1110,
+    "sha256": "51b6987d20a66855ed0848cf436ea1e8c280a6a181c7d64fdaa78f110a645638"
+  }
+]
