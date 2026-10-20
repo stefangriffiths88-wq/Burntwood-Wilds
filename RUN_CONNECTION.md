@@ -1,0 +1,15 @@
+# RUN connection checkpoint —20 October2026
+
+Stef explicitly asks to solve the RUN connection, using only iPhone. This session owns feature/run-connection, base e1f3246966aa4f22160c215d4d4bfae58346827e. No competing active gameplay PR. This changes operations only, not the10.25 game or current RUN build.
+
+Studio screenshots report an installed authenticated RUN CLI, the existing Burntwood Wilds ID and available api-keys commands. Creating a key has not been attempted, so account permission is not proven. Safari Studio is working; earlier Creator Hub marketing page was incorrectly treated as signed-out evidence. Do not send Stef around another login loop.
+
+Official CLI v7.18.0 Linux archive was downloaded and checked against GitHub release digest e08a8dff89e49896f661b6b9b7f1a6e66a4d1188b5880cbb022f44896432cf50. Actual login help confirms --api-key-stdin; actual game info help confirms --game-id. See https://github.com/series-ai/rundot-cli-releases.
+
+Workflow RUN connection tests credential handling and verifies the pinned official CLI. Manual Run workflow on main additionally logs in using Actions secret RUNDOT_API_KEY and reads game info using Actions variable RUNDOT_GAME_ID. Requires a matching rk_ deploy key and Burntwood Wilds response; logs never print credentials or raw auth output. It cannot upload, publish, create games, spend credits or change metadata. Authenticated access remains untested until Stef adds credentials and runs it.
+
+Create a90-day key in the authenticated Studio environment only through a user-authorized transfer method. Prefer a secure copy or private download if Studio actually supports it. Never put a key in public project files, preview URLs, repository commits, screenshots or this ChatGPT conversation. Do not invent a secure-copy button. A one-time display in the user's own Studio chat is an explicit privacy trade-off and remains in that chat; it is not proof of public compromise, but is less private than a secure transfer. Stef can choose it for an iPhone-only transfer. Do not create and immediately revoke a key, which leaves GitHub disconnected.
+
+GitHub settings: https://github.com/stefangriffiths88-wq/Burntwood-Wilds/settings/secrets/actions . Save the key as a new repository secret named RUNDOT_API_KEY. Save the exact existing game ID copied from Studio (case-sensitive; do not transcribe ambiguous l/1/I from screenshots) under Variables as RUNDOT_GAME_ID. No secret writes or workflow dispatch capability is available through this GitHub connector; Stef must do these steps in his signed-in browser.
+
+Next: verify CI at the exact connection source; merge complete read-only connection work; guide key transfer; manual authenticated connection test. Then bring Studio's current SDK/tracking wrapper into the maintained source before implementing upload. Directly deploying the current standalone GitHub package would omit Studio-owned tracking; do not silently overwrite it. Actual uploading/publication and fully automatic sync are not implemented here. Prompt-based Studio fetching is only a proposed interim workaround, not the requested completed integration.
