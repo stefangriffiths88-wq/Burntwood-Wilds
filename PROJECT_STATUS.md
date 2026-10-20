@@ -1,6 +1,17 @@
 # Burntwood Wilds — project status
 
-## Current release: 10.27.0 — Chasewater’s long waterside wall (GitHub playtest)
+## Current candidate: 10.28.0 — Rugby cars/brick entrance and Sankeys square
+20 October2026. Corrects the approved work omitted from10.27 after Stef reported missing early cars and unchanged town. PR91; GitHub playtest only. RUN remains game10.25.0/platform1.0.4. Main publication/public byte verification pending at this checkpoint.
+
+- Two native parked cars sit on the playable lane's west shoulder (the right when walking south), with six cars on both sides of the actual car park. Shared car footprints block movement while the full guided centreline remains open. The distant public-road cars remain scenery.
+- Weathered red-brick walls and end pillars frame the open entrance after the railway buffer. No crossing is introduced at Rugby. Bruce art, route pacing, forward spawns, mandatory guard, well cutoff, rewards and gameplay scale are retained.
+- Sankeys now has three distinct service frontages, striped awnings, stock/currency labels, paved square, planters, benches and a bin. Victories add bunting and light more homes. Native local destination entrances replace giant town boss models; resident names/bubbles appear only nearby. Existing road graph, shops, service access, residents, tap targets and overhead arrow remain.
+- A workshop notice uses real selected-hero costs/rank caps and Jackson gift eligibility to show upgrade availability. No permanent values, prices, rewards, unlock rules, save format or character assets changed. All twelve heroes stay unlocked for testing. Chasewater10.27 and the old10.27 URL remain preserved.
+- Full feature CI39500528439 passed both jobs at sourcededdc4a25f1f6195971dbadf5d05841a4bd4e218 / generated34fc763ef72591232ad8bbe31b72cc0090d7014e, including retained hero/charm/full-journey checks. New scenery tests cover all twelve heroes, solid props, the complete route centreline, no town monster rendering, restoration and truthful affordability. Existing route/guidance/shops/charms/recovery suites passed.
+- Reviewed18 final scenery phone images at390×844,320×568,844×390 from artifact12300436053. Real taps opened all three shops. Earlier review caught an overlapping heading (removed) and a fixture trying to re-enter already-cleared Rugby (now asserts real arena entry). Initial CI39499857125 was superseded during that correction; no failing mechanics assertions were removed.
+- Native iPhone Safari, human visual acceptance/fun remain Stef's playtest. Scope: UPDATE_10_28.md; owned modules documented in journey-v10/TOWN.md and README. Reconcile the complete approved scope before future release closeout; do not silently defer earlier agreed work.
+
+## Previous release: 10.27.0 — Chasewater’s long waterside wall (GitHub playtest)
 20 October2026. Stef approved railway café → crossing → woods → long reservoir-wall path → Night Owl at the brick tower, then explicitly authorised Update. PR90. GitHub-only testing; RUN remains game10.25.0/platform1.0.4.
 
 Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.27.0.html?v=10270

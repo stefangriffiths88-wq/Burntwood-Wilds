@@ -9,4 +9,4 @@ User reports early Rugby play has no visible parked cars and town unchanged afte
 - Local victory count drives cosmetic restoration; saved essence/rank caps and Jackson gift drive truthful upgrade availability. Permanent bonus values and saves unchanged.
 - All twelve heroes remain unlocked for GitHub testing. Chasewater10.27 retained. RUN request/host/key/thumbnail unchanged.
 
-Checkpoint: implementation and focused VM tests complete. Required CI, mobile screenshots, merge, Pages and public byte verification pending. Not yet released. New tests: town-rugby-scenery-test.cjs and town-rugby-scenery-browser.cjs. Native Safari/human visual acceptance remains Stef's playtest.
+Checkpoint: full feature CI39500528439 passed both jobs; final18 phone captures reviewed from artifact12300436053 after correcting a duplicate shop heading and an already-cleared-area screenshot fixture. Source deddc4a25f1f6195971dbadf5d05841a4bd4e218; generated34fc763ef72591232ad8bbe31b72cc0090d7014e. Merge, Pages and public byte verification pending. New tests: town-rugby-scenery-test.cjs and town-rugby-scenery-browser.cjs. Native Safari/human visual acceptance remains Stef's playtest.
