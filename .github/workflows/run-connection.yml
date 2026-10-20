@@ -1,0 +1,45 @@
+name: RUN connection
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/run-connection.yml', 'ops/run_connection*.py']
+permissions:
+  contents: read
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      RUNDOT_SKIP_UPDATE_CHECK: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test credential handling
+        run: python3 ops/run_connection_test.py
+      - name: Verify official CLI and supported commands
+        run: |
+          mkdir -p "$RUNNER_TEMP/run-cli"
+          curl --fail --location --retry 2 --max-time 90 https://github.com/series-ai/rundot-cli-releases/releases/download/v7.18.0/rundot-linux-x64.tar.gz -o "$RUNNER_TEMP/run-cli/cli.tar.gz"
+          echo 'e08a8dff89e49896f661b6b9b7f1a6e66a4d1188b5880cbb022f44896432cf50  '"$RUNNER_TEMP/run-cli/cli.tar.gz" | sha256sum --check
+          tar --no-same-owner -xzf "$RUNNER_TEMP/run-cli/cli.tar.gz" -C "$RUNNER_TEMP/run-cli"
+          "$RUNNER_TEMP/run-cli/rundot" login --help
+          "$RUNNER_TEMP/run-cli/rundot" game info --help
+  connect:
+    if: github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main'
+    needs: check
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      RUNDOT_SKIP_UPDATE_CHECK: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install verified CLI
+        run: |
+          mkdir -p "$RUNNER_TEMP/run-cli"
+          curl --fail --location --retry 2 --max-time 90 https://github.com/series-ai/rundot-cli-releases/releases/download/v7.18.0/rundot-linux-x64.tar.gz -o "$RUNNER_TEMP/run-cli/cli.tar.gz"
+          echo 'e08a8dff89e49896f661b6b9b7f1a6e66a4d1188b5880cbb022f44896432cf50  '"$RUNNER_TEMP/run-cli/cli.tar.gz" | sha256sum --check
+          tar --no-same-owner -xzf "$RUNNER_TEMP/run-cli/cli.tar.gz" -C "$RUNNER_TEMP/run-cli"
+      - name: Check existing game access without publishing
+        env:
+          RUNDOT_API_KEY: ${{ secrets.RUNDOT_API_KEY }}
+          RUNDOT_GAME_ID: ${{ vars.RUNDOT_GAME_ID }}
+        run: python3 ops/run_connection.py "$RUNNER_TEMP/run-cli/rundot"
