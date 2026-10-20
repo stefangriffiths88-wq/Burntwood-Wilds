@@ -119,6 +119,7 @@ jobs:
       - run: npm install --no-save playwright@1.48.2
       - run: |
           python3 -m http.server 8765 >/tmp/monster-server.log 2>&1 &
+          node journey-v10/progress-builds-browser.cjs
           node journey-v10/first-journey-browser.cjs
           node journey-v10/journey-recovery-browser.cjs
           node journey-v10/town-arrow-boss-browser.cjs

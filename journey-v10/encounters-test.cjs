@@ -21,9 +21,9 @@ console.log('PASS 35 fresh hero/arena runs: timed heroic, real attacks, first ch
 // Real charge contact in every arena, base and full special upgrades.
 for(let area of ['rugby','chasewater','sankeys','quarry','park'])for(let rank of [0,5]){
  reset('jackson',area);grant('special',rank);t.spawn('boss',{x:t.player.x+40,y:t.player.y});let b=t.boss;b.speed=0;b.mode='recover';b.timer=999;b.hp=b.maxHp=10000;
- t.player.dir={x:1,y:0};let before=b.hp;t.charge();t.step(.01);assert.equal(before-b.hp,rank?85:65,area+' charge damages boss');assert.equal(b.kx,0);assert.equal(b.ky,0);
+ t.player.dir={x:1,y:0};let before=b.hp;t.charge();t.step(.01);assert.equal(before-b.hp,(rank?85:65)*(area==='rugby'?1.2:1),area+' charge damages boss');assert.equal(b.kx,0);assert.equal(b.ky,0);
  let after=b.hp;t.step(.01);assert.equal(b.hp,after,'one contact per charge');
- if(rank){t.player.x=b.x-40;t.player.y=b.y;t.player.actionT=.75;t.step(.01);assert.equal(after-b.hp,30,'Break the Line adds damage');assert.equal(b.kx,0);assert.equal(b.ky,0);}
+ if(rank){t.player.x=b.x-40;t.player.y=b.y;t.player.actionT=.75;t.step(.01);assert.equal(after-b.hp,area==='rugby'?36:30,'Break the Line adds damage');assert.equal(b.kx,0);assert.equal(b.ky,0);}
  reset('jackson',area);t.spawn('heavy',{x:t.player.x+30,y:t.player.y});let mob=t.enemies.at(-1);mob.speed=0;mob.timer=999;mob.hp=10000;t.charge();t.step(.01);assert(mob.hp<10000&&Math.hypot(mob.kx,mob.ky)>0,'ordinary crowd control preserved');
  reset('jackson',area);let mini=t.spawnHeroic();mini.x=t.player.x+30;mini.y=t.player.y;mini.speed=0;mini.heroTimer=999;before=mini.hp;t.charge();t.step(.01);assert.equal(before-mini.hp,65);assert.equal(mini.kx,0);assert.equal(mini.ky,0);
 }
