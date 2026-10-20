@@ -1,6 +1,6 @@
 // Shared encounter lifecycle: independent of hero dispatch and charm effect processing.
 function resetHeroicEncounter(){run.heroicSpawned=false;run.heroicRewarded=false;}
-function stepHeroicEncounter(){if(introActive())return;if(rugbyRouteActive())return;if(!run.heroicSpawned&&time>=HEROIC_TIME){run.heroicSpawned=true;spawnHeroic();}}
+function stepHeroicEncounter(){if(introActive())return;if(rugbyRouteActive()||chaseRouteActive())return;if(!run.heroicSpawned&&time>=HEROIC_TIME){run.heroicSpawned=true;spawnHeroic();}}
 function heroicDefeated(e){if(e.heroic&&!run.heroicRewarded){if(e.rugbyGuard){run.guardDefeat={...e,defeated:true,left:1.2};radialEffect(e.x,e.y,75,'#f3ce7a');pop(e.x,e.y,'#f3ce7a',22);}run.heroicRewarded=true;if(!run.legacyCombat){dropRewardChest(e,false);return;}run.charmPending=true;if(state==='won')openCharmReward();}}
 // One heroic wildlife encounter per arena at 60s; never occupies final-boss state.
 function spawnHeroic(at){let kind={rugby:'charger',chasewater:'fox',sankeys:'courier',quarry:'badger',park:'patch'}[arenaKey];let q=at||walkable(p.x+210,p.y-140,28);spawn(kind,q);let e=enemies.at(-1);e.heroic=true;e.rugbyGuard=rugbyRouteActive();e.hp=e.maxHp=300*e.scaleHP;e.r=Math.max(e.r,25);e.speed=62;e.heroMode='hunt';e.heroTimer=2.2;e.damageScale*=1.3;float(p.x,p.y-60,'HEROIC CHALLENGER!','#f3d07d');return e;}
