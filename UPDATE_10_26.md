@@ -22,3 +22,6 @@ Before the NEXT RUN update, replace testing-wide character access with earned un
 
 ## Additional authorised playtest feedback, 20 October
 Stef reports Sankeys upgrades too weak and selected portrait too small (10.25 screenshot). Fix saved-journey portrait shrinking: restore at least 240px portrait in portrait mode, retain visible art in landscape with accessible scrolling. Permanent workshop per-rank benefits now +10 health / +8% normal-companion damage / +3% speed / −4% special cooldown / +10% healing. Five-rank caps and essence prices remain; saved ranks retained. Current before/after cards and next-fresh-journey rules remain. Native appearance/strength require user feedback.
+
+## Validation correction checkpoint
+- CI39449990189 exposed stale Evie health expectation (92 → 100 after authorised workshop +10), corrected. New browser saved-portrait setup now disables the compatibility fixture flag so it uses real checkpoint storage. Screenshot review caught narrow vertical build explanations; moved them into full-width expandable rows. Perfect-defence phone staging now enters the actual physical Rugby route and centres the player correctly. No automated rendering is claimed as Safari/user acceptance.
