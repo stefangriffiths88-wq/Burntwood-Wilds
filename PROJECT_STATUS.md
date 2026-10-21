@@ -1,5 +1,16 @@
 # Burntwood Wilds — project status
 
+## Active Pages-only playtest: 10.32.0 — rescues and visible curse recovery
+21 October 2026. Stef authorised implementation and a separate test. **Production canonical/latest and RUN remain 10.30.0 / platform1.0.6. Source PR95 stays draft/unmerged until user playtest.** The retained10.31 preview also remains available.
+
+Test: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-preview-v10.32.0.html?v=10320
+
+Fresh Jackson opening rescues Ava; Bruce recruits Joseph. Area rescues recruit Evie/ducks, Havannah, Tom, Harvey/portal gear and Jodie; Night Owl recruits Zak, Bramble Beast recruits Immy, five-area curse ending recruits Mimi. Stefan costs5 essence at his workshop, separate from10-essence signature. Existing earned access and upgrades migrate. NPC shop roles remain available. No new Cow Queen boss is claimed.
+
+Nearby glitter targeting, cosmetic ice shattering/crack, varied native scenery, purple terrain tint and cleansing wave, detailed cursed home landmarks and broken road trails. Read TEST_10_32.md for test steps. Separate preview progression/journey keys never write production keys.
+
+Final source3645155a7fb13f0856cc8bec6dc64f2ae9497852; generated80ef66a7d5537425ebe6d87df45046d59b499837. Exact isolated preview39677644395 passed; artifact12382921692 has135 phone captures at390×844,320×568,844×390/reduced motion and matches published HTML/metadata. SHA25630c934c690f04bfd1d307974cc1013ad71debfa00a358bc2be170d5c0e5db2c2;588541bytes. Full mechanics39677644476 and final retained-browser fixture review39677986974 are being completed; publication is the isolated preview only. Native iPhone Safari/audio/human balance and user acceptance remain pending.
+
 ## Active Pages-only playtest:10.31.0 — curse, story and town recovery
 21 October2026. Stef authorised this test and explicitly prohibited RUN publication until he has tested/approved. **Production canonical/latest and RUN remain10.30.0 / platform1.0.6. Source is unmerged; PR94 remains draft.**
 
