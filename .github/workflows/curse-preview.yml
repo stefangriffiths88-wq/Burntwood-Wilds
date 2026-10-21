@@ -1,0 +1,33 @@
+name: Curse Pages preview verification
+on:
+  push:
+    paths: ['ops/package_vine_preview.py', 'ops/vine_preview_browser.cjs', '.github/workflows/curse-preview.yml', 'journey-v10/world/curse-story.js', 'journey-v10/visuals/curse-art.js', 'journey-v10/story-rescues-test.cjs', 'journey-v10/story-rescues-browser.cjs', 'journey-v10/upgrades/recruitment.js', 'journey-v10/joseph-rescue-test.cjs', 'journey-v10/vine-charge-test.cjs', 'journey-v10/vine-charge-browser.cjs']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 journey-v10/build.py
+      - run: python3 ops/package_vine_preview.py
+      - run: node journey-v10/story-rescues-test.cjs
+      - run: node journey-v10/joseph-rescue-test.cjs
+      - run: node journey-v10/vine-charge-test.cjs
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/curse-preview-server.log 2>&1 &
+          node journey-v10/story-rescues-browser.cjs
+          node ops/vine_preview_browser.cjs
+          node journey-v10/vine-charge-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: isolated-story-preview
+          path: |
+            burntwood-preview-v10.33.0.html
+            tests/curse-preview-10.33.0.json
+            journey-v10/browser
