@@ -119,12 +119,10 @@ jobs:
       - run: node journey-v10/town-rugby-scenery-test.cjs
       - run: node journey-v10/elder-lane-test.cjs
       - run: node journey-v10/signature-builds-test.cjs
-      - run: node journey-v10/curse-story-test.cjs
       - run: python3 journey-v10/package_run.py
       - run: npm install --no-save playwright@1.48.2
       - run: |
           python3 -m http.server 8765 >/tmp/monster-server.log 2>&1 &
-          node journey-v10/curse-story-browser.cjs
           node journey-v10/signature-builds-browser.cjs
           node journey-v10/elder-lane-browser.cjs
           node journey-v10/town-rugby-scenery-browser.cjs
@@ -153,3 +151,22 @@ jobs:
           path: |
             burntwood-run-*.zip
             burntwood-run-*.html
+
+  curse-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 journey-v10/build.py
+      - run: node journey-v10/curse-story-test.cjs
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/curse-server.log 2>&1 &
+          node journey-v10/curse-story-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: curse-phone-review
+          path: journey-v10/browser
