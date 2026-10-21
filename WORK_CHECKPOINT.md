@@ -1,10 +1,20 @@
-# 10.32 development checkpoint
+# 10.32 story recruitment — test checkpoint
 
-21 October 2026. Owner: current Work session. User authorised the agreed story/curse improvements and testing. No RUN update and no source merge until user playtest. New branch feature/story-rescues-10-32 starts from 10.31 source checkpoint80460b7c939a3f056403a95b191db3f5fdd382d2. Stable main remainsa06f2b085627b5687f65f727b51dde58dd8424f9 (10.30.0 / RUN1.0.6); PR94 remains draft. No competing gameplay PR.
+21 October 2026. Stef authorised the agreed changes and testing; RUN/source merge remain prohibited until his playtest. Stable main game remains10.30.0 / RUN1.0.6. PR95 stays draft.
 
-See STORY_RESCUES_10_32.md for complete authorised scope and decisions. Implemented native rescue recruitment, legacy access migration, 5 essence Stefan, nearby glitter targeting, cosmetic frozen shatter, purple terrain veil, recovering varied scenery and detailed town landmarks/trails. No new portraits, boss, balance overhaul or RUN changes.
+Final maintained source: qa/story-caption-10-32 at5266c2902f702e118407abf11a56cd177dc50667; generatedce3645fedfd8d797cc3dacbede0923448b818fd5. Previous mechanics source3645155a7fb13f0856cc8bec6dc64f2ae9497852/generated80ef66a7d5537425ebe6d87df45046d59b499837. The only later gameplay-file difference is the Bramble Beast caption spelling, proven by tests/story-copy-10.32.json. All executable code is byte-identical. Fixture followups persist earned Ava before reload and represent actual rescued friends in restored-shop scenarios; no gameplay unlock bypass was added.
 
-Local passed: build/syntax; story-rescues (persistent/atomic rewards, save failure, migration, targeting/damage and visual-only shatter); first-journey actual combat/XP; roster-workshop; Elder Lane route/Joseph real Bruce collision/healing/Guardian contracts; all12 ×five curse-area contracts; monster-town. Browser CI and final preview publication pending. Browser automation is not native Safari or human balance acceptance.
+Implemented: Jackson-only fresh start, Ava intro rescue, Joseph after Bruce; scene rescues Evie/ducks, Havannah, Tom, Harvey/portal gear, Jodie; Night Owl→Zak, Bramble Beast→Immy, five-area ending→Mimi. Stefan separate5 essence recruit. Existing earned access/ranks migrate; locked playable shopkeepers remain NPCs. No new Queen boss. Nearby Ava meteor, cosmetic ice death/crack, varied recovering native scenery/purple terrain veil, distinct cursed home landmarks/broken trails/objectives and restrained original cues. See STORY_RESCUES_10_32.md and TEST_10_32.md.
+
+Passed local: build/syntax, focused recruitment/atomic storage/migration/targeting/shatter, actual intro combat/XP, roster/workshop, Elder Lane/Joseph/Bruce/healing/Guardian, all12×five curse area contracts, monster-town, journey recovery.
+
+Final retained focused run39678369008 passed all three jobs: all12 signatures/charm contracts, actual native intro/XP/replay, saving/recovery, phone selectors/workshops, real shops/taps, physical routes/guards/chests/bosses/exits, responsive layouts, companion clone/full kitten lifetime. Exact final isolated preview39678796252 passed; artifact12382917983 has135 phone screenshots and matches local HTML byte-for-byte. Earlier exact preview39677644395/artifact12382921692 differs solely by corrected caption. Reviewed390×844,320×568,844×390/reduced motion; recruit banner no longer overlaps coaching/controls. Full mechanics job119491776964/run39677644476 passed, including266 hero/charm combinations and21 protected journeys/105 arenas; its initial changed-review failed an obsolete fixture and was superseded by final focused green39678369008. Do not call the whole earlier workflow green.
+
+Pages-only commits2aba5aa06985433cc7b08d6c2807379f428a64cb and final captionfbb09d3925d80faa6a783423aa40ccdbfc0b3056. Preview SHA2563185c292ecb872cca95a57d28556289771ed76893761890e5c12df98db219a6c,588539bytes. Separate save keys. Initial public verification passed for preview and nine retained preview/production/art files; final public check passed for all ten files; final Pages39679019151 passed. No canonical/latest/RUN files were changed, no RUN upload requested/performed.
+
+Test link: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-preview-v10.32.0.html?v=10321
+
+Native iPhone Safari/audio, visual/fun/survival acceptance remain Stef’s test. Automated invulnerable/positioned journeys are not evidence of human balance. No source merge is authorised.
 
 Prior 10.31 checkpoint retained below.
 

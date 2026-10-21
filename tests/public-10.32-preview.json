@@ -1,0 +1,87 @@
+{
+  "version": "10.32.0",
+  "kind": "isolated Pages preview only",
+  "publicationCommit": "fbb09d3925d80faa6a783423aa40ccdbfc0b3056",
+  "pagesRun": 39679019151,
+  "testedSource": "5266c2902f702e118407abf11a56cd177dc50667",
+  "actualPreviewChecks": 39678796252,
+  "screensArtifact": 12382917983,
+  "retainedFocusedChecks": 39678369008,
+  "fullMechanicsJob": 119491776964,
+  "fullMechanicsRun": 39677644476,
+  "run": "Unchanged10.30.0 / platform1.0.6; no upload authorised before user test",
+  "files": [
+    {
+      "path": "burntwood-preview-v10.32.0.html",
+      "bytes": 588539,
+      "sha256": "3185c292ecb872cca95a57d28556289771ed76893761890e5c12df98db219a6c",
+      "unchangedProduction": false,
+      "verified": true
+    },
+    {
+      "path": "burntwood-preview-v10.31.0.html",
+      "bytes": 573761,
+      "sha256": "e965d4c729763ab9c846028788e7d4cbb0fd96ae5b01af7f36d537e6b69daaf0",
+      "unchangedProduction": true,
+      "verified": true
+    },
+    {
+      "path": "burntwood-journey-v10.html",
+      "bytes": 551889,
+      "sha256": "a0b784b68d07b60cd68b5a246b285c29dc5a2c20aaf915c250a1af54118a742a",
+      "unchangedProduction": true,
+      "verified": true
+    },
+    {
+      "path": "burntwood-journey-v10.30.0.html",
+      "bytes": 551889,
+      "sha256": "a0b784b68d07b60cd68b5a246b285c29dc5a2c20aaf915c250a1af54118a742a",
+      "unchangedProduction": true,
+      "verified": true
+    },
+    {
+      "path": "latest.html",
+      "bytes": 508,
+      "sha256": "dbd30bff631d9914a56b8fe5626d81a9feea2a756dc2035f1e10fd08f90307df",
+      "unchangedProduction": true,
+      "verified": true
+    },
+    {
+      "path": "run-host/releases/10.30.0.json",
+      "bytes": 384,
+      "sha256": "efab7bf7c963ae47a19d117ce448400057308e9c91e47ebda5d6fac47249f0ee",
+      "unchangedProduction": true,
+      "verified": true
+    },
+    {
+      "path": "journey-v10/assets/portraits/jackson.webp",
+      "bytes": 60088,
+      "sha256": "d6c84b3adbba07060892fbbfd10e12fb9d79b0580bff546ff52fab9f996b5762",
+      "unchangedProduction": true,
+      "verified": true
+    },
+    {
+      "path": "journey-v10/assets/portraits/ava.webp",
+      "bytes": 67276,
+      "sha256": "b0c6f46ad24d3ddbd7b96fff9885c89426ec34a4a1fb7d4453cf672f5cd01428",
+      "unchangedProduction": true,
+      "verified": true
+    },
+    {
+      "path": "journey-v10/assets/icons/jackson.webp",
+      "bytes": 88164,
+      "sha256": "740d2ade39d9ec092aea0a733e63852883d19c110d6dd15920f179613eeaa236",
+      "unchangedProduction": true,
+      "verified": true
+    },
+    {
+      "path": "journey-v10/assets/icons/ava.webp",
+      "bytes": 73856,
+      "sha256": "4823669e37794a78f97479a4847d045ee162a72459ff0bbc63cfc2ed9837f2ea",
+      "unchangedProduction": true,
+      "verified": true
+    }
+  ],
+  "fullMechanicsJobConclusion": "success",
+  "pagesConclusion": "success"
+}
