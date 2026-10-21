@@ -28,7 +28,11 @@ jobs:
           # Rugby-only followups have all-ten route contracts and actual-navigation phone coverage.
           # Shared runtime changes and workflow-only changes still require the complete mechanics gate.
           rugby_only=any(p in rugby_owned for p in files) and all(p in rugby_owned or p.endswith('.md') or p=='.github/workflows/journey-v10.yml' for p in files)
-          full=not files or not (rugby_only or all(presentation_or_test(p) for p in files))
+          # Native curse art has its own all-hero contracts and three-size phone review.
+          # This exception requires the drawing file and excludes story/AI/runtime changes.
+          curse_art_owned={'journey-v10/visuals/curse-art.js','journey-v10/curse-story-test.cjs','journey-v10/curse-story-browser.cjs','.github/workflows/curse-preview.yml','.github/workflows/journey-v10.yml'}
+          curse_art_only='journey-v10/visuals/curse-art.js' in files and all(p in curse_art_owned or p.endswith('.md') for p in files)
+          full=not files or not (rugby_only or curse_art_only or all(presentation_or_test(p) for p in files))
           with open(os.environ['GITHUB_OUTPUT'],'a') as output: output.write('full='+str(full).lower()+'\n')
           print('Full mechanics suite:',full,'; changed files:',', '.join(files))
           PY_SCOPE

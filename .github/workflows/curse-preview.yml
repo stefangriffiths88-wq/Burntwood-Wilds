@@ -1,7 +1,7 @@
 name: Curse Pages preview verification
 on:
   push:
-    paths: ['ops/package_curse_preview.py', 'ops/curse_preview_browser.cjs', '.github/workflows/curse-preview.yml', 'journey-v10/world/curse-story.js']
+    paths: ['ops/package_curse_preview.py', 'ops/curse_preview_browser.cjs', '.github/workflows/curse-preview.yml', 'journey-v10/world/curse-story.js', 'journey-v10/visuals/curse-art.js']
 permissions:
   contents: read
 jobs:
