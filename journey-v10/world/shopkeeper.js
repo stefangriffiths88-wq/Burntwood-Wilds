@@ -1,6 +1,6 @@
 // The selected hero stays unique: Jodie covers the shop when Mimi is playable.
 const SHOPKEEPER={x:719,y:379,reach:100,phase:0};
-function shopkeeperKey(){return selected==='mimi'?'jodie':'mimi';}
+function shopkeeperKey(){return selected==='mimi'?(heroUnlocked('jodie')?'jodie':'jackson'):'mimi';}
 function shopkeeperName(){return CHARACTERS[shopkeeperKey()].name;}
 function shopkeeperGreeting(){return selected==='mimi'?'Heyy Mimiiii… How can I help you save us all?':'Okay human, you’re in my world now. Allow me to help you.';}
 function shopkeeperNear(){return serviceOpen('mimi')&&dist(p,SHOPKEEPER)<SHOPKEEPER.reach;}
@@ -14,7 +14,7 @@ function openShopAfterTalk(){if(state!=='dialogue'||!shopConversation)return fal
 
 // Ava's separate counter shares the safe hub shop shell, never Mimi's stock list.
 const CHARM_SHOP={x:550,y:280,reach:78};
-function charmShopKeeper(){return selected==='ava'?'evie':'ava';}
+function charmShopKeeper(){return selected==='ava'?(heroUnlocked('evie')?'evie':'jackson'):'ava';}
 function charmShopNear(){return serviceOpen('ava')&&dist(p,CHARM_SHOP)<CHARM_SHOP.reach;}
 function interactCharmShop(direct=false){if(state!=='hub'||!serviceOpen('ava')||(!direct&&!charmShopNear()))return false;shopConversation=false;workshopConversation=false;state='dialogue';stopMovement();$('townPortrait').src=PORTRAITS[charmShopKeeper()];$('townName').textContent=CHARACTERS[charmShopKeeper()].name.toUpperCase();$('townLine').textContent='A little charm can make a big difference. Have a look, or let me merge your matching treasures.';$('openWorkshopAfterTalk').style.display='none';$('openShopAfterTalk').style.display='block';$('openShopAfterTalk').onclick=()=>{if(state!=='dialogue')return;closeConversation();openCharmShop(true);};$('townDialogue').style.display='flex';return true;}
 function openCharmShop(direct=false){if(state!=='hub'||!serviceOpen('ava')||(!direct&&!charmShopNear()))return false;if(!openHubShop(true))return false;run.shopService='charms';$('shopSpeaker').textContent=CHARACTERS[charmShopKeeper()].name.toUpperCase();$('shopGreeting').textContent='Pick an icon to inspect. Your gold is only spent when you press Buy.';renderHubShop();return true;}

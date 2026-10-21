@@ -1,6 +1,7 @@
 [
   "upgrades/build-stats.js",
   "items/charm-catalog.js",
+  "upgrades/recruitment.js",
   "upgrades/permanent.js",
   "upgrades/signatures.js",
   "state.js",

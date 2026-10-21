@@ -1,3 +1,13 @@
+# 10.32 development checkpoint
+
+21 October 2026. Owner: current Work session. User authorised the agreed story/curse improvements and testing. No RUN update and no source merge until user playtest. New branch feature/story-rescues-10-32 starts from 10.31 source checkpoint80460b7c939a3f056403a95b191db3f5fdd382d2. Stable main remainsa06f2b085627b5687f65f727b51dde58dd8424f9 (10.30.0 / RUN1.0.6); PR94 remains draft. No competing gameplay PR.
+
+See STORY_RESCUES_10_32.md for complete authorised scope and decisions. Implemented native rescue recruitment, legacy access migration, 5 essence Stefan, nearby glitter targeting, cosmetic frozen shatter, purple terrain veil, recovering varied scenery and detailed town landmarks/trails. No new portraits, boss, balance overhaul or RUN changes.
+
+Local passed: build/syntax; story-rescues (persistent/atomic rewards, save failure, migration, targeting/damage and visual-only shatter); first-journey actual combat/XP; roster-workshop; Elder Lane route/Joseph real Bruce collision/healing/Guardian contracts; all12 ×five curse-area contracts; monster-town. Browser CI and final preview publication pending. Browser automation is not native Safari or human balance acceptance.
+
+Prior 10.31 checkpoint retained below.
+
 # 10.31 curse/story Pages playtest — final checkpoint
 
 21 October2026. Owner: current Work session. User authorised implementation and testing, explicitly **no RUN publication until Stef has tested/approved**. Production remains10.30.0 / RUN1.0.6. Source PR94 stays draft.

@@ -1,7 +1,7 @@
 // Town guidance remains visible while moving; combat retains its idle hint.
 let guideLast=null;
 function stepGuidanceIdle(dt){if(!p)return;let moving=Math.hypot(p.vx||0,p.vy||0)>5||Math.hypot(stick.x,stick.y)>.1||Object.values(keys).some(Boolean)||guideLast&&Math.hypot(p.x-guideLast.x,p.y-guideLast.y)>.5;run.guideIdle=moving?0:(run.guideIdle||0)+dt;guideLast={x:p.x,y:p.y};}
-function guidanceTarget(){if(run.shopGuide&&state==='hub')return WORKSHOP;if(firstMissionActive())return hub.portals.find(g=>g.key==='rugby');return hub.portals.find(g=>!run.visited?.includes(g.key)&&g.key===(run.guideArea||'rugby'))||hub.portals.find(g=>!run.visited?.includes(g.key));}
+function guidanceTarget(){if(run.shopGuide&&state==='hub')return WORKSHOP;if(firstMissionActive())return hub.portals.find(g=>g.key==='rugby');return hub.portals.find(g=>!run.visited?.includes(g.key)&&g.key===(run.guideArea||recommendedStoryArea()))||hub.portals.find(g=>!run.visited?.includes(g.key));}
 // Project onto the nearest road, then choose the endpoint with the shortest
 // remaining route. Recomputing from the nearest *node* turns the arrow backwards
 // whenever a player is halfway along a road.

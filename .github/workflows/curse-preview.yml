@@ -1,7 +1,7 @@
 name: Curse Pages preview verification
 on:
   push:
-    paths: ['ops/package_curse_preview.py', 'ops/curse_preview_browser.cjs', '.github/workflows/curse-preview.yml', 'journey-v10/world/curse-story.js', 'journey-v10/visuals/curse-art.js']
+    paths: ['ops/package_story_preview.py', 'ops/story_preview_browser.cjs', '.github/workflows/curse-preview.yml', 'journey-v10/world/curse-story.js', 'journey-v10/visuals/curse-art.js', 'journey-v10/story-rescues-test.cjs', 'journey-v10/story-rescues-browser.cjs', 'journey-v10/upgrades/recruitment.js']
 permissions:
   contents: read
 jobs:
@@ -13,16 +13,18 @@ jobs:
         with:
           node-version: '22'
       - run: python3 journey-v10/build.py
-      - run: python3 ops/package_curse_preview.py
+      - run: python3 ops/package_story_preview.py
+      - run: node journey-v10/story-rescues-test.cjs
       - run: npm install --no-save playwright@1.48.2
       - run: |
           python3 -m http.server 8765 >/tmp/curse-preview-server.log 2>&1 &
-          node ops/curse_preview_browser.cjs
+          node journey-v10/story-rescues-browser.cjs
+          node ops/story_preview_browser.cjs
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: isolated-curse-preview
+          name: isolated-story-preview
           path: |
-            burntwood-preview-v10.31.0.html
-            tests/curse-preview-10.31.json
+            burntwood-preview-v10.32.0.html
+            tests/curse-preview-10.32.json
             journey-v10/browser
