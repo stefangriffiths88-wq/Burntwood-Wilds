@@ -1,7 +1,9 @@
 # Burntwood Wilds — project status
 
-## Current candidate: 10.28.0 — Rugby cars/brick entrance and Sankeys square
-20 October2026. Corrects the approved work omitted from10.27 after Stef reported missing early cars and unchanged town. PR91; GitHub playtest only. RUN remains game10.25.0/platform1.0.4. Main publication/public byte verification pending at this checkpoint.
+## Current release: 10.28.0 — Rugby cars/brick entrance and Sankeys square
+20 October2026. Corrects the approved work omitted from10.27 after Stef reported missing early cars and unchanged town. PR91; GitHub playtest only. RUN remains game10.25.0/platform1.0.4. PR91 merged at75a4db1da42faa6252ceb3cd294f5a679f0bc4ab. Main CI39502207602 and Pages39502206943 passed. All28 public files match the tested bytes, verified21 October2026; tests/public-10.28.json.
+
+Play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.28.0.html?v=10280
 
 - Two native parked cars sit on the playable lane's west shoulder (the right when walking south), with six cars on both sides of the actual car park. Shared car footprints block movement while the full guided centreline remains open. The distant public-road cars remain scenery.
 - Weathered red-brick walls and end pillars frame the open entrance after the railway buffer. No crossing is introduced at Rugby. Bruce art, route pacing, forward spawns, mandatory guard, well cutoff, rewards and gameplay scale are retained.
