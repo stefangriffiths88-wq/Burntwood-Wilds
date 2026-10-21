@@ -34,5 +34,5 @@ function drawRugbyBrickEntrance(){
   ctx.fillStyle='#c4b49a';ctx.fillRect(b.x-3,b.y,b.w+6,7);
   for(let y of [b.y,b.y+b.h-20]){ctx.fillStyle='#80523e';ctx.fillRect(b.x-7,y,b.w+14,24);ctx.fillStyle='#d6c8ac';ctx.fillRect(b.x-10,y-5,b.w+20,8);}
  }
- if(rugbyInView(1390,8290,300)){ctx.save();ctx.translate(1390,8162);ctx.rotate(-Math.PI/2);ctx.fillStyle='#244a38';ctx.fillRect(-72,-13,144,27);ctx.strokeStyle='#c9b58a';ctx.lineWidth=2;ctx.strokeRect(-72,-13,144,27);ctx.fillStyle='#f3dda6';ctx.font='bold 12px Georgia';ctx.textAlign='center';ctx.fillText('BURNTWOOD R.U.F.C.',0,4);ctx.restore();}
+ if(rugbyInView(1390,8162,300)){ctx.fillStyle='#244a38';ctx.fillRect(1344,8120,92,38);ctx.strokeStyle='#c9b58a';ctx.lineWidth=1.5;ctx.strokeRect(1344,8120,92,38);ctx.fillStyle='#f3dda6';ctx.font='bold 9px Georgia';ctx.textAlign='center';ctx.fillText('BURNTWOOD',1390,8135);ctx.fillText('RUGBY CLUB',1390,8149);}
 }

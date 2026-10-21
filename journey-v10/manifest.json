@@ -54,6 +54,8 @@
   "arenas/rugby-route-art.js",
   "arenas/chasewater-route.js",
   "arenas/chasewater-route-art.js",
+  "arenas/park-route.js",
+  "arenas/park-route-art.js",
   "world/reward-flow.js",
   "ui/audio.js",
   "onboarding/first-journey.js",

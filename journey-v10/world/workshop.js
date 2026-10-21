@@ -1,8 +1,8 @@
 // Stefan's workshop; Jackson covers when Stefan is playable. Gift is once per save.
 const WORKSHOP={x:334,y:548,reach:65};
 let workshopHero='jackson',pendingPurchase=null;
-function workshopKeeperKey(){return selected==='stef'?'jackson':'stef';}
-function workshopGreeting(){return selected==='stef'?"Dad’s out sorting those monsters. I’m looking after the workshop! Pick someone—I’ll give them an upgrade for free.":'Good work out there. Bring that essence over—who are we toughening up?';}
+function workshopKeeperKey(){return selected==='stef'?'jackson':!heroUnlocked('stef')?(selected==='jackson'?'joseph':'jackson'):'stef';}
+function workshopGreeting(){if(!heroUnlocked('stef'))return 'Dad’s out at the quarry. I’m looking after the workshop. Bring your essence over!';return selected==='stef'?"Dad’s out sorting those monsters. I’m looking after the workshop! Pick someone—I’ll give them an upgrade for free.":'Good work out there. Bring that essence over—who are we toughening up?';}
 function workshopNear(){return serviceOpen('stef')&&dist(p,WORKSHOP)<WORKSHOP.reach;}
 let workshopConversation=false;
 function interactWorkshop(direct=false){if(state!=='hub'||!serviceOpen('stef')||(!direct&&!workshopNear()))return false;shopConversation=false;workshopConversation=true;state='dialogue';stopMovement();let host=workshopKeeperKey();$('townPortrait').src=PORTRAITS[host];$('townPortrait').alt=CHARACTERS[host].name;$('townName').textContent=CHARACTERS[host].name.toUpperCase();$('townLine').textContent=selected==='stef'&&progress.jacksonGiftClaimed?'Good to see you! Who needs a hand at the workbench?':workshopGreeting();$('openShopAfterTalk').style.display='none';$('openWorkshopAfterTalk').style.display='block';$('townDialogue').style.display='flex';return true;}
