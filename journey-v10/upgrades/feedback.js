@@ -37,6 +37,7 @@ function celebrateReward(offer){
  rewardNotice(title,offer.name+' · '+(offer.path==='stat'?offer.text:offer.total?'Step '+offer.rank+' of '+offer.total:offer.text),RARITIES[offer.rarity].color);
 }
 function charmRewardHint(key){
+ if(strengthenBossCharm(key))return 'STRENGTHEN NOW · RANK '+['','I','II','III'][charmRank(key)+1];
  let combo=charmSynergy(key);if(combo)return combo;let copies=[...run.charms,...run.charmBag].filter(c=>c.key===key&&c.rank===1).length;
  if(!run.legacyCombat)return copies||charmRank(key)?'MATCHING COPY · KEEP IN BAG':'EQUIP, SWAP OR KEEP IN BAG';
  if(copies)return 'MATCHING COPY · FUSE IN TOWN';
@@ -57,3 +58,5 @@ function rewardChime(legendary=false){
   if(audio.state==='suspended')audio.resume().then(play).catch(()=>{});else play();
  }catch{}
 }
+
+function charmRewardType(key){return strengthenBossCharm(key)?'STRENGTHEN EQUIPPED · '+['','I','II','III'][charmRank(key)+1]:RARITIES[CHARMS[key].rarity].symbol+' '+RARITIES[CHARMS[key].rarity].name.toUpperCase()+' · RUN CHARM'+(charmRank(key)?' · FUSION COPY':'');}
