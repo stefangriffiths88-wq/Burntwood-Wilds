@@ -3,7 +3,7 @@ function rewardRandom(){return rewardRolls.length?rewardRolls.shift():Math.rando
 
 function rollPerks(){let keys=Object.keys(PERKS);for(let i=keys.length-1;i>0;i--){let j=Math.floor(rewardRandom()*(i+1));[keys[i],keys[j]]=[keys[j],keys[i]];}return keys.slice(0,3);}
 
-function rollBossCharms(){let offers=[rollCharmKey(3)];for(let i=0;offers.length<3&&i<100;i++){let key=rollCharmKey(2);if(!offers.includes(key))offers.push(key);}for(let key of Object.keys(CHARMS))if(offers.length<3&&CHARMS[key].rarity>=2&&!offers.includes(key))offers.push(key);return offers;}
+function rollBossCharms(){let offers=[rollCharmKey(3)];for(let i=0;offers.length<3&&i<100;i++){let key=rollCharmKey(2);if(!offers.includes(key))offers.push(key);}for(let key of Object.keys(CHARMS))if(offers.length<3&&CHARMS[key].rarity>=2&&!offers.includes(key))offers.push(key);let owned=run.charms.filter(c=>c.rank<3&&c.key!=='purse').sort((a,b)=>a.rank-b.rank);if(owned.length){let key=owned[0].key;offers=offers.filter(k=>k!==key).slice(0,2);offers.push(key);}return offers;}
 function openBossReward(){if(state!=='won'||!run.bossRewardPending||run.visited.length>=5)return false;run.bossCharmOpening=true;run.charmPending=true;return openCharmReward();}
 function chooseBossPerk(){return false;}
 

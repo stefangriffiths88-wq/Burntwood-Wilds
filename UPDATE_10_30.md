@@ -10,4 +10,6 @@ Jodie special: kittens last their full9/11s, not a pounce budget or premature re
 
 This first-priority testing release does not include the separately suggested later enemy-role expansion or branching weapon paths. Shared arena balance and geography remain intact. Attack trails/sounds and combination cues are enhanced where the new effects occur.
 
-Pending: implementation, focused contracts, required regression/mobile screenshots, merge/main/Pages verification, RUN publication and exact file verification. No claim of implementation or release yet. Native Safari and human balance require user playtest.
+Implemented locally: all12 signatures and atomic purchase/save/recovery support, workshop preview, six behaviour charms/three explicit combinations, reliable boss strengthening, full-duration kittens and companion Mimi clone. Focused signature/build tests, existing core tests, town/save purchases, recovery, build stats, early charm timing/fusion contracts and RUN tracking/package checks passed. An additional-bounce/split-star test caught immediate re-collision with the original target; secondary star hit sets now exclude it. A shared target clock prevents independently spawned overlapping clouds from stacking damage.
+
+Pending: required full regression/mobile screenshots, exact-head merge/main/Pages verification, RUN publication and public file verification. Not deployed yet. Native Safari and human balance require user playtest.

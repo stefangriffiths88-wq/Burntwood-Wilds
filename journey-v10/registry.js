@@ -24,7 +24,7 @@ function spawn(kind,at){ARENA_MODULES[arenaKey].spawn(kind,at);}
 function ground(){if(introActive()){drawIntroduction();return;}ARENA_MODULES[arenaKey].ground();}
 function rugbyWave(){if(rugbyRouteActive())return rugbyProgressWave();let pt=pressureTime(),roll=rand(),kind=pt>10&&roll<.19?'charger':pt>20&&roll>.83?'heavy':'swarm';spawn(kind);if(pt>20&&rand()<.45){spawn('swarm');spawn('swarm');}nextSpawn=stageSpawnDelay(Math.max(.42,.88-time*.0018));}
 
-function normalAttack(){let f=run.charmFX,old=f?{attacks:f.attacks,echo:f.echo}:null;charmAttackStarted();let ok=CHARACTER_MODULES[selected].attack();if(!ok&&old){f.attacks=old.attacks;f.echo=old.echo;}else if(ok&&f&&charmRank('echo')&&f.attacks%5===4)float(p.x,p.y-38,'ECHO NEXT','#e6d596');return ok;}
+function normalAttack(){let f=run.charmFX,old=f?{attacks:f.attacks,echo:f.echo}:null;charmAttackStarted();let ok=CHARACTER_MODULES[selected].attack();if(!ok&&old){f.attacks=old.attacks;f.echo=old.echo;}else if(ok){signatureNormal();}if(ok&&f&&charmRank('echo')&&f.attacks%(charmRank('echo')===3?3:charmRank('echo')===2?4:5)===(charmRank('echo')===3?2:charmRank('echo')===2?3:4))float(p.x,p.y-38,'ECHO NEXT','#e6d596');return ok;}
 
 function normalAttackInterval(){return (CHARACTER_MODULES[selected].interval?.()??CHARACTERS[selected].rate)*normalRate();}
 

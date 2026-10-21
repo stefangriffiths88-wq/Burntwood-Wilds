@@ -1,3 +1,9 @@
+# 10.30 charm testing revision
+
+Six existing charms now anchor builds: Echo visibly repeats attack forms, Frost freezes/shatters ordinary foes (bosses only slow), Ember explodes direct defeats, Bell visibly charges an expanding ring, Guardian releases a protective wave, and Phantom visibly mirrors attacks. Ranks add coverage, timing and milestone behaviour. All38 IDs and old fusion/starter purchases remain valid. Major heroic rewards include a behaviour choice; boss rewards retain an Epic+ choice and offer immediate strengthening of the lowest-rank equipped charm, chosen instead of another reward. RankIII is the cap.
+
+Explicit combinations: Ice Echo lets repeats build frost; Guardian Chorus widens shield waves and adds two Bell charges; Haunted Embers lets a shadow defeat start one Ember explosion. Secondary fire/element/signature damage cannot recursively create fire explosions. Echo/clone effects cannot trigger ordinary on-hit procs except the single explicit frost interaction. Freeze has2.5s recovery; bosses are never hard frozen. Overlapping signature clouds use one shared target clock. Existing numeric charms remain available through shops/basic loot; older details below describe the previous release.
+
 # Thirty run-only charms — 10.6.0
 
 Three equipped slots. Rarity is immutable; merging two identical same-rank copies gives the next fusion rank (I–III). Rank power is 1 / 1.5 / 2 unless explicitly noted. `items/charm-catalog.js` owns identity/rarity, `items/charms.js` owns effects/fusion, `items/economy.js` owns shops/starter unlocks. See BUILDS.md for prices and odds. Inventory displays exact current-rank effects.
