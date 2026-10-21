@@ -1,0 +1,9 @@
+{
+  "version": "10.31.0",
+  "purpose": "Pages-only test; RUN publication prohibited pending user test",
+  "path": "burntwood-preview-v10.31.0.html",
+  "sourceSha256": "55e6228f3cb3d485f1347dba127af27f0995eb9d8491f4014c21561ee86a4590",
+  "previewSha256": "e965d4c729763ab9c846028788e7d4cbb0fd96ae5b01af7f36d537e6b69daaf0",
+  "bytes": 573761,
+  "storage": "Separate journey/permanent keys; initial permanent progress read from current game if present; no writes to production keys"
+}

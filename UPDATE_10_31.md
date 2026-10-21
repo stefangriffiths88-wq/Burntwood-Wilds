@@ -14,3 +14,8 @@ Implementation: world/curse-story.js owns state/data/AI; visuals/curse-art.js ow
 Delivery plan: keep source on feature/curse-restoration-10-31, run changed-system contracts/browser review and required CI, publish only the exact versioned10.31 Pages test file. Keep canonical/latest/10.30 and RUN1.0.6 unchanged until user acceptance. Production release status remains10.30.0. Do not merge this feature or upload RUN before user testing.
 
 Acceptance: candidate not yet user-tested; automated movement/invulnerability proves integration, not fun/survival balance. Native Safari/audio/visual acceptance pending.
+
+## Verified candidate
+Final source/art a635a34e, generated QA head28dc51e. Full mechanics39639702818 passed (266 combinations;21 protected journeys/105 arenas); final focused39641104739 and exact-preview39641104809 passed. Retired obsolete rescue/boss captions, retained Joseph/Tom initial banter and Chasewater crossing directions; restored Rugby lamps remain warm/steady. Native drawings cannot consume combat RNG or mutate encounter state.93 final phone captures in12365650088; actual HTML/metadata byte-verified. Preview uses separate permanent/journey keys and only a read-only initial progress fallback. Native Safari/fun/survival acceptance remains pending.
+
+Pages test file only: burntwood-preview-v10.31.0.html. Publication31cf9285e9017e4117f04222d995e710fb8fab7c leaves canonical/latest/10.30/RUN unchanged. See TEST_10_31.md and public verification record when complete. Source remains unmerged; no RUN publication authorised.

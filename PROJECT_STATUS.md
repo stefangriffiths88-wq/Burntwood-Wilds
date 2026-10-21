@@ -1,5 +1,18 @@
 # Burntwood Wilds — project status
 
+## Active Pages-only playtest:10.31.0 — curse, story and town recovery
+21 October2026. Stef authorised this test and explicitly prohibited RUN publication until he has tested/approved. **Production canonical/latest and RUN remain10.30.0 / platform1.0.6. Source is unmerged; PR94 remains draft.**
+
+Safari test: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-preview-v10.31.0.html?v=10310
+
+Preview-only commit31cf9285e9017e4117f04222d995e710fb8fab7c; Pages39641808171. Exact public preview SHA256e965d4c729763ab9c846028788e7d4cbb0fd96ae5b01af7f36d537e6b69daaf0,573761bytes. Nine public files verified, including unchanged canonical/latest/10.30, RUN receipt and Jackson/Ava assets; tests/public-10.31-preview.json. Separate preview progression/journey keys protect the current game; existing permanent progress can be read initially.
+
+Five area-owned stories, attackable curse knots, rescued neighbours, boss omens/quiet beats, warned root eruptions, caller/stalker priorities, controllable cleansing and restored town entrances/dialogue. Elder Lane Park geography, approved hero art/stats and essence economy retained. Bruce sheds netting; Rugby lamps settle into steady light. Old rescue pleas retire on rescue/boss arrival. User playtest/native Safari/audio/fun/survival acceptance pending.
+
+Tested generated source28dc51e; final source/art a635a34e. Complete39639702818 passed:266 hero/charm combinations and21 protected journeys/105 arenas across original seven heroes/three builds. Only obsolete-caption retirement differs in story code afterwards; encounter mechanics byte-compared unchanged. Final focused39641104739 all three jobs passed, including new all12 heroes ×five area contracts and existing hero/route/reward/save checks. Exact isolated-preview39641104809 passed; artifact12365650088 contains93 final phone captures at390×844,320×568,844×390/reduced motion and exactly matches the published HTML/metadata. Native drawing is deterministic with no combat RNG/state writes. The final art-only change reused unchanged full-matrix evidence and retained focused gates.
+
+Scope UPDATE_10_31.md and source checkpoint WORK_CHECKPOINT.md on the feature branch; TEST_10_31.md and preview checksums are on main. Next: Stef tests this separate link. Do not merge source or upload to RUN before his feedback/approval.
+
 ## Current release: 10.30.0 — signature abilities, charm builds and full-duration kittens
 21 October2026. PR93 merged atffe52b87f7e48b9e32ac4fdf8d2dd11b5144594b; final feature CI39629167433 and RUN prepare39629167767 passed. Main CI39629620489 and Pages39629619002 passed. All28 public files match the tested bytes, including the retained10.29 release; tests/public-10.30.json. Canonical/versioned HTML SHA256a0b784b68d07b60cd68b5a246b285c29dc5a2c20aaf915c250a1af54118a742a.
 
