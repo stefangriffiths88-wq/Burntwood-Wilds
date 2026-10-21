@@ -36,6 +36,9 @@ def build():
     for name, digest in provenance['files'].items():
         assert hashlib.sha256((vendor / name).read_bytes()).hexdigest() == digest, 'RUN wrapper changed: ' + name
     shutil.copytree(vendor, dest)
+    approved_thumbnail = ROOT / 'run-host/artwork/thumbnail.jpg'
+    if approved_thumbnail.exists():
+        shutil.copyfile(approved_thumbnail, dest / 'thumbnail.jpg')
     (dest / 'assets/burntwood.html').write_text(html)
     files = {str(p.relative_to(dest)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(dest.rglob('*')) if p.is_file()}
     receipt = {'gameVersion': request['gameVersion'], 'sourceSha256': request['sourceSha256'], 'hostBaseline': provenance['source'], 'files': files}
