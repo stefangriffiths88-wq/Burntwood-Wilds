@@ -1,0 +1,25 @@
+{
+  "version": "10.33.0",
+  "mergeCommit": "96ae5b820be3b8d9592032580994fa4383847ece",
+  "pagesRun": 39686023043,
+  "runRelease": 39686023812,
+  "canonical": {
+    "bytes": 600269,
+    "sha256": "7bce509a2fae14c96203a54a8528322915ea6acef0f348f869fbba9fb5cf0b4e"
+  },
+  "preview": {
+    "bytes": 600238,
+    "sha256": "15692dc7596f6bd9881777a3376f2bba56b98faea3f2e9572a71340590a81d96"
+  },
+  "run": {
+    "success": true,
+    "gameId": "oeJYyzlGHanZwYoRldTS",
+    "version": "1.0.7",
+    "shareUrl": "https://w.run/jollyrunner639/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671",
+    "visibility": "review",
+    "gameVersion": "10.33.0",
+    "sourceSha256": "c188cc5aa12acac2fa56fff96a5b7eb71842b6ec3809f2c5838923b3e33b7fe0",
+    "commit": "96ae5b820be3b8d9592032580994fa4383847ece"
+  },
+  "verification": "Public canonical, versioned and preview HTML fetched after successful Pages deploy; official successful RUN upload receipt matches tested portable input. RUN visibility review; no claim of listing approval."
+}

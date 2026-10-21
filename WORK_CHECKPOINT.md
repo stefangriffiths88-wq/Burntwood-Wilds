@@ -1,7 +1,5 @@
-# Active checkpoint:10.33 release
+# Completed release:10.33.0
 
-User authorised RUN and Pages publication after testing, then requested a rewarding return-home character unlock scene. All earlier no-RUN restrictions are superseded for this release.
+User authorised RUN and Pages publication; welcome-home scene is included. PR97 merged96ae5b820be3b8d9592032580994fa4383847ece. Pages39686023043 and RUN39686023812 succeeded. Public Pages bytes match the tested build. RUN receipt10.33.0 records platform1.0.7 with visibility review; listing approval is pending on RUN. Review URL: https://w.run/jollyrunner639/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671
 
-10.33 source includes the tested10.31 curse art,10.32 story/recruitment and10.32.1 Joseph fix, plus swept Jackson boss-charge contact, explicit rarity styling, purple town glow, boss-side vine cages and paused welcome-home portrait/roster reveals. Existing production progress retained; isolated test preview uses its own keys.
-
-Local charge/story/onboarding/recovery and preserved RUN package/tracking checks pass. Exact preview CI39684384902 and RUN prepare39684533346 pass. Full runtime browser/charm job119515164778 passes; full corrected phone/domain CI39684723761 passes. User-authorised RUN publish request is now concrete with exact portable-source hash; main merge, upload receipt and public Pages verification pending.
+All targeted/native/story/mobile tests pass. Full runtime/browser/charm job119515164778 and full corrected phone/domain39684723761 pass on identical runtime. Main automatic repeat regression may still be running. No further gameplay work is in progress; do not resume old no-RUN development restrictions for this completed release. User acceptance of the new10.33 scene remains pending. See PROJECT_STATUS.md and TEST_10_33.md for hashes/evidence. Preserve older dirty worktrees. Future changes need fresh user authorisation.

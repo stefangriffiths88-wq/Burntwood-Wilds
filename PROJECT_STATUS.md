@@ -1,12 +1,16 @@
-# 10.33.0 verified release — publication in progress
+# Latest verified release: Burntwood Wilds 10.33.0
 
-User explicitly authorised publishing tested work to RUN and Pages, then requested the welcome-home character reveal. All development/release checks now pass. 10.33.0 includes the tested10.31–10.32.1 curse/story work, reliable Jackson boss-charge contact, distinct rarity cards, purple town glow, boss-side vine captives and paused approved-art character/roster reveals on returning home. Existing earned progress and historical links remain.
+Released21 October2026 after the user explicitly authorised RUN and Pages publication and requested the welcome-home scene. PR97 merged as96ae5b820be3b8d9592032580994fa4383847ece.
 
-Validation: exact isolated preview CI39684384902; RUN prepare39684533346; full runtime/browser/charm job119515164778 in39684384933; full corrected domain/phone CI39684723761. The initial phone-script failure was corrected to acknowledge new welcome scenes; all final phone flows pass. Game SHA256:7bce509a2fae14c96203a54a8528322915ea6acef0f348f869fbba9fb5cf0b4e. Preview SHA256:15692dc7596f6bd9881777a3376f2bba56b98faea3f2e9572a71340590a81d96. Portable RUN input:c188cc5aa12acac2fa56fff96a5b7eb71842b6ec3809f2c5838923b3e33b7fe0.
+- Pages deployment39686023043 succeeded. Public canonical and versioned HTML both fetched and matched600269 bytes / SHA2567bce509a2fae14c96203a54a8528322915ea6acef0f348f869fbba9fb5cf0b4e. Versioned play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.33.0.html?v=10330
+- Fresh isolated story preview fetched and matched600238 bytes / SHA25615692dc7596f6bd9881777a3376f2bba56b98faea3f2e9572a71340590a81d96: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-preview-v10.33.0.html?v=10330
+- RUN prepare and deploy39686023812 succeeded. Official receipt run-host/releases/10.33.0.json records platform1.0.7, game oeJYyzlGHanZwYoRldTS, game build10.33.0, exact portable sourceSHA c188cc5aa12acac2fa56fff96a5b7eb71842b6ec3809f2c5838923b3e33b7fe0. Visibility is review: uploaded and playable through the review link, not evidence of RUN approving the public listing. https://w.run/jollyrunner639/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671
 
-RUN upload receipt and public Pages verification pending. New10.33 scene awaits user acceptance. Browser emulation is not native Safari/human balance testing. See TEST_10_33.md and UPDATE_10_33.md.
+Changes: tested10.31–10.32.1 cursed-area art/story/recruitment work; Jackson swept boss-charge contact; explicit Rare/Epic/Legendary styling; broad soft purple town light that clears per area; boss-side named vine captives with boss-gated group recruitment; paused approved-portrait welcome-home roster reveals on return. Multiple recruits reveal separately; saved acknowledgements, active hero/build, earned production progress, historical URLs, approved artwork and RUN wrapper/tracking/thumbnail are retained.
 
----
+Validation: exact isolated preview39684384902; full runtime/browser/charm job119515164778 in39684384933 (21 full journeys/105 arenas); all corrected domain/phone jobs39684723761; RUN prepare39684533346 and final main39686023812. Focused charge tests cover all five bosses at20/30/60/120fps. Ending→town Jodie/Mimi reveals pass. Final main's automatic redundant full regression may still be running; the identical runtime already passed before merge. New10.33 scene awaits user acceptance; Chromium phone emulation is not native Safari or human balance testing. See TEST_10_33.md and UPDATE_10_33.md.
+
+--- Historical status follows ---
 
 # Burntwood Wilds — project status
 
