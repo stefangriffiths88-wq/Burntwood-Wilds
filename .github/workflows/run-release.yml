@@ -28,6 +28,7 @@ jobs:
       - run: |
           python3 -m http.server 8765 >/tmp/run-host-server.log 2>&1 &
           node ops/run_host_browser.cjs
+          node journey-v10/elder-lane-browser.cjs
       - name: Decide explicit release request
         id: request
         run: |
@@ -44,6 +45,11 @@ jobs:
         with:
           name: run-host-review
           path: run-host/screens
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: elder-phone-review
+          path: journey-v10/browser
       - uses: actions/upload-artifact@v4
         with:
           name: run-distribution
