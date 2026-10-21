@@ -169,8 +169,8 @@
   },
   "park": {
     "source": "arenas/park.js",
-    "status": "approved-design-native-canvas-implementation-awaiting-playtest",
-    "boss": "Fictional Umbrella Man",
+    "status": "Elder Lane physical journey; native Canvas; phone playtest pending",
+    "boss": "The Bramble Beast",
     "enemies": [
       "Scrapper",
       "Hedge Pouncer",
@@ -179,7 +179,7 @@
       "Spitter",
       "Patch (heroic)"
     ],
-    "reference": "User-approved Chase Terrace Park, umbrella attacks and bounded rubbish healing; October 2026"
+    "reference": "Burntwood Park council site plan: https://www.lichfielddc.gov.uk/downloads/file/2558/burntwood-park ; compressed gameplay geography, not a surveyed map"
   },
   "gameplay_visuals": {
     "version": "10.10.0",
@@ -301,5 +301,15 @@
   "enemy_visuals": {
     "source": "visuals/enemy-art.js",
     "scope": "All five areas, all ordinary/heroic/final bosses. Shaded native Canvas silhouettes. Combat unchanged. User requested overhaul, human visual acceptance pending."
+  },
+  "run_thumbnail": {
+    "asset": "../run-host/artwork/thumbnail.jpg",
+    "source": "../run-host/artwork/rugby-strike-approved.png",
+    "dimensions": [
+      512,
+      512
+    ],
+    "approval": "Rugby Strike, final character-selection-matched aggressive heroes and stag Bruce",
+    "sha256": "b0c960f3456eab3afa3292714416a58c6aca8d23ec18195b6a7f7a83f7b4191e"
   }
 }

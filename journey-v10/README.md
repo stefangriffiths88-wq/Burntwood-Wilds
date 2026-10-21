@@ -58,3 +58,10 @@ Normal upgrade cards inspect first and commit through a separate Choose button. 
 
 ## Town and Rugby scenery (10.28)
 `world/town-layout.js` owns the three-frontage Sankeys square, local destination entrances and journey-victory decoration. `world/residents.js` limits names/bubbles to nearby residents. `arenas/rugby-route.js` owns parked-car/brick-wall footprints shared by `rugby-route-art.js`; its guided centreline remains open. New scenery VM/phone suites cover all twelve heroes, solid props, the complete route, real shop taps and phone artwork. RUN remains a separate release.
+
+## 10.29 Elder Lane and clear combat cues
+`arenas/park-route.js` owns Burntwood Park's physical geometry, finite forward groups, play-area guard, recovery and deliberate field boss approach. `park-route-art.js` owns the map-informed Elder Lane entrance, southern woodland/gardens, central play equipment/bike track and northern field. It is a compressed level, not a surveyed map. The legacy arena adapter remains for older combat matrices. Saves restart at the entrance or retain/migrate cleared treasure.
+
+Joseph's module owns exterior Overhype impacts with visible recoil and rank3/5 dash healing. Last Light still blocks that recovery. Guardian Bell's actual one-hit protection drives the hero shield in defences.js and the health-orb state in ui/session.js. UI open-state serialization must match native DOM so Help is not recreated every animation frame. build.py asserts required startup controls before producing HTML.
+
+The approved RUN icon lives in run-host/artwork; package_run_host.py overrides only the thumbnail while preserving the pinned Studio SDK/tracking wrapper. The deploy helper stages the same verified thumbnail at public/thumbnail.jpg for the official CLI.

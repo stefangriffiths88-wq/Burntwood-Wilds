@@ -10,6 +10,8 @@ for(let hero of ev('HERO_IDS')){enter(hero);assert(t.parkRouteActive());assert.e
 }
 console.log('PASS twelve-hero physical Park path, guard gate/chest, recovery cutoff, boss geometry, reward/exit/town isolation');
 enter();for(let i=0;i<20;i++)t.parkRouteWave();assert(t.enemies.length<=5);let count=t.enemies.length;t.clear();t.player.y=1700;ev('run.parkRoute.furthest=700');t.parkRouteWave();assert.equal(t.enemies.length,0,'backtracking cannot respawn');
+// Bramble roots must actually threaten a stationary player; warnings commit before impact.
+enter();ev('run.heroicRewarded=true;run.parkRoute.restReached=true');Object.assign(t.player,{x:800,y:700,inv:0});t.spawn('boss',{x:800,y:470});let rooted=t.bossAttackPlan(t.boss);assert(rooted.zones.some(z=>Math.hypot(z.x-t.player.x,z.y-t.player.y)<z.r));Object.assign(t.boss,{monster:true,monsterState:'attack',monsterPlan:rooted,monsterHit:false,timer:.3});let rootHP=t.player.hp;t.step(.01);assert(t.player.hp<rootHP,'committed marked roots hurt a player who stays put');
 // Real committed ranged attack: warning time, fixed aim and bounded shot damage.
 enter();t.spawn('spitter',{x:900,y:1600});let sp=t.enemies[0];sp.timer=0;t.stepParkEnemy(sp,.01);assert.equal(sp.mode,'spitWind');assert.equal(t.shots.length,0);let dx=sp.dx;t.player.x-=100;sp.timer=-.01;t.stepParkEnemy(sp,.01);assert.equal(t.shots.length,1);assert.equal(t.shots[0].vx,dx*190);assert.equal(t.shots[0].damage,8);
 // A single anchored target must produce actual visible recoil between impacts.

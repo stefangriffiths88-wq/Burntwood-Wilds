@@ -1,4 +1,4 @@
-// Chase Terrace Park: rival cats and the fictional Umbrella Man. No existing arena AI is changed.
+// Burntwood Park, Elder Lane: rival cats and the Bramble Beast; legacy combat adapter retained.
 ARENAS.park={name:'Burntwood Park',short:'Burntwood Park',boss:'The Bramble Beast',bossShort:'BRAMBLE BEAST'};
 const PARK_PILES=[{x:165,y:280},{x:730,y:480},{x:270,y:1060}];
 let parkPiles=[],parkSlips=[];

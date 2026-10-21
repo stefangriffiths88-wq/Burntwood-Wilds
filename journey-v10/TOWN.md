@@ -51,3 +51,8 @@ Sankeys services remain at the same three interactive counter positions. The sha
 Town destinations are local entrances rather than giant monster displays. `drawTownEntrance` owns five gate illustrations and nearby enter prompts; the historical `townBossPreview` data API remains for compatibility, but normal town rendering no longer draws combat models. Resident names/bubbles appear within 125/65 world units. Road graph, collision blocks, map/service positions, tap targets, conversations and overhead guidance remain shared with existing logic.
 
 The forecourt's essence notice uses actual selected-hero rank caps, essence costs and Jackson gift eligibility; it never promises an unaffordable upgrade. Changes do not alter permanent bonus values, prices, saved ranks, unlocks or recovery.
+
+## 10.29 town and roster
+The five freestanding route boards are removed; each actual destination keeps one attached name. Shop currency information and the upgrade notice appear only nearby. Objectives use one line plus expandable Help; Mimi's coach is a compact lower-screen strip. Navigation still follows the road graph.
+
+Fresh saves have Jackson, Ava, Mimi, Joseph, Jodie and Evie. Boss unlocks: Bruce/Tom, Night Owl/Zak, Quarry Golem/Stefan, Trolley King/Harvey, Bramble Beast/Havannah. Clearing all five areas in one journey unlocks Immy. Optional validated unlockedHeroes/defeatedAreas fields retain schema2 and existing earned roster access. First boss opens services; an unlocked resident covers Stefan until he is earned, without duplicating the selected hero.
