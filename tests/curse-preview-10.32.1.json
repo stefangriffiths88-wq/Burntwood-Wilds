@@ -1,0 +1,9 @@
+{
+  "version": "10.32.1",
+  "purpose": "Pages-only test; RUN publication prohibited pending user test",
+  "path": "burntwood-preview-v10.32.1.html",
+  "sourceSha256": "511577648aa5d1637273ecea08e001d026cc7b1220a7a115dd243f7becb13787",
+  "previewSha256": "6562f19277d4f491686fcab06c87ec8c85801e5f94924ec794521c0d132a63c5",
+  "bytes": 588820,
+  "storage": "Fresh separate story-test keys; no production/legacy/previous-preview reads or writes"
+}
