@@ -50,7 +50,7 @@ function drawHubScenery(){
  // Sankey's Corner shop stall: Mimi or Jodie stands in front.
  let q=hub.shop;ctx.fillStyle='#614533';ctx.fillRect(q.x-42,q.y-18,84,46);ctx.fillStyle='#e7c78a';ctx.fillRect(q.x-50,q.y-32,100,18);for(let k=0;k<5;k++){ctx.fillStyle=k%2?'#e4bf85':'#a75850';ctx.fillRect(q.x-50+k*20,q.y-32,20,18);}for(let k=0;k<3;k++){ctx.fillStyle=['#b95251','#609cc1','#87b866'][k];ctx.fillRect(q.x-33+k*18,q.y+6,9,13);}mapLabel(q.x,q.y-43,'WILDS SHOP');
  mapLabel(205,770,'CHASEWATER');mapLabel(445,1083,'RUGBY CLUB');mapLabel(745,1193,'BURNTWOOD QUARRY');mapLabel(682,100,'SANKEY’S CORNER');
- mapLabel(225,250,'CHASE TERRACE PARK');for(let a of hub.animals){ellipse(a.x,a.y,5,4,['#c9ae89','#dfdbbd','#b88353'][a.kind]);}
+ mapLabel(225,250,'BURNTWOOD PARK');for(let a of hub.animals){ellipse(a.x,a.y,5,4,['#c9ae89','#dfdbbd','#b88353'][a.kind]);}
 }
 function drawHub(){ctx.setTransform(DPR,0,0,DPR,0,0);ctx.fillStyle='#34533b';ctx.fillRect(0,0,W,H);ctx.save();ctx.translate(W/2-cam.x*scale,H*.47-cam.y*scale);ctx.scale(scale,scale);drawTownScene();ctx.restore();drawHubMap();drawGuidance();}
 function townMapMarkers(){return [...(serviceOpen('ava')?[{kind:'shop',x:CHARM_SHOP.x,y:CHARM_SHOP.y,label:'AVA'}]:[]),...(serviceOpen('mimi')?[{kind:'shop',x:hub.shop.x,y:hub.shop.y,label:'SHOP'}]:[]),...(serviceOpen('stef')?[{kind:'workshop',x:WORKSHOP.x,y:WORKSHOP.y,label:'STEF'}]:[]),...hub.portals.map(g=>({...g,kind:'boss',label:{rugby:'R',chasewater:'C',sankeys:'S',quarry:'Q',park:'P'}[g.key],done:!!run.visited?.includes(g.key)})),...townResidents().filter(n=>n.key!==workshopKeeperKey()).map(n=>({...n,kind:'resident',label:''}))];}
