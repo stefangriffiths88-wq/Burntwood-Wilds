@@ -1,5 +1,14 @@
 # Burntwood Wilds — project status
 
+## Active Pages-only correction: 10.32.1 — fresh story start and Joseph rescue
+21 October 2026. User tested10.32 and reported all characters unlocked and rescuing “Nail” at the club. Confirmed causes: initial preview import of old earned saves, and retained Nell primary rescue despite Joseph’s separate boss award. These were implementation/test-coverage mistakes; user acceptance of the fix remains pending.
+
+New test: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-preview-v10.32.1.html?v=10321j
+
+Fresh separate story-test save keys read no production/legacy/previous-preview progress. Jackson starts; Ava is rescued in the opening. Joseph is now the primary rugby rescue at the pitch, freed only by defeating Bruce, with visible named dialogue and unlock once. Existing saves, prior links, stable canonical/latest and RUN10.30.0/platform1.0.6 remain untouched. Source PR96 targets the unmerged10.32 feature; no source merge/RUN upload authorised.
+
+Source6b04cfbbc74c27e92cc718ed655508bc96ca3a3a; generated50871e97d576b55b04df03100e36c798dc8710a9. Exact isolated preview39680785660 passed; artifact12383638392 matches HTML exactly and contains141 captures including Joseph trapped/freed at390×844,320×568,844×390/reduced motion. Browser fixture seeds old unlocked saves before loading, checks Jackson-only fresh start, actual Bruce rescue, reload and old-save preservation. Local native Joseph gating/single reward, recruitment/workshop and all12×five curse contracts passed. Full unchanged combat/charm balance evidence is retained from10.32; broader automatic CI39680785736 is additional verification. No hero combat/balance changes. SHA2566562f19277d4f491686fcab06c87ec8c85801e5f94924ec794521c0d132a63c5;588820bytes. Public deployment verification pending. Test steps: TEST_10_32_1.md.
+
 ## Active Pages-only playtest: 10.32.0 — rescues and visible curse recovery
 21 October 2026. Stef authorised implementation and a separate test. **Production canonical/latest and RUN remain 10.30.0 / platform1.0.6. Source PR95 stays draft/unmerged until user playtest.** The retained10.31 preview also remains available.
 
