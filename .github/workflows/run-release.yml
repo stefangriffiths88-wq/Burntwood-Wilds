@@ -24,10 +24,12 @@ jobs:
       - run: python3 journey-v10/build.py
       - run: python3 ops/package_run_host.py
       - run: node ops/run_host_test.cjs
+      - run: node journey-v10/signature-builds-test.cjs
       - run: npm install --no-save playwright@1.48.2
       - run: |
           python3 -m http.server 8765 >/tmp/run-host-server.log 2>&1 &
           node ops/run_host_browser.cjs
+          node journey-v10/signature-builds-browser.cjs
           node journey-v10/elder-lane-browser.cjs
       - name: Decide explicit release request
         id: request

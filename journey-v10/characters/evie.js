@@ -7,7 +7,7 @@ function queueDucks(){if(regularDuckCount()+duckQueue.length>=6||!nearest(p,new 
 
 function duckTarget(d,range=260){let claimed=new Set(ducks.filter(o=>o!==d&&o.target?.hp>0&&o.mode!=='thrown').map(o=>o.target.id));return nearest(d,claimed,range)||nearest(d,new Set(),range);}
 
-function launchDuck(){if(regularDuckCount()>=6)return;let target=nearest(p,new Set(),300);if(!target)return;let dx=target.x-p.x,dy=target.y-p.y,n=Math.hypot(dx,dy)||1;ducks.push({id:++id,x:p.x+dx/n*19,y:p.y-4+dy/n*12,px:p.x,py:p.y,vx:dx/n*205,vy:dy/n*205,r:tier>=2?9:7,mode:'thrown',life:6,flight:2.8,smashes:1,eggs:tier>=3?2:0,defender:tier>=3,tiny:false,target,age:0,slot:id%6,cool:.5,t:0});p.throwT=.22;}
+function launchDuck(){if(regularDuckCount()>=6)return;let target=nearest(p,new Set(),300);if(!target)return;let dx=target.x-p.x,dy=target.y-p.y,n=Math.hypot(dx,dy)||1;ducks.push({id:++id,x:p.x+dx/n*19,y:p.y-4+dy/n*12,px:p.x,py:p.y,vx:dx/n*205,vy:dy/n*205,r:tier>=2?9:7,mode:'thrown',life:6,flight:2.8,smashes:signatureActive('evie')?2:1,eggs:tier>=3?2:0,defender:tier>=3,tiny:false,target,age:0,slot:id%6,cool:.5,t:0});p.throwT=.22;}
 
 function segmentHits(x0,y0,x1,y1,e,r){let dx=x1-x0,dy=y1-y0,n=dx*dx+dy*dy,u=n?clamp(((e.x-x0)*dx+(e.y-y0)*dy)/n,0,1):0;return Math.hypot(e.x-x0-dx*u,e.y-y0-dy*u)<e.r+r;}
 
