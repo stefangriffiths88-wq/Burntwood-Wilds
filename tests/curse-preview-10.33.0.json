@@ -2,8 +2,8 @@
   "version": "10.33.0",
   "purpose": "Pre-release verification; RUN publication authorised after checks",
   "path": "burntwood-preview-v10.33.0.html",
-  "sourceSha256": "c12513b2c7e5e415a8d370519a92827b94e10a88762422c186f16676ee6e75be",
-  "previewSha256": "04c0b0f44bca401108bc5b8c0dbf3d46a4f50d6bea330b3e658a030460eacc11",
-  "bytes": 600024,
+  "sourceSha256": "6ba5badfe5fb83a5f59fb471b24bb52362c61656ad65d1413a601089ade00e8d",
+  "previewSha256": "5eab0fc0276b8ac6bc629ed277a796b5b9d7e5551c22899efa236a82a0a94656",
+  "bytes": 600311,
   "storage": "Fresh separate story-test keys; no production/legacy/previous-preview reads or writes"
 }
