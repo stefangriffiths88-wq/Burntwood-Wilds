@@ -16,7 +16,7 @@ fresh();e=foe('boss');Object.assign(e,{monster:true,monsterState:'warning',timer
 for(let rank of [1,2,3]){
  fresh();t.run.charms=[{key:'bramble',rank}];e=foe();let before=e.hp;t.damageEnemy(e,100,1,0);assert(Math.abs(before-e.hp-(120+10*rank))<1e-7);assert.equal(e.charmExposeUntil,10+1.5+.5*rank);e=foe('boss');before=e.hp;t.damageEnemy(e,100,1,0);assert.equal(before-e.hp,100,'boss cannot be exposed');
  fresh();t.run.charms=[{key:'opportunist',rank}];e=foe();e.stunUntil=11;before=e.hp;t.damageEnemy(e,100,0,0);assert(Math.abs(before-e.hp-100*(1+.35*(1+(rank-1)*.5)))<1e-7);
- fresh();t.run.charms=[{key:'bell',rank}];e=foe();let b=foe('heavy',t.player.x+60);for(let i=0;i<(rank===3?5:6);i++){ev('time+=.16');t.damageEnemy(e,1,0,0);}assert.equal(t.run.charmFX.queue.length,1);ev('stepCharms(.05)');assert.equal(10000-b.hp,30*(1+(rank-1)*.5));assert.equal(t.run.charmFX.queue.length,0);
+ fresh();t.run.charms=[{key:'bell',rank}];e=foe();let b=foe('heavy',t.player.x+60);for(let i=0;i<([0,6,5,4][rank]);i++){ev('time+=.16');t.damageEnemy(e,1,0,0);}assert.equal(t.run.charmFX.queue.length,1);ev('stepCharms(.05)');assert.equal(10000-b.hp,[0,28.75,43.125,57.5][rank],'Bell uses Tom base damage and rank scaling');assert.equal(t.run.charmFX.queue.length,0);
  fresh();t.run.charms=[{key:'echo',rank}];e=foe();t.run.charmFX.echo=true;before=e.hp;t.damageEnemy(e,100,0,0);let expected=100+100*(.5+.2*rank)+(rank===3?35:0);ev('stepCharms(.4)');assert(Math.abs(before-e.hp-expected)<1e-7);assert.equal(t.run.charmFX.queue.length,0);assert.equal(t.run.charmFX.echo,false);
 }
 // Relevant elemental rewards and truthful hints; rarity guarantees remain independent.
