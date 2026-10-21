@@ -1,3 +1,10 @@
+# RUN10.29 completed upload —21 October2026
+
+PR92 merged4d767d3; main CI39591031602/Pages39591031561 passed, all28 public bytes verified. RUN publish47cecc28/CI39591411813 succeeded: game10.29.0/platform1.0.5, visibilityreview; receipt915766e3. Primary link: https://w.run/jollyrunner639/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671 . Public approval pending. All8 runtime/SDK/wrapper files exact-match; approved512px icon recompression visually checked. Evidence tests/public-10.29.json and tests/run-public-10.29.json. PROJECT_STATUS.md records full scope, tests and limits.
+
+Complete: Elder Lane Park route/danger/guard/recovery/boss, Joseph Bruce-contact recoil and dash healing, Bell character/health shields, less town signage/compact Help/Mimi, horizontal Rugby plaque, approved Rugby Strike listing art, six starters/six earned heroes with Jackson/Ava as mains and legacy earned access retained. No further implementation or upload pending. Cloud-browser live-link attempt timed out; actual public bytes and CI wrapper phone interactions verified. Next action: user iPhone playtest and feedback; do not silently change the approved portraits, balance or unlock rules. Older checkpoints below are historical and superseded.
+
+
 # RUN10.25 upload checkpoint —20 October2026
 
 Stef authorises updating RUN and requires a RUN link after every completed update, for testing/sharing. Owner this session, feature/run-release, basee92e937c0a81c7af749478780ed3176f3ab20f4a. Authenticated access already verified in CI39417136636. No new gameplay or art changes.
