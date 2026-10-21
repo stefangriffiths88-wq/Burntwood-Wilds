@@ -1,3 +1,11 @@
+# 10.32.1 correction in progress
+
+User test reported all characters unlocked and rescuing “Nail” instead of Joseph. Same Work session owns this targeted fix. Branch fix/joseph-story-test-10-32-1 from1945459. Main7589c56 remains stable game10.30 / isolated10.32. No RUN/source merge authorised.
+
+Confirmed root causes: preview initial-read fallback imported old production/legacy earned access; primary rugby rescue still used Nell while only a separate boss award unlocked Joseph. Fix:10.32.1 preview reads/writes fresh separate keys with no old-save fallback. Existing saves are untouched. Primary rugby scene now Joseph at870,5290 on pitch; rescue blocked until Bruce defeat. Named Joseph-safe caption retained ahead of cleansing clue, native approved sprite used; redundant Joseph decoration removed. Other arenas/hero stats/attacks/rewards unchanged.
+
+Local passed: build/syntax, new native Joseph regression (Jackson→Ava→Bruce→Joseph, no premature unlock/Nell, single payment), existing story recruitment/meteor/cosmetic shards, all12×five curse contracts. Updated phone tests seed old fully earned saves before initialization, check Jackson-only/locked Ava, later real Bruce rescue/caption and unchanged old save. Browser CI/publication pending. See FIX_10_32_1.md.
+
 # 10.32 story recruitment — test checkpoint
 
 21 October 2026. Stef authorised the agreed changes and testing; RUN/source merge remain prohibited until his playtest. Stable main game remains10.30.0 / RUN1.0.6. PR95 stays draft.
