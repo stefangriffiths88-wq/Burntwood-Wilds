@@ -20,3 +20,5 @@ Runtime sourcecb398852ce470ac4d26e152def08481fecaffd93 passed full gameplay/brow
 Reviewed all12 workshop cards, active/late kittens and clone, charm effects and corrected strengthening card at390×844,320×568,844×390. Final screenshot artifact12357961867 contains60 signature/charm images plus38 retained Park images. Initial selector ambiguity and misleading matching-copy hint were corrected; the real strengthening tap now asserts rankII with no bag copy.
 
 Remaining: merge, main CI/Pages, exact public28-file check, explicit RUN publish and receipt/public runtime check. Current live10.29 remains until those succeed. Native Safari and human balance remain user playtest.
+
+Final lifecycle review: clear transient signature effects at physical boss victory, so a last-hit cloud/wave cannot remain visually frozen during the walkout. Added a real signature-source boss-kill/cleared-state regression. This is transition cleanup only; damage, rewards and character tuning remain unchanged. Targeted unit and physical-route checks rerun; final CI/phone/publication gates remain required.
