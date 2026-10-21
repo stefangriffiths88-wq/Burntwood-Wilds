@@ -1,3 +1,13 @@
+# 10.33.0 verified release — publication in progress
+
+User explicitly authorised publishing tested work to RUN and Pages, then requested the welcome-home character reveal. All development/release checks now pass. 10.33.0 includes the tested10.31–10.32.1 curse/story work, reliable Jackson boss-charge contact, distinct rarity cards, purple town glow, boss-side vine captives and paused approved-art character/roster reveals on returning home. Existing earned progress and historical links remain.
+
+Validation: exact isolated preview CI39684384902; RUN prepare39684533346; full runtime/browser/charm job119515164778 in39684384933; full corrected domain/phone CI39684723761. The initial phone-script failure was corrected to acknowledge new welcome scenes; all final phone flows pass. Game SHA256:7bce509a2fae14c96203a54a8528322915ea6acef0f348f869fbba9fb5cf0b4e. Preview SHA256:15692dc7596f6bd9881777a3376f2bba56b98faea3f2e9572a71340590a81d96. Portable RUN input:c188cc5aa12acac2fa56fff96a5b7eb71842b6ec3809f2c5838923b3e33b7fe0.
+
+RUN upload receipt and public Pages verification pending. New10.33 scene awaits user acceptance. Browser emulation is not native Safari/human balance testing. See TEST_10_33.md and UPDATE_10_33.md.
+
+---
+
 # Burntwood Wilds — project status
 
 ## Active Pages-only correction: 10.32.1 — fresh story start and Joseph rescue
