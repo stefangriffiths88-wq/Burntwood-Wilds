@@ -60,6 +60,8 @@
   "arenas/park-route.js",
   "arenas/park-route-art.js",
   "world/reward-flow.js",
+  "world/curse-story.js",
+  "visuals/curse-art.js",
   "ui/audio.js",
   "onboarding/first-journey.js",
   "ui/journey-recovery.js",
