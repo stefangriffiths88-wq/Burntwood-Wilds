@@ -1,0 +1,14 @@
+{
+  "priorPreviewSha256": "30c934c690f04bfd1d307974cc1013ad71debfa00a358bc2be170d5c0e5db2c2",
+  "finalPreviewSha256": "3185c292ecb872cca95a57d28556289771ed76893761890e5c12df98db219a6c",
+  "onlyDifference": {
+    "before": "Bramble Jodiest",
+    "after": "Bramble Beast",
+    "occurrences": 1
+  },
+  "executableCodeUnchanged": true,
+  "priorPreviewChecks": 39677644395,
+  "finalPreviewChecks": 39678796252,
+  "fullMechanicsChecks": 39677644476,
+  "retainedFocusedChecks": 39678369008
+}
