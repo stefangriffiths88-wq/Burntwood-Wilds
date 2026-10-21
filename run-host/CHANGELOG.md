@@ -1,3 +1,7 @@
-Burntwood Wilds 10.25.0
+Burntwood Wilds 10.29.0
 
-Follow the gold arrow above your character through Sankeys to your next objective. Four bosses have refreshed artwork and warning poses; Bruce stays unchanged. All twelve characters remain unlocked for testing. Existing RUN tracking and listing artwork are preserved.
+Explore the new Elder Lane Burntwood Park route: woodland, gardens, play area, guard treasure, recovery and a field battle with the Bramble Beast. Rugby gains parked cars and a proper brick entrance; Chasewater now follows the long waterfront wall to Night Owl.
+
+Cleaner town guidance, smaller Mimi captions, visible Guardian Bell shields, stronger permanent upgrades and charm synergies. Joseph’s Overhype lands against Bruce reliably; upgraded dashes restore health.
+
+Jackson and Ava lead six starting heroes. Defeat bosses to unlock five more, then complete all five areas to unlock Immy. Previously earned access is retained. New Rugby Strike cover artwork.

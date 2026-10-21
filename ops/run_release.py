@@ -4,6 +4,7 @@ import hashlib
 import json
 import os
 import subprocess
+import shutil
 import sys
 from run_connection import connect
 
@@ -27,6 +28,11 @@ if saved.exists():
 manifest = json.loads((root / 'dist-run/release-manifest.json').read_text())
 for name, digest in manifest['files'].items():
     assert hashlib.sha256((root / 'dist-run' / name).read_bytes()).hexdigest() == digest
+# The official CLI reads listing artwork from public/thumbnail.jpg.
+# It is the same hash-checked file already included in the prepared build.
+public = root / 'public'
+public.mkdir(exist_ok=True)
+shutil.copyfile(root / 'dist-run/thumbnail.jpg', public / 'thumbnail.jpg')
 config = {'gameId': game, 'relativePathToDistFolder': './dist-run', 'usesPreloader': False, 'orientation': 'portrait', 'fullscreenEnabled': True}
 (root / 'game.config.prod.json').write_text(json.dumps(config))
 args = [cli, 'deploy', '--game-id', game, '--build-path', './dist-run', '--bump', 'patch', '--public', '--json', '--changelog-file', 'run-host/CHANGELOG.md']

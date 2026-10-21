@@ -19,7 +19,7 @@ head=head.replace('<button id="pickMimi">Mimi</button>','<button id="pickMimi">M
 head=head.replace('<button id="pickChasewater">Chasewater</button>','<button id="pickChasewater">Chasewater</button><button id="pickSankeys">Sankey’s</button>')
 head=head.replace('<button id="pickSankeys">Sankey’s</button>','<button id="pickSankeys">Sankey’s</button><button id="pickQuarry">Quarry</button>')
 head=head.replace('<button id="pickQuarry">Quarry</button>','<button id="pickQuarry">Quarry</button><button id="pickPark">Park</button>')
-head=head.replace('<div class="choose">CHOOSE YOUR CHARACTER</div>','<div class="choose">CHOOSE YOUR CHARACTER · BUILD 10.29.0</div><p class="rosterHint">Jackson and Ava lead the fight. Six heroes ready; beat bosses to unlock six more.</p>')
+head=head.replace('<div class="choose">CHOOSE YOUR CHARACTER</div>','<div class="choose">CHOOSE YOUR CHARACTER · BUILD 10.29.0</div><p class="rosterHint">Jackson and Ava lead the fight. Six heroes ready; beat bosses to unlock six more. <button id="replayIntroduction" class="replayIntro">Replay introduction</button></p>')
 head=head.replace('<button id="pickHavannah">Havannah</button>','<button id="pickHavannah">Havannah</button><button id="pickImmy">Immy</button>')
 head=head.replace('<button id="pickImmy">Immy</button>','<button id="pickImmy">Immy</button><button id="pickHarvey">Harvey</button>')
 # Native SVG frame draws around the reward panel; artwork assets remain separate.
@@ -31,11 +31,12 @@ head=head.replace('<script>const PORTRAITS=',(r/'ui/town-panels.html').read_text
 head=head.replace('<div id="upgradeChoices"></div>','<div id="upgradeChoices"></div><div id="runSummary" style="display:none"></div>')
 # Starting charms belong with Ava, not the permanent character workshop.
 a=head.index('<details><summary>STARTING CHARM UNLOCKS</summary>');b=head.index('</details>',a)+len('</details>');starter_panel=head[a:b];head=head[:a]+head[b:];head=head.replace('<button id="shopClose">', '<div id="shopStarters">'+starter_panel+'<div id="charmStarterConfirm" style="display:none"><p id="charmStarterConfirmText"></p><button id="confirmCharmStarter">UNLOCK STARTING CHARM</button><button id="cancelCharmStarter">CANCEL</button></div></div><button id="shopClose">');
-head=head.replace('Defeat one boss to open the Sankeys shops.</p>','Defeat one boss to open the Sankeys shops. <button id="replayIntroduction" class="replayIntro">Replay introduction</button></p>')
 head=head.replace('<div id="questHud"></div>','<div id="questHud"></div><aside id="journeyCoach" style="display:none" aria-live="polite"></aside><button id="introSkip" style="display:none">SKIP INTRODUCTION</button>')
 head=head.replace('<button id="start">','<div id="recoverySlot"></div><button id="start">')
 head=head.replace('</style>',(r/'menu.css').read_text()+'</style>')
 recovery_start=head.index('<section id="journeyRecovery"');recovery_end=head.index('</section>',recovery_start)+len('</section>');recovery_html=head[recovery_start:recovery_end];head=head[:recovery_start]+head[recovery_end:];head=head.replace('<div id="recoverySlot"></div>',recovery_html)
+for required_id in ('replayIntroduction','introSkip','pauseSkipIntro','resumeJourney','confirmFreshJourney','healthOrb'):
+    assert head.count('id="'+required_id+'"')==1, 'Missing/duplicate required control: '+required_id
 manifest=json.loads((r/'manifest.json').read_text());code='\n'.join((r/f).read_text() for f in manifest)
 (r/'game.js').write_text(code)
 (root/'burntwood-journey-v10.html').write_text(head+code+'</script></html>')
