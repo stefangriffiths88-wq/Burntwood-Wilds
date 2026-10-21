@@ -1,0 +1,6 @@
+// Reuse the full area/mobile suite against the exact isolated preview artifact.
+const fs=require('node:fs');let source=fs.readFileSync('journey-v10/curse-story-browser.cjs','utf8');
+const url='http://127.0.0.1:8765/burntwood-journey-v10.html';if(source.split(url).length!==2)throw Error('Unexpected browser entry point');source=source.replace(url,'http://127.0.0.1:8765/burntwood-preview-v10.32.0.html');
+const ready='await page.waitForFunction(()=>window.__test);';if(source.split(ready).length!==2)throw Error('Unexpected browser readiness contract');source=source.replace(ready,ready+`assert.equal(await page.evaluate(()=>SAVE_KEY),'burntwood-wilds-preview-10-32-progress');assert.equal(await page.evaluate(()=>JOURNEY_SAVE_KEY),'burntwood-wilds-preview-10-32-journey');await page.evaluate(()=>{window.stablePreviewKeys=['burntwood-wilds-progress-v2','burntwood-wilds-journey-v1'].map(k=>[k,localStorage.getItem(k)]);});`);
+const closed='assert.deepEqual(errors,[]);await page.close();';if(source.split(closed).length!==2)throw Error('Unexpected browser completion contract');source=source.replace(closed,`assert(await page.evaluate(()=>window.stablePreviewKeys.every(([k,v])=>localStorage.getItem(k)===v)),'preview cannot overwrite production progress/journey');`+closed);
+new Function('require',source)(require);

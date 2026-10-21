@@ -1,6 +1,6 @@
 {
-  "action": "publish",
+  "action": "prepare",
   "gameId": "oeJYyzlGHanZwYoRldTS",
-  "gameVersion": "10.30.0",
-  "sourceSha256": "98a03cf4d28b45010232c3674fe174b3c87ae503db6d675832fe4e8aafc82eaf"
+  "gameVersion": "10.33.0",
+  "sourceSha256": "b6ae9127e690fcdbe14fafa2136211db350f74c5af7a05270af263545e0e382b"
 }

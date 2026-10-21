@@ -23,19 +23,19 @@ function drawAvaSprite(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.73,s*.
 
 function glitterShower(mult=1){let damage=(S(2)?10:6)*mult,duration=S(1)?4.5:3;glitterTime=.8;for(let e of enemies){if(e.hp<=0)continue;e.slowUntil=Math.max(e.slowUntil||0,time+duration);if(S(3))e.glitterUntil=time+3;damageEnemy(e,damage,0,0,false,'special');}}
 
-function meteorTarget(){let best=null,score=-1;for(let e of enemies){if(e.hp<=0||dist(p,e)>360)continue;let n=e.kind==='heavy'||e.kind==='boss'?1:0;for(let other of enemies)if(other.hp>0&&dist(e,other)<100)n++;if(n>score){best=e;score=n;}}return best?{x:best.x,y:best.y}:{x:p.x,y:p.y-65};}
+function meteorTarget(){let best=null,score=-1;for(let e of enemies){if(e.hp<=0||dist(p,e)>115)continue;let n=e.kind==='heavy'||e.kind==='boss'?1:0;for(let other of enemies)if(other.hp>0&&dist(e,other)<100)n++;if(n>score){best=e;score=n;}}return best?{x:best.x,y:best.y}:{x:p.x,y:p.y-65};}
 
 function queueMeteor(){let spot=meteorTarget();scheduled.push({kind:'meteor',x:spot.x,y:spot.y,r:150,wait:.75,fall:.75});}
 
-function meteorImpact(task){radialEffect(task.x,task.y,task.r,'#f7c9ef');radialEffect(task.x,task.y,task.r*.65,'#f7d780');pop(task.x,task.y,'#f8d7ec',35);shake=Math.max(shake,4);glitterTime=.8;for(let e of enemies){let d=Math.hypot(e.x-task.x,e.y-task.y);if(e.hp<=0||d>task.r+e.r)continue;damageEnemy(e,80*(.6+.4*(1-clamp(d/task.r,0,1))),0,0,true,'special');e.slowUntil=Math.max(e.slowUntil||0,time+2);}}
+function meteorImpact(task){fx.push({x:task.x,y:task.y,vx:0,vy:0,r:task.r,life:.65,max:.65,color:'#ffe1ed',glitterImpact:true});radialEffect(task.x,task.y,task.r,'#f7c9ef');radialEffect(task.x,task.y,task.r*.65,'#f7d780');pop(task.x,task.y,'#f8d7ec',35);shake=Math.max(shake,4);glitterTime=.8;for(let e of enemies){let d=Math.hypot(e.x-task.x,e.y-task.y);if(e.hp<=0||d>task.r+e.r)continue;damageEnemy(e,80*(.6+.4*(1-clamp(d/task.r,0,1))),0,0,true,'special');e.slowUntil=Math.max(e.slowUntil||0,time+2);}}
 
-function drawMeteorGround(){for(let t of scheduled)if(t.kind==='meteor'&&!t.done){ctx.fillStyle='#dca4e91b';ctx.strokeStyle='#efc7ee88';ctx.lineWidth=1.4;ctx.beginPath();ctx.arc(t.x,t.y,t.r,0,TAU);ctx.fill();ctx.stroke();ctx.beginPath();ctx.arc(t.x,t.y,22+(1-clamp(t.wait/t.fall,0,1))*18,0,TAU);ctx.stroke();}}
+function drawMeteorGround(){for(let t of scheduled)if(t.kind==='meteor'&&!t.done){ctx.fillStyle='#eaa3e645';ctx.strokeStyle='#ffe1a4';ctx.lineWidth=3;ctx.beginPath();ctx.arc(t.x,t.y,t.r,0,TAU);ctx.fill();ctx.stroke();ctx.beginPath();ctx.arc(t.x,t.y,22+(1-clamp(t.wait/t.fall,0,1))*18,0,TAU);ctx.stroke();starArt(t.x,t.y,14,0);ctx.font='bold 12px system-ui';ctx.textAlign='center';ctx.fillStyle='#fff0bd';ctx.fillText('GLITTER BOMB',t.x,t.y-40);}}
 
 CHARACTERS.ava={"name":"Ava","hp":85,"speed":165,"damage":18,"rate":0.95,"dodgeSpeed":620,"dodgeTime":0.28,"specialCD":9};
 
 PROFILES.ava={"role":"STAR MAGE","tag":"Small paws. Big sparkle.","attack":"Star Toss","attackDesc":"Automatic stars · sticky magic upgrades","special":"Glitter Shower","specialDesc":"6 damage to all · 30% slow · 9s","dodge":"Long Dodge","dodgeDesc":"Long dash · no damage · 1.65s"};
 
-SPECIALS.ava=[["Clinging Glitter","Shower slow lasts 4.5 seconds."],["Brighter Shower","Shower damage 6 → 10."],["Sparkling Sting","Shower glitter deals 2 damage/sec for 3 seconds."],["Quick Sparkle","Shower cooldown 9 → 7 seconds."],["Glitterstorm","A huge glitter meteor hits a marked 150-radius area after 0.75s, dealing 48–80 damage."]];
+SPECIALS.ava=[["Clinging Glitter","Shower slow lasts 4.5 seconds."],["Brighter Shower","Shower damage 6 → 10."],["Sparkling Sting","Shower glitter deals 2 damage/sec for 3 seconds."],["Quick Sparkle","Shower cooldown 9 → 7 seconds."],["Glitterstorm","A huge glitter meteor hits a nearby marked 150-radius area after 0.75s, dealing 48–80 damage."]];
 
 DODGES.ava=[["Farther Sparkle","Dash travels 15% farther."],["Glitter Trail","Leave a short trail that slows crossing enemies by 30%."],["Safe Sparkle","Gain 0.12 seconds more dodge protection."],["Quick Escape","Dodge cooldown 1.65 → 1.25 seconds."],["Sparkle Arrival","Landing creates a small slowing glitter burst."]];
 

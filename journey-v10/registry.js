@@ -20,7 +20,7 @@ const ARENA_MODULES={
  park:{wave:parkWave,spawn:spawnPark,ground:drawParkGround},
  quarry:{wave:quarryWave,spawn:spawnQuarry,ground:drawQuarry}
 };
-function spawn(kind,at){ARENA_MODULES[arenaKey].spawn(kind,at);}
+function spawn(kind,at){if(curseQuiet()&&kind!=='boss'&&!at)return;ARENA_MODULES[arenaKey].spawn(kind,at);}
 function ground(){if(introActive()){drawIntroduction();return;}ARENA_MODULES[arenaKey].ground();}
 function rugbyWave(){if(rugbyRouteActive())return rugbyProgressWave();let pt=pressureTime(),roll=rand(),kind=pt>10&&roll<.19?'charger':pt>20&&roll>.83?'heavy':'swarm';spawn(kind);if(pt>20&&rand()<.45){spawn('swarm');spawn('swarm');}nextSpawn=stageSpawnDelay(Math.max(.42,.88-time*.0018));}
 

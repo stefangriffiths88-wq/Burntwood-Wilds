@@ -1,6 +1,7 @@
 [
   "upgrades/build-stats.js",
   "items/charm-catalog.js",
+  "upgrades/recruitment.js",
   "upgrades/permanent.js",
   "upgrades/signatures.js",
   "state.js",
@@ -60,6 +61,8 @@
   "arenas/park-route.js",
   "arenas/park-route-art.js",
   "world/reward-flow.js",
+  "world/curse-story.js",
+  "visuals/curse-art.js",
   "ui/audio.js",
   "onboarding/first-journey.js",
   "ui/journey-recovery.js",

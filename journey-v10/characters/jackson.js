@@ -32,3 +32,7 @@ STAT_NAMES.jackson=["Tough Kit","Quick Feet","Fast Pass","Safe Hands","Hard Hitt
 function jacksonCharge(){if(state!=='playing'||p.action||p.chargeCD>0)return;p.action='charge';p.actionT=0;p.chargeCD=specialCooldown();p.inv=.9;p.hitIds.clear();let t=nearest(p,new Set(),450),d=Math.hypot(stick.x,stick.y);if(d>.15)p.actionDir={x:stick.x/d,y:stick.y/d};else if(t){let l=dist(p,t)||1;p.actionDir={x:(t.x-p.x)/l,y:(t.y-p.y)/l};}else p.actionDir={...p.dir};p.dir={...p.actionDir};}
 
 
+
+// Bosses may move during this frame. Use relative swept contact; never add a
+// second hit to the existing endpoint hit, and preserve boss knockback resistance.
+function jacksonBossChargeContact(e,from,bossFrom){if(selected!=='jackson'||p.action!=='charge'||e.kind!=='boss'||e.hp<=0||p.hitIds.has(e.id))return false;let ax=from.x-bossFrom.x,ay=from.y-bossFrom.y,bx=p.x-e.x,by=p.y-e.y,dx=bx-ax,dy=by-ay,l=dx*dx+dy*dy,u=l?clamp(-(ax*dx+ay*dy)/l,0,1):0,r=e.r+p.r+(S(3)?24:12);if(Math.hypot(ax+dx*u,ay+dy*u)>r)return false;p.hitIds.add(e.id);chargeImpact(e);radialEffect(e.x,e.y,e.r+8,'#f1d48b');shake=Math.max(shake,3);return true;}
