@@ -1,3 +1,13 @@
+# 10.30.0 complete and uploaded for testing —21 October2026
+
+PR93 merged atffe52b87f7e48b9e32ac4fdf8d2dd11b5144594b; final feature CI39629167433 and RUN prepare39629167767 passed. Main CI39629620489 and Pages39629619002 passed. All28 public files match the tested bytes, including the retained10.29 release; tests/public-10.30.json. Canonical/versioned HTML SHA256a0b784b68d07b60cd68b5a246b285c29dc5a2c20aaf915c250a1af54118a742a.
+
+RUN upload39630194501 succeeded from publish requestd4a6d0506ef1f4eb75549a0d921921d9ef749c0a. Actual game10.30.0/platform1.0.6, visibilityreview. Receipt run-host/releases/10.30.0.json committed atb344486fb30d95cacc0b1eaab77b5ecb94bb4b9e. Public runtime/SDK/wrapper files exactly match the prepared distribution; approved512px Rugby Strike thumbnail is retained (platform recompression checked). Evidence tests/run-public-10.30.json. Portable source SHA25698a03cf4d28b45010232c3674fe174b3c87ae503db6d675832fe4e8aafc82eaf. Existing SDK/tracking/game identity/credentials retained.
+
+Primary link: https://w.run/jollyrunner639/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671
+
+Complete:12 one-off10-essence signatures, companion Mimi clone alongside Jodie (Tiny separate), full-duration kittens, six behaviour-charm revisions/three bounded combinations, explicit boss strengthening and workshop previews. Older checkpoints below are historical. Native Safari/human balance and RUN public approval remain pending; next action is user playtest. Do not silently expand enemy roles, branching weapons, maps or approved artwork.
+
 # 10.29.0 implemented, merged and uploaded to RUN —21 October2026
 
 PR92 merged4d767d3; main CI39591031602/Pages39591031561 passed, all28 public bytes verified. RUN publish47cecc28/CI39591411813 succeeded: game10.29.0/platform1.0.5, visibilityreview; receipt915766e3. Primary link: https://w.run/jollyrunner639/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671 . Public approval pending. All8 runtime/SDK/wrapper files exact-match; approved512px icon recompression visually checked. Evidence tests/public-10.29.json and tests/run-public-10.29.json. PROJECT_STATUS.md records full scope, tests and limits.

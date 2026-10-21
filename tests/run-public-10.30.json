@@ -1,0 +1,64 @@
+{
+  "gameVersion": "10.30.0",
+  "platformVersion": "1.0.6",
+  "shareUrl": "https://w.run/jollyrunner639/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671",
+  "visibility": "review",
+  "host": "https://oejyyzlghanzwyorldts.h5-apps.getreel.com/1.0.6/",
+  "files": [
+    {
+      "path": "assets/_rundot_bootstrap.de986ca8.js",
+      "bytes": 5145,
+      "sha256": "de986ca8a0e574aa84f2aa74d9c33a9c18e3cfc90513de4332a585786bd0f187",
+      "exact": true
+    },
+    {
+      "path": "assets/burntwood.html",
+      "bytes": 8373736,
+      "sha256": "5e6e45ebde092a2a0eb8dc1da8e9414749e7fa1d653947d035befd770d35cb92",
+      "exact": true
+    },
+    {
+      "path": "assets/core-CUZ70pdB-BA1gbrF-.js",
+      "bytes": 1276,
+      "sha256": "9c886513d26dfaaf7bfb5e08fd3ef00caa3c6a93d4a87e48d76d3ce9d4eff597",
+      "exact": true
+    },
+    {
+      "path": "assets/dist-DxOnYUkS-BnlByyFe.js",
+      "bytes": 46945,
+      "sha256": "7c2187d7efc4707027c6b4ff070bf202aa471f99c23642c7ed964456b7bb713e",
+      "exact": true
+    },
+    {
+      "path": "assets/index-BwqwYms1.js",
+      "bytes": 334717,
+      "sha256": "21536925ecc078dba6471450f2950794509d7cf57b31f272378e37e68eef5143",
+      "exact": true
+    },
+    {
+      "path": "assets/index-ONMQv-KU.css",
+      "bytes": 15321,
+      "sha256": "9048551b4011449bf37161656c2be8c4196dcc38e000453a6362e9547b1837d0",
+      "exact": true
+    },
+    {
+      "path": "images/placeholder.png",
+      "bytes": 223,
+      "sha256": "95a0b44f81d2b37a5edaa23717bdd4a63197fa6a754965158007c52ddb16ff7b",
+      "exact": true
+    },
+    {
+      "path": "index.html",
+      "bytes": 1897,
+      "sha256": "91be244b5b3e3c92de2f7f9c510ea1a5fc975b6051754380abbfe63e21916103",
+      "exact": true
+    },
+    {
+      "path": "thumbnail.jpg",
+      "bytes": 79222,
+      "sha256": "8a8eec5d6802ecadfb9b9e40eb1fb54f0c79ded59dc2c692871634a79c0c89b1",
+      "exact": false,
+      "meanPixelDifference": 5.4432830810546875
+    }
+  ]
+}

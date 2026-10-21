@@ -22,3 +22,13 @@ Reviewed all12 workshop cards, active/late kittens and clone, charm effects and 
 Remaining: merge, main CI/Pages, exact public28-file check, explicit RUN publish and receipt/public runtime check. Current live10.29 remains until those succeed. Native Safari and human balance remain user playtest.
 
 Final lifecycle review: clear transient signature effects at physical boss victory, so a last-hit cloud/wave cannot remain visually frozen during the walkout. Added a real signature-source boss-kill/cleared-state regression. This is transition cleanup only; damage, rewards and character tuning remain unchanged. Targeted unit and physical-route checks rerun; final CI/phone/publication gates remain required.
+
+## Released for testing
+
+PR93 merged atffe52b87f7e48b9e32ac4fdf8d2dd11b5144594b; final feature CI39629167433 and RUN prepare39629167767 passed. Main CI39629620489 and Pages39629619002 passed. All28 public files match the tested bytes, including the retained10.29 release; tests/public-10.30.json. Canonical/versioned HTML SHA256a0b784b68d07b60cd68b5a246b285c29dc5a2c20aaf915c250a1af54118a742a.
+
+RUN upload39630194501 succeeded from publish requestd4a6d0506ef1f4eb75549a0d921921d9ef749c0a. Actual game10.30.0/platform1.0.6, visibilityreview. Receipt run-host/releases/10.30.0.json committed atb344486fb30d95cacc0b1eaab77b5ecb94bb4b9e. Public runtime/SDK/wrapper files exactly match the prepared distribution; approved512px Rugby Strike thumbnail is retained (platform recompression checked). Evidence tests/run-public-10.30.json. Portable source SHA25698a03cf4d28b45010232c3674fe174b3c87ae503db6d675832fe4e8aafc82eaf. Existing SDK/tracking/game identity/credentials retained.
+
+Primary link: https://w.run/jollyrunner639/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671
+
+Native Safari, human balance and public RUN approval remain user/platform followup. No unfinished implementation or upload remains. The earlier pending statements above record development checkpoints and are superseded by this release record.
