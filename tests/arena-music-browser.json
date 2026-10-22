@@ -1,0 +1,91 @@
+{
+  "viewports": [
+    {
+      "width": 390,
+      "height": 844,
+      "result": "pass"
+    },
+    {
+      "width": 320,
+      "height": 568,
+      "result": "pass"
+    },
+    {
+      "width": 844,
+      "height": 390,
+      "result": "pass"
+    }
+  ],
+  "renders": [
+    {
+      "key": "rugby",
+      "bossFight": false,
+      "peak": 0.10488972812891006,
+      "rms": 0.010332756248550564,
+      "fingerprint": 884767478
+    },
+    {
+      "key": "rugby",
+      "bossFight": true,
+      "peak": 0.09680703282356262,
+      "rms": 0.011212663427957592,
+      "fingerprint": -134201974
+    },
+    {
+      "key": "chasewater",
+      "bossFight": false,
+      "peak": 0.08569950610399246,
+      "rms": 0.009749379053577542,
+      "fingerprint": -329006273
+    },
+    {
+      "key": "chasewater",
+      "bossFight": true,
+      "peak": 0.0856051817536354,
+      "rms": 0.010428186550749764,
+      "fingerprint": 2004433359
+    },
+    {
+      "key": "quarry",
+      "bossFight": false,
+      "peak": 0.07521894574165344,
+      "rms": 0.008702506877958432,
+      "fingerprint": -122465348
+    },
+    {
+      "key": "quarry",
+      "bossFight": true,
+      "peak": 0.07384070754051208,
+      "rms": 0.009796071151535576,
+      "fingerprint": -110605582
+    },
+    {
+      "key": "park",
+      "bossFight": false,
+      "peak": 0.08414652198553085,
+      "rms": 0.010200111444235523,
+      "fingerprint": 9517199
+    },
+    {
+      "key": "park",
+      "bossFight": true,
+      "peak": 0.08692803978919983,
+      "rms": 0.011110209082008526,
+      "fingerprint": 801732543
+    },
+    {
+      "key": "sankeys",
+      "bossFight": false,
+      "peak": 0.100258968770504,
+      "rms": 0.010252492311148081,
+      "fingerprint": -820003344
+    },
+    {
+      "key": "sankeys",
+      "bossFight": true,
+      "peak": 0.10433695465326309,
+      "rms": 0.011307315726952111,
+      "fingerprint": -22402338
+    }
+  ]
+}
