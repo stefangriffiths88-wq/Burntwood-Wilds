@@ -18,7 +18,7 @@ const{chromium}=require('playwright'),fs=require('node:fs'),assert=require('node
    await page.evaluate(()=>{run.legacyCombat=false;__test.damageEnemy(boss,999999,0,0);stepMusic();});
    assert.equal(await page.evaluate(()=>state),'cleared');assert.equal(await page.evaluate(()=>audioMood),'cleared');
    await page.evaluate(()=>{openPause();stepMusic();});assert.equal(await page.evaluate(()=>audioPhrase),null);
-   await page.locator('#audiomusic').fill('0');await page.locator('#audiomusic').dispatchEvent('input');
+   await page.locator('#audiomusic').focus();await page.locator('#audiomusic').press('Home');
    await page.evaluate(()=>{resumeRun();stepMusic();});assert.equal(await page.evaluate(()=>audioTarget),0);
    await page.evaluate(()=>{setAudioVolume('music',28);stepMusic();exitClearedArea();stepMusic();});
    assert.equal(await page.evaluate(()=>audioMood),'cleared');
