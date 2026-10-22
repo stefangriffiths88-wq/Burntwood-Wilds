@@ -28,6 +28,6 @@ jobs:
         with:
           name: isolated-story-preview
           path: |
-            burntwood-preview-v10.33.0.html
-            tests/curse-preview-10.33.0.json
+            burntwood-preview-v10.35.0.html
+            tests/curse-preview-10.35.0.json
             journey-v10/browser

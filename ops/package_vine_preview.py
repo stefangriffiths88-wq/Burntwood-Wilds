@@ -6,18 +6,18 @@ differ. The story preview reads only its own saves. No host/SDK/RUN writes.
 from pathlib import Path
 import hashlib,json
 root=Path(__file__).resolve().parent.parent
-source=(root/'burntwood-journey-v10.33.0.html').read_text()
+source=(root/'burntwood-journey-v10.35.0.html').read_text()
 replacements={
- "const SAVE_KEY='burntwood-wilds-progress-v2'":"const SAVE_KEY='burntwood-wilds-preview-10-33-progress'",
- "const JOURNEY_SAVE_KEY='burntwood-wilds-journey-v1';":"const JOURNEY_SAVE_KEY='burntwood-wilds-preview-10-33-journey';",
+ "const SAVE_KEY='burntwood-wilds-progress-v2'":"const SAVE_KEY='burntwood-wilds-preview-10-35-progress'",
+ "const JOURNEY_SAVE_KEY='burntwood-wilds-journey-v1';":"const JOURNEY_SAVE_KEY='burntwood-wilds-preview-10-35-journey';",
  "localStorage.getItem(SAVE_KEY)||localStorage.getItem('burntwood-wilds-progress-v1')":"localStorage.getItem(SAVE_KEY)"
 }
 preview=source
 for old,new in replacements.items():
  assert preview.count(old)==1,('Preview substitution must be exact',old)
  preview=preview.replace(old,new,1)
-assert "const BUILD_ID='10.33.0'" in preview
-path=root/'burntwood-preview-v10.33.0.html';path.write_text(preview)
-record={'version':'10.33.0','purpose':'Pre-release verification; RUN publication authorised after checks','path':path.name,'sourceSha256':hashlib.sha256(source.encode()).hexdigest(),'previewSha256':hashlib.sha256(preview.encode()).hexdigest(),'bytes':len(preview.encode()),'storage':'Fresh separate story-test keys; no production/legacy/previous-preview reads or writes'}
-(root/'tests/curse-preview-10.33.0.json').write_text(json.dumps(record,indent=2)+'\n')
+assert "const BUILD_ID='10.35.0'" in preview
+path=root/'burntwood-preview-v10.35.0.html';path.write_text(preview)
+record={'version':'10.35.0','purpose':'Pre-release verification; RUN publication authorised after checks','path':path.name,'sourceSha256':hashlib.sha256(source.encode()).hexdigest(),'previewSha256':hashlib.sha256(preview.encode()).hexdigest(),'bytes':len(preview.encode()),'storage':'Fresh separate story-test keys; no production/legacy/previous-preview reads or writes'}
+(root/'tests/curse-preview-10.35.0.json').write_text(json.dumps(record,indent=2)+'\n')
 print('Built isolated 10.33 Pages preview:',record['previewSha256'])
