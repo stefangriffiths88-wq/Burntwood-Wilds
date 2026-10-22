@@ -1,5 +1,7 @@
 # Latest verified release: Burntwood Wilds 10.33.0
 
+Active optional voting-button test22 October2026: draftPR98 / source feature/jam-vote-10-33-1. User entered the jam and requested a Vote for us link like the supplied screenshot. Main menu and victory links highlight existing entry, save the current safe checkpoint before leaving and support native routing where available. Only isolated preview is published; canonical/RUN remains10.33.0. Test: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-preview-v10.33.1.html?v=10331vote . Exact focused phone CI39767857559 passed, earlier screens artifact12421255592 reviewed at390×844/320×568/844×390. Preview603985bytes / SHA2568648dc0c92ee5d88b2eac26493df54a56be1ee8e4165e821003ae75734b1c70e. Actual native RUN external-link and live voting-page acceptance pending; current bundled SDK predates native routing. See TEST_JAM_VOTE.md. Essence/ads proposal is unimplemented.
+
 Released21 October2026 after the user explicitly authorised RUN and Pages publication and requested the welcome-home scene. PR97 merged as96ae5b820be3b8d9592032580994fa4383847ece.
 
 - Pages deployment39686023043 succeeded. Public canonical and versioned HTML both fetched and matched600269 bytes / SHA2567bce509a2fae14c96203a54a8528322915ea6acef0f348f869fbba9fb5cf0b4e. Versioned play: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.33.0.html?v=10330

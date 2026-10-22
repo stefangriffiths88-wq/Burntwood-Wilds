@@ -1,0 +1,9 @@
+{
+  "version": "10.33.1",
+  "scope": "Isolated voting UI preview only; canonical/RUN10.33.0 retained",
+  "source": "78204ca1e77b13293f2e9b86f1321ccff1740765",
+  "phoneRun": 39767857559,
+  "sha256": "8648dc0c92ee5d88b2eac26493df54a56be1ee8e4165e821003ae75734b1c70e",
+  "bytes": 603985,
+  "productionUnchanged": true
+}
