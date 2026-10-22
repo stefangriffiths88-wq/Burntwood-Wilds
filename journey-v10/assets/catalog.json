@@ -311,5 +311,18 @@
     ],
     "approval": "Rugby Strike, final character-selection-matched aggressive heroes and stag Bruce",
     "sha256": "b0c960f3456eab3afa3292714416a58c6aca8d23ec18195b6a7f7a83f7b4191e"
+  },
+  "boss_native_10_35": {
+    "approval": "Stef explicitly approved recovered Umbrella Man and compact Boulder Mort v2 on22 October2026; previously accepted Night Owl",
+    "source": "visuals/approved-bosses.js",
+    "bosses": {
+      "rugby": "Bruce artwork unchanged",
+      "sankeys": "Umbrella Man: skinny, dirty untucked shirt, battered umbrella and rubbish bag",
+      "quarry": "Boulder Mort: short limbs, few individually shaped stone masses, small recessed head",
+      "chasewater": "Accepted native Night Owl",
+      "park": "Bramble Beast retained; large Loki/Jackson graphics overhaul paused"
+    },
+    "reference": "User rock-golem screenshot informs proportions only; no third-party screenshot uploaded",
+    "status": "Implemented candidate; combined phone/release checks pending"
   }
 }

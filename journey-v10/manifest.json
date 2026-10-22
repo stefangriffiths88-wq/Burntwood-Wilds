@@ -52,6 +52,7 @@
   "characters/defences.js",
   "arenas/monster-bosses.js",
   "visuals/monster-art.js",
+  "visuals/approved-bosses.js",
   "arenas/objects.js",
   "ui/ability-art.js",
   "arenas/rugby-route.js",
@@ -66,5 +67,7 @@
   "ui/audio.js",
   "onboarding/first-journey.js",
   "ui/journey-recovery.js",
+  "ui/jam-vote.js",
+  "ui/playtest-1035.js",
   "controls.js"
 ]

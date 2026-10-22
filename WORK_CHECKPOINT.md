@@ -1,5 +1,21 @@
-# Completed release:10.33.0
+# 10.35.0 — complete agreed playtest and RUN update
 
-User authorised RUN and Pages publication; welcome-home scene is included. PR97 merged96ae5b820be3b8d9592032580994fa4383847ece. Pages39686023043 and RUN39686023812 succeeded. Public Pages bytes match the tested build. RUN receipt10.33.0 records platform1.0.7 with visibility review; listing approval is pending on RUN. Review URL: https://w.run/jollyrunner639/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671
+Stef explicitly authorised all music, gameplay and agreed art, and RUN publication on 22 October 2026. Owner: feature/playtest-fixes-10-35, base main2ea2496. Preserve earned progress, approved hero artwork, historical URLs, SDK/tracking/game identity and existing RUN icon. No essence/ad expansion.
 
-All targeted/native/story/mobile tests pass. Full runtime/browser/charm job119515164778 and full corrected phone/domain39684723761 pass on identical runtime. Main automatic repeat regression may still be running. No further gameplay work is in progress; do not resume old no-RUN development restrictions for this completed release. User acceptance of the new10.33 scene remains pending. See PROJECT_STATUS.md and TEST_10_33.md for hashes/evidence. Preserve older dirty worktrees. Future changes need fresh user authorisation.
+Scope checklist:
+- Direct town objective arrow, corrected phone caption/button overlap.
+- Joseph physically released from vines after Bruce, before recruitment; durable pending rescue.
+- Jackson charge passes through Bruce, damages once and slides Bruce sideways.
+- Frozen-enemy cosmetic shards settle and last two seconds.
+- Optional individual post-rescue humorous conversations.
+- Unlocked portrait inspection/full ability cards, NEW until viewed including multiple recruits.
+- Immediate Stefan recruitment welcome with atomic5-essence purchase.
+- New-run action opens selection before deliberate start/replacement.
+- Existing music PR99: five area themes,20% faster boss variants, victory/calm transition.
+- Existing voting PR98: deliberate menu/victory links and safe checkpoint handling.
+- Approved native Umbrella Man (skinny dirty untucked shirt/battered umbrella) at Sankeys; approved compact Boulder Mort v2 at Quarry with identity/copy; previously accepted native Night Owl. Bruce art unchanged.
+- Bramble Beast and Loki/Jackson large graphics/animation overhaul remain unchanged/paused. No approval invented for unfinished native Loki art.
+
+Implementation checkpoint: all owned source changes in place; initial build/syntax, music lifecycle and monster-town native render/mechanics suites pass. Legacy tests that assumed automatic Joseph boss recruitment need updating to exercise the new physical rescue. Focused new contracts, real phone layouts/taps, complete release CI, packaging, Pages verification and explicit RUN publish/receipt remain to complete. Do not call this release live yet.
+
+Recovery checkpoint: PR100 / feature/playtest-fixes-10-35. Source8a88bcea; generated30e4f133. First CI39808674279 has green curse/mobile job; changed-review fails only on old Harvey auto-rescue fixture, now corrected locally along with Immy/first-journey/isolated-preview fixtures. Focused new1035 contracts pass. Broad automatic combat job remains in progress. Local initial broad tests also running; subsequent targeted Harvey/Immy retests pass. Followup preserves cleared-area checkpoint while optional rescue dialogue is open. Git CLI push lacks authentication; verified owned repository permissions and connected GitHub Git-data tools save all source. No merge/RUN upload yet.
