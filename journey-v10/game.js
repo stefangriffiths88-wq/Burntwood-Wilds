@@ -2382,7 +2382,7 @@ function loadJourneyCheckpoint(){let raw;try{raw=localStorage.getItem(JOURNEY_SA
 function saveJourneyCheckpoint(mode){
  if(restoringJourney||rosterTestAccess||run.legacyCombat||hub.finished||!p)return false;
  if(journeyRecoveryBlocked)return false;
- if(!mode){let base=state==='paused'?pauseResume:state==='inventory'?inventoryResume:state;mode=base==='cleared'||['charm','charmEquip'].includes(base)&&run.rewardResume==='cleared'?'cleared':['hub','shop','workshop','dialogue','areaVictory'].includes(base)?'hub':null;}
+ if(!mode){let base=state==='dialogue'&&rescueDialogueResume?rescueDialogueResume:state==='paused'?pauseResume:state==='inventory'?inventoryResume:state;mode=base==='cleared'||['charm','charmEquip'].includes(base)&&run.rewardResume==='cleared'?'cleared':['hub','shop','workshop','dialogue','areaVictory'].includes(base)?'hub':null;}
  if(!mode)return false;
  let data={};for(let key of JOURNEY_FIELDS)if(run[key]!==undefined)data[key]=run[key];
  let value={schema:1,mode,hero:selected,arena:arenaKey,run:data,tier,hp:p.hp,gold:hub.coins,time,kills,seed};
