@@ -1,5 +1,7 @@
 # Native boss sprite design review — 22 October 2026
 
+**Latest: revision three, REVIEW_3.md / preview-third.html.** Stef says the golem still needs work; the new craggy hunched candidate remains unapproved. Loki must have BLACK AND WHITE fur and a fluffy brush tail, correcting the grey coat in revision two. `third-boss-proposals.js` contains the current candidate. Umbrella Man/Night Owl/Bruce are retained. No game or RUN integration.
+
 **Latest direction: revision two in REVIEW_2.md.** Skinny Umbrella Man wears a dirty untucked shirt; accepted Night Owl stays byte-identical; Rubble Trouble is the proposed comic golem name/design; Loki, a giant husky to save from the Cow Queen, replaces Bramble Beast. `preview-revised.html` contains the current review. Original files and the initial notes below are retained as history, not current direction. Nothing is integrated or published to RUN.
 
 Stef requested improved actual in-game boss looks, explicitly preserving Bruce. Umbrella Man belongs at Sankeys Corner, replacing the Trolley King identity there. This is a visual proposal only; no game integration, map/combat changes, production merge or RUN upload is authorised by this review.
