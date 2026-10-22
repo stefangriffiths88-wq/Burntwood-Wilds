@@ -17,7 +17,7 @@ function drawJacksonSprite(c,x,y,s,type){c.save();c.translate(x,y);c.scale(s*.92
 
 function dodgeImpact(e){let damage=D(5)?26:D(2)?18:10;damageEnemy(e,damage,p.actionDir.x,p.actionDir.y,false,'dodge');radialEffect(e.x,e.y,17,'#e3d5a1');if(D(3)){e.stunUntil=time+(e.kind==='boss'?.05:e.kind==='heavy'?.12:.3);}if(D(3)){let m=e.kind==='boss'?.1:e.kind==='heavy'?(D(5)?.65:.25):1;e.kx+=p.actionDir.x*180*m;e.ky+=p.actionDir.y*180*m;}}
 
-function chargeImpact(e){let anchored=e.kind==='boss'||e.heroic;damageEnemy(e,S(2)?85:65,anchored?0:p.actionDir.x,anchored?0:p.actionDir.y,true,'special');if(S(4))e.stunUntil=time+(e.kind==='boss'?.12:.4);}
+function chargeImpact(e){let anchored=e.kind==='boss'||e.heroic;damageEnemy(e,S(2)?85:65,anchored?0:p.actionDir.x,anchored?0:p.actionDir.y,true,'special');if(e.hp>0&&e.kind==='boss'&&arenaKey==='rugby'){let side=(e.x-p.x)*-p.actionDir.y+(e.y-p.y)*p.actionDir.x>=0?1:-1;e.jacksonSlide={x:-p.actionDir.y*side,y:p.actionDir.x*side,left:.18};}if(S(4))e.stunUntil=time+(e.kind==='boss'?.12:.4);}
 
 CHARACTERS.jackson={"name":"Jackson","hp":100,"speed":155,"damage":26,"rate":0.82,"dodgeSpeed":380,"dodgeTime":0.24,"specialCD":7};
 
@@ -36,3 +36,5 @@ function jacksonCharge(){if(state!=='playing'||p.action||p.chargeCD>0)return;p.a
 // Bosses may move during this frame. Use relative swept contact; never add a
 // second hit to the existing endpoint hit, and preserve boss knockback resistance.
 function jacksonBossChargeContact(e,from,bossFrom){if(selected!=='jackson'||p.action!=='charge'||e.kind!=='boss'||e.hp<=0||p.hitIds.has(e.id))return false;let ax=from.x-bossFrom.x,ay=from.y-bossFrom.y,bx=p.x-e.x,by=p.y-e.y,dx=bx-ax,dy=by-ay,l=dx*dx+dy*dy,u=l?clamp(-(ax*dx+ay*dy)/l,0,1):0,r=e.r+p.r+(S(3)?24:12);if(Math.hypot(ax+dx*u,ay+dy*u)>r)return false;p.hitIds.add(e.id);chargeImpact(e);radialEffect(e.x,e.y,e.r+8,'#f1d48b');shake=Math.max(shake,3);return true;}
+
+function stepJacksonBossSlide(e,dt){let s=e.jacksonSlide;if(!s||e.hp<=0)return;let step=Math.min(dt,s.left),q=walkable(e.x+s.x*240*step,e.y+s.y*240*step,e.r);e.x=q.x;e.y=q.y;s.left-=step;if(s.left<=0)e.jacksonSlide=null;}

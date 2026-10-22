@@ -122,11 +122,17 @@ jobs:
       - run: node journey-v10/town-arrow-boss-test.cjs
       - run: node journey-v10/town-rugby-scenery-test.cjs
       - run: node journey-v10/elder-lane-test.cjs
+      - run: node journey-v10/playtest-1035-test.cjs
+      - run: node journey-v10/arena-music-test.cjs
+      - run: node journey-v10/vine-charge-test.cjs
+      - run: node journey-v10/story-rescues-test.cjs
       - run: node journey-v10/signature-builds-test.cjs
       - run: python3 journey-v10/package_run.py
       - run: npm install --no-save playwright@1.48.2
       - run: |
           python3 -m http.server 8765 >/tmp/monster-server.log 2>&1 &
+          node journey-v10/playtest-1035-browser.cjs
+          node journey-v10/arena-music-browser.cjs
           node journey-v10/signature-builds-browser.cjs
           node journey-v10/elder-lane-browser.cjs
           node journey-v10/town-rugby-scenery-browser.cjs
