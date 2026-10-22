@@ -1,0 +1,17 @@
+# Loki isolated action laboratory — 22 October 2026
+
+Stef now selects **C guardian stance**, **B playful crouch immediately before a large pounce**, and **A relaxed after rescue**. This supersedes treating playful B as the whole normal boss stance. He requests action tests and move development without uploading to the actual game.
+
+This folder is an independent rehearsal. No game manifest/source, production HTML, main branch or RUN files are modified; no deployment. `preview.html` is a self-contained conversation fragment with three embedded transparent384px WebP derivatives of the accepted generated art, preserving the exact illustrated appearance. It makes no requests and uses no storage, accounts, saves or game globals. Private real-dog screenshots are excluded. Original high-resolution generated PNGs are retained in the Work workspace and are still to be committed before final asset integration.
+
+Controls: Large pounce, Two pounces (experimental second attack), Rescued, Reset, Dodge, Pause. Drag the left of the playfield or use arrows/WASD; Space dodges. Actual Jackson renderer for scale. Begin only on demand; no autoplay combat. Pause/background clears held input. Rendering stops when idle.
+
+Prototype move: guardian approach0.75s → playful crouch1.1s → large arcing leap0.68s → recovery1.35s. Landing marker tracks until0.68s of crouch, then commits; no mid-flight homing. Landing checks once,20 test damage. Dodge gives0.3s protection/0.17s movement,1.3s cooldown. All are isolated draft values, not production balance. Two-pounce rehearsal adds shorter recovery0.65s, second crouch0.9s with lock0.5s, second leap0.58s. Rescued is an art-state test, not a boss victory/recruitment implementation.
+
+The existing still images are moved/flipped with lift, shadow and pose changes. **This is pose, action readability and timing proof, not finished walk/leap leg animation or a complete Loki boss move set.** Match the selected art when preparing additional animation frames later; do not replace it with rejected native polygon art. Flying artwork is kept below the header; no extra model hit radius is implied by its large tail.
+
+`simulation.js` is separate from rendering/input. `preview-shell.html` plus `build.py` builds the fragment from local WebP derivatives and the existing approved Jackson drawing primitives. `test.cjs` passes committed-target/no homing, exact single landing hit, movement escape, dodge/cooldown, two-pounce cycle, pause, rescued/reset, bounds and20/30/60/120fps. `render-test.cjs` decodes actual alpha sprites and renders real Canvas views, then invokes action/pointer/background handlers; ready/crouch/pounce/rescued captures were produced and the default/airborne views inspected. These native Canvas/VM checks are not actual mobile Safari or human feel acceptance. No unrelated combat matrix rerun.
+
+Next: Stef tries the isolated interaction. Tune warning/commit/flight/recovery feel before finalising additional moves or producing a complete animation frame set. Keep existing queued town-arrow, overlap, physical Joseph rescue and Jackson/Bruce charge fixes separate; do not start a game update or RUN release without explicit direction.
+
+Additional feedback during this work: shattered frozen enemies' ice shards must settle on the floor and remain for2 seconds. Queue this cosmetic persistence for the next authorised game update; it is not a Loki-lab mechanic, and no damage/collision or live game change is implied.

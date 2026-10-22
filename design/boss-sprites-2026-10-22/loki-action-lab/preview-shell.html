@@ -1,0 +1,80 @@
+<div id="loki-action-lab">
+ <div class="viz-row" role="group" aria-label="Loki action tests">
+  <button class="btn" type="button" data-action="pounce">Large pounce</button>
+  <button class="btn" type="button" data-action="double">Two pounces</button>
+  <button class="btn" type="button" data-action="rescue">Rescued</button>
+  <button class="btn" type="button" data-action="reset">Reset</button>
+ </div>
+ <div class="loki-stage">
+  <canvas width="780" height="840" role="img" aria-label="Separate Loki action test arena. Drag on the left to move Jackson; press Dodge or Space to evade the marked pounce landing."></canvas>
+ </div>
+ <div class="viz-row">
+  <button class="btn" type="button" data-action="dodge">Dodge</button>
+  <button class="btn" type="button" data-action="pause">Pause</button>
+  <span class="text-small" data-status aria-live="polite">Loading Loki…</span>
+ </div>
+ <div class="text-small">Drag left side to move · arrows/WASD · Space to dodge</div>
+</div>
+<style>
+#loki-action-lab .loki-stage{max-width:440px;margin:12px auto;background:#4e714c;border-radius:12px;overflow:hidden}
+#loki-action-lab canvas{display:block;width:100%;height:auto;touch-action:none}
+</style>
+<script>
+(()=>{
+const root=document.getElementById('loki-action-lab'),canvas=root.querySelector('canvas'),ctx=canvas.getContext('2d'),status=root.querySelector('[data-status]');
+const images={},urls=/*ASSET_DATA*/;
+/*SIMULATION*/
+let lab=new LokiActionLab(),raf=0,last=0,joystick=null,keys={},p={walk:0,throwT:0,inv:0},hitFlash=0;
+const TAU=Math.PI*2;
+/*JACKSON_DRAWING*/
+function oval(x,y,rx,ry,c){ctx.fillStyle=c;ctx.beginPath();ctx.ellipse(x,y,rx,ry,0,0,TAU);ctx.fill();}
+function draw(){
+ ctx.setTransform(2,0,0,2,0,0);ctx.fillStyle='#52734b';ctx.fillRect(0,0,390,420);
+ ctx.fillStyle='#668653';ctx.fillRect(12,68,366,337);ctx.strokeStyle='#d8d7b18c';ctx.lineWidth=1.5;ctx.strokeRect(28,88,334,300);ctx.beginPath();ctx.moveTo(28,238);ctx.lineTo(362,238);ctx.stroke();ctx.beginPath();ctx.arc(195,238,42,0,TAU);ctx.stroke();
+ ctx.fillStyle='#38234820';ctx.fillRect(0,68,390,352);
+ const b=lab.boss,q=lab.player;
+ if(lab.target&&['crouch','air'].includes(lab.phase)){
+  let r=54,color=lab.locked?'#f0ad79':'#ead493';ctx.fillStyle=lab.locked?'#c77e623b':'#d5b76022';ctx.strokeStyle=color;ctx.lineWidth=2;
+  ctx.beginPath();ctx.ellipse(lab.target.x,lab.target.y,r,r*.55,0,0,TAU);ctx.fill();ctx.stroke();
+  ctx.beginPath();ctx.moveTo(lab.target.x-7,lab.target.y);ctx.lineTo(lab.target.x+7,lab.target.y);ctx.moveTo(lab.target.x,lab.target.y-6);ctx.lineTo(lab.target.x,lab.target.y+6);ctx.stroke();
+ }
+ oval(b.x,b.y+3,45-(lab.height*.15),12-(lab.height*.025),'#173b3255');
+ let pose=lab.phase==='rescued'?'relaxed':lab.phase==='crouch'?'playful':'guardian',im=images[pose];
+ if(im){
+  let w=pose==='playful'?155:127,h=w*im.height/im.width;
+  let bob=lab.phase==='guardian'?Math.sin(lab.clock*8)*1.4:0,tilt=lab.phase==='air'?-.08*Math.sin(lab.elapsed/lab.airDuration*Math.PI):0;
+  let right=lab.phase==='air'?lab.target.x>lab.from.x:lab.target?lab.target.x>b.x:q.x>b.x;
+  ctx.save();ctx.translate(b.x,Math.max(h+65,b.y-lab.height+bob));if(right)ctx.scale(-1,1);ctx.rotate(tilt);ctx.drawImage(im,-w*.5,-h+10,w,h);ctx.restore();
+ }
+ for(let f of lab.particles){let age=1-f.life/.5;ctx.strokeStyle=f.hit?'#e9af88':'#dbd2a0';ctx.lineWidth=(1-age)*5;ctx.globalAlpha=1-age;ctx.beginPath();ctx.ellipse(f.x,f.y,20+age*57,7+age*25,0,0,TAU);ctx.stroke();ctx.globalAlpha=1;}
+ p.walk=lab.clock*(Math.hypot(input().x,input().y)>.05?7:0);p.inv=q.inv;ctx.save();if(q.inv>0)ctx.globalAlpha=.6;drawJacksonSprite(ctx,q.x,q.y,.7366667,'jackson');ctx.restore();
+ if(q.inv>0){ctx.strokeStyle='#d4edcc';ctx.lineWidth=2;ctx.beginPath();ctx.arc(q.x,q.y-7,19,0,TAU);ctx.stroke();}
+ if(joystick){oval(joystick.x,joystick.y,34,34,'#d3ddbc33');oval(joystick.x+joystick.dx*25,joystick.y+joystick.dy*25,12,12,'#efe4bc88');}
+ ctx.fillStyle='#163d31';ctx.fillRect(0,0,390,63);ctx.fillStyle='#f2dca4';ctx.font='bold 13px system-ui';ctx.textAlign='left';ctx.fillText('LOKI · ACTION TEST',13,21);ctx.textAlign='right';ctx.fillText('JACKSON '+q.hp+'/100',377,21);
+ ctx.fillStyle='#b5c5a7';ctx.font='12px system-ui';ctx.textAlign='left';ctx.fillText(({ready:'Guardian stance',guardian:'Guardian stance',crouch:'Playful crouch',air:'Pounce',recover:'Recovery',rescued:'Relaxed · rescued'})[lab.phase],13,43);
+ ctx.textAlign='right';ctx.fillText('ISOLATED · NO GAME SAVE',377,43);
+ if(lab.paused){ctx.fillStyle='#12392bbf';ctx.fillRect(0,63,390,357);ctx.fillStyle='#ffe5a6';ctx.textAlign='center';ctx.font='bold 18px system-ui';ctx.fillText('PAUSED',195,230);}
+ status.textContent=lab.paused?'Paused':lab.message;
+ root.querySelector('[data-action="pause"]').textContent=lab.paused?'Resume':'Pause';
+ const dodge=root.querySelector('[data-action="dodge"]');dodge.disabled=q.cooldown>0||lab.paused;dodge.textContent=q.cooldown>0?'Dodge '+q.cooldown.toFixed(1)+'s':'Dodge';
+ for(let a of ['pounce','double'])root.querySelector('[data-action="'+a+'"]').disabled=lab.paused||!['ready','rescued'].includes(lab.phase);
+}
+function input(){return{x:(keys.ArrowRight||keys.d?1:0)-(keys.ArrowLeft||keys.a?1:0)+(joystick?.dx||0),y:(keys.ArrowDown||keys.s?1:0)-(keys.ArrowUp||keys.w?1:0)+(joystick?.dy||0)};}
+function wake(){if(!raf&&!document.hidden){last=performance.now();raf=requestAnimationFrame(frame);}else if(!raf)draw();}
+function frame(now){raf=0;let dt=Math.min(.1,(now-last)/1000);last=now;lab.step(dt,input());draw();if(!lab.paused&&(lab.active||Object.values(keys).some(Boolean)||joystick))raf=requestAnimationFrame(frame);}
+for(let b of root.querySelectorAll('[data-action]'))b.addEventListener('click',()=>{
+ let a=b.dataset.action;if(a==='pounce')lab.start(1);else if(a==='double')lab.start(2);else if(a==='rescue')lab.rescue();else if(a==='reset'){lab.reset();keys={};joystick=null;}else if(a==='dodge')lab.dodge();else if(a==='pause'){lab.paused=!lab.paused;keys={};joystick=null;}
+ draw();wake();
+});
+root.addEventListener('keydown',e=>{if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight','w','a','s','d',' '].includes(e.key)){e.preventDefault();if(lab.paused)return;if(e.key===' ')lab.dodge();else keys[e.key]=true;wake();}});
+window.addEventListener('keyup',e=>{keys[e.key]=false;});
+function point(e){let r=canvas.getBoundingClientRect();return{x:(e.clientX-r.left)*390/r.width,y:(e.clientY-r.top)*420/r.height};}
+canvas.addEventListener('pointerdown',e=>{let q=point(e);if(q.x>240||q.y<90||lab.paused||joystick)return;joystick={id:e.pointerId,x:q.x,y:q.y,dx:0,dy:0};canvas.setPointerCapture?.(e.pointerId);e.preventDefault();wake();});
+canvas.addEventListener('pointermove',e=>{if(joystick?.id!==e.pointerId)return;let q=point(e),dx=(q.x-joystick.x)/32,dy=(q.y-joystick.y)/32,n=Math.max(1,Math.hypot(dx,dy));joystick.dx=dx/n;joystick.dy=dy/n;e.preventDefault();wake();});
+function release(e){if(joystick?.id===e.pointerId){joystick=null;draw();}}canvas.addEventListener('pointerup',release);canvas.addEventListener('pointercancel',release);
+function interrupt(){keys={};joystick=null;if(lab.active)lab.paused=true;if(raf){cancelAnimationFrame(raf);raf=0;}draw();}
+document.addEventListener('visibilitychange',()=>{if(document.hidden)interrupt();});window.addEventListener('blur',interrupt);
+root.actionLab={get lab(){return lab;},draw,wake,images,input};
+Promise.all(Object.entries(urls).map(([name,url])=>new Promise((resolve,reject)=>{let im=new Image();im.onload=()=>{images[name]=im;resolve();};im.onerror=reject;im.src=url;}))).then(()=>draw()).catch(()=>{status.textContent='Could not load Loki artwork';});
+})();
+</script>

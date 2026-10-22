@@ -1,0 +1,9 @@
+const{LokiActionLab}=require('./simulation.js'),assert=require('node:assert/strict');
+function advance(lab,sec,input={x:0,y:0}){for(let i=0;i<Math.round(sec*120);i++)lab.step(1/120,input);}
+let l=new LokiActionLab();assert(l.start());assert(!l.start());advance(l,.9);assert.equal(l.phase,'crouch');advance(l,.7);assert(l.locked);const target={...l.target};advance(l,.1,{x:1,y:0});assert.deepEqual(l.target,target,'committed target cannot chase');advance(l,1);assert.equal(l.events.filter(e=>e.phase==='impact').length,1);assert.equal(l.player.hp,80);advance(l,3);assert.equal(l.player.hp,80);assert.equal(l.phase,'ready');
+l.reset();l.start();advance(l,1.5);assert(l.locked);advance(l,.7,{x:1,y:0});advance(l,2);assert.equal(l.player.hp,100,'moving after lock avoids landing');
+l.reset();l.start(2);advance(l,8);assert.equal(l.events.filter(e=>e.phase==='impact').length,2);assert.equal(l.player.hp,60);assert.equal(l.phase,'ready');
+l.reset();l.start();advance(l,2.45);assert.equal(l.phase,'air');assert(l.dodge());assert(!l.dodge());advance(l,.12);assert.equal(l.player.hp,100);assert(l.events.find(e=>e.phase==='impact'&&!e.hit));
+l.reset();l.start();advance(l,1);let clock=l.clock;l.paused=true;advance(l,4);assert.equal(l.clock,clock);l.paused=false;advance(l,3);assert(l.events.some(e=>e.phase==='impact'));l.rescue();assert.equal(l.phase,'rescued');advance(l,5);assert.equal(l.phase,'rescued');assert(l.start());l.reset();advance(l,20,{x:-1,y:1});assert(l.player.x>=24&&l.player.y<=394);
+for(let fps of [20,30,60,120]){let q=new LokiActionLab();q.start();for(let i=0;i<fps*5;i++)q.step(1/fps);assert.equal(q.events.filter(e=>e.phase==='impact').length,1);assert.equal(q.player.hp,80);}
+console.log('PASS committed target, single impact, move/dodge escape, two-pounce cycle, cooldown, pause, rescue, reset, bounds and20/30/60/120fps');
