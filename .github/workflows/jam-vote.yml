@@ -1,0 +1,27 @@
+name: Jam vote phone verification
+on:
+  push:
+    paths: ['journey-v10/ui/jam-vote.js', 'journey-v10/jam-vote-browser.cjs', '.github/workflows/jam-vote.yml']
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 journey-v10/build.py
+      - run: node --check journey-v10/game.js
+      - run: npm install --no-save playwright@1.48.2
+      - run: |
+          python3 -m http.server 8765 >/tmp/jam-vote-server.log 2>&1 &
+          node journey-v10/jam-vote-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: jam-vote-phone-review
+          path: |
+            burntwood-journey-v10.33.1.html
+            journey-v10/browser/jam-*.png

@@ -66,5 +66,6 @@
   "ui/audio.js",
   "onboarding/first-journey.js",
   "ui/journey-recovery.js",
+  "ui/jam-vote.js",
   "controls.js"
 ]
