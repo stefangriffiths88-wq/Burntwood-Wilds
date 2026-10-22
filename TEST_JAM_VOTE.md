@@ -1,0 +1,11 @@
+#10.33.1 voting-button playtest
+
+User requested an in-game voting link like the Monster Attack victory screenshot after entering Burntwood Wilds into the jam. Purple/gold Vote for us buttons are on the character-select menu and area/final victory panels. Destination: https://run.world/jams/octoberjam?game=oeJYyzlGHanZwYoRldTS . This opens voting; it never casts a vote or changes rewards.
+
+Source remains on feature/jam-vote-10-33-1 / draftPR98. Isolated preview uses separate progress/journey keys and reads no production/legacy progression. Production/RUN remains10.33.0/platform1.0.7. The separate essence20/rewarded-ad economy proposal is not part of this candidate.
+
+Focused native-browser verification covers actual menu popup navigation (destination intercepted), real Bruce defeat→town→victory, saved checkpoint before supported native RUN navigation, exact jam/game destination, reward conservation, recoverable routing rejection, continued play and hidden buttons outside appropriate screens.390×844,320×568,844×390/reduced motion. Earlier phone runs39767569061 and39767652354 pass; artifact12421255592 visually reviewed. Final exact-preview run39767857559 passes. Only the isolated test file is published to Pages; production/RUN is unchanged. Final preview SHA2568648dc0c92ee5d88b2eac26493df54a56be1ee8e4165e821003ae75734b1c70e,603985bytes; Git blob633cf1e1715672ab5a64b642390d6384b0bcf2e8.
+
+Scope evidence: engine/core.js, all character/arena/world/item/upgrade modules and approved assets are unchanged from verified10.33.0. Only owned voting UI, generator/version, manifest registration and one UI render call are changed. Reuse prior combat/balance evidence; automatic existing CI may run broadly. No new damage/balance claim.
+
+Compatibility: current pinned RUN SDK has no navigateToRunPage; normal web hyperlink behavior is used when that method is absent. A parent/current RUN API exposing the supported method uses internal host routing. No forced top-frame navigation and no popup fallback after SDK rejection. Actual native RUN hosts may restrict external links; native app/Safari and real live voting page acceptance remain user tests, not proven by mocked browser routing. Do not claim that this source is deployed to RUN.
