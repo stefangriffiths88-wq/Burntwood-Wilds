@@ -1,3 +1,3 @@
-Burntwood Wilds 10.33.0
+Burntwood Wilds 10.35.0
 
-Cursed areas with visible purple town glow, boss-side vine rescues, sequential welcome-home character reveals, distinct upgrade rarities, reliable Jackson boss charges, and the tested story, combat and character progression improvements.
+Five distinct arena music themes with faster boss variations and calm victory transitions; deliberate jam voting links; physical Joseph rescue after Bruce; improved Jackson charge-through and sideways Bruce impact; settled ice shards; optional rescue conversations; inspectable character ability cards and NEW badges; immediate Stefan welcome; character selection before a new run; clearer town guidance and phone layouts. Approved native Umbrella Man, compact Boulder Mort and Night Owl artwork. Existing progress, hero artwork, RUN game identity and thumbnail retained. Larger graphics and animation overhaul remains paused.
