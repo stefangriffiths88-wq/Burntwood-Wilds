@@ -47,6 +47,8 @@ Saved access/migration is in upgrades/permanent.js. Menu locks and no-portrait??
 
 `ui/audio.js` provides an original procedural score (not a recorded acoustic soundtrack), a shared AudioContext/effects bus, independent saved volumes, gesture start and visibility suspension. Score gain automation updates only when its target changes; tones disconnect on completion. Native Safari sound quality and balance require user testing.
 
+Arena-music playtest: `ARENA_SCORES` within that module owns five combat identities and base tempos. Bosses ramp to120% tempo with extra percussion; cleared walkout/treasure/victory returns to the town theme after a short resolution. Phrase buses retire on transition/mute/pause; noise is cached and uses no combat RNG. `arena-music-test.cjs` covers scheduling/lifecycle; `arena-music-browser.cjs` checks actual state transitions and real offline synthesis graphs. The isolated preview packager preserves production save keys and release paths. See `WORK_ARENA_MUSIC.md`.
+
 Normal upgrade cards inspect first and commit through a separate Choose button. Preserve the 550ms reveal, armed-pointer protection and Mythic deferred choice. Tests must exercise both inspection and confirmation; direct mechanics fixtures are not a substitute for phone interaction checks.
 
 ## 10.24 recovery and portable distribution
