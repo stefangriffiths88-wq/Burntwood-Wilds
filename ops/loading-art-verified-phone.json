@@ -1,0 +1,62 @@
+[
+  {
+    "variant": "burntwood.html",
+    "width": 390,
+    "height": 844,
+    "portraits": 12,
+    "startState": "playing",
+    "reload": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "variant": "burntwood.html",
+    "width": 320,
+    "height": 568,
+    "portraits": 12,
+    "startState": "playing",
+    "reload": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "variant": "burntwood.html",
+    "width": 844,
+    "height": 390,
+    "portraits": 12,
+    "startState": "playing",
+    "reload": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "variant": "separate-files/burntwood.html",
+    "width": 390,
+    "height": 844,
+    "portraits": 12,
+    "startState": "playing",
+    "reload": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "variant": "separate-files/burntwood.html",
+    "width": 320,
+    "height": 568,
+    "portraits": 12,
+    "startState": "playing",
+    "reload": true,
+    "errors": [],
+    "bad": []
+  },
+  {
+    "variant": "separate-files/burntwood.html",
+    "width": 844,
+    "height": 390,
+    "portraits": 12,
+    "startState": "playing",
+    "reload": true,
+    "errors": [],
+    "bad": []
+  }
+]

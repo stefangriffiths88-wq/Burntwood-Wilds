@@ -1,0 +1,395 @@
+{
+  "sourceSha256": "3d42d6d0b6f19f68d3a376b0d71b2a6b2c4a28e8897e7c532f1c1a74d9ba2777",
+  "sourceBytes": 8449500,
+  "standaloneBytes": 2339949,
+  "standaloneSha256": "e82c28954daa92c3904ca691dfe715c363035800fb23a85178cc1585ea1b2458",
+  "separateHtmlBytes": 628867,
+  "separateTotalBytes": 1912133,
+  "nonImageContentUnchanged": true,
+  "images": [
+    {
+      "hero": "ava",
+      "kind": "icons",
+      "originalBytes": 73856,
+      "bytes": 8794,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "4823669e37794a78f97479a4847d045ee162a72459ff0bbc63cfc2ed9837f2ea",
+      "sha256": "46a5dacc6d76a273bec589fadef2e577a2ec7d9f42cd2fb25d762d7f70c7c2a3"
+    },
+    {
+      "hero": "jackson",
+      "kind": "icons",
+      "originalBytes": 88164,
+      "bytes": 10684,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "740d2ade39d9ec092aea0a733e63852883d19c110d6dd15920f179613eeaa236",
+      "sha256": "657da263a76e2ff8482babc6d44985f1fe1277acc1324a823013ecf876df67aa"
+    },
+    {
+      "hero": "stef",
+      "kind": "icons",
+      "originalBytes": 95138,
+      "bytes": 10450,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "de12ededd2eb3e11f46d42ef6ccb389f0dee291510c10eb40986354e707bc5c0",
+      "sha256": "9d6a48e81856fc63c1f48d0b4b64d169d64fffa6410801577c9e43c6fd8ab755"
+    },
+    {
+      "hero": "jodie",
+      "kind": "icons",
+      "originalBytes": 93986,
+      "bytes": 11726,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "72abe7dd89dcca4d596d899ea55428a82be1e78364a2ac9a5e17c53633fa97f6",
+      "sha256": "8ca93469ebb2fce1c9d8e3fb87a9f50fd8be0ab482c9ece9754aa816c6d80914"
+    },
+    {
+      "hero": "evie",
+      "kind": "icons",
+      "originalBytes": 100904,
+      "bytes": 13322,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "f10101933028f0e344f4b97ae847c3561a7d7f8ed00c54b74ab6abf8332ff84b",
+      "sha256": "7179d7e903dd82c40278d0af3322662736bf1362e2fdb65edda2fb6561a22d26"
+    },
+    {
+      "hero": "zak",
+      "kind": "icons",
+      "originalBytes": 95980,
+      "bytes": 11816,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "21e98dd672d311d46db9fa08851b4abebd5a6c284319560438a535d770032789",
+      "sha256": "b01bb1632ab31172e9ad195a70223bc8227a76c2b8fc9da4a3f79997f62373fb"
+    },
+    {
+      "hero": "mimi",
+      "kind": "icons",
+      "originalBytes": 89826,
+      "bytes": 10142,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "4139ca6060b8e5d81400b580250ffdbf4c89b1141f782ca394e64b8e66170f71",
+      "sha256": "d83ad01f70a7d5efb7ef2c7ff66a1dfa98892fb84bdef76af10f35b262a9ba12"
+    },
+    {
+      "hero": "joseph",
+      "kind": "icons",
+      "originalBytes": 86594,
+      "bytes": 10586,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "e23e92310e06fec601246fed9e884954811d67774f014e33928e0b90e6bc3ad7",
+      "sha256": "57bde4500f78642ca439e390aa50a9a34f5fb9e255a224f43a001b555dcc3d42"
+    },
+    {
+      "hero": "tom",
+      "kind": "icons",
+      "originalBytes": 88280,
+      "bytes": 10814,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "768c72bd8cc59e69f1ebcb803e630b92f935b629357fb08692f2e149950c5ffc",
+      "sha256": "96aef5909759b405fe1bd737f06022d03a6fc78d53b3bc78252ded513b3c2baa"
+    },
+    {
+      "hero": "havannah",
+      "kind": "icons",
+      "originalBytes": 76362,
+      "bytes": 10746,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "929dc94d9e3aa5b92ee4d443fbab50c2bd3e605bd283fd482bb0c05b94deef25",
+      "sha256": "b49f5284724e1f8dd66d6ef8e21a0da40e815d59a98fa2060a1931c856d40b39"
+    },
+    {
+      "hero": "immy",
+      "kind": "icons",
+      "originalBytes": 88706,
+      "bytes": 12312,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "7978269807155777e7465050ddf0bc37c2aa52a9437a0fbdad3dad7dd8379dc1",
+      "sha256": "e25d18288d817b38cff7709520304b3be085483c827dcb1f53ea069cf2ad3345"
+    },
+    {
+      "hero": "harvey",
+      "kind": "icons",
+      "originalBytes": 83004,
+      "bytes": 11880,
+      "originalDimensions": [
+        512,
+        512
+      ],
+      "dimensions": [
+        192,
+        192
+      ],
+      "sourceSha256": "8c803762e2698e894f2cb4fd6abadc77ccbf22f64ba87a959a87da85b634b8d4",
+      "sha256": "a8556432c094343f35bffdc5d0053b10d2ada9e9d7acac51203389ded05a05e9"
+    },
+    {
+      "hero": "ava",
+      "kind": "portraits",
+      "originalBytes": 67276,
+      "bytes": 67276,
+      "originalDimensions": [
+        480,
+        720
+      ],
+      "dimensions": [
+        480,
+        720
+      ],
+      "sourceSha256": "b0c6f46ad24d3ddbd7b96fff9885c89426ec34a4a1fb7d4453cf672f5cd01428",
+      "sha256": "b0c6f46ad24d3ddbd7b96fff9885c89426ec34a4a1fb7d4453cf672f5cd01428"
+    },
+    {
+      "hero": "jackson",
+      "kind": "portraits",
+      "originalBytes": 60088,
+      "bytes": 60088,
+      "originalDimensions": [
+        480,
+        720
+      ],
+      "dimensions": [
+        480,
+        720
+      ],
+      "sourceSha256": "d6c84b3adbba07060892fbbfd10e12fb9d79b0580bff546ff52fab9f996b5762",
+      "sha256": "d6c84b3adbba07060892fbbfd10e12fb9d79b0580bff546ff52fab9f996b5762"
+    },
+    {
+      "hero": "stef",
+      "kind": "portraits",
+      "originalBytes": 81420,
+      "bytes": 81420,
+      "originalDimensions": [
+        480,
+        720
+      ],
+      "dimensions": [
+        480,
+        720
+      ],
+      "sourceSha256": "a1f55eec65ec6fda38333e98e9d6083c1d909eafa61f33d27d3fe55fc55f2836",
+      "sha256": "a1f55eec65ec6fda38333e98e9d6083c1d909eafa61f33d27d3fe55fc55f2836"
+    },
+    {
+      "hero": "jodie",
+      "kind": "portraits",
+      "originalBytes": 67458,
+      "bytes": 67458,
+      "originalDimensions": [
+        480,
+        720
+      ],
+      "dimensions": [
+        480,
+        720
+      ],
+      "sourceSha256": "a8f2de680463c7e960bce5192da6d8abffd2fb9d90a745c336a0bd7b5b4b831e",
+      "sha256": "a8f2de680463c7e960bce5192da6d8abffd2fb9d90a745c336a0bd7b5b4b831e"
+    },
+    {
+      "hero": "evie",
+      "kind": "portraits",
+      "originalBytes": 68982,
+      "bytes": 68880,
+      "originalDimensions": [
+        480,
+        720
+      ],
+      "dimensions": [
+        480,
+        720
+      ],
+      "sourceSha256": "ec90154431a30f4b3938dc8ce12ac3740588a5e94446459554b4f09f04422fbe",
+      "sha256": "89406f55afffc6d15d876260ca7c41e7eafbdc770648b77958c0e56fa17e5d41"
+    },
+    {
+      "hero": "zak",
+      "kind": "portraits",
+      "originalBytes": 249644,
+      "bytes": 119084,
+      "originalDimensions": [
+        1024,
+        1536
+      ],
+      "dimensions": [
+        683,
+        1024
+      ],
+      "sourceSha256": "dd99f4393ca7c853b7a627218721f649991671c9257dd3901e7ca940ce842c04",
+      "sha256": "2396d854d16e7f4d11675a591c176a1a1ed555f8bc6c2caf560fa7937e2a0ed2"
+    },
+    {
+      "hero": "mimi",
+      "kind": "portraits",
+      "originalBytes": 2513948,
+      "bytes": 125034,
+      "originalDimensions": [
+        1024,
+        1536
+      ],
+      "dimensions": [
+        683,
+        1024
+      ],
+      "sourceSha256": "7b633597e0d4589d6e77524e9dbf0c431668d6166ed4a9f45db8938e4c950cbb",
+      "sha256": "48d071e2c128d8c4bae0bad3cd94a781e675503badfc101e2b264d436a53965e"
+    },
+    {
+      "hero": "joseph",
+      "kind": "portraits",
+      "originalBytes": 203722,
+      "bytes": 86356,
+      "originalDimensions": [
+        895,
+        842
+      ],
+      "dimensions": [
+        895,
+        842
+      ],
+      "sourceSha256": "fea4c2ffda6b350212125e7f8ac6e015217e46505cf1e6c40257c9c5779ec9d4",
+      "sha256": "84c91724e07cad27696c59e3fc8afedd14330dbbf7ab84ee72c7fb8829f660b9"
+    },
+    {
+      "hero": "tom",
+      "kind": "portraits",
+      "originalBytes": 90572,
+      "bytes": 44152,
+      "originalDimensions": [
+        512,
+        526
+      ],
+      "dimensions": [
+        512,
+        526
+      ],
+      "sourceSha256": "97318f8b22c8ea2c84495f66a2083f15144e191c698e7abc777a0d3346460ee5",
+      "sha256": "2acd929f12781fbb851d584ed8e2857ccd00b8b14cda2a7fbe28258ef2b4f58f"
+    },
+    {
+      "hero": "havannah",
+      "kind": "portraits",
+      "originalBytes": 475466,
+      "bytes": 128034,
+      "originalDimensions": [
+        1024,
+        1536
+      ],
+      "dimensions": [
+        683,
+        1024
+      ],
+      "sourceSha256": "05df899a94dd5120616be290db44220e959dfdec3f8171dc4657c5fb108f2fcc",
+      "sha256": "84ff88a8aa4b9bba5d4a5fb0c11528e72aadc3e658f874bc5a21b288afafd3dc"
+    },
+    {
+      "hero": "immy",
+      "kind": "portraits",
+      "originalBytes": 457546,
+      "bytes": 142926,
+      "originalDimensions": [
+        1024,
+        1536
+      ],
+      "dimensions": [
+        683,
+        1024
+      ],
+      "sourceSha256": "a0a477a8f2c749a5566a32a13f947fb4f3d5ea22228b155ed45e1bad777ed7d3",
+      "sha256": "2bc9476d25418215a402f45a9d821cea5e2d042d41ee00142d65a690764971b0"
+    },
+    {
+      "hero": "harvey",
+      "kind": "portraits",
+      "originalBytes": 468510,
+      "bytes": 159286,
+      "originalDimensions": [
+        1024,
+        1536
+      ],
+      "dimensions": [
+        683,
+        1024
+      ],
+      "sourceSha256": "8c8511ee867cf8485cdb5c9c0554facd49a495960ff6d35efb76f28b84dad5d7",
+      "sha256": "ca3d658499a8970706dd90ef203343da689fcb6b9cc99646cc7682be19714ca0"
+    }
+  ]
+}
