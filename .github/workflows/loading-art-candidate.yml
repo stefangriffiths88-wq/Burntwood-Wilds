@@ -1,0 +1,44 @@
+name: Loading art candidate only
+on:
+  push:
+    branches: [fix/loading-art-10-35]
+    paths: [ops/optimize_run_art.py, ops/loading-art-browser.cjs, .github/workflows/loading-art-candidate.yml]
+permissions:
+  contents: read
+jobs:
+  phone-check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare isolated art-only candidate from verified live game
+        run: |
+          python3 -m pip install Pillow==12.3.0
+          mkdir -p evidence
+          curl --fail --silent --show-error https://oejyyzlghanzwyorldts.h5-apps.getreel.com/1.0.8/assets/burntwood.html -o evidence/source.html
+          python3 ops/optimize_run_art.py evidence/source.html --sha256 3d42d6d0b6f19f68d3a376b0d71b2a6b2c4a28e8897e7c532f1c1a74d9ba2777 --output evidence/Burntwood-loading-fix
+          npm install --prefix "$RUNNER_TEMP/bw-browser" playwright@1.61.0
+      - name: Check twelve portraits, phone taps and reload for both packages
+        env:
+          CHROME_BIN: /usr/bin/google-chrome
+          BW_ART_URL: http://127.0.0.1:8877/Burntwood-loading-fix/
+          BW_ART_OUTPUT: evidence
+        run: |
+          python3 -m http.server 8877 --bind 127.0.0.1 --directory evidence > /tmp/bw-art-http.log 2>&1 &
+          export NODE_PATH="$RUNNER_TEMP/bw-browser/node_modules"
+          node ops/loading-art-browser.cjs
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: loading-art-candidate
+          path: |
+            evidence/Burntwood-loading-fix.zip
+            evidence/Burntwood-loading-fix/report.json
+            evidence/loading-*.png
+            evidence/loading-browser-results.json
