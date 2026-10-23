@@ -1,0 +1,9 @@
+# 10.37 feedback and explicit RUN update —23 October2026
+
+Owner: this Work session, branch fix/ricky-feedback-10-36, base81384a0. Stef likes Ricky and explicitly requests better upgrades, Mimi dialogue clear of the hero, a phone unlock-card overflow fix (full-roster screenshot), no repeated rescue of permanently unlocked characters, and “Update all this into run do extensive tests”. This authorises Pages and existing RUN game publication after checks. No private screenshot/photo will be committed.
+
+Implemented locally: grid min-width containment/scrolling roster; captions dynamically constrained above the hero and hidden during boss fights; per-area snapshot excludes permanently owned captives, preserves locked companions/paid access and safe Rugby exit/reload; Ricky rank2 two-target bricks, rank3 wider60% splash, rank5 triple every throw, stronger trowel and wall placement/rubble upgrades. Existing base attacks,5s wall and approved art retained.
+
+First local build/Ricky/playtest1035/story-rescue checks pass. New feedback1037 tests added. Wider mechanics, phone layouts, old saves and RUN distribution checks pending. Not released. Main remains10.36. RUN page currently advertises platform1.0.10, newer than repo's1.0.8 receipt. Current1.0.10 index/app fetched read-only, confirming preload and updated loading wrapper; recover and pin all required current wrapper bytes before packaging. Preserve small-image loading improvements and existing game ID/thumbnail/vote/tracking. Do not use the old1.0.3 wrapper for this release.
+
+Next: focused/new tests and full existing suites, current wrapper/optimized13-hero distribution, CI+phone screenshot review, merge only final tested source, publish exact RUN request, verify receipt/public bytes/version, record status and share RUN/Safari links. Earlier seven audit issues are outside this four-item feedback scope; do not claim them fixed.

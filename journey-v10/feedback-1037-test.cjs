@@ -1,0 +1,19 @@
+const vm=require('node:vm'),fs=require('node:fs'),assert=require('node:assert/strict');
+const source=fs.readFileSync('journey-v10/monster-town-test.cjs','utf8'),box={require,console};vm.createContext(box);vm.runInContext(source.slice(0,source.indexOf('const {t,c}=load();'))+'globalThis.fixture=load;',box);
+function load(storage=new Map()){let h=box.fixture(storage);return {...h,storage,ev:s=>vm.runInContext(s,h.c)};}
+for(let area of ['rugby','chasewater','park','quarry','sankeys']){
+ let h=load(),{t,ev}=h;ev("progress.introComplete=progress.rugbyGuideComplete=true;progress.unlockedHeroes=HERO_IDS.slice();storeProgress(progress)");t.startJourney();t.enterArena(area);t.clear();ev('run.stagePicks=6;p.attack=p.inv=999;nextSpawn=Infinity');assert(t.run.curse.rescued);assert.equal(ev('areaRescueActors().length'),0);assert(!/trapped|find|rescue/i.test(ev('curseStoryText("intro")')));t.spawn('boss',ev('CURSE_STORIES[arenaKey].bossSpawn||CURSE_STORIES[arenaKey].at'));t.damageEnemy(t.boss,999999,0,0);assert.equal(t.state.state,'cleared');assert(!t.nearbyRescueActor());assert(t.saveJourneyCheckpoint('cleared'));let r=load(h.storage);assert(r.t.resumeSavedJourney());r.t.resumeRun();assert(r.t.run.curse.rescued);assert(!r.t.nearbyRescueActor());assert(r.t.exitClearedArea(),'owned heroes never block exit '+area);assert.equal(r.t.progress.essence,t.progress.essence,'no extra essence from skipping rescue');
+}
+// Mixed ownership must retain only the locked companion; paid heroes stay paid.
+for(let [area,owned,pending]of [['chasewater','evie','zak'],['park','havannah','immy'],['quarry','tom','harvey']]){
+ let {t,ev}=load();ev('progress.introComplete=true;progress.unlockedHeroes=['+JSON.stringify(owned)+']');t.startJourney();t.enterArena(area);assert(!t.run.curse.rescued);assert.deepEqual(Array.from(ev('areaRescueActors().map(q=>q.hero)')),[pending]);assert(!ev('curseStoryText("intro")').includes(t.state.selected===owned?'__none__':owned[0].toUpperCase()+owned.slice(1)));t.clear();ev("run.curse.cleared=true;state='cleared';Object.assign(p,areaRescueActors()[0].at)");assert(t.interactRescueActor(t.nearbyRescueActor()));assert(t.run.curse.rescued);assert.equal(t.heroUnlocked(pending),pending==='immy');
+}
+function combat(tier=0,special=0,dodge=0){let h=load(),{t,ev}=h;t.select('ricky');t.startJourney();t.enterCombatArena('sankeys');t.clear();ev('run.stagePicks=6;p.attack=p.inv=999;nextSpawn=Infinity;p.x=450;p.y=600;p.dir={x:1,y:0};tier='+tier+';run.special='+special+';run.dodge='+dodge);return h;}
+function foe(h,x,y){h.t.spawn('heavy',{x,y});let e=h.t.enemies.at(-1);Object.assign(e,{hp:10000,maxHp:10000,speed:0,timer:999});return e;}
+for(let fps of [20,30,60,120]){
+ let h=combat(2),a=foe(h,520,600),b=foe(h,585,600),c=foe(h,650,600);h.t.shoot();for(let i=0;i<fps;i++)h.t.step(1/fps);assert(a.hp<10000&&b.hp<10000);assert.equal(c.hp,10000,'piercing stops after two targets');
+ h=combat(5);foe(h,600,600);h.t.shoot();assert.equal(h.ev('ricky.bricks.length'),3,'every throw has three bricks');assert(h.ev('ricky.bricks.every(b=>b.damage>45)'));
+ h=combat(0,3);h.t.charge();assert.equal(h.ev('ricky.trowels[0].damage'),46.4);let u=.35,x=450+Math.sin(u*Math.PI/2)*375,y=600+Math.sin(u*Math.PI)*75;a=foe(h,x,y);for(let i=0;i<fps*3;i++)h.t.step(1/fps);assert(a.hp<10000);assert(a.hp>=10000-46.4*3-1e-6);assert.equal(h.ev('ricky.trowels.length'),0);
+ h=combat(0,0,5);a=foe(h,535,600);h.t.dodge();assert.equal(a.hp,9975);for(let i=0;i<Math.ceil(fps*5.1);i++)h.t.step(1/fps);assert.equal(a.hp,9891,'25 placement +84 rubble');assert.equal(h.ev('ricky.wall'),null);h.t.enterHub();assert.equal(h.ev('ricky.wall'),null);
+}
+console.log('PASS 10.37: owned rescues across five areas/reload/exit, mixed companion ownership/paid locks; enhanced brick/trowel/wall upgrades at20–120fps');
