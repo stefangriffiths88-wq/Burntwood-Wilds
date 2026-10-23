@@ -1,7 +1,7 @@
 // Save safe boundaries, never a partial combat simulation. An interrupted attempt
 // restarts with its entry equipment/health/gold, so its drops cannot be farmed.
 const JOURNEY_SAVE_KEY='burntwood-wilds-journey-v1';
-const JOURNEY_FIELDS=['visited','level','stage','stagePicks','special','dodge','stats','statLegendary','earned','history','firstArena','perk','shopBought','shopRerolls','shopStock','shopStockStage','shopGeneration','goldEarned','permanent','signature','journeyId','essenceAwards','essenceEarned','started','charms','charmBag','evolutions','startingCharm','purseGranted','firstMission','shopGuide','totalTime','heroicRewarded','heroicSpawned','lastEssenceSaved','rescues'];
+const JOURNEY_FIELDS=['visited','level','stage','stagePicks','special','dodge','stats','statLegendary','earned','history','firstArena','perk','shopBought','shopRerolls','shopStock','shopStockStage','shopGeneration','goldEarned','permanent','signature','journeyId','essenceAwards','essenceEarned','started','charms','charmBag','evolutions','startingCharm','purseGranted','firstMission','shopGuide','totalTime','heroicRewarded','heroicSpawned','lastEssenceSaved','rescues','balanceVersion','preferredPath','recoveryCredit','pendingAwards','queenDefeated','lastQueenReward'];
 let savedJourney=null,journeySaveNotice='',journeyRecoveryBlocked=false,restoringJourney=false,journeySaveClock=0,newJourneyReplay=false;
 function journeyClone(value){return JSON.parse(JSON.stringify(value));}
 function validJourneySave(value){
@@ -9,6 +9,13 @@ function validJourneySave(value){
  let r=value.run;if(r?.rescues!==undefined&&(!Array.isArray(r.rescues)||r.rescues.length>5||new Set(r.rescues).size!==r.rescues.length||r.rescues.some(k=>!ARENAS[k])))throw Error('Invalid rescued residents.');if(r?.signature!==undefined&&typeof r.signature!=='boolean')throw Error('Invalid signature snapshot.');if(!r||Object.keys(r).some(k=>!JOURNEY_FIELDS.includes(k)))throw Error('Unknown saved journey fields.');let num=(n,max)=>Number.isFinite(n)&&n>=0&&n<=max,integer=(n,max)=>Number.isInteger(n)&&num(n,max);
  if(!r||!integer(r.level,100)||r.level<1||!integer(r.stage,5)||!integer(r.stagePicks,6)||!integer(r.special,5)||!integer(r.dodge,5)||!integer(value.tier,5)||!num(value.hp,10000)||!integer(value.gold,10000000)||!num(value.time,100000)||!integer(value.kills,10000000)||!integer(value.seed,4294967295))throw Error('Invalid journey values.');
  if(!Array.isArray(r.visited)||r.visited.length>5||new Set(r.visited).size!==r.visited.length||r.visited.some(k=>!ARENAS[k])||!Array.isArray(r.essenceAwards)||r.essenceAwards.some(k=>!ARENAS[k])||typeof r.journeyId!=='string'||r.journeyId.length>100)throw Error('Invalid journey progress.');
+ if(r.balanceVersion!==undefined&&r.balanceVersion!==1038)throw Error('Invalid balance version.');
+ if(r.preferredPath!==undefined&&!['weapon','special','dodge'].includes(r.preferredPath))throw Error('Invalid build path.');
+ if(r.recoveryCredit!==undefined&&!num(r.recoveryCredit,10000))throw Error('Invalid recovery reserve.');
+ if(r.queenDefeated!==undefined&&typeof r.queenDefeated!=='boolean')throw Error('Invalid finale.');
+ if(r.lastQueenReward!==undefined&&![5,10].includes(r.lastQueenReward))throw Error('Invalid finale reward.');
+ if(r.pendingAwards!==undefined&&(!Array.isArray(r.pendingAwards)||r.pendingAwards.length>6||r.pendingAwards.some(a=>!a||!ARENAS[a.area]||a.token!==r.journeyId+':'+a.area||a.amount!==(a.area==='queen'?(r.lastQueenReward||10):2)||!HERO_IDS.includes(a.hero)||!Array.isArray(a.unlocks)||a.unlocks.some(k=>!HERO_IDS.includes(k)))))throw Error('Invalid pending rewards.');
+ if(value.arena==='queen'&&r.visited.length!==5)throw Error('Finale is locked.');
  if(!Array.isArray(r.history)||r.history.length>100||r.history.some(h=>!h||typeof h.name!=='string'||h.name.length>200||/[<>]/.test(h.name)))throw Error('Invalid upgrade history.');
  for(let field of ['stats','statLegendary'])if(!r[field]||Object.entries(r[field]).some(([k,n])=>!STAT_TRACKS[k]||!num(n,field==='stats'?STAT_TRACKS[k].cap:5)))throw Error('Invalid journey stats.');
  if(!r.permanent||Object.entries(r.permanent).some(([k,n])=>!PERMANENT_UPGRADES[k]||!integer(n,5)))throw Error('Invalid journey ranks.');
@@ -31,7 +38,7 @@ function saveJourneyCheckpoint(mode){
  if(journeyRecoveryBlocked)return false;
  if(!mode){let base=state==='dialogue'&&rescueDialogueResume?rescueDialogueResume:state==='paused'?pauseResume:state==='inventory'?inventoryResume:state;mode=base==='cleared'||['charm','charmEquip'].includes(base)&&run.rewardResume==='cleared'?'cleared':['hub','shop','workshop','dialogue','areaVictory'].includes(base)?'hub':null;}
  if(!mode)return false;
- let data={};for(let key of JOURNEY_FIELDS)if(run[key]!==undefined)data[key]=run[key];
+ flushJourneyAwards();let data={};for(let key of JOURNEY_FIELDS)if(run[key]!==undefined)data[key]=run[key];
  let value={schema:1,mode,hero:selected,arena:arenaKey,run:data,tier,hp:p.hp,gold:hub.coins,time,kills,seed};
  if(mode==='cleared'){value.chests=(run.rewardChests||[]).map(c=>({...c,opened:false}));value.exit=run.areaExit;value.goldDrops=goldDrops;}
  try{let checked=validJourneySave(journeyClone(value)),raw=JSON.stringify(checked);localStorage.setItem(JOURNEY_SAVE_KEY,raw);savedJourney=checked;journeySaveNotice='';return true;}catch(e){journeySaveNotice='This journey could not be saved on this device. Keep the game open to continue.';return false;}
@@ -45,12 +52,12 @@ function resumeSavedJourney(){
  if(state!=='menu'||!savedJourney)return false;let c;try{c=validJourneySave(savedJourney);}catch(e){journeySaveNotice='This journey could not be restored.';renderJourneyRecovery();return false;}
  restoringJourney=true;
  try{
-  rosterTestAccess=false;selected=c.hero;reset();Object.assign(run,journeyClone(c.run));run.signature=c.run.signature===true;run.stat=new Set();tier=c.tier;hub.coins=c.gold;p.hp=c.hp;kills=c.kills;seed=c.seed;hub.finished=false;enterHub(true);
+  rosterTestAccess=false;selected=c.hero;reset();Object.assign(run,journeyClone(c.run));run.signature=c.run.signature===true;run.stat=new Set();if(c.run.balanceVersion===undefined)delete run.balanceVersion;flushJourneyAwards();tier=c.tier;hub.coins=c.gold;p.hp=c.hp;kills=c.kills;seed=c.seed;hub.finished=false;enterHub(true);
   if(c.mode==='area'||c.mode==='cleared'){
-   run.visited=run.visited.filter(k=>k!==c.arena);enterArena(c.arena,true);let route=run.rugby;Object.assign(run,journeyClone(c.run));run.signature=c.run.signature===true;run.stat=new Set();run.rugby=route;tier=c.tier;hub.coins=c.gold;p.hp=Math.min(c.hp,stats().hp);kills=c.kills;seed=c.seed;
+   run.visited=run.visited.filter(k=>k!==c.arena);enterArena(c.arena,true);let route=run.rugby;Object.assign(run,journeyClone(c.run));run.signature=c.run.signature===true;run.stat=new Set();if(c.run.balanceVersion===undefined)delete run.balanceVersion;flushJourneyAwards();run.rugby=route;tier=c.tier;hub.coins=c.gold;p.hp=Math.min(c.hp,stats().hp);kills=c.kills;seed=c.seed;
    if(c.mode==='cleared'){if(run.chase){run.chase.restReached=true;run.chase.afterGuard=true;}time=c.time;state='cleared';run.areaCleared=true;run.areaExit=journeyClone(c.exit);run.rewardChests=journeyClone(c.chests);goldDrops=journeyClone(c.goldDrops);enemies=[];enemyShots=[];boss=null;migrateChaseClearedCheckpoint(c);migrateParkClearedCheckpoint(c);restoreClearedCurse();p.x=run.areaExit.x;p.y=run.areaExit.y+100;}
   }else if(c.mode==='intro')startIntroduction(false);
-  p.hp=Math.min(c.hp,stats().hp);cam={x:p.x,y:p.y};stopMovement();updateHud();updateGuidance();openPause();$('pauseHeading').textContent='JOURNEY RESTORED';$('recoveryPauseText').textContent=c.mode==='area'?'Your interrupted area starts again from its entrance.':'Your saved journey is ready.';return true;
+  if(c.arena==='queen'&&c.mode==='area'){state='queenSpeech';startQueenBattle();}p.hp=Math.min(c.hp,stats().hp);cam={x:p.x,y:p.y};stopMovement();updateHud();updateGuidance();openPause();$('pauseHeading').textContent='JOURNEY RESTORED';$('recoveryPauseText').textContent=c.mode==='area'?'Your interrupted area starts again from its entrance.':'Your saved journey is ready.';return true;
  }finally{restoringJourney=false;}
 }
 function updateRecoveryWarning(){renderJourneyRecovery();$('recoveryPauseText').textContent=journeySaveNotice||'Closing the game saves your journey. An unfinished area restarts from its entrance.';}

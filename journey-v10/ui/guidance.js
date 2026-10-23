@@ -2,7 +2,7 @@
 let guideLast=null;
 function placeGameplaySpeech(){if(!p)return;let quest=$('questHud'),bounds=quest?.getBoundingClientRect?.(),top=Math.max(H<500?56:104,(bounds?.bottom||0)+8),head=H*.47+(p.y-cam.y)*scale-58,space=Math.floor(head-top-10);for(let id of ['rugbyTalk','journeyCoach']){let el=$(id);if(!el?.style?.setProperty)continue;el.style.setProperty('--speech-top',top+'px');el.style.setProperty('--speech-height',Math.max(0,Math.min(110,space))+'px');el.setAttribute?.('data-speech-hidden',space<44?'true':'false');}}
 function stepGuidanceIdle(dt){if(!p)return;let moving=Math.hypot(p.vx||0,p.vy||0)>5||Math.hypot(stick.x,stick.y)>.1||Object.values(keys).some(Boolean)||guideLast&&Math.hypot(p.x-guideLast.x,p.y-guideLast.y)>.5;run.guideIdle=moving?0:(run.guideIdle||0)+dt;guideLast={x:p.x,y:p.y};}
-function guidanceTarget(){if(run.shopGuide&&state==='hub')return WORKSHOP;if(firstMissionActive())return hub.portals.find(g=>g.key==='rugby');return hub.portals.find(g=>!run.visited?.includes(g.key)&&g.key===(run.guideArea||recommendedStoryArea()))||hub.portals.find(g=>!run.visited?.includes(g.key));}
+function guidanceTarget(){if(queenReady()&&state==='hub')return hub.portals.find(g=>g.key==='queen');if(run.shopGuide&&state==='hub')return WORKSHOP;if(firstMissionActive())return hub.portals.find(g=>g.key==='rugby');return hub.portals.find(g=>!run.visited?.includes(g.key)&&g.key===(run.guideArea||recommendedStoryArea()))||hub.portals.find(g=>!run.visited?.includes(g.key));}
 // Project onto the nearest road, then choose the endpoint with the shortest
 // remaining route. Recomputing from the nearest *node* turns the arrow backwards
 // whenever a player is halfway along a road.
