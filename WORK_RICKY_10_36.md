@@ -1,4 +1,6 @@
-# Active work — Ricky and essence character shop
+# Historical phase log — Ricky and essence character shop
+
+**Completed:** see WORK_RICKY_10_36_DONE.md and PROJECT_STATUS.md. This retained phase log is superseded by the verified release record.
 
 Owner: this Work session. Branch feature/ricky-10-36, based on main62decba. User explicitly authorised game integration23 October2026 after approving sprite, native proportions/chain and select portrait. Scope: Ricky complete character; four permanent10-essence character purchases at Stefan's workshop (Stefan/Ricky/Zak/Harvey). See journey-v10/characters/RICKY.md for complete specification and routine tuning decisions.
 

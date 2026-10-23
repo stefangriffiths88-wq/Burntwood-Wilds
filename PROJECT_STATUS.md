@@ -1,3 +1,17 @@
+# Latest verified Pages release: Burntwood Wilds 10.36.0
+
+Released23 October2026 after Stef approved Ricky's option1 sprite, native size/chain comparison, character-select portrait and integration. PR101 merged as1423f90b87991a7ab9736092a43186eda2d80237. Pages39952328068 build/deploy succeeded. Canonical and versioned public HTML fetched and matched640630bytes / SHA256aa0624f498bc80854d6f6ead068b8a4316d891bff57688b7a486b5177f12f7f8. New portrait/icon match committed source; historical10.35HTML retains SHA256667f8bd782f2fbbb54f539d2f9d5a26cd1a531a68441dcb23f528217ab39ee35. Latest test redirect is updated from the stale10.30 entry to10.36 in the release-record commit.
+
+Playtest: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.36.0.html?v=10360
+
+Included: Ricky, The Bricklayer, with slow heavy bricks, piercing returning trowel,5-second enemy/projectile wall, approved native visible gold chain and full portrait,15 upgrades/signature/evolutions/save/town/phone controls. Stefan's workshop permanently unlocks Stefan,Ricky,Zak,Harvey for10essence each. Zak/Harvey story rescues remain but no longer grant fresh playable access. Existing earned heroes/signatures/upgrades are retained. Character purchases are confirmed/atomic, don't switch the current hero and don't consume Jackson's free stat gift or buy a signature.
+
+Verification: final feature f5ee096a24ef0ce935686e37ed2a2da4055a1f4d /39951666422 all three jobs GREEN, including Ricky purchase/cancel/welcome/reload/portrait/trowel/wall at390×844,390×650,320×568,844×390. Full runtime/browser/charm JOB120398912131 in39949103747 GREEN at identical runtime before test-only followups;266 combat combinations and21 protected journeys/105 arenas across the original seven heroes, not13 full journeys. Ricky focused20–120fps collisions,15 real upgrades, all charm actions and five controlled native-boss kills passed separately. Fresh isolated story39949103840 and final main story39952328091 GREEN. Main39952328118 performs additional automatic regression; don't confuse its pending status with the completed pre-merge gates. See TEST_10_36.md and journey-v10/characters/RICKY.md for exact scope, initial stale-fixture failures, hashes and limits.
+
+RUN was not published by this update. RUN host/request/SDK/thumbnail and the user's later Studio loading work were left alone; preserve the smaller-image/loading changes before any separately requested10.36 RUN update. The earlier seven audit findings remain outside this scope. Native Safari, human balance and final user acceptance are pending. Next: phone-test Ricky's attack pacing, wall placement/blocking/expiry, trowel return and saved shop balance/unlocks; then obtain explicit RUN publication direction.
+
+--- Earlier verified releases follow ---
+
 # Latest verified release: Burntwood Wilds 10.35.0
 
 Released 22 October 2026 following Stef's explicit authorisation of all agreed gameplay, music, art and RUN updates. PR100 merged as ae2474226891df20be40969036a5b695202737cd. Explicit publish commit6b0a800cde08611392eb6413e9398952e9392511; RUN workflow39856288305 passed prepare and deploy. Receipt run-host/releases/10.35.0.json records platform1.0.8, game10.35.0 and visibility review (playable review link, not public-listing approval).
