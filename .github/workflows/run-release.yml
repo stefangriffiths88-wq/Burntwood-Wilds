@@ -22,6 +22,7 @@ jobs:
         with:
           node-version: '22'
       - run: python3 journey-v10/build.py
+      - run: python3 -m pip install Pillow
       - run: python3 ops/package_run_host.py
       - run: node ops/run_host_test.cjs
       - run: node journey-v10/signature-builds-test.cjs

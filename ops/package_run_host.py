@@ -1,4 +1,4 @@
-"""Package the tested game inside the preserved RUN1.0.3 host wrapper."""
+"""Package the tested game inside the preserved current RUN1.0.10 host wrapper."""
 from pathlib import Path
 import hashlib
 import json
@@ -9,6 +9,7 @@ import sys
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / 'journey-v10'))
 from package_run import package
+from run_art import optimise
 
 
 def build():
@@ -31,7 +32,7 @@ def build():
     dest = ROOT / 'dist-run'
     if dest.exists():
         shutil.rmtree(dest)
-    vendor = ROOT / 'run-host/vendor'
+    vendor = ROOT / 'run-host/vendor-1.0.10'
     provenance = json.loads((ROOT / 'run-host/vendor-manifest.json').read_text())
     for name, digest in provenance['files'].items():
         assert hashlib.sha256((vendor / name).read_bytes()).hexdigest() == digest, 'RUN wrapper changed: ' + name
@@ -39,7 +40,9 @@ def build():
     approved_thumbnail = ROOT / 'run-host/artwork/thumbnail.jpg'
     if approved_thumbnail.exists():
         shutil.copyfile(approved_thumbnail, dest / 'thumbnail.jpg')
+    html,art_report = optimise(html)
     (dest / 'assets/burntwood.html').write_text(html)
+    (dest / 'art-report.json').write_text(json.dumps(art_report,indent=2)+'\n')
     files = {str(p.relative_to(dest)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(dest.rglob('*')) if p.is_file()}
     receipt = {'gameVersion': request['gameVersion'], 'sourceSha256': request['sourceSha256'], 'hostBaseline': provenance['source'], 'files': files}
     (dest / 'release-manifest.json').write_text(json.dumps(receipt, indent=2) + '\n')
