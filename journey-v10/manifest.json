@@ -36,6 +36,7 @@
   "visuals/immy-lynx.js",
   "characters/immy.js",
   "characters/harvey.js",
+  "characters/ricky.js",
   "items/charms.js",
   "items/charm-builds.js",
   "arenas/park.js",

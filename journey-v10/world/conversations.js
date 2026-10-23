@@ -1,5 +1,6 @@
 // Short resident conversations, changed only by victories in this journey.
 const TOWN_CHAT={
+ ricky:['I can sort the wall. You sort whatever’s trying to climb over it.','Not bad for a day’s work. Who’s putting the kettle on?'],
  harvey:['I made a portal. Then I made a pickle. Science is going brilliantly.','Spore gun ready. What could possibly go wrong?'],
  immy:['The forest is listening. I think it wants us to fight back.','Small paws can still make a big difference.'],
  havannah:["I’m not scared. They should be scared of ME!","Told you. Tiny paws, massive attitude."],
