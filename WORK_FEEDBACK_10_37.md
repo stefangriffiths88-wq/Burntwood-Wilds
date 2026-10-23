@@ -1,4 +1,10 @@
-# 10.37 feedback and explicit RUN update —23 October2026
+# COMPLETED: 10.37 feedback and RUN review upload —23 October2026
+
+Final759250cd /39964947144 all3 jobs GREEN; full runtime/browser/charm JOB120449667610 in39964200064 GREEN at identical runtime. Local all-domain tests and266 combinations/21 protected journeys pass; exact RUN prepare39964199957 and isolated story39964200176 GREEN. PR103 merged2f58c5f; draftPR102 superseded/closed. Main Pages39987600454 and RUN39987600795 succeeded. Receipt9357032 records10.37.0/platform1.0.11 visibility REVIEW; public approval pending. Direct review page advertises1.0.11, ordinary public metadata1.0.10. Nine non-thumbnail hosted files match the tested artifact; re-encoded thumbnail viewed/approved identity retained. Canonical/versioned public644397bytes match SHA256d068d7248e47895cc5b0c4d94477ca0e93ad8bd38a7981a26ad649a32f3579c3. TEST_10_37.md and PROJECT_STATUS.md hold full evidence/limits/links. Native Safari/human balance/user acceptance pending; no further code work authorised beyond this completed update. Earlier checkpoints below are historical, not pending actions.
+
+Review: https://run.world/wild_creations/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671
+
+Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.37.0.html?v=10370
 
 Owner: this Work session, branch fix/ricky-feedback-10-36, base81384a0. Stef likes Ricky and explicitly requests better upgrades, Mimi dialogue clear of the hero, a phone unlock-card overflow fix (full-roster screenshot), no repeated rescue of permanently unlocked characters, and “Update all this into run do extensive tests”. This authorises Pages and existing RUN game publication after checks. No private screenshot/photo will be committed.
 

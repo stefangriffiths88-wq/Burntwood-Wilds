@@ -1,3 +1,23 @@
+# Latest verified Pages release: Burntwood Wilds 10.37.0
+
+Released23 October2026 following Stef’s four-item Ricky/phone/rescue feedback and explicit “Update all this into run do extensive tests”, then Resume/Update. Final PR103 merged2f58c5f6509cdef7de1870e02de91af499760282; superseded draftPR102 closed. Pages39987600454 build/deploy/report succeeded. Public canonical/versioned HTML both644397bytes, SHA256d068d7248e47895cc5b0c4d94477ca0e93ad8bd38a7981a26ad649a32f3579c3; latest redirect points10.37?v=10370.
+
+Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.37.0.html?v=10370
+
+Included: stronger Ricky piercing/splash/triple-brick upgrades,45% trowel damage/double return and stronger wall construction/rubble upgrades;5s wall/base slow attack/approved art retained. Full13-hero welcome fits narrow phones with an internally scrolling strip. Mimi speech uses space above the hero and stays out of boss combat; collapses when no safe room fits. Permanently owned heroes no longer become captives again; mixed groups retain only locked companions, correct narrative/exit/reload and10-essence paid rules. Original Joseph/Tom town lines and all earned progress retained.
+
+Verification: final759250cd6735f11b9bc49b08262bbfc77a709eb8 /39964947144 ALL THREE JOBS GREEN. Full mechanics/browser/charm JOB120449667610 in39964200064 GREEN at identical runtime f388732;266 combat combinations and21 protected journeys/105 arenas across original seven heroes, not13 full journeys. All local character/domain tests, Ricky20–120fps collisions/effects/15 choices/atomic purchases, four phone sizes/full-roster/owned-exit/reload and actual compressed RUN iframe checks pass. Final RUN prepare39964199957 and isolated story39964200176 GREEN; final screenshots inspected. TEST_10_37.md records exact scope, hashes, earlier failed/corrected direction/dialogue/landscape assertions and limits.
+
+RUN upload39987600795 prepare/deploy succeeded; receipt9357032ae12247bc1b6d8f75713871d2618054ff /run-host/releases/10.37.0.json records platform1.0.11, game10.37.0, visibility review. **Uploaded and playable for review; do not claim public-listing/update approval.** Direct review page advertises1.0.11; plain public page still advertises1.0.10 at this checkpoint.
+
+Updated RUN review play: https://run.world/wild_creations/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671
+
+Current1.0.10 Studio loading wrapper was recovered and preserved exactly; no return to old1.0.3 wrapper. Inline copies of26 approved images are compressed only for RUN; all originals and historical10.35/10.36 pages unchanged. Hosted inner game2566091bytes, SHA256efc20c24ab42c3b2ad9e68acb6ce29711a27ec5792ca6b28aa2359ded9d2a179. Nine non-thumbnail distribution files fetched from1.0.11 match the tested manifest exactly. Platform-reencoded thumbnail was visually checked and retains the approved Rugby Strike design. This retains smaller downloads, preload, SDK/tracking, vote link and game identity. Main isolated story39987600825 GREEN; automatic main mechanics39987600962 may still be running, additional to completed pre-merge checks.
+
+User/native Safari and human balance acceptance pending. Earlier seven audit findings remain outside this four-item update and are not claimed fixed. Next: Stef tests Ricky’s stronger upgrade progression, speech/card layouts and owned-character journeys through the updated RUN review link; public RUN approval is pending platform review.
+
+--- Earlier verified releases follow ---
+
 # Latest verified Pages release: Burntwood Wilds 10.36.0
 
 Released23 October2026 after Stef approved Ricky's option1 sprite, native size/chain comparison, character-select portrait and integration. PR101 merged as1423f90b87991a7ab9736092a43186eda2d80237. Pages39952328068 build/deploy succeeded. Canonical and versioned public HTML fetched and matched640630bytes / SHA256aa0624f498bc80854d6f6ead068b8a4316d891bff57688b7a486b5177f12f7f8. New portrait/icon match committed source; historical10.35HTML retains SHA256667f8bd782f2fbbb54f539d2f9d5a26cd1a531a68441dcb23f528217ab39ee35. Latest test redirect is updated from the stale10.30 entry to10.36 in the release-record commit.
