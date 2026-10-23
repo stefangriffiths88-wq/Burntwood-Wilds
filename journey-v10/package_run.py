@@ -10,7 +10,7 @@ def package():
     version=re.search(r"const BUILD_ID='([^']+)'",html).group(1)
     portraits=json.loads(re.search(r'const PORTRAITS=(\{[^;]+\});',html).group(1))
     paths=list(portraits.values())+['journey-v10/assets/icons/'+hero+'.webp' for hero in portraits]
-    assert len(paths)==24 and len(set(paths))==24,'Expected twelve complete portrait/icon pairs'
+    assert len(paths)==len(portraits)*2 and len(set(paths))==len(paths),'Expected complete portrait/icon pairs'
     # Only our dedicated output directory is replaced; source assets are untouched.
     if DEST.exists():shutil.rmtree(DEST)
     DEST.mkdir()

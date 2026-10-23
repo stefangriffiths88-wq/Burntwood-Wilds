@@ -1,6 +1,7 @@
 // One saved signature per hero; character-owned triggers, bounded secondary damage.
 const SIGNATURE_COST=10;
 const SIGNATURES={
+ ricky:{name:'Brick Dust',text:'Normal brick impacts also damage nearby enemies. Combines with Broken Bricks without duplicate splash hits.',glyph:'▰'},
  jackson:{name:'Extra Bounce',text:'Every main rugby ball ricochets to one extra enemy. Stacks with journey upgrades.',glyph:'◎'},
  ava:{name:'Starburst',text:'Each main star impact fires two smaller stars at other nearby enemies for 45% star damage.',glyph:'✦'},
  jodie:{name:'Mimi’s Double',text:'A clone of companion Mimi joins every journey, sharing her companion upgrades. Tiny still joins separately.',glyph:'♙'},

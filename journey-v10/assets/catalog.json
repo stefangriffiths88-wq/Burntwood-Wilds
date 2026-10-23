@@ -117,6 +117,17 @@
       "source": "Approved generated portrait converted without repainting; private photo not committed",
       "gameplay_sprite": "characters/harvey.js",
       "approved_reference": "Option3 tuxedo cat, dark wavy hair, round black glasses, navy hoodie; spore gun, Pickle Harvey and Portal Hop"
+    },
+    "ricky": {
+      "asset": "assets/portraits/ricky.webp",
+      "status": "User-approved 23 October 2026",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "source_sha256": "3d348967f09ac085a3542aef60b069ec40c7ca082b31e52e69602cb2cfa28d54",
+      "approved_reference": "Option1 striped shirt; approved cinematic bricklayer portrait; chain explicitly retained in native sprite",
+      "gameplay_sprite": "characters/ricky.js"
     }
   },
   "zak": {
@@ -296,6 +307,14 @@
       ],
       "status": "matching-roster-close-up-user-request-19-October-2026-visual-review-pending",
       "sha256": "8c803762e2698e894f2cb4fd6abadc77ccbf22f64ba87a959a87da85b634b8d4"
+    },
+    "ricky": {
+      "asset": "assets/icons/ricky.webp",
+      "dimensions": [
+        192,
+        192
+      ],
+      "status": "Derived from approved portrait without repainting; phone preview pending"
     }
   },
   "enemy_visuals": {

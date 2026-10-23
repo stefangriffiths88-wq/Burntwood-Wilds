@@ -1,0 +1,19 @@
+# Ricky — authorised integration,23 October2026
+
+Stef approved sprite option1, its native comparison against Zak/Tom/Stefan, the brighter visible gold chain and the cinematic character-select portrait, then instructed “Perfect get him in the game unlocked with essence10”. He specified slow high-damage bricks, a piercing trowel that travels around and returns, and a5-second wall that blocks enemies/projectiles. Implementation fills in routine numeric tuning and upgrade details below for phone playtest. No other character/arena balance changes are authorised. RUN deployment is separate from this Pages update; preserve Studio's newer loading wrapper.
+
+## Complete playtest specification
+
+-125HP,140movement,42 base brick damage,1.35s normal interval; standard player collision radius14. Native body .9 scale, between Zak and Tom and below Stefan. Grey tabby, short brown hair/beard, sunglasses on head, striped black shirt, white trim, toolbelt, detached paws, bright gold chain. No legs/feet. Town and combat use the same body renderer.
+-Bricks travel350units/s for1.5s, one primary hit per brick with swept collision. Normal upgrades: +20% damage; heavy knockback;40% impact splash;20% faster/+25% damage; every third throw adds two angled65% bricks. Normal attacks use shared damage/permanent/charm/evolution processing. Bounded24 projectiles.
+-Return to Sender:32 base damage,16s cooldown. A .75s curved outbound journey up to300units, then homes to Ricky at540units/s;3s lifetime limit. Hits each enemy once outbound and once returning. Pierces without losing damage; bosses receive normal damage without launching. Upgrades:20% damage,25% range,50% stronger return,13s cooldown,second offset trowel. Bounded4 trowels. No native fullscreen/combat redesign.
+-Brick Wall:5s duration at every rank,116width,8thickness,52units ahead,12s cooldown. Whole placement must fit the existing walkable map. Player/friendly attacks pass; enemy bodies and hostile swept projectiles stop. All enemy AI variants are clamped with a shared movement hook only for Ricky. Hero/route geometry is unchanged. Upgrades:150width; ordinary enemy push on construction; contact slow;9s cooldown;30-damage rubble on natural expiry. One wall maximum, clear on victory/town/arena/reset/reload. No damage from a cancelled transition.
+-Signature: Brick Dust,10essence separately.25% brick splash, added to normal splash without duplicate primary hits. Stat growth per level:1.2health,.6%power,.08%armour. All three level-six evolution choices remain available through existing shared systems.
+
+## Shop change
+
+Ricky, Stefan, Zak and Harvey cost10essence each at Stefan's workshop, with inspectable named cards and explicit confirm/cancel. Workshop access remains unlocked by the first boss; NPC Stefan can sell characters before being playable. Character purchases do not buy a signature, consume Jackson's stat gift, switch the active hero or reset a journey. Save debit/unlock/welcome atomically before in-memory mutation. Cancellation, insufficient funds, repeated confirm or failed saving cannot consume essence or grant access. Newly purchased heroes get the established welcome/NEW/card flow and become selectable next journey.
+
+Story rescues for Zak/Harvey still occur but no longer grant those playable unlocks. Existing earned heroes/signatures/upgrades remain unlocked on migration. Legacy all-character fallback includes only the pre-Ricky roster, so no old save silently gets Ricky free. No unrelated audit bug is claimed fixed.
+
+Portrait: approved generated1024×1536PNG sourceSHA2563d348967f09ac085a3542aef60b069ec40c7ca082b31e52e69602cb2cfa28d54; WebP conversion without repainting. Original personal reference photograph is never uploaded. The192px roster icon is a direct face crop from the approved portrait.
