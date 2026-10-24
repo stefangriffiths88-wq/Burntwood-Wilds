@@ -1,4 +1,4 @@
-"""Package the tested game inside the preserved current RUN1.0.10 host wrapper."""
+"""Package the tested game inside the preserved current RUN1.0.12 host wrapper."""
 from pathlib import Path
 import hashlib
 import json
@@ -32,7 +32,7 @@ def build():
     dest = ROOT / 'dist-run'
     if dest.exists():
         shutil.rmtree(dest)
-    vendor = ROOT / 'run-host/vendor-1.0.10'
+    vendor = ROOT / 'run-host/vendor-1.0.12'
     provenance = json.loads((ROOT / 'run-host/vendor-manifest.json').read_text())
     for name, digest in provenance['files'].items():
         assert hashlib.sha256((vendor / name).read_bytes()).hexdigest() == digest, 'RUN wrapper changed: ' + name

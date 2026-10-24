@@ -1,3 +1,4 @@
+const hostScript=require('node:fs').readFileSync('dist-run/assets/index-bU3QvW8L.js','utf8');require('node:assert/strict')(hostScript.includes('vote_clicked:"jam_vote_clicked"'));
 const fs=require('node:fs'),vm=require('node:vm'),assert=require('node:assert/strict');
 const html=fs.readFileSync('dist-run/assets/burntwood.html','utf8');
 const scripts=[...html.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map(x=>x[1]).join('\n');
@@ -9,4 +10,4 @@ t.menu();t.select('jackson');t.startJourney();assert.equal(captured.filter(v=>v.
 for(let area of ['rugby','chasewater','sankeys','quarry','park']){t.enterCombatArena(area);t.clear();t.spawn('boss',{x:500,y:500});t.damageEnemy(t.boss,999999,0,0);while(t.state.state==='charm')t.chooseCharm(0);}
 assert.equal(captured.filter(v=>v.bwEvent==='boss_fight_started').length,5);assert.equal(captured.filter(v=>v.bwEvent==='boss_defeated').length,5);assert.equal(captured.filter(v=>v.bwEvent==='first_enemy_defeated').length,1);
 ev("state='playing';finish(false)");assert(captured.some(v=>v.bwEvent==='run_ended'));
-console.log('PASS packaged 10.25 script, all5 arrow routes, stateless bosses and preserved RUN start/first-kill/boss/end tracking');
+console.log('PASS packaged current game and preserved vote analytics, all5 arrow routes, stateless bosses and preserved RUN start/first-kill/boss/end tracking');
