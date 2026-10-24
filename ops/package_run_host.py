@@ -21,9 +21,9 @@ def build():
         ("const BUILD_ID='" + request['gameVersion'] + "';", "const BUILD_ID='" + request['gameVersion'] + "';\nlet bwRunStart=0,bwFirstKill=false;\nfunction bwEv(n,d){try{parent.postMessage({bwEvent:n,data:d||{}},'*');}catch(e){}}", 1),
         ('kills++;score++;onDefeated(e);', "kills++;score++;if(!bwFirstKill){bwFirstKill=true;bwEv('first_enemy_defeated',{hero:selected,arena:arenaKey,seconds:Math.round((performance.now()-bwRunStart)/1000)});}onDefeated(e);", 1),
         ('if(e===boss){finish(true);}', "if(e===boss){bwEv('boss_defeated',{hero:selected,arena:arenaKey});finish(true);}", 1),
-        ('boss=e;bossSpawned=true;float(', "boss=e;bossSpawned=true;bwEv('boss_fight_started',{hero:selected,arena:arenaKey});float(", 5),
-        ('let o=run.offers[i],oldHP=stats().hp;run.earned', "let o=run.offers[i],oldHP=stats().hp;bwEv('upgrade_picked',{hero:selected,path:String(o.path),name:String(o.name||o.title||o.index||''),rarity:o.rarity===undefined?-1:o.rarity,level:run.level});run.earned", 1),
-        ('let more=won&&run.visited.length<JOURNEY_AREAS;if(more', "let more=won&&run.visited.length<JOURNEY_AREAS;if(!more&&!renderOnly)bwEv('run_ended',{hero:selected,result:won?'won':'lost',seconds:Math.round((performance.now()-bwRunStart)/1000),level:run.level,kills:kills});if(more", 1),
+        ('boss=e;bossSpawned=true;float(', "boss=e;bossSpawned=true;bwEv('boss_fight_started',{hero:selected,arena:arenaKey});float(", 6),
+        ('let o=run.offers[i],oldHP=stats().hp;', "let o=run.offers[i],oldHP=stats().hp;bwEv('upgrade_picked',{hero:selected,path:String(o.path),name:String(o.name||o.title||o.index||''),rarity:o.rarity===undefined?-1:o.rarity,level:run.level});", 1),
+        ('let more=won&&run.visited.length<JOURNEY_AREAS;if(more', "let more=won&&run.visited.length<JOURNEY_AREAS;if(!more&&(!renderOnly||run.queenDefeated)&&!run.runEndTracked){run.runEndTracked=true;bwEv('run_ended',{hero:selected,result:won?'won':'lost',seconds:Math.round((performance.now()-bwRunStart)/1000),level:run.level,kills:kills});}if(more", 1),
         ("function startJourney(){if(!heroUnlocked(selected))selectCharacter('jackson');reset();", "function startJourney(){if(!heroUnlocked(selected))selectCharacter('jackson');bwRunStart=performance.now();bwFirstKill=false;bwEv('hero_chosen',{hero:selected});bwEv('run_started',{hero:selected});reset();", 1),
     ]
     for old, new, count in patches:

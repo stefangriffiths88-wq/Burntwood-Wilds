@@ -42,10 +42,10 @@ const{chromium}=require('playwright'),fs=require('node:fs'),assert=require('node
     gameAudio=original;audioPhrase=phrase;return results;
    });
    for(let r of evidence.renders){assert(r.peak>.01&&r.peak<.98,JSON.stringify(r));assert(r.rms>.005,JSON.stringify(r));}
-   assert.equal(new Set(evidence.renders.map(r=>r.fingerprint)).size,10);
+   assert.equal(new Set(evidence.renders.map(r=>r.fingerprint)).size,12);
   }
   await page.close();
  }
  fs.mkdirSync('tests',{recursive:true});fs.writeFileSync('tests/arena-music-browser.json',JSON.stringify(evidence,null,2)+'\n');
- await browser.close();console.log('PASS actual Web Audio: five areas, faster real bosses, real defeat/cleared/pause/return and sliders at three phone sizes; ten distinct unclipped offline renders');
+ await browser.close();console.log('PASS actual Web Audio: five areas, faster real bosses, real defeat/cleared/pause/return and sliders at three phone sizes; twelve distinct unclipped offline renders');
 })().catch(e=>{console.error(e);process.exit(1)});

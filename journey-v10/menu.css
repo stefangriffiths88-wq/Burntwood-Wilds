@@ -285,3 +285,5 @@ button.upgradeCard.buildCard{border:1px solid var(--rarity);border-left:5px soli
 #journeyCoach small{font-size:10px}
 [data-speech-hidden="true"]{visibility:hidden!important}
 body:has(#bossHud[style*="block"]) #rugbyTalk{display:none!important}
+
+.cursebreakerBadge{position:absolute;bottom:1px;right:2px;color:#ffe397;text-shadow:0 1px 2px #172e22;font-size:18px;pointer-events:none}

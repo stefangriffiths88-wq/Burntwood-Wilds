@@ -7,6 +7,7 @@ function setAudioVolume(key,value){if(!['music','effects'].includes(key))return;
 // Arena-owned musical identities. Notes are semitone offsets; the boss speeds
 // the score up without pitching recordings or altering the simulation clock.
 const ARENA_SCORES={
+ queen:{name:'The Last Thorn',bpm:154,root:43,roots:[0,-2,0,3,-4,0,-2,5],melody:[0,7,3,10,12,7,5,3],voice:'sawtooth',kicks:[0,2,3,4,6],chords:[0,3,6]},
  rugby:{name:'Rugby Rush',bpm:144,root:48,roots:[0,0,-4,-2,0,3,-4,-2],melody:[0,7,12,10,7,3,5,7],voice:'square',kicks:[0,2,4,6],chords:[0,3,6]},
  chasewater:{name:'Waterline Chase',bpm:136,root:50,roots:[0,-2,-5,-2,0,3,-5,-2],melody:[12,7,3,7,10,7,5,3],voice:'triangle',kicks:[0,3,4],chords:[0,4]},
  quarry:{name:'Stonebreaker',bpm:132,root:50,roots:[0,-4,3,-2,0,-4,-7,-5],melody:[0,3,7,12,10,7,5,3],voice:'sawtooth',kicks:[0,3,5],chords:[0,4]},
