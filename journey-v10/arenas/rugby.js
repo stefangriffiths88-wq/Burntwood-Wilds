@@ -5,6 +5,6 @@ function spawnRugby(kind,at){if(rugbyRouteActive()&&!at&&kind!=='boss')at=rugbyA
 
 function drawRugbyGround(){if(rugbyRouteActive())return drawRugbyRouteGround();ctx.fillStyle='#497347';ctx.fillRect(0,0,WORLD.w,WORLD.h);for(let y=0;y<WORLD.h;y+=150){ctx.fillStyle=(y/150)%2?'#4f7949':'#456e43';ctx.fillRect(0,y,WORLD.w,150);}ctx.strokeStyle='#e5e3c3aa';ctx.lineWidth=3;ctx.strokeRect(65,110,WORLD.w-130,WORLD.h-220);for(let y of [260,650,1040])line([[65,y],[WORLD.w-65,y]],'#e5e3c399',2);line([[450,110],[450,1190]],'#e5e3c344',1);for(let y of [120,1180]){line([[350,y],[350,y-45]],'#f0e8d5',6);line([[550,y],[550,y-45]],'#f0e8d5',6);line([[350,y-25],[550,y-25]],'#f0e8d5',5);}for(let x=10;x<WORLD.w;x+=65){ellipse(x,25,28,24,'#294e35');ellipse(x+6,15,21,20,'#365d39');ellipse(x,WORLD.h-20,30,25,'#294e35');}for(let y=70;y<WORLD.h-50;y+=70){ellipse(10,y,25,27,'#284e35');ellipse(WORLD.w-10,y,25,27,'#284e35');}ctx.fillStyle='#ecdfaa';ctx.font='bold 20px system-ui';ctx.textAlign='center';ctx.fillText('BURNTWOOD RUGBY CLUB',450,75);}
 
-function drawEnemy(e){if(e.curseAnchor)return drawCurseAnchor(e);if(e.park)return drawParkEnemy(e);if(e.quarry)return drawQuarryEnemy(e);if(e.market)return drawMarketEnemy(e);if(e.chase)return drawChaseEnemy(e);drawWildEnemy(e,'rugby');}
+function drawEnemy(e){if(e.queenRoot)return;if(e.curseAnchor)return drawCurseAnchor(e);if(e.park)return drawParkEnemy(e);if(e.quarry)return drawQuarryEnemy(e);if(e.market)return drawMarketEnemy(e);if(e.chase)return drawChaseEnemy(e);drawWildEnemy(e,'rugby');}
 
 

@@ -30,6 +30,7 @@ jobs:
       - run: |
           python3 -m http.server 8765 >/tmp/run-host-server.log 2>&1 &
           node ops/run_host_browser.cjs
+          QUEEN_URL=http://127.0.0.1:8765/dist-run/index.html node journey-v10/queen-1038-browser.cjs
           node journey-v10/signature-builds-browser.cjs
           node journey-v10/elder-lane-browser.cjs
       - name: Decide explicit release request

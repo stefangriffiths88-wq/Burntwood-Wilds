@@ -113,6 +113,7 @@ jobs:
           node journey-v10/harvey-test.cjs
           node journey-v10/immy-test.cjs
           node journey-v10/roster-workshop-test.cjs
+      - run: node journey-v10/queen-1038-test.cjs
       - run: node journey-v10/reward-flow-test.cjs
       - run: node journey-v10/chasewater-route-test.cjs
       - run: node journey-v10/rugby-route-test.cjs
@@ -133,6 +134,7 @@ jobs:
       - run: npm install --no-save playwright@1.48.2
       - run: |
           python3 -m http.server 8765 >/tmp/monster-server.log 2>&1 &
+          node journey-v10/queen-1038-browser.cjs
           node journey-v10/feedback-1037-browser.cjs
           node journey-v10/ricky-browser.cjs
           node journey-v10/playtest-1035-browser.cjs
