@@ -1,3 +1,19 @@
+# Latest verified Pages release: Burntwood Wilds 10.38.0
+
+Released24 October2026 following Stef’s explicit “Ok let’s do it” approval of the Cow Queen finale and gameplay improvements. PR104 merged as4f064ce005757b3cb737333a9b5d6997abe9d086. Pages40046197906 build/deploy/report succeeded. Public canonical/versioned HTML fetched and verified663525bytes / SHA256eb3e130b3138a757e6eefcad82b265684e1178ccfee18175bfe68928fc116ac4. Generated game580798bytes / SHA256c1e37c16b7958d406dbd62a6b27bf9afc2347faa7e732dacf42bd8eb508178e9.
+
+Safari: https://stefangriffiths88-wq.github.io/Burntwood-Wilds/burntwood-journey-v10.38.0.html?v=10380
+
+Included: Cow Queen at Chase Terrace Park after five guardians, complete-build preparation and dialogue, three phases/4200HP/breakable roots/max2 followers/final warned double charge;10 first/5 repeat essence, per-hero Cursebreaker crowns and true Mimi ending. Final gate/sign/crown minimap/normal approach/button/canvas tap verified. New journeys have3 first-area choices/4 later,22s spacing, route-adjusted XP, build-directed offers, lower later HP scaling, combat-earned passive/defensive recovery and20/35/50…gold rerolls. Umbrella shield/interruptible finite healing; broader relevant timed defence/recovery openings; Zak remains10essence with no captive scene. Pending boss/final rewards survive permanent-write failure plus checkpoint/reload and retry once. Post-victory signature patches blocked. Existing approved art and earned heroes retained; large graphics overhaul remains paused.
+
+Final pre-merge40045470165 ALL THREE JOBS GREEN at source ea2412146f2e24b2cb0a8ad281490a695913ab22. Full mechanics/browser/charm JOB120726054907 GREEN, including266 original-seven-hero/charm combinations and21 protected journeys/105 arenas. Separate all13 five-area/finale transitions, phase/warning/hit20–120fps, first/repeat/duplicate rewards, failed save/reload and crowns pass. Phone gate/briefing/roots/pause/ending/crown checks at390×844,320×568,844×390; four-size existing character/host checks also pass. Final RUN prepare40045470128 GREEN and isolated story40045470180 GREEN; final native screenshots inspected. TEST_10_38.md records prior failed/corrected fixtures and exact limits. Scripted Queen movement with supplied equipment is not human balance proof.
+
+RUN publication is requested by the release-record commit after Pages verification. Upload/receipt and actual review/public visibility still need verification; do not claim the RUN update is live yet. Existing1.0.10 Studio wrapper, thumbnail, identity, vote link and compressed art are preserved. Standalone source8872441bytes SHA25694a0be08fb21a4cff5cfce5b8f69d74f77e7f29a4ef279382d54f8feac5c131b; optimised hosted inner game2585343bytes SHA256916f06f7f9970048e409c710b694b5bb76c80ea280f08f46d41f5e487e4a1343.
+
+Start a fresh journey for the new balance/finale. Existing unfinished journeys retain their older rules and earned heroes are kept. Native Safari/human difficulty acceptance remains pending. Additional automatic main checks may still be running; pre-merge release gates above are complete. Earlier audit items outside this scope are not claimed universally fixed (intro/recruitment when saving is unavailable, separate legacy character audio contexts, occasional heroic duplicate choices).
+
+--- Earlier verified releases follow ---
+
 # Latest verified Pages release: Burntwood Wilds 10.37.0
 
 Released23 October2026 following Stef’s four-item Ricky/phone/rescue feedback and explicit “Update all this into run do extensive tests”, then Resume/Update. Final PR103 merged2f58c5f6509cdef7de1870e02de91af499760282; superseded draftPR102 closed. Pages39987600454 build/deploy/report succeeded. Public canonical/versioned HTML both644397bytes, SHA256d068d7248e47895cc5b0c4d94477ca0e93ad8bd38a7981a26ad649a32f3579c3; latest redirect points10.37?v=10370.

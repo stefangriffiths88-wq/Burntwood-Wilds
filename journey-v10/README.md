@@ -73,3 +73,9 @@ The approved RUN icon lives in run-host/artwork; package_run_host.py overrides o
 
 ## 10.31 testing candidate — curse and restoration
 `world/curse-story.js` owns five area stories, destructible knots/rescues/omens, quiet beats, local root hazards, caller/stalker roles and validated journey rescue IDs. `visuals/curse-art.js` owns deterministic native corruption, distance-based cleansing, freed guardians and rescued town residents. All attacks use existing character damage; no hero/arena balance workaround. `curse-story-test.cjs` covers all12 heroes ×five areas, attackable objectives, safe warnings, enemy roles, physical victory/recovery and save boundaries; `curse-story-browser.cjs` reviews three phone sizes with real defence/pause taps. RUN publication is prohibited pending Stef’s test. Source remains on its feature branch; only the versioned Pages test file is to be published. Canonical/latest stay10.30.
+
+## 10.38 finale and progression
+
+JOURNEY_AREAS intentionally counts five guardians, not the final encounter. New journeys preserve their build after area five, prepare in town, then enter the separate Cow Queen arena at Chase Terrace Park. Do not replace every five with six. Mimi/final victory and new RUN completion belong to Queen defeat. Crowns and permanent rewards are saved; pendingAwards travels with checkpoints until storage succeeds. Existing interrupted saves retain their original balance contract.
+
+Journey balance is in upgrades/journey-balance.js; finale in arenas/cow-queen.js; Sankeys boss mechanics in arenas/umbrella-mechanics.js; recoverable rewards in upgrades/journey-awards.js. Queen phone tests use the normal approach and entry controls, not only direct arena calls. See TEST_10_38.md.

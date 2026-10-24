@@ -274,3 +274,7 @@ Phone screenshots caught Mimi’s boss caption hiding a marked landing on short 
 
 ## Reconcile the complete approved update scope
 Before closing an authorised update, compare the final diff against every still-pending change approved for that update, including earlier feedback in the conversation. Do not silently move agreed work into a later release because the most recent discussion focused on one arena. 10.27 shipped Chasewater while omitting the previously agreed Rugby entrance/cars and Sankeys scenery; 10.28 completes those omissions. Record the exact implemented scope and remaining acceptance checks before claiming the update is finished.
+
+## Progression verification —24 October2026
+
+When changing XP or completion rules, check finite route enemy budgets, tutorial XP, hardcoded setXP numbers in character visual fixtures, current preview URLs/storage keys, ending-copy assertions and every normal entry path. Instant-kill finale fixtures alone do not establish that the town gate/sign/marker/interaction works. Keep protected mechanics tests distinct from natural progression and human balance. Preserve old interrupted journey contracts explicitly. Packaging metadata must not hash itself as distribution content.

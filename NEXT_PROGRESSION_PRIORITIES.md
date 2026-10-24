@@ -1,3 +1,5 @@
+> Historical preparation record: implemented in10.38. See PROJECT_STATUS.md and TEST_10_38.md for final behaviour and release verification.
+
 # Next update: progression priorities
 
 Approved by Stef on 23 October 2026 for the next update, alongside the Cow Queen finale and Zak shop-only correction.

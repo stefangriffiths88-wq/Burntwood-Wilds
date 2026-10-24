@@ -1,3 +1,5 @@
+> Historical preparation record: implemented in10.38. See PROJECT_STATUS.md and TEST_10_38.md for final behaviour and release verification.
+
 # Next update: Cow Queen finale — approved direction and review
 
 Planning only. No gameplay changes, version bump or publication authorised by this document.

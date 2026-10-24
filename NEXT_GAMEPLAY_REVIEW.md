@@ -1,3 +1,5 @@
+> Historical preparation record: implemented in10.38. See PROJECT_STATUS.md and TEST_10_38.md for final behaviour and release verification.
+
 # Next update: gameplay review and preparation
 Recorded 24 October 2026. User: “Ok get them ready for the new update not yet though.”
 Documentation/preparation only. Do not implement, merge or publish gameplay changes until Stef explicitly says update.

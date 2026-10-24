@@ -1,3 +1,5 @@
+> Historical preparation record: implemented in10.38. See PROJECT_STATUS.md and TEST_10_38.md for final behaviour and release verification.
+
 # Next update: Zak is shop-only
 
 Stef’s playtest feedback23 October2026:10.37 feels good, but Zak appears trapped at Chasewater even though freeing him still requires buying him. Explicit direction: keep Zak as an essence purchase.
