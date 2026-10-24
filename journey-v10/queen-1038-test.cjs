@@ -9,6 +9,10 @@ for(let fps of [20,30,60,120])for(let kind of ['charge','shockwave','curse']){
  ev(`for(let i=0;i<${Math.ceil(fps*.45)};i++){boss.timer-=1/${fps};time+=1/${fps};stepQueen(boss,1/${fps});}`);assert(t.player.hp<hp,kind+' warning geometry matches hit at'+fps);let after=t.player.hp;ev('stepQueen(boss,.01)');assert.equal(t.player.hp,after,'one hit per attack');
 }
 console.log('PASS Queen warning/hit geometry and one-hit attack budget at20/30/60/120fps');
+{
+ let {t,ev}=fresh('harvey');ev("arenaKey='queen';state='playing';run.signature=true;run.visited=['rugby','chasewater','sankeys','quarry','park'];spawnQueen('boss',{x:450,y:500});boss.hp=1;harveyShot(450,500,0,99999);updateHarvey(.01)");assert.equal(t.state.state,'won');assert.equal(ev('signatureFX.patches.length'),0,'actual killing Harvey shot cannot create a frozen post-victory cloud');
+ console.log('PASS actual Harvey killing shot leaves no post-victory signature cloud');
+}
 for(let [area,kind,worth]of [['park','pouncer',5],['chasewater','goose',3],['rugby','swarm',1]]){
  let {t,ev}=fresh();assert(t.enterArena(area));t.clear();t.spawn(kind,{...t.player});t.damageEnemy(t.enemies.at(-1),99999,0,0);assert.equal(ev('gems.at(-1).value'),worth);let e=t.spawnHeroic({...t.player});t.damageEnemy(e,99999,0,0);assert.equal(ev('gems.at(-1).value'),20);
 }
