@@ -1,4 +1,4 @@
-"""Create the 10.33 pre-release playtest, with isolated saved progress.
+"""Create the 10.38 pre-release playtest, with isolated saved progress.
 
 The gameplay bytes are the existing build; only the two device storage keys
 differ. The story preview reads only its own saves. No host/SDK/RUN writes.
@@ -20,4 +20,4 @@ assert "const BUILD_ID='10.38.0'" in preview
 path=root/'burntwood-preview-v10.38.0.html';path.write_text(preview)
 record={'version':'10.38.0','purpose':'Pre-release verification; RUN publication authorised after checks','path':path.name,'sourceSha256':hashlib.sha256(source.encode()).hexdigest(),'previewSha256':hashlib.sha256(preview.encode()).hexdigest(),'bytes':len(preview.encode()),'storage':'Fresh separate story-test keys; no production/legacy/previous-preview reads or writes'}
 (root/'tests/curse-preview-10.38.0.json').write_text(json.dumps(record,indent=2)+'\n')
-print('Built isolated 10.33 Pages preview:',record['previewSha256'])
+print('Built isolated 10.38 Pages preview:',record['previewSha256'])

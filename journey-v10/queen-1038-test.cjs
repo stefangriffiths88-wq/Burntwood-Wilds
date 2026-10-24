@@ -9,6 +9,10 @@ for(let fps of [20,30,60,120])for(let kind of ['charge','shockwave','curse']){
  ev(`for(let i=0;i<${Math.ceil(fps*.45)};i++){boss.timer-=1/${fps};time+=1/${fps};stepQueen(boss,1/${fps});}`);assert(t.player.hp<hp,kind+' warning geometry matches hit at'+fps);let after=t.player.hp;ev('stepQueen(boss,.01)');assert.equal(t.player.hp,after,'one hit per attack');
 }
 console.log('PASS Queen warning/hit geometry and one-hit attack budget at20/30/60/120fps');
+for(let [area,kind,worth]of [['park','pouncer',5],['chasewater','goose',3],['rugby','swarm',1]]){
+ let {t,ev}=fresh();assert(t.enterArena(area));t.clear();t.spawn(kind,{...t.player});t.damageEnemy(t.enemies.at(-1),99999,0,0);assert.equal(ev('gems.at(-1).value'),worth);let e=t.spawnHeroic({...t.player});t.damageEnemy(e,99999,0,0);assert.equal(ev('gems.at(-1).value'),20);
+}
+console.log('PASS actual route kills award Park5/Chasewater3/Rugby1 XP, guards20; tutorial retains original XP');
 {
  let h=fresh(),{t,ev}=h;ev("progress.queenVictories=1;storeProgress(progress);run.visited=['rugby','chasewater','sankeys','quarry','park'];enterHub()");assert(t.enterArena('queen'));h.els.panelButton.onclick();let original=h.c.localStorage.setItem;h.c.localStorage.setItem=(key,value)=>{if(key==='burntwood-wilds-progress-v2')throw Error('blocked');original(key,value);};t.damageEnemy(t.boss,999999,0,0);assert.equal(t.state.state,'won');assert.equal(t.run.lastQueenReward,5);assert.equal(t.run.pendingAwards.length,1);assert.equal(t.progress.essence,0);assert.equal(t.discardJourneyCheckpoint(),false);let r=load(h.storage);assert(r.t.resumeSavedJourney());assert.equal(r.t.progress.essence,5);assert.equal(r.t.progress.queenVictories,2,'repeat victory is committed exactly once');r.t.resumeRun();assert.equal(r.t.state.state,'won');assert.equal(r.t.progress.essence,5);r.t.returnAfterRun();assert(r.t.hub.finished);
  console.log('PASS repeat Queen reward5, failed final write/reload, protected pending reward and restored finished journey');
