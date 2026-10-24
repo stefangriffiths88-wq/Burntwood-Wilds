@@ -33,11 +33,11 @@ function drawSankeysSquare(){
  if(serviceOpen('stef')&&dist(p,WORKSHOP)<105){ctx.fillStyle='#183f31';ctx.fillRect(337,400,190,30);ctx.strokeStyle='#bca777';ctx.lineWidth=1;ctx.strokeRect(337,400,190,30);ctx.fillStyle='#f3dba1';ctx.font='bold 10px system-ui';ctx.textAlign='center';ctx.fillText(progress.essence+' ESSENCE · '+(townUpgradeAvailable()?'UPGRADE AVAILABLE':'SAVED FOR UPGRADES'),432,412);ctx.font='9px system-ui';ctx.fillText('Permanent strength · next fresh journey',432,424);}
 }
 function drawTownEntrance(g){
- const done=run.visited?.includes(g.key),near=dist(p,g)<180,name=({sankeys:'SANKEYS STREETS',park:'BURNTWOOD PARK',chasewater:'CHASEWATER',rugby:'RUGBY CLUB',quarry:'BURNTWOOD QUARRY'})[g.key];
+ const done=run.visited?.includes(g.key),near=dist(p,g)<180,name=({sankeys:'SANKEYS STREETS',park:'BURNTWOOD PARK',chasewater:'CHASEWATER',rugby:'RUGBY CLUB',quarry:'BURNTWOOD QUARRY',queen:'CHASE TERRACE PARK'})[g.key];
  ctx.save();ctx.translate(g.x,g.y);ellipse(5,17,55,13,'#24453244');
  if(g.key==='chasewater'){ctx.fillStyle='#839b88';ctx.fillRect(-47,-12,94,37);for(let x of [-40,40])line([[x,13],[x,-37]],'#756349',6);line([[-46,-21],[46,-21]],'#b4b597',4);for(let x=-30;x<=30;x+=20)line([[x,-21],[x,18]],'#9f9678',3);}
  else if(g.key==='quarry'){for(let side of [-1,1]){catShape(`M${side*22} 18L${side*55} 18L${side*49} -32L${side*30} -41Z`,'#747e70','#4b6151',2);line([[side*30,-20],[side*48,-10]],'#a4ac8e',3);}line([[-22,8],[22,8]],'#a9a58d',7);}
- else if(g.key==='park'){for(let side of [-1,1]){line([[side*42,20],[side*42,-36]],'#4d6c4d',6);ellipse(side*42,-41,8,5,'#bcc49c');}line([[-42,-28],[42,-28]],'#7b986c',4);for(let x=-25;x<=25;x+=17)line([[x,-18],[x,15]],'#7b986c',3);}
+ else if(g.key==='park'||g.key==='queen'){for(let side of [-1,1]){line([[side*42,20],[side*42,-36]],'#4d6c4d',6);ellipse(side*42,-41,8,5,'#bcc49c');}line([[-42,-28],[42,-28]],'#7b986c',4);for(let x=-25;x<=25;x+=17)line([[x,-18],[x,15]],'#7b986c',3);}
  else{for(let side of [-1,1]){ctx.fillStyle='#9f6c4e';ctx.fillRect(side<0?-53:30,-35,23,53);for(let y=-30;y<18;y+=10)line([[side<0?-53:30,y],[side<0?-30:53,y]],'#cba685',1);ctx.fillStyle='#c2b599';ctx.fillRect(side<0?-57:26,-40,31,7);}line([[-28,15],[28,15]],'#c4b28c',5);}
  ctx.fillStyle=done?'#3e674b':'#203f32';ctx.fillRect(-61,-60,122,24);ctx.strokeStyle='#bda77a';ctx.lineWidth=1.5;ctx.strokeRect(-61,-60,122,24);ctx.fillStyle='#f4e0ad';ctx.font='bold 10px Georgia';ctx.textAlign='center';ctx.fillText(name,0,-44);
  if(done){ctx.fillStyle='#e6d391';ctx.font='bold 10px system-ui';ctx.fillText('✓ SAVED',0,41);for(let side of [-1,1]){ellipse(side*48,23,10,5,'#3e7549');ellipse(side*48,20,3,3,'#e3c18c');}}
