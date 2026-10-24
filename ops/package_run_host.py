@@ -43,7 +43,7 @@ def build():
     html,art_report = optimise(html)
     (dest / 'assets/burntwood.html').write_text(html)
     (dest / 'art-report.json').write_text(json.dumps(art_report,indent=2)+'\n')
-    files = {str(p.relative_to(dest)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(dest.rglob('*')) if p.is_file()}
+    files = {str(p.relative_to(dest)): hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(dest.rglob('*')) if p.is_file() and p.name != 'release-manifest.json'}
     receipt = {'gameVersion': request['gameVersion'], 'sourceSha256': request['sourceSha256'], 'hostBaseline': provenance['source'], 'files': files}
     (dest / 'release-manifest.json').write_text(json.dumps(receipt, indent=2) + '\n')
     print('RUN package:', request['gameVersion'], len(files), 'files; existing wrapper/tracking/thumbnail preserved')
