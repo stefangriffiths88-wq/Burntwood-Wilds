@@ -1,10 +1,17 @@
 {
   "success": true,
   "gameId": "oeJYyzlGHanZwYoRldTS",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "shareUrl": "https://w.run/wild_creations/burntwood-wilds?tag=review&k=22420deab10ddf4fa01567d5e6c94671",
   "visibility": "review",
   "gameVersion": "10.38.0",
   "sourceSha256": "94a0be08fb21a4cff5cfce5b8f69d74f77e7f29a4ef279382d54f8feac5c131b",
-  "commit": "a4eda66cd223764e22d74d1c55ec099daa8fa7e3"
+  "commit": "026e375c7725ee4ecd331f93e8b258529be0ad9b",
+  "hostVersion": "1.0.12",
+  "previousUpload": {
+    "version": "1.0.13",
+    "commit": "a4eda66cd223764e22d74d1c55ec099daa8fa7e3",
+    "hostVersion": null,
+    "sourceSha256": "94a0be08fb21a4cff5cfce5b8f69d74f77e7f29a4ef279382d54f8feac5c131b"
+  }
 }
