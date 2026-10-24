@@ -1,0 +1,7 @@
+# RUN host compatibility —10.38
+
+User authorised the complete update. Game10.38 is already verified on Pages and uploaded as platform1.0.13. Final host inspection found intervening platform1.0.12 used an older10.35 inner game but added exactly one JS change to the preserved wrapper: vote_clicked → jam_vote_clicked analytics. The loader/SDK/app code is otherwise byte-identical after that mapping insertion. Do not copy its old inner game.
+
+This compatibility-only patch preserves exact public1.0.12 host files/provenance, keeps current10.38 source SHA25694a0be08fb21a4cff5cfce5b8f69d74f77e7f29a4ef279382d54f8feac5c131b and hosted game SHA256916f06f7f9970048e409c710b694b5bb76c80ea280f08f46d41f5e487e4a1343 unchanged. Original vendor1.0.10 is retained. Unit test checks mapping; existing RUN phone gates validate the exact new package.
+
+A hostVersion=1.0.12 request/receipt field makes upload idempotence cover both game source and wrapper revision. The existing1.0.13 receipt is preserved in git and the replacement receipt records previousUpload. Source hash must remain identical for same-version host-only refresh. Once targeted RUN prepare is GREEN, merge this patch; main request publication auto-uploads the preserved host revision exactly once. Verify the new receipt and hosted files, then finalise PROJECT_STATUS/TEST/WORK and return Safari/RUN review links. No further game balance changes are in scope.

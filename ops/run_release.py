@@ -20,11 +20,14 @@ connect(cli, env)
 env.pop('RUNDOT_API_KEY', None)
 # A committed receipt prevents accidental repeated uploads of this request.
 saved = root / 'run-host/releases' / (request['gameVersion'] + '.json')
+old = None
 if saved.exists():
     old = json.loads(saved.read_text())
     assert old['sourceSha256'] == request['sourceSha256']
-    print('Existing upload receipt: ' + old['shareUrl'])
-    sys.exit(0)
+    if old.get('hostVersion') == request.get('hostVersion'):
+        print('Existing upload receipt: ' + old['shareUrl'])
+        sys.exit(0)
+    print('Updating only the preserved RUN host revision; game source is unchanged')
 manifest = json.loads((root / 'dist-run/release-manifest.json').read_text())
 for name, digest in manifest['files'].items():
     assert hashlib.sha256((root / 'dist-run' / name).read_bytes()).hexdigest() == digest
@@ -52,7 +55,9 @@ for line in result.stdout.splitlines():
 assert responses, 'RUN did not return a successful version/share URL; inspect remote versions before retrying'
 receipt = responses[-1]
 assert receipt['gameId'] == game
-receipt.update({'gameVersion': request['gameVersion'], 'sourceSha256': request['sourceSha256'], 'commit': os.environ.get('GITHUB_SHA', '')})
+receipt.update({'gameVersion': request['gameVersion'], 'sourceSha256': request['sourceSha256'], 'commit': os.environ.get('GITHUB_SHA', ''), 'hostVersion': request.get('hostVersion')})
+if old:
+    receipt['previousUpload'] = {k: old.get(k) for k in ('version', 'commit', 'hostVersion', 'sourceSha256')}
 saved.parent.mkdir(parents=True, exist_ok=True)
 saved.write_text(json.dumps(receipt, indent=2) + '\n')
 print('Uploaded RUN version ' + receipt['version'] + ': ' + receipt['shareUrl'])
